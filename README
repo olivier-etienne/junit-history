@@ -2,7 +2,7 @@ Orange NewTV Blagnac
 JUnitHistory project
 
 Cette application web fonctionne avec une base de données associée.
-Elle a été développé au sein de l'équipe Orange NewTV afin de visualiser et archiver les tests Gwt/Iptvkit passés sur les différentes STB et firmware.
+Elle a été développée au sein de l'équipe Orange NewTV afin de visualiser et archiver les tests Gwt/Iptvkit passés sur les différentes STB et firmware.
 
 Elle permet de visualiser sous la forme d'une page html un rapport xml issu des test GWT JUnit.
 
