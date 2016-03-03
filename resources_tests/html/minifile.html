@@ -1,0 +1,591 @@
+<head>
+<title>minifile</title>
+<link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+<body>
+<h1>Suite de tests&nbspminifile</h1>
+<div id=info>
+<h2>Test Suite Info</h2>
+<label>Test:</label>
+<span>100</span>
+<br>
+<label>Time:</label>
+<span>152 seconds</span>
+<br>
+<table width="80%" class="summary" ><tr>
+<td width="50%" class="stats" >
+<label>#Skipped:</label>&nbsp
+<span>18</span>
+<label>(dependency:</label>&nbsp
+<span>8</span>&nbsp&nbsp
+<label>execution:</label>&nbsp
+<span>10)</span>
+<br>
+<label>#Running:</label>&nbsp
+<span>82</span>&nbsp&nbsp
+<label>(Success:</label>&nbsp
+<span>73</span>&nbsp&nbsp
+<label>Failures:</label>&nbsp
+<span>8</span>&nbsp&nbsp
+<label>Errors:</label>
+<span>1)</span>
+</td>
+<td width="50%" class="stats" >
+<div class="Status Skipped" title="SKIPPED - dependency: 8 execution: 10">
+<table style="text-align: left; width: 82%;" border="1" cellpadding="2" cellspacing="2">
+<tbody><tr>
+<td class= "Status Success" style="vertical-align: top; width: 89%;"  title="SUCCESS: 73">89%</td>
+<td class= "Status Failure" style="vertical-align: top; width: 9%;"  title="FAILURE: 8">9%</td>
+<td class= "Status Error" style="vertical-align: top; width: 1%;"  title="ERROR - exception: 0 timeout: 1 crash: 0">1%</td>
+</tr></tbody></table>
+</div>
+</td></tr></table>
+<br>
+<div width="100%" class="description" >
+<label>Date:&nbsp</label>
+<div><label>Firmware:&nbsp</label></div>
+<label>User:&nbsp</label>
+<div><label>IPTVKIT:&nbsp</label></div>
+</div>
+<h2>Statistics by category</h2>
+<table width="100%" class="stats" >
+<th>category</th><th>total</th><th>run</th><th>statistiques [success - failure - error - skipped] - percent / running tests</th>
+<tr>
+<th width="150px" title="GwtTestVideo, GwtTestAudio">
+<a  href="#AudioVideo">AudioVideo</a></th>
+<td width="80px" title="TOTAL - running: 82 skipped: 18">100</td>
+<td width="80px" title="RUNNING - success: 73 failure: 8 error: 1">82</td>
+<td class="stats">
+<table width="100%" class="stats" >
+<tr><td class="stats">
+<div class="Status Skipped" title="SKIPPED - dependency: 8 execution: 10">
+<table style="text-align: left; width: 82%;" border="1" cellpadding="2" cellspacing="2">
+<tbody><tr>
+<td class= "Status Success" style="vertical-align: top; width: 89%;"  title="SUCCESS: 73">89%</td>
+<td class= "Status Failure" style="vertical-align: top; width: 9%;"  title="FAILURE: 8">9%</td>
+<td class= "Status Error" style="vertical-align: top; width: 1%;"  title="ERROR - exception: 0 timeout: 1 crash: 0">1%</td>
+</tr></tbody></table>
+</div>
+</td></tr></table>
+</td>
+</tr>
+</table>
+<div id=tests>
+<h2>Tests Overview minifile</h2>
+<a  name="AudioVideo">
+<h2>Category AudioVideo:&nbsp<h3>GwtTestVideo, GwtTestAudio
+</a>
+<br><br>
+<table width="50%">
+<tr><th width="40%">Class</th><th width="40%">Name</th><th width="10%">Time<</th><th width="10%">Status</th></tr>
+<tr class="even"><td rowspan='6'>GwtTestAudio</td>
+<td>testPlay</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testMetadata</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testPause</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testResume</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testTimeChangePosition</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio.testTimeChangePosition">Failure</a></td></tr>
+<tr class="even"><td>testStop</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td rowspan='30'>GwtTestVideoEit</td>
+<td>testPlayDTT_LCN805</td>
+<td>2</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetDTTProgramInfoLCN805</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStopDTT_LCN805</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayDTT_LCN806</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetDTTProgramInfoLCN806</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStopDTT_LCN806</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayLcn808</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetIPProgramInfoLcn808</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testControlIPProgramInfoLcn808</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn808">Failure</a></td></tr>
+<tr class="odd"><td>testStopLcn808</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayLcn809</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetIPProgramInfoLcn809</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testControlIPProgramInfoLcn809</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn809">Failure</a></td></tr>
+<tr class="odd"><td>testStop809</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayLcn810</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetIPProgramInfoLcn810</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testControlIPProgramInfoLcn810</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn810">Failure</a></td></tr>
+<tr class="odd"><td>testStop810</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayLcn811</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetIPProgramInfoLcn811</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testControlIPProgramInfoLcn811</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn811">Failure</a></td></tr>
+<tr class="odd"><td>testStop811</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayLcn803</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetIPProgramInfoLcn803</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testControlIPProgramInfoLcn803</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn803">Failure</a></td></tr>
+<tr class="odd"><td>testStop803</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlayLcn804</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testGetIPProgramInfoLcn804</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testControlIPProgramInfoLcn804</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn804">Failure</a></td></tr>
+<tr class="odd"><td>testStop804</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td rowspan='10'>GwtTestVideoFile</td>
+<td>testPlay</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testMetadata</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testChangePosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testPositionAfterChangePosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testResetPosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testPositionAfterResetPosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testPause</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testResume</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testChangeTimePosition</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td>testStop</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td rowspan='10'>GwtTestVideo_DTT</td>
+<td>testPlay</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testMetadata</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testEit</td>
+<td>4</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testChangePosition</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPositionAfterChangePosition</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testResetPosition</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPositionAfterResetPosition</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStop</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlaySource2</td>
+<td>5</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStopSource2</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="even"><td rowspan='2'>GwtTestVideo_HAS</td>
+<td>testPlay</td>
+<td>6</td>
+<td class='Status Error'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testPlay">Timeout</a></td></tr>
+<tr class="even"><td>testGeNoCurrentSubtitleTrack</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td rowspan='24'>GwtTestVideo_IP</td>
+<td>testLangPrefs1</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlay1</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testMetadata</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testAudioTracks</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testSubtitleTracks</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testChangePosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPositionAfterChangePosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testResetPosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPositionAfterResetPosition</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testCurAudioTrack1</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testCurSubtitleTrack1</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStop1</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testLangPrefs2</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlay2</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testCurAudioTrack2</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testCurSubtitleTrack2</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStop2</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testLangPrefs3</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlay3</td>
+<td>1</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testCurAudioTrack3</td>
+<td>0</td>
+<td class='Status Failure'><a  href="#com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_IP.testCurAudioTrack3">Failure</a></td></tr>
+<tr class="odd"><td>testCurSubtitleTrack3</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStop3</td>
+<td>0</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testPlaySource2</td>
+<td>4</td>
+<td class='Status Success'>Ok</td></tr>
+<tr class="odd"><td>testStopSource2</td>
+<td>3</td>
+<td class='Status Success'>Ok</td></tr>
+</table><br><br>
+</h3></h2></div>
+<div id=details>
+<h2>Tests In Error</h2>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio.testTimeChangePosition">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio</span>.<span class="testname">testTimeChangePosition</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> unexpected timePosition expected:&lt;9718&gt; but was:&lt;2384&gt; (tolerance:&lt;1000&gt;)</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>unexpected timePosition expected:&lt;9718&gt; but was:&lt;2384&gt; (tolerance:&lt;1000&gt;)<br>Caused by: junit.framework.AssertionFailedError: unexpected timePosition expected:&lt;9718&gt; but was:&lt;2384&gt; (tolerance:&lt;1000&gt;)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:74)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio$4.onStbEvent(AudioPlayerImplSop6.java:91)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.junit.client.StbEventPipe.onStbEvent(StbEventPipe.java:40)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(StbEventImplSop6.java:1416)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.audio&gt; <span style='color: #292'>AudioPlayerImplSop6 &gt; Media.Player.TimeControl.setTimePosition(AUDIO, 9718)=0</span><br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;AUDIO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;AUDIO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: TIME_POSITION_CHANGED - ATTRIBUTES: {&quot;position&quot;:&quot;2384&quot;,&quot;session_id&quot;:&quot;AUDIO&quot;,&quot;state&quot;:&quot;1&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_AUDIO_POSITION_CHANGED &gt;&gt;&gt; testTimeChangePosition<br>[TRACE] stb.audio&gt; <span style='color: #292'>AudioPlayerImplSop6 &gt; Media.Player.TimeControl.getTimePosition(AUDIO)=0,2384</span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testPlay">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testPlay</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testMetadata">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testMetadata</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testEit">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testEit</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testChangePosition">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testChangePosition</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testPositionAfterChangePosition">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testPositionAfterChangePosition</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testResetPosition">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testResetPosition</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testPositionAfterResetPosition">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testPositionAfterResetPosition</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testStop">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testStop</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testPlaySource2">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testPlaySource2</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH.testStopSource2">
+<span class='Status Skipped'>SKIPPED</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTH</span>.<span class="testname">testStopSource2</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> SKIPPED</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testPlay">
+<span class='Status Error'>Timeout</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testPlay</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> video url play timeout</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>video url play timeout<br>Caused by: com.google.gwt.junit.client.TimeoutFailure: video url play timeout<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.Timer.fire(Timer.java:149)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Timer.java:68)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[DEBUG] test&gt; Play url: http://10.185.111.250/flux_ott_dash/MASTER_LAREINEDESNW0088187_Main_MOV_HD_XDCAM_CMC_1403D639-output.mpd<br>[DEBUG] stb.video&gt; getSource(http://10.185.111.250/flux_ott_dash/MASTER_LAREINEDESNW0088187_Main_MOV_HD_XDCAM_CMC_1403D639-output.mpd) ...<br>[DEBUG] stb.video&gt; open(http://10.185.111.250/flux_ott_dash/MASTER_LAREINEDESNW0088187_Main_MOV_HD_XDCAM_CMC_1403D639-output.mpd)<br>[INFO ] 13:12:18,079 perf.zapping&gt; VideoPlayer.changeSession(VIDEO)<br>[DEBUG] stb.video&gt; changeSession(MEDIA)<br>[DEBUG] stb.video&gt; Media.Player.Live.Common.getState(LIVE) = 0,LIVE_STATE_STOP<br>[DEBUG] stb.video&gt; Media.Player.Resource.Common.getState(VIDEO) = 0,STOPPED<br>[DEBUG] stb.video&gt; Media.Player.Resource.Common.getState(AUDIO) = 0,STOPPED<br>[DEBUG] stb.video&gt; Media.Player.Resource.Common.getState(3) = 0,STOPPED<br>[DEBUG] stb.video&gt; Media.Player.Resource.Common.getState(2) = 0,STOPPED<br>[DEBUG] stb.video&gt; Media.Player.Resource.Common.getState(1) = 0,STOPPED<br>[DEBUG] stb.video&gt; Media.Player.Resource.Common.getState(0) = 0,STOPPED<br>[DEBUG] stb.video&gt;  ... nb sessions in stopping process... :0<br>[DEBUG] stb.video&gt; mimeType: null - duration: null - position: 0<br>[TRACE] stb.video&gt; <span style='color: #292'>VideoPlayerImplSop6 &gt; &gt;&gt; Resource.Common.setSourceUriList({&quot;session_name&quot;:&quot;VIDEO&quot;,&quot;source_uri_list&quot;:[{&quot;uri&quot;:&quot;http://10.185.111.250/flux_ott_dash/MASTER_LAREINEDESNW0088187_Main_MOV_HD_XDCAM_CMC_1403D639-output.mpd&quot;,&quot;mimetype&quot;:&quot;&quot;}]} )={&quot;data&quot;:{},&quot;status&quot;:0}</span><br>[DEBUG] stb.video&gt; VideoPlayerImplSop6 &gt; selectDefaultAudioLanguage for MEDIA session<br>[TRACE] stb.filesystem&gt; <span style='color: #292'>FileSystemImplSop6 &gt; &gt;&gt; FS.Token.readValue({&quot;file&quot;:&quot;/flash/Resources//prefs&quot;,&quot;parameter&quot;:&quot;audio.langs&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})={&quot;data&quot;:{&quot;value&quot;:&quot;fra,fre&quot;},&quot;status&quot;:0}</span><br>[TRACE] stb.filesystem&gt; <span style='color: #292'>FileSystemImplSop6 &gt; &gt;&gt; FS.Token.readValue({&quot;file&quot;:&quot;/flash/Resources//prefs&quot;,&quot;parameter&quot;:&quot;audio.ad&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})={&quot;data&quot;:{&quot;value&quot;:&quot;true&quot;},&quot;status&quot;:0}</span><br>[TRACE] stb.video&gt; <span style='color: #292'>VideoPlayerImplSop6 &gt; &gt;&gt; Media.Player.Tracks.Audio.List.selectByLang(&#39;fra&#39;)=0</span><br>[TRACE] stb.video&gt; <span style='color: #292'>VideoPlayerImplSop6 &gt; &gt;&gt; Media.Player.Resource.Common.start(VIDEO )=0</span><br>[INFO ] 13:12:18,136 perf.zapping&gt; sessionStateChanged &#39;VIDEO&#39; state changed: 1<br>[DEBUG] stb.video&gt; session &#39;VIDEO&#39; state changed : 1<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: AUDIO_CHANGED - ATTRIBUTES: {&quot;lang&quot;:&quot;&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;state&quot;:&quot;1&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_MEDIA_AUDIO_CHANGED &gt;&gt;&gt; testPlay<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: STATISTICS - ATTRIBUTES: {&quot;data&quot;:&quot;id=0\nbitrate=5002616\nwidth=1920\nheight=1080\nid=1\nbitrate=3002616\nwidth=1280\nheight=720\nid=2\nbitrate=2102584\nwidth=1024\nheight=576\nid=3\nbitrate=1602616\nwidth=852\nheight=480\nid=4\nbitrate=1202616\nwidth=640\nheight=360\n&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;tag&quot;:&quot;has:video_list&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_STATISTICS &gt;&gt;&gt; testPlay<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: BUFFERING - ATTRIBUTES: {&quot;progress&quot;:&quot;0&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;status&quot;:&quot;start&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_VIDEO_BUFFERING &gt;&gt;&gt; testPlay<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: METADATA_REMOVED - ATTRIBUTES: {&quot;media_id_list&quot;:[{&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;METADATA_REMOVED&quot;,&quot;attributes&quot;:{&quot;media_id_list&quot;:[{&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: BUFFERING - ATTRIBUTES: {&quot;progress&quot;:&quot;100&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;status&quot;:&quot;done&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_VIDEO_BUFFERING &gt;&gt;&gt; testPlay<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: SUBTITLE_TRACK_CHANGED - ATTRIBUTES: {&quot;accessibility&quot;:&quot;none&quot;,&quot;accessibility_language&quot;:&quot;&quot;,&quot;language&quot;:&quot;fre&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;track_id&quot;:&quot;37&quot;,&quot;type&quot;:&quot;subtitle:ttml&quot;}<br>[DEBUG] stb.event&gt; The code of the &#39;MEDIA&#39; event is not yet created. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SUBTITLE_TRACK_CHANGED&quot;,&quot;attributes&quot;:{&quot;accessibility&quot;:&quot;none&quot;,&quot;accessibility_language&quot;:&quot;&quot;,&quot;language&quot;:&quot;fre&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;track_id&quot;:&quot;37&quot;,&quot;type&quot;:&quot;subtitle:ttml&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: AUDIO_TRACK_CHANGED - ATTRIBUTES: {&quot;accessibility&quot;:&quot;none&quot;,&quot;accessibility_language&quot;:&quot;&quot;,&quot;language&quot;:&quot;eng&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;track_id&quot;:&quot;33&quot;,&quot;type&quot;:&quot;audio:he-aac:parsed&quot;}<br>[DEBUG] stb.event&gt; The code of the &#39;MEDIA&#39; event is not yet created. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;AUDIO_TRACK_CHANGED&quot;,&quot;attributes&quot;:{&quot;accessibility&quot;:&quot;none&quot;,&quot;accessibility_language&quot;:&quot;&quot;,&quot;language&quot;:&quot;eng&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;track_id&quot;:&quot;33&quot;,&quot;type&quot;:&quot;audio:he-aac:parsed&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: STATISTICS - ATTRIBUTES: {&quot;data&quot;:&quot;id=0\nposition=0&quot;,&quot;session_id&quot;:&quot;VIDEO&quot;,&quot;tag&quot;:&quot;has:video_active&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_STATISTICS &gt;&gt;&gt; testPlay<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;MEDIA_EVENT_AVAILABLE&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;VIDEO&quot;}}}<br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testGetAllAudioTracks">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testGetAllAudioTracks</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testPlay(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testSetCurrentAudioTrack">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testSetCurrentAudioTrack</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testPlay(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testGetCurrentAudioTrack">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testGetCurrentAudioTrack</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testSetCurrentAudioTrack(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testGetAllSubtitleTracks">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testGetAllSubtitleTracks</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testPlay(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testSetNoCurrentSubtitleTrack">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testSetNoCurrentSubtitleTrack</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testGetAllSubtitleTracks(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testSetCurrentSubtitleTrack">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testSetCurrentSubtitleTrack</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testGetAllSubtitleTracks(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testGetCurrentSubtitleTrack">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testGetCurrentSubtitleTrack</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testSetCurrentSubtitleTrack(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS.testStop">
+<span class='Status Skipped'>Failure (dep)</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS</span>.<span class="testname">testStop</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Dependency testPlay(com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_HAS) not passed: FAILURE</pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_IP.testCurAudioTrack3">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_IP</span>.<span class="testname">testCurAudioTrack3</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> unexpected current audio track lang - expected: &lt;fra&gt;, actual: &lt;qad&gt;</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>unexpected current audio track lang - expected: &lt;fra&gt;, actual: &lt;qad&gt;<br>Caused by: junit.framework.AssertionFailedError: unexpected current audio track lang - expected: &lt;fra&gt;, actual: &lt;qad&gt;<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideo_IP_unitTestImpl$21.run(GwtTestVideo_IP.java:212)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Timer.java:69)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: METADATA_UPDATED - ATTRIBUTES: {&quot;media_id_list&quot;:[{&quot;event_id_list&quot;:[-1],&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}<br>[DEBUG] stb.event&gt; The &#39;MEDIA&#39; event details is unkwown. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;METADATA_UPDATED&quot;,&quot;attributes&quot;:{&quot;media_id_list&quot;:[{&quot;event_id_list&quot;:[-1],&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: SUBTITLE_CHANGED - ATTRIBUTES: {&quot;session_id&quot;:&quot;LIVE&quot;,&quot;state&quot;:&quot;0&quot;}<br>[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_MEDIA_SUBTITLE_CHANGED<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: HARD_OF_HEARING_CHANGED - ATTRIBUTES: {&quot;lang&quot;:&quot;fra&quot;,&quot;session_id&quot;:&quot;LIVE&quot;}<br>[DEBUG] stb.event&gt; The code of the &#39;MEDIA&#39; event is not yet created. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;HARD_OF_HEARING_CHANGED&quot;,&quot;attributes&quot;:{&quot;lang&quot;:&quot;fra&quot;,&quot;session_id&quot;:&quot;LIVE&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: DISPLAY_CHANGED - ATTRIBUTES: {&quot;session_id&quot;:&quot;LIVE&quot;,&quot;state&quot;:&quot;shown&quot;}<br>[DEBUG] stb.event&gt; The code of the &#39;MEDIA&#39; event is not yet created. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;DISPLAY_CHANGED&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;LIVE&quot;,&quot;state&quot;:&quot;shown&quot;}}}<br>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: DISPLAY_CHANGED - ATTRIBUTES: {&quot;session_id&quot;:&quot;LIVE&quot;,&quot;state&quot;:&quot;shown&quot;}<br>[DEBUG] stb.event&gt; The code of the &#39;MEDIA&#39; event is not yet created. Event details: {&quot;handler&quot;:&quot;MEDIA&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;DISPLAY_CHANGED&quot;,&quot;attributes&quot;:{&quot;session_id&quot;:&quot;LIVE&quot;,&quot;state&quot;:&quot;shown&quot;}}}<br>[TRACE] stb.video&gt; <span style='color: #292'>VideoPlayerImplSop6 &gt; &gt;&gt; Media.Player.Tracks.Audio.List.getCurrentLang(LIVE)=0,qad</span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn808">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit</span>.<span class="testname">testControlIPProgramInfoLcn808</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 SD 16/9 AD HOH&gt;, actual: null</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 SD 16/9 AD HOH&gt;, actual: null<br>Caused by: junit.framework.AssertionFailedError: Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 SD 16/9 AD HOH&gt;, actual: null<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.$assertProgramInfo(GwtTestVideoEit.java:428)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideoEit_unitTestImpl.doRunTest(GwtTestVideoEit.java:128)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:232)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(XMLHttpRequest.java:351)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.2.0, 30000, 0x54)=0,00,0002,5300</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x54 event: 30000]: 00,0002,5300<br>[DEBUG] stb.eit&gt; getSIDescriptors(content descriptor[0x54]): [&quot;5300&quot;]<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.2.0, 30000, 0x55)=0,00,0004,46524100</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x55 event: 30000]: 00,0004,46524100<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55]): [&quot;46524100&quot;]<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55] - main: ): 46524100<br>[TRACE] stb.eit&gt;  ... rating for &#39;FRA&#39;: 0<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getTitle(167.2.0, 30000, fr)=0,FRA,IP CSA1 SD 16/9 AD HOH</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getShortDescription(167.2.0, 30000, fr)=0,FRA,Flux IP CSA1 SD 16/9 AD HOH</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getLongDescription(167.2.0, 30000, fr)=2</span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn809">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit</span>.<span class="testname">testControlIPProgramInfoLcn809</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Wrong value for full description! - expected: &lt;Full description Flux IP CSA2 HD 16/9 HOH DOLBY&gt;, actual: null</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>Wrong value for full description! - expected: &lt;Full description Flux IP CSA2 HD 16/9 HOH DOLBY&gt;, actual: null<br>Caused by: junit.framework.AssertionFailedError: Wrong value for full description! - expected: &lt;Full description Flux IP CSA2 HD 16/9 HOH DOLBY&gt;, actual: null<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.$assertProgramInfo(GwtTestVideoEit.java:428)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideoEit_unitTestImpl.doRunTest(GwtTestVideoEit.java:167)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:232)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(XMLHttpRequest.java:351)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.3.0, 30000, 0x54)=0,00,0002,2200</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x54 event: 30000]: 00,0002,2200<br>[DEBUG] stb.eit&gt; getSIDescriptors(content descriptor[0x54]): [&quot;2200&quot;]<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.3.0, 30000, 0x55)=0,00,0004,46524107</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x55 event: 30000]: 00,0004,46524107<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55]): [&quot;46524107&quot;]<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55] - main: ): 46524107<br>[TRACE] stb.eit&gt;  ... rating for &#39;FRA&#39;: 7<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getTitle(167.3.0, 30000, fr)=0,FRA,IP CSA2 HD 16/9 HOH DOLBY</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getShortDescription(167.3.0, 30000, fr)=0,FRA,Flux IP CSA2 HD 16/9 HOH DOLBY</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getLongDescription(167.3.0, 30000, fr)=2</span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn810">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit</span>.<span class="testname">testControlIPProgramInfoLcn810</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Wrong value for short info! - expected: &lt;Flux IP CSA3 SD 4/3 VM AD&gt;, actual: &lt;Flux IP CSA3 SD 4/3 &gt;</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>Wrong value for short info! - expected: &lt;Flux IP CSA3 SD 4/3 VM AD&gt;, actual: &lt;Flux IP CSA3 SD 4/3 &gt;<br>Caused by: junit.framework.AssertionFailedError: Wrong value for short info! - expected: &lt;Flux IP CSA3 SD 4/3 VM AD&gt;, actual: &lt;Flux IP CSA3 SD 4/3 &gt;<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.$assertProgramInfo(GwtTestVideoEit.java:426)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideoEit_unitTestImpl.doRunTest(GwtTestVideoEit.java:205)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:232)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(XMLHttpRequest.java:351)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.4.0, 30000, 0x54)=0,00,0002,7300</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x54 event: 30000]: 00,0002,7300<br>[DEBUG] stb.eit&gt; getSIDescriptors(content descriptor[0x54]): [&quot;7300&quot;]<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.4.0, 30000, 0x55)=0,00,0004,46524109</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x55 event: 30000]: 00,0004,46524109<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55]): [&quot;46524109&quot;]<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55] - main: ): 46524109<br>[TRACE] stb.eit&gt;  ... rating for &#39;FRA&#39;: 9<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getTitle(167.4.0, 30000, fr)=0,FRA,IP CSA3 SD 4/3 VM AD</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getShortDescription(167.4.0, 30000, fr)=0,FRA,Flux IP CSA3 SD 4/3 </span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn811">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit</span>.<span class="testname">testControlIPProgramInfoLcn811</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Wrong value for full description! - expected: &lt;Full description Flux IP CSA4 HD 4/3 VM DTS&gt;, actual: null</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>Wrong value for full description! - expected: &lt;Full description Flux IP CSA4 HD 4/3 VM DTS&gt;, actual: null<br>Caused by: junit.framework.AssertionFailedError: Wrong value for full description! - expected: &lt;Full description Flux IP CSA4 HD 4/3 VM DTS&gt;, actual: null<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.$assertProgramInfo(GwtTestVideoEit.java:428)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideoEit_unitTestImpl.doRunTest(GwtTestVideoEit.java:243)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:232)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(XMLHttpRequest.java:351)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.5.0, 30000, 0x54)=0,00,0004,93007200</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x54 event: 30000]: 00,0004,93007200<br>[DEBUG] stb.eit&gt; getSIDescriptors(content descriptor[0x54]): [&quot;93007200&quot;]<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.5.0, 30000, 0x55)=0,00,0004,4652410D</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x55 event: 30000]: 00,0004,4652410D<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55]): [&quot;4652410D&quot;]<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55] - main: ): 4652410D<br>[TRACE] stb.eit&gt;  ... rating for &#39;FRA&#39;: 13<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getTitle(167.5.0, 30000, fr)=0,FRA,IP CSA4 HD 4/3 VM DTS</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getShortDescription(167.5.0, 30000, fr)=0,FRA,Flux IP CSA4 HD 4/3 VM DTS</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getLongDescription(167.5.0, 30000, fr)=2</span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn803">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit</span>.<span class="testname">testControlIPProgramInfoLcn803</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 HD 16/9&gt;, actual: null</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 HD 16/9&gt;, actual: null<br>Caused by: junit.framework.AssertionFailedError: Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 HD 16/9&gt;, actual: null<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.$assertProgramInfo(GwtTestVideoEit.java:428)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideoEit_unitTestImpl.doRunTest(GwtTestVideoEit.java:278)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:232)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(XMLHttpRequest.java:351)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.8.0, 30000, 0x54)=0,00,0002,9600</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x54 event: 30000]: 00,0002,9600<br>[DEBUG] stb.eit&gt; getSIDescriptors(content descriptor[0x54]): [&quot;9600&quot;]<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.8.0, 30000, 0x55)=0,00,0004,46524100</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x55 event: 30000]: 00,0004,46524100<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55]): [&quot;46524100&quot;]<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55] - main: ): 46524100<br>[TRACE] stb.eit&gt;  ... rating for &#39;FRA&#39;: 0<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getTitle(167.8.0, 30000, fr)=0,FRA,IP CSA1 HD 16/9</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getShortDescription(167.8.0, 30000, fr)=0,FRA,Flux IP CSA1 HD 16/9</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getLongDescription(167.8.0, 30000, fr)=2</span><br></pre>
+<br>
+<a  name="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.testControlIPProgramInfoLcn804">
+<span class='Status Failure'>Failure</span>
+<h3><span class="classname">com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit</span>.<span class="testname">testControlIPProgramInfoLcn804</span></h3>
+<label>Type:</label>
+<span><tt>junit.framework.AssertionFailedError</tt></span><br>
+<br><label>Message:</label>
+<pre> Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 HD+ 16/9 DOLBY, VM&gt;, actual: null</pre>
+<br><label>Stack Trace:</label>
+<pre>junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB<br>Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 HD+ 16/9 DOLBY, VM&gt;, actual: null<br>Caused by: junit.framework.AssertionFailedError: Wrong value for full description! - expected: &lt;Full description Flux IP CSA1 HD+ 16/9 DOLBY, VM&gt;, actual: null<br>&nbsp&nbsp&nbsp&nbspat java.lang.Throwable.Throwable(StackTraceCreator.java:60)<br>&nbsp&nbsp&nbsp&nbspat java.lang.Error.Error(Error.java:30)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.fail(Assert.java:193)<br>&nbsp&nbsp&nbsp&nbspat junit.framework.Assert.assertEquals(Assert.java:111)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoEit.$assertProgramInfo(GwtTestVideoEit.java:428)<br>&nbsp&nbsp&nbsp&nbspat com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideoEit_unitTestImpl.doRunTest(GwtTestVideoEit.java:314)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.$onResponseReceived(RequestCallbackAdapter.java:232)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(XMLHttpRequest.java:351)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)<br>&nbsp&nbsp&nbsp&nbspat com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)<br>&nbsp&nbsp&nbsp&nbspat Unknown.anonymous(Impl.java:70)<br></pre>
+<br><label>Output Logs:</label>
+<pre>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.9.0, 30000, 0x54)=0,00,0002,7900</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x54 event: 30000]: 00,0002,7900<br>[DEBUG] stb.eit&gt; getSIDescriptors(content descriptor[0x54]): [&quot;7900&quot;]<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Common.getEventDescriptor(167.9.0, 30000, 0x55)=0,00,0004,46524100</span><br>[DEBUG] stb.eit&gt; EitImplSop6 &gt; getDescriptor[tag: 0x55 event: 30000]: 00,0004,46524100<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55]): [&quot;46524100&quot;]<br>[DEBUG] stb.eit&gt; getSIDescriptors(parental_rating_descriptor[0x55] - main: ): 46524100<br>[TRACE] stb.eit&gt;  ... rating for &#39;FRA&#39;: 0<br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getTitle(167.9.0, 30000, fr)=0,FRA,IP CSA1 HD+ 16/9 DOLBY, VM</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getShortDescription(167.9.0, 30000, fr)=0,FRA,Flux IP CSA1 HD+ 16/9 DOLBY, VM</span><br>[TRACE] stb.eit&gt; <span style='color: #292'>EitImplSop6 &gt; SI.EIT.PF.Event.getLongDescription(167.9.0, 30000, fr)=2</span><br></pre>
+<br>
+</div>
+</body>

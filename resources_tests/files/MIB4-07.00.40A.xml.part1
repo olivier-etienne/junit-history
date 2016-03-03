@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="20" time="376.581" errors="0" skipped="0" tests="158" name="[Softathome IPTV Kit] Test Suite">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\My Program Files\Dev\java7\jre\bin"/>
+    <property name="java.vm.version" value="24.79-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="surefire.reports" value="C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome\target\surefire-reports"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome"/>
+    <property name="java.runtime.version" value="1.7.0_79-b15"/>
+    <property name="org.mortbay.log.class" value="com.google.gwt.dev.shell.jetty.JettyNullLogger"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\My Program Files\Dev\java7\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\MYPROG~1\MOBAXT~1\root\tmp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\My Program Files\Dev\java7\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\MYPROG~1\MOBAXT~1\root\bin;C:\MYPROG~1\MOBAXT~1\root\bin;C:\My Program Files\mobaXterm\root\bin;C:\Windows;C:\Windows\system32;C:\My Program Files\Tools\Svn\Subversion Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\idmu\common;C:\Program Files\Imprimerie Nationale\PKI\bin;C:\My Program Files\Tools\Maven\bin;C:\My Program Files\Tools\Svn;C:\My Program Files\Tools\Python;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\My Program Files\Tools\Tortoise\bin;C:\My Program Files\Dev\java7;C:\My Program Files\Dev\java7\bin;C:\Program Files (x86)\Microsoft Application Virtualization Client;C:\My Program Files\Tools\GTK2-Runtime\bin;C:\Windows\System32\WindowsPowerShell\v1.0;C:\My Program Files\Tools\apache-ant-1.8.2\bin;."/>
+    <property name="gwt.args" value="-out target/www-test -port 8086 -prod -runStyle RemoteWeb:rmi://10.185.110.168/10_185_110_62"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\ndmz2720"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="org.mortbay.xml.XmlParser.Validating" value="false"/>
+    <property name="user.name" value="ndmz2720"/>
+    <property name="java.class.path" value="C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome\target\classes;C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome\src\main\java;C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome\src\test\java;C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome\src\test\resources;C:\Users\ndmz2720\Documents\RA\brancheMib4\ra-master\iptvkit-root\iptvkit-ext-softathome\target\test-classes;C:\util\repoMaven\com\francetelecom\orangetv\ra\iptvkit\iptvkit-core\4.4.25-MIB4-SNAPSHOT\iptvkit-core-4.4.25-MIB4-SNAPSHOT.jar;C:\util\repoMaven\com\francetelecom\orangetv\iptvkit-gwt-user\4.5.1.7\iptvkit-gwt-user-4.5.1.7.jar;C:\util\repoMaven\org\json\json\20090211\json-20090211.jar;C:\util\repoMaven\com\francetelecom\orangetv\iptvkit-gwt-dev\4.5.1.0\iptvkit-gwt-dev-4.5.1.0.jar;C:\util\repoMaven\javassist\javassist\3.8.0.GA\javassist-3.8.0.GA.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-server\8.1.3.v20120416\jetty-server-8.1.3.v20120416.jar;C:\util\repoMaven\org\eclipse\jetty\orbit\javax.servlet\3.0.0.v201112011016\javax.servlet-3.0.0.v201112011016.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-continuation\8.1.3.v20120416\jetty-continuation-8.1.3.v20120416.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-http\8.1.3.v20120416\jetty-http-8.1.3.v20120416.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-io\8.1.3.v20120416\jetty-io-8.1.3.v20120416.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-util\8.1.3.v20120416\jetty-util-8.1.3.v20120416.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-servlet\8.1.3.v20120416\jetty-servlet-8.1.3.v20120416.jar;C:\util\repoMaven\org\eclipse\jetty\jetty-security\8.1.3.v20120416\jetty-security-8.1.3.v20120416.jar;C:\util\repoMaven\com\google\javascript\closure-compiler\v20131014\closure-compiler-v20131014.jar;C:\util\repoMaven\args4j\args4j\2.0.16\args4j-2.0.16.jar;C:\util\repoMaven\com\google\guava\guava\15.0\guava-15.0.jar;C:\util\repoMaven\com\google\protobuf\protobuf-java\2.4.1\protobuf-java-2.4.1.jar;C:\util\repoMaven\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\util\repoMaven\junit\junit\4.11\junit-4.11.jar;C:\util\repoMaven\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\util\repoMaven\com\francetelecom\orangetv\ra\iptvkit\iptvkit-core\4.4.25-MIB4-SNAPSHOT\iptvkit-core-4.4.25-MIB4-SNAPSHOT-tests.jar;C:\util\repoMaven\com\google\gwt\gwt-dev\2.5.1\gwt-dev-2.5.1.jar;C:\util\repoMaven\javax\validation\validation-api\1.0.0.GA\validation-api-1.0.0.GA.jar;C:\util\repoMaven\org\codehaus\mojo\gwt-maven-plugin\2.5.1\gwt-maven-plugin-2.5.1.jar;C:\util\repoMaven\org\apache\maven\surefire\surefire-api\2.4.3\surefire-api-2.4.3.jar;C:\util\repoMaven\com\google\gwt\gwt-user\2.5.1\gwt-user-2.5.1.jar;C:\util\repoMaven\com\google\gwt\gwt-dev\2.5.1\gwt-dev-2.5.1.jar"/>
+    <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="C:\My Program Files\Dev\java7\jre"/>
+    <property name="sun.java.command" value="org.codehaus.mojo.gwt.test.MavenTestRunner com.francetelecom.orangetv.gwt.stb.SoftAtHomeCoreTestSuite"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="fr"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.7.0_79"/>
+    <property name="java.ext.dirs" value="C:\My Program Files\Dev\java7\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\My Program Files\Dev\java7\jre\lib\resources.jar;C:\My Program Files\Dev\java7\jre\lib\rt.jar;C:\My Program Files\Dev\java7\jre\lib\sunrsasign.jar;C:\My Program Files\Dev\java7\jre\lib\jsse.jar;C:\My Program Files\Dev\java7\jre\lib\jce.jar;C:\My Program Files\Dev\java7\jre\lib\charsets.jar;C:\My Program Files\Dev\java7\jre\lib\jfr.jar;C:\My Program Files\Dev\java7\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+  </properties>
+  <testcase time="42.266" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testInit"/>
+  <testcase time="0.249" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testDumpEnv"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testList"/>
+  <testcase time="0.271" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testJsWeakMap"/>
+  <testcase time="0.36" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testMap"/>
+  <testcase time="0.263" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testMetadataFilter"/>
+  <testcase time="0.301" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testIntMap"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testDate"/>
+  <testcase time="0.758" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testTimeout"/>
+  <testcase time="1.252" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testInterval"/>
+  <testcase time="0.749" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testTimer"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testDeferredCommand"/>
+  <testcase time="0.242" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testJson"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testMD5"/>
+  <testcase time="0.244" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testRegExp"/>
+  <testcase time="0.245" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testFeatures"/>
+  <testcase time="0.24" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testUtils"/>
+  <testcase time="0.314" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testXhr"/>
+  <testcase time="0.242" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testInit"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testSoftwareVersion"/>
+  <testcase time="0.242" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testSerialNum"/>
+  <testcase time="0.245" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testPowerState"/>
+  <testcase time="0.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestNetwork" name="testInit"/>
+  <testcase time="0.253" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestNetwork" name="testIpAddr"/>
+  <testcase time="0.262" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestNetwork" name="testMacAddr"/>
+  <testcase time="0.253" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestNetwork" name="testEthernetState"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS" name="testInit"/>
+  <testcase time="0.231" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS" name="testGetCASMode"/>
+  <testcase time="0.242" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS" name="testGetSmartcardAddress"/>
+  <testcase time="0.243" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS" name="testGetSmartcardState"/>
+  <testcase time="0.252" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS" name="testGetSoidList"/>
+  <testcase time="0.897" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS" name="testGetClassSubscription">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+listClassSubscription cannot be null!!" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+listClassSubscription cannot be null!!
+Caused by: junit.framework.AssertionFailedError: listClassSubscription cannot be null!!
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestCAS.$testGetClassSubscription(GwtTestCAS.java:150)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestCAS_unitTestImpl.doRunTest(__GwtTestCAS_unitTestImpl.java:53)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getSoidList()= 0,{&quot;errorCode&quot;:0, &quot;soidList&quot;:[16774144,151568,268800,268832,268848,268864,268880]}&amp;#27;[0m
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(16774144, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(151568, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(268800, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(268832, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(268848, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(268864, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+[TRACE] stb.cas&gt; &amp;#27;[1;32mCASImplSop6 &gt; &gt;&gt; Acs.Viaccess.User.getClassSubscription(268880, 03122015, 99999999)= 0,{&quot;errorCode&quot;:15}&amp;#27;[0m
+[ERROR] stb.cas&gt; Acs.Viaccess.User.getClassSubscription error code: 15
+</system-out>
+  </testcase>
+  <testcase time="0.234" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testInit"/>
+  <testcase time="3.716" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testDownloadServicePlan"/>
+  <testcase time="0.083" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testInitDth">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestServicePlan_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestServicePlan_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[WARN ] test&gt; skipTest(): skip DTH init tests
+</system-out>
+  </testcase>
+  <testcase time="1.204" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testRemoveAllInTsp"/>
+  <testcase time="1.164" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testUpdatePartTspIP"/>
+  <testcase time="0.049" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testUpdatePartTspDth">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestServicePlan_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestServicePlan_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan.testUpdatePartTspIP()] &lt;&lt;&lt; SUCCESS
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan.testUpdatePartTspIP&quot;,&quot;value&quot;:&quot;SUCCESS&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_DELETED - ATTRIBUTES: {&quot;usi&quot;:[100170,100171]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_DELETED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[100170,100171]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[333,529,334,335,347,526,344,951,952,928,348,953,954,351,350,353,352,355,354,357,356,670,361,362,363,1007,364,671,615,365,616,366,367,336,340,341,342,343,360,368,960,369,927,371,961,372,373,374,572,375]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[333,529,334,335,347,526,344,951,952,928,348,953,954,351,350,353,352,355,354,357,356,670,361,362,363,1007,364,671,615,365,616,366,367,336,340,341,342,343,360,368,960,369,927,371,961,372,373,374,572,375]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[832,376,377,378,379,963,381,383,384,386,387,388,923,389,390,391,392,393,394,395,397,886,398,399,778,400,401,922,402,404,576,1009,406,407,408,929,410,411,535,412,413,415,416,924,578,417,418,419,420,421]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[832,376,377,378,379,963,381,383,384,386,387,388,923,389,390,391,392,393,394,395,397,886,398,399,778,400,401,922,402,404,576,1009,406,407,408,929,410,411,535,412,413,415,416,924,578,417,418,419,420,421]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[751,422,752,423,424,667,775,779,964,536,428,829,429,430,957,431,433,434,626,435,436,437,438,537,439,440,441,442,581,443,582,444,445,446,447,448,1023,449,583,450,966,452,453,454,455,466,456,887,457,888]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[751,422,752,423,424,667,775,779,964,536,428,829,429,430,957,431,433,434,626,435,436,437,438,537,439,440,441,442,581,443,582,444,445,446,447,448,1023,449,583,450,966,452,453,454,455,466,456,887,457,888]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[458,889,459,460,461,462,463,464,465,467,1008,468,618,469,470,471,472,474,475,478,479,480,893,892,483,484,485,486,487,488,489,490,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[458,889,459,460,461,462,463,464,465,467,1008,468,618,469,470,471,472,474,475,478,479,480,893,892,483,484,485,486,487,488,489,490,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,403,534,538,1010,337,574,575,577,926,617,990,925,625,533,780,965,627,628,629,881,630,882,631,883,634,777,781,783,785,1065,786,992,788,994]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,403,534,538,1010,337,574,575,577,926,617,990,925,625,533,780,965,627,628,629,881,630,882,631,883,634,777,781,783,785,1065,786,992,788,994]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[787,993,789,995,790,996,791,997,835,998,831,834,396,776,884,857,858,854,855,856,873,930,891,890,1012,1013,955,959,958,956,633,1011,1021,2,1,148,4,3,8,7,564,9,11,10,13,12,15,14,563,24]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[787,993,789,995,790,996,791,997,835,998,831,834,396,776,884,857,858,854,855,856,873,930,891,890,1012,1013,955,959,958,956,633,1011,1021,2,1,148,4,3,8,7,564,9,11,10,13,12,15,14,563,24]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[25,28,27,154,30,588,31,39,37,43,53,55,664,665,161,162,71,70,972,973,865,79,165,867,74,67,68,64,65,61,63,264,60,690,51,52,637,49,48,1069,47,46,45,44,41,40,1068,38,251,33]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[25,28,27,154,30,588,31,39,37,43,53,55,664,665,161,162,71,70,972,973,865,79,165,867,74,67,68,64,65,61,63,264,60,690,51,52,637,49,48,1069,47,46,45,44,41,40,1068,38,251,33]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[32,1062,54,84,80,81,17,18,26,935,86,88,93,94,95,96,97,98,99,90,92,100,101,102,103,104,105,106,107,108,109,111,112,113,115,114,116,117,118,170,120,123,124,125,127,135,136,137,138,139]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[32,1062,54,84,80,81,17,18,26,935,86,88,93,94,95,96,97,98,99,90,92,100,101,102,103,104,105,106,107,108,109,111,112,113,115,114,116,117,118,170,120,123,124,125,127,135,136,137,138,139]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[140,141,142,143,145,146,147,150,152,153,155,156,157,158,159,160,163,166,167,168,169,171,172,173,174,175,176,177,178,179,181,183,186,187,860,190,191,194,196,198,199,200,202,203,204,1072,207,208,210,211]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[140,141,142,143,145,146,147,150,152,153,155,156,157,158,159,160,163,166,167,168,169,171,172,173,174,175,176,177,178,179,181,183,186,187,860,190,191,194,196,198,199,200,202,203,204,1072,207,208,210,211]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[212,214,216,217,218,219,220,221,222,223,224,225,226,227,229,188,185,197,195,206,213,230,231,232,234,236,237,238,239,240,241,243,244,245,246,247,248,249,250,252,253,254,255,256,257,258,259,260,262,91]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[212,214,216,217,218,219,220,221,222,223,224,225,226,227,229,188,185,197,195,206,213,230,231,232,234,236,237,238,239,240,241,243,244,245,246,247,248,249,250,252,253,254,255,256,257,258,259,260,262,91]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[265,725,272,1064,275,278,281,282,859,283,285,286,287,288,268,291,294,293,984,295,296,297,299,298,300,301,302,303,304,305,310,309,311,313,312,315,314,562,318,1063,321,322,620,323,612,324,326,327,328,330]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[265,725,272,1064,275,278,281,282,859,283,285,286,287,288,268,291,294,293,984,295,296,297,299,298,300,301,302,303,304,305,310,309,311,313,312,315,314,562,318,1063,321,322,620,323,612,324,326,327,328,330]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[279,1001,276,273,274,271,269,270,2501,2502,2503,2504,2505,2506,2507,2508,6,5,541,542,543,975,549,550,1070,1071,554,567,589,594,595,596,597,598,599,934,600,774,601,635,642,641,640,639,638,290,836,837,653,655]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[279,1001,276,273,274,271,269,270,2501,2502,2503,2504,2505,2506,2507,2508,6,5,541,542,543,975,549,550,1070,1071,554,567,589,594,595,596,597,598,599,934,600,774,601,635,642,641,640,639,638,290,836,837,653,655]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[656,657,658,659,660,663,666,753,754,755,938,758,939,759,940,760,941,761,942,762,943,763,944,764,977,765,766,767,772,770,771,818,816,817,819,820,821,822,1067,56,842,843,844,845,846,847,848,849,850,851]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[656,657,658,659,660,663,666,753,754,755,938,758,939,759,940,760,941,761,942,762,943,763,944,764,977,765,766,767,772,770,771,818,816,817,819,820,821,822,1067,56,842,843,844,845,846,847,848,849,850,851]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[852,853,878,861,863,862,933,868,874,875,877,879,894,895,910,912,913,914,915,916,917,918,920,931,932,946,948,949,950,936,947,968,967,974,134,978,981,982,986,983,985,987,988,989,979,999,1000,1004,1005,1002]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[852,853,878,861,863,862,933,868,874,875,877,879,894,895,910,912,913,914,915,916,917,918,920,931,932,946,948,949,950,936,947,968,967,974,134,978,981,982,986,983,985,987,988,989,979,999,1000,1004,1005,1002]}}}
+[WARN ] test&gt; Dependency testInitDth(com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan) not passed: SKIPPED
+</system-out>
+  </testcase>
+  <testcase time="0.351" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testUpdatePartTspDtt"/>
+  <testcase time="0.057" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testGetDTHServiceId">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestServicePlan_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestServicePlan_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan.testUpdatePartTspDtt()] &lt;&lt;&lt; SUCCESS
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan.testUpdatePartTspDtt&quot;,&quot;value&quot;:&quot;SUCCESS&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[100154,100156,100157,100153,100155,100158,100086,100090,100100,100105,100089,100095,100104,100108,100110,100113,100115,100118,100143,100144,100138,100139,100145,100146,100140,100141,100142,100147,100148,100149,100150,100121,100124,100127,100129,100131,100133,100135,100137,100134,100136,100132,100094,100164,100103,100107,100111,100106,100109,100112]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[100154,100156,100157,100153,100155,100158,100086,100090,100100,100105,100089,100095,100104,100108,100110,100113,100115,100118,100143,100144,100138,100139,100145,100146,100140,100141,100142,100147,100148,100149,100150,100121,100124,100127,100129,100131,100133,100135,100137,100134,100136,100132,100094,100164,100103,100107,100111,100106,100109,100112]}}}
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: SRV_PLAN - REASON: SP_UPDATED - ATTRIBUTES: {&quot;usi&quot;:[100114,100088,100092,100102,100128,100117,100120,100123,100126,100087,100091,100101,100130,100116,100119,100122,100125,100070,100073,100075,100081,100078,100082,100084,100000,100009,100013,100015,100001,100003,100008,100007,100010,100012,100014,100011,100017,100018,100020,100022,100019,100002,100006,100016,100023,100071,100074,100076,100159,100160]}
+[DEBUG] stb.event&gt; The &apos;SRV_PLAN&apos; event details is unkwown. Event details: {&quot;handler&quot;:&quot;SRV_PLAN&quot;,&quot;object&quot;:{&quot;reason&quot;:&quot;SP_UPDATED&quot;,&quot;attributes&quot;:{&quot;usi&quot;:[100114,100088,100092,100102,100128,100117,100120,100123,100126,100087,100091,100101,100130,100116,100119,100122,100125,100070,100073,100075,100081,100078,100082,100084,100000,100009,100013,100015,100001,100003,100008,100007,100010,100012,100014,100011,100017,100018,100020,100022,100019,100002,100006,100016,100023,100071,100074,100076,100159,100160]}}}
+[WARN ] test&gt; Dependency testUpdatePartTspDth(com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan) not passed: SKIPPED
+</system-out>
+  </testcase>
+  <testcase time="0.267" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestServicePlan" name="testGetIPServiceId"/>
+  <testcase time="0.252" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testInit"/>
+  <testcase time="0.252" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testLanIpAddr"/>
+  <testcase time="0.253" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPort8080"/>
+  <testcase time="0.281" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPlayRecord_success"/>
+  <testcase time="0.262" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPlayRecord_Nok"/>
+  <testcase time="0.263" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPlayVod_success"/>
+  <testcase time="0.314" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPlayVod_Nok"/>
+  <testcase time="0.262" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPushVodInfoSheet_success"/>
+  <testcase time="0.282" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPushVodInfoSheet_Nok"/>
+  <testcase time="0.067" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPushPvrInfoSheet_success">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+(sync) middleware response error - code:-11 - message: bad/invalid request" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+(sync) middleware response error - code:-11 - message: bad/invalid request
+Caused by: junit.framework.AssertionFailedError: (sync) middleware response error - code:-11 - message: bad/invalid request
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestWanLanRemote$1.onResponseReceived(AbstractGwtTestWanLanRemote.java:146)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; url: http://10.185.110.62:8080/remoteControl/cmd?operation=08&amp;id=0000000000&amp;type=0
+[DEBUG] test&gt; response code/text: 200 - OK
+[DEBUG] test&gt; response: {
+  &quot;result&quot;:
+  {
+    &quot;responseCode&quot;: &quot;-11&quot;,
+    &quot;message&quot;: &quot;bad/invalid request&quot;,
+    &quot;data&quot;:
+    {}
+  }
+}
+</system-out>
+  </testcase>
+  <testcase time="0.056" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPushPvrInfoSheet_Nok">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+wrong error code - expected: &lt;-999&gt;, actual: &lt;-11&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+wrong error code - expected: &lt;-999&gt;, actual: &lt;-11&gt;
+Caused by: junit.framework.AssertionFailedError: wrong error code - expected: &lt;-999&gt;, actual: &lt;-11&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestWanLanRemote$1.onResponseReceived(AbstractGwtTestWanLanRemote.java:142)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; url: http://10.185.110.62:8080/remoteControl/cmd?operation=08&amp;id=0000000000&amp;type=0
+[DEBUG] test&gt; response code/text: 200 - OK
+[DEBUG] test&gt; response: {
+  &quot;result&quot;:
+  {
+    &quot;responseCode&quot;: &quot;-11&quot;,
+    &quot;message&quot;: &quot;bad/invalid request&quot;,
+    &quot;data&quot;:
+    {}
+  }
+}
+</system-out>
+  </testcase>
+  <testcase time="0.257" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testZappingEpgId_success"/>
+  <testcase time="0.265" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testZappingEpgId_Nok"/>
+  <testcase time="0.598" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testRetrieveStbStatus_success"/>
+  <testcase time="0.262" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testRetrieveStbStatus_Nok"/>
+  <testcase time="0.253" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testRetrieveStbStatus_InvalidRequest"/>
+  <testcase time="0.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPushEpgInfoSheet_success"/>
+  <testcase time="0.264" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote" name="testPushEpgInfoSheet_Nok"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testInit"/>
+  <testcase time="0.252" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testLanIpAddr"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testPort8080"/>
+  <testcase time="0.26" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendKeyZoom"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendKeyForward"/>
+  <testcase time="0.253" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendKeyRecord"/>
+  <testcase time="3.471" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesF0toF9"/>
+  <testcase time="3.331" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesBackCancelOkQuit"/>
+  <testcase time="3.355" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesInfoMenuVodGuideList"/>
+  <testcase time="3.289" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesChannelUpChannelDown"/>
+  <testcase time="3.327" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesMuteVolUpVolDown"/>
+  <testcase time="3.348" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesForRevNextPrevPlay"/>
+  <testcase time="3.323" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesUpLeftRightDown"/>
+  <testcase time="3.352" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLanRemote_Key" name="testSendCodesRedGreenYellowBlue"/>
+  <testcase time="0.24" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testInit"/>
+  <testcase time="0.243" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testWanIpAddr"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testPort80"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testPostAcknowledgment"/>
+  <testcase time="5.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testAckTestServlet"/>
+  <testcase time="0.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testRetrieveSchedule"/>
+  <testcase time="5.069" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testAckRetrieveSchedule">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+ackNOK for test: TestRetrieveSchedule" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+ackNOK for test: TestRetrieveSchedule
+Caused by: junit.framework.AssertionFailedError: ackNOK for test: TestRetrieveSchedule
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote$2.onResponseReceived(GwtTestWanRemote.java:363)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; controlAck(): http://10.185.110.130:8080/wan/ackTestRetrieveSchedule?show
+[DEBUG] test&gt; onResponseReceived
+[DEBUG] test&gt; response: &lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;ReceiveWanResponsServlet Servlet GET&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;pathInfo: /ackTestRetrieveSchedule
+&lt;li&gt;param [show:]
+&lt;/ul&gt;
+&lt;h2&gt;SHOW /ackTestRetrieveSchedule&lt;/h2&gt;
+&lt;span style=&quot;color: red;&quot;&gt;ackNoK&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</system-out>
+  </testcase>
+  <testcase time="0.256" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testRetrieveRecord"/>
+  <testcase time="5.071" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testAckRetrieveRecord">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+ackNOK for test: TestRetrieveRecord" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+ackNOK for test: TestRetrieveRecord
+Caused by: junit.framework.AssertionFailedError: ackNOK for test: TestRetrieveRecord
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote$2.onResponseReceived(GwtTestWanRemote.java:363)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; controlAck(): http://10.185.110.130:8080/wan/ackTestRetrieveRecord?show
+[DEBUG] test&gt; onResponseReceived
+[DEBUG] test&gt; response: &lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;ReceiveWanResponsServlet Servlet GET&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;pathInfo: /ackTestRetrieveRecord
+&lt;li&gt;param [show:]
+&lt;/ul&gt;
+&lt;h2&gt;SHOW /ackTestRetrieveRecord&lt;/h2&gt;
+&lt;span style=&quot;color: red;&quot;&gt;ackNoK&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</system-out>
+  </testcase>
+  <testcase time="0.266" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testModifySchedule"/>
+  <testcase time="5.087" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote" name="testAckModifySchedule">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+ackNOK for test: TestModifySchedule" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+ackNOK for test: TestModifySchedule
+Caused by: junit.framework.AssertionFailedError: ackNOK for test: TestModifySchedule
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestWanRemote$2.onResponseReceived(GwtTestWanRemote.java:363)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; controlAck(): http://10.185.110.130:8080/wan/ackTestModifySchedule?show
+[DEBUG] test&gt; onResponseReceived
+[DEBUG] test&gt; response: &lt;html&gt;
+&lt;body&gt;
+&lt;h1&gt;ReceiveWanResponsServlet Servlet GET&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;pathInfo: /ackTestModifySchedule
+&lt;li&gt;param [show:]
+&lt;/ul&gt;
+&lt;h2&gt;SHOW /ackTestModifySchedule&lt;/h2&gt;
+&lt;span style=&quot;color: red;&quot;&gt;ackNoK&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</system-out>
+  </testcase>
+  <testcase time="0.257" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testInit"/>
+  <testcase time="0.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSetup"/>
+  <testcase time="0.284" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testGetMountedDevices"/>
+  <testcase time="0.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testWrite"/>
+  <testcase time="0.272" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testRead"/>
+  <testcase time="0.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSize"/>
+  <testcase time="0.312" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testCopy"/>
+  <testcase time="0.242" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testFileExists"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDelete"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testFileDoesntExists"/>
+  <testcase time="0.271" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testMove"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSetup2"/>
+  <testcase time="0.311" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirCreate"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirExists"/>
+  <testcase time="0.374" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirList"/>
+  <testcase time="0.24" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirDelete"/>
+  <testcase time="0.24" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSetup3"/>
+  <testcase time="0.24" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenGet"/>
+  <testcase time="0.272" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenSetGet"/>
+  <testcase time="0.249" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenGetNo"/>
+  <testcase time="0.26" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenReplace"/>
+  <testcase time="0.26" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenRemove"/>
+  <testcase time="0.254" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testNoExistingTokenRemove"/>
+  <testcase time="9.911" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testMultiSetAndGetToken"/>
+  <testcase time="0.253" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testInit"/>
+  <testcase time="0.271" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testGetHDDState"/>
+  <testcase time="0.291" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testInstall"/>
+  <testcase time="10.516" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testInstallWithForceFormat"/>
+  <testcase time="0.241" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testInit"/>
+  <testcase time="0.262" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testGetUsbDeviceInfo"/>
+  <testcase time="0.052" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testGetFlashDeviceInfo">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDevice_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDevice_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[WARN ] test&gt; skipTest(): No Flash device!
+</system-out>
+  </testcase>
+  <testcase time="0.258" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testGetHDDDeviceInfo"/>
+  <testcase time="0.261" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testGetListVolumeInfoOfHdd"/>
+  <testcase time="0.078" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testGetMountedDiscInfos">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+[0]: discInfo.reserved must be &gt;= 0  - expected: &lt;true&gt;, actual: &lt;false&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+[0]: discInfo.reserved must be &gt;= 0  - expected: &lt;true&gt;, actual: &lt;false&gt;
+Caused by: junit.framework.AssertionFailedError: [0]: discInfo.reserved must be &gt;= 0  - expected: &lt;true&gt;, actual: &lt;false&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice.$testGetMountedDiscInfos(Boolean.java:45)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDevice_unitTestImpl.doRunTest(__GwtTestDevice_unitTestImpl.java:52)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[TRACE] stb.device&gt; DeviceImplSop6 &gt; Storage.Device.list()= {&quot;data&quot;:{&quot;device_list&quot;:[1,2]},&quot;status&quot;:0}
+[TRACE] stb.device&gt; DeviceImplSop6 &gt; Storage.Device.getInfo(1)= {&quot;data&quot;:{&quot;capacity&quot;:488385536,&quot;device_id&quot;:1,&quot;device_node&quot;:&quot;/dev/sda&quot;,&quot;model&quot;:&quot;TOSHIBA MQ01ABD0&quot;,&quot;name&quot;:&quot;SATA disk&quot;,&quot;removable&quot;:false,&quot;serial_number&quot;:&quot;           555FP7UPT&quot;,&quot;type&quot;:&quot;1&quot;,&quot;vendor&quot;:&quot;ATA&quot;,&quot;volume_id&quot;:[10]},&quot;status&quot;:0}
+[TRACE] stb.device&gt; DeviceImplSop6 &gt; Storage.Volume.getInfo(10)= {&quot;data&quot;:{&quot;alias&quot;:&quot;SATA disk1&quot;,&quot;device_id&quot;:1,&quot;free_space&quot;:480516096,&quot;fs&quot;:&quot;EXT_SUPER_MAGIC&quot;,&quot;mount_path&quot;:&quot;/Record&quot;,&quot;mount_state&quot;:true,&quot;name&quot;:&quot;SATA disk1&quot;,&quot;size&quot;:480587776,&quot;used_space&quot;:71680,&quot;volume_id&quot;:10},&quot;status&quot;:0}
+[INFO ] test&gt; List of mounted devices...
+[DEBUG] test&gt; [0]: discInfo.deviceId: 1
+[DEBUG] test&gt; [0]: discInfo.volumeId: 10
+[DEBUG] test&gt; [0]: discInfo.mountPath: /Record
+[DEBUG] test&gt; [0]: discInfo.name: SATA disk1
+[DEBUG] test&gt; [0]: discInfo.total: 480587776 (ko)
+[DEBUG] test&gt; [0]: discInfo.free: 480516096 (ko)
+[DEBUG] test&gt; [0]: discInfo.used: 71680 (ko)
+[DEBUG] test&gt; [0]: discInfo.reserved: -1 (ko)
+</system-out>
+  </testcase>
+  <testcase time="0.276" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testGetPVRVolumeInfo"/>
+  <testcase time="8.687" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testWaitUsbDisconnect"/>
+  <testcase time="12.392" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testWaitUsbConnect"/>
+  <testcase time="0.06" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testWaitHDDDisconnect">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDevice_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDevice_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[WARN ] test&gt; skipTest(): HDD not removable!
+</system-out>
+  </testcase>
+  <testcase time="0.036" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice" name="testWaitHDDConnect">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDevice_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDevice_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice.testWaitHDDDisconnect()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice.testWaitHDDDisconnect&quot;,&quot;value&quot;:&quot;SKIPPED&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; Dependency testWaitHDDDisconnect(com.francetelecom.orangetv.gwt.stb.test.GwtTestDevice) not passed: SKIPPED
+</system-out>
+  </testcase>
+  <testcase time="0.234" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFrontPanel" name="testInit"/>
+  <testcase time="0.242" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFrontPanel" name="testDisplay"/>
+  <testcase time="0.743" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFrontPanel" name="testRelease"/>
+  <testcase time="0.243" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testInit"/>
+  <testcase time="0.302" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testMute"/>
+  <testcase time="0.382" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testVolume"/>
+  <testcase time="0.056" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testScreenFormat">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestAvSettings_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestAvSettings_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[WARN ] test&gt; skipTest(): AVSettings screen format no implemented in sop6!
+</system-out>
+  </testcase>
+  <testcase time="0.72" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testAdjustPolicy"/>
+  <testcase time="0.819" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testAudioPrefs"/>
+  <testcase time="0.391" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testSubtitlePrefs"/>
+  <testcase time="0.761" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testInit"/>
+  <testcase time="0.789" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup1"/>
+  <testcase time="1.006" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadSuccess"/>
+  <testcase time="0.744" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadSize"/>
+  <testcase time="0.752" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testFileSize"/>
+  <testcase time="0.967" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testUntar"/>
+  <testcase time="0.775" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testRemove"/>
+  <testcase time="5.989" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadCancel"/>
+  <testcase time="1.071" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup2"/>
+  <testcase time="4.497" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadSuspendResume"/>
+  <testcase time="0.824" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup3"/>
+  <testcase time="20.745" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadFailure"/>
+  <testcase time="0.829" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup4"/>
+  <testcase time="1.065" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadTestLandingArea"/>
+  <testcase time="0.846" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup5"/>
+  <testcase time="0.765" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDtt" name="testInit"/>
+  <testcase time="161.987" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDtt" name="testScan"/>
+  <testcase time="2.251" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDtt" name="testResultOfScan"/>
+  <testcase time="0.245" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testInit"/>
+  <testcase time="0.063" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testCalibration">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testInit()] &lt;&lt;&lt; SUCCESS
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testInit&quot;,&quot;value&quot;:&quot;SUCCESS&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; skipTest(): test disabled at runtime: isEnabled &gt;&gt; false!
+</system-out>
+  </testcase>
+  <testcase time="0.05" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testSatelliteName">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testCalibration()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testCalibration&quot;,&quot;value&quot;:&quot;SKIPPED&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; skipTest(): test disabled at runtime: isEnabled &gt;&gt; false!
+</system-out>
+  </testcase>
+  <testcase time="0.039" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testSatellitesList">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatelliteName()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatelliteName&quot;,&quot;value&quot;:&quot;SKIPPED&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; skipTest(): test disabled at runtime: isEnabled &gt;&gt; false!
+</system-out>
+  </testcase>
+  <testcase time="0.059" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testGlobalParameters">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatellitesList()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatellitesList&quot;,&quot;value&quot;:&quot;SKIPPED&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; skipTest(): test disabled at runtime: isEnabled &gt;&gt; false!
+</system-out>
+  </testcase>
+  <testcase time="0.049" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testGetTransponders">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGlobalParameters()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGlobalParameters&quot;,&quot;value&quot;:&quot;SKIPPED&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; skipTest(): test disabled at runtime: isEnabled &gt;&gt; false!
+</system-out>
+  </testcase>
+  <testcase time="0.039" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testTuning">
+    <failure message="Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.62 / Mozilla/5.0 (Unknown; Linux) AppleWebKit/538.1 (KHTML, like Gecko) qtrabrowser Safari/538.1 SAGEM/WHD93/01.10.00/54:64:D9:E3:4D:DB
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:11)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGetTransponders()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; &amp;#27;[1;32mFileSystemImplSop6 &gt; &gt;&gt; FS.Token.writeValue({&quot;file&quot;:&quot;/flash/Resources//testhistory/03-12-2015.txt&quot;,&quot;parameter&quot;:&quot;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGetTransponders&quot;,&quot;value&quot;:&quot;SKIPPED&quot;,&quot;pair_elements_separator&quot;:&quot;=&quot;,&quot;pair_separator&quot;:&quot;;&quot;})= {&quot;data&quot;:{},&quot;status&quot;:0}&amp;#27;[0m
+[WARN ] test&gt; skipTest(): test disabled at runtime: isEnabled &gt;&gt; false!
+</system-out>
+  </testcase>
+</testsuite>

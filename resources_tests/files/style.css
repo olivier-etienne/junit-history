@@ -1,0 +1,188 @@
+body {
+	color: #333;
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	margin: 20px;
+	background-color: cornsilk;
+}
+li {
+  line-height: 30px;
+}
+p,form,h1,h2,h3,h4,h5,h6,input,select,textarea,div,a,ul,li,ol,img {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+
+
+
+h1,h2,h3,h4 {
+	font-weight: bold;
+	font-size: 20px;
+	margin: 10px 0;
+	color: #F50;
+}
+
+h2 {
+	font-size: 16px;
+	border-bottom: 1px solid #F50;
+}
+
+h3 {
+	font-size: 12px;
+}
+
+h4 {
+	font-size: 10px;
+}
+
+label {
+	font-weight: bold;
+}
+
+table.stats {
+	border-collapse: inherit;
+    border-spacing: 5px;
+    border-style: none;
+    font-size: 12px;
+    text-align: center;
+}
+.imgArrowUp{
+	background: url("arrow-up.png") no-repeat;
+}
+.imgArrowDown{
+	background: url("arrow-down.png") no-repeat;
+}
+.evol {
+	width: 80px;
+}
+.count {
+	background-color: burlywood; 
+	width: 80px;
+}
+.description {
+	  background-color: #D3D3D3;
+    padding: 10px;
+}
+table.summary {
+	border-collapse: inherit;
+    border-spacing: 5px;
+    border-style: none;
+    font-size: 12px;
+}
+
+table {
+	font-size: 12px;
+	border: 1px solid #BBB;
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+div.overview {
+    margin-left: 30px;
+    text-align: left;
+    color: white;
+}
+th a:link {
+    text-decoration: none;
+}
+
+
+th.list {
+	min-width: 150px;
+}
+
+/* mouse over link */
+th a:hover {
+    color: #FF00FF;
+}
+th, th a {
+	font-weight: bold;
+	border: 1px solid #4D90FE;
+	color: white;
+	background-color: #6199DF;
+}
+
+.even {
+	background-color: azure;
+}
+.odd {
+	background-color: lavender;
+}
+td.overview {
+	background-color: lightblue;
+}
+
+
+a.cat{
+	color: beige;
+	background-color: blueviolet;
+	border-style: none;
+}
+th.cat {
+	background-color: blueviolet;
+	border: none;
+}
+td.stats {
+	 border-style: none;
+}
+td {
+	padding: 0 5px;
+	border: 1px solid #BBB;
+}
+
+/* highlight TOTAL row */
+#compil_stats tr:last-child  td,#resource_stats tr:last-child  td,#image_copies tr:last-child  td
+	{
+	font-weight: bold;
+	background-color: #DDD;
+}
+.bottom {
+    border-color: blue;
+    border-style: solid none none;
+    margin-top: 50px;
+    text-align: right;
+}
+.logs {
+	font-weight: bold;
+	text-align: center;
+	background: yellow;
+	width: 20%;
+}
+.Status {
+	font-weight: bold;
+	text-align: center;
+}
+.Success {
+	background: #7F7;
+}
+.Error {
+	background: #F55;
+}
+.Failure {
+	background: #FA5;
+}
+.Skipped {
+	background: #AAA;
+}
+.NotAvail {
+	background: #AAA;
+}
+pre {
+	border: 1px solid #999;
+	background-color: whiteSmoke;
+	overflow: auto;
+	padding: 8px;
+	margin: 5px 0;
+}
+span.Status {
+	padding: 2px 5px;
+	border-radius: 8px;
+	float: left;
+	margin: 10px 10px 0 0;
+}
+.testname {
+	color: #05F;
+	font-size: 14px;
+}

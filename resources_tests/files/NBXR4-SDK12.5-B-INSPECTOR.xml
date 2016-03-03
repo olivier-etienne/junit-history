@@ -1,0 +1,1514 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="32" time="696.467" errors="2" skipped="0" tests="269" name="[Softathome IPTV Kit] Test Suite">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_20\jre\bin"/>
+    <property name="java.vm.version" value="16.3-b01"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="surefire.reports" value="C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome\target\surefire-reports"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome"/>
+    <property name="java.runtime.version" value="1.6.0_20-b02"/>
+    <property name="org.mortbay.log.class" value="com.google.gwt.dev.shell.jetty.JettyNullLogger"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.io.tmpdir" value="C:\Users\jlrm9621\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files (x86)\Java\jdk1.6.0_20\jre\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files (x86)\CollabNet\Subversion Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\idmu\common;C:\Program Files\Imprimerie Nationale\PKI\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Microsoft Application Virtualization Client;C:\Program Files\SafeNet\Authentication\SAC\x32;C:\Program Files\SafeNet\Authentication\SAC\x64;C:\Users\jlrm9621\Documents\maven\apache-maven-3.0.4\bin;C:\Program Files (x86)\Java\jdk1.6.0_20\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Console2;C:\Users\jlrm9621\AppData\Roaming\npm;C:\Users\jlrm9621\Documents\gradle\gradle-1.10\bin;C:\Program Files (x86)\Git\bin"/>
+    <property name="gwt.args" value="-out target/www-test -port 8086 -prod -runStyle RemoteWeb:rmi://10.185.110.24/softathome"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="50.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\jlrm9621"/>
+    <property name="user.timezone" value="Europe/Paris"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="org.mortbay.xml.XmlParser.Validating" value="false"/>
+    <property name="user.name" value="jlrm9621"/>
+    <property name="java.class.path" value="C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome\target\classes;C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome\src\main\java;C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome\src\test\java;C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome\src\test\resources;C:\Users\jlrm9621\workspace\OneIPTV\trunk\iptvkit\iptvkit-ext-softathome\target\test-classes;C:\Users\jlrm9621\Documents\maven\repository\com\francetelecom\orangetv\ra\iptvkit\iptvkit-core\4.4.1-SNAPSHOT\iptvkit-core-4.4.1-SNAPSHOT.jar;C:\Users\jlrm9621\Documents\maven\repository\com\francetelecom\orangetv\iptvkit-gwt-user\4.5.1.7\iptvkit-gwt-user-4.5.1.7.jar;C:\Users\jlrm9621\Documents\maven\repository\org\json\json\20090211\json-20090211.jar;C:\Users\jlrm9621\Documents\maven\repository\com\francetelecom\orangetv\iptvkit-gwt-dev\4.5.1.0\iptvkit-gwt-dev-4.5.1.0.jar;C:\Users\jlrm9621\Documents\maven\repository\javassist\javassist\3.8.0.GA\javassist-3.8.0.GA.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\javascript\closure-compiler\v20131014\closure-compiler-v20131014.jar;C:\Users\jlrm9621\Documents\maven\repository\args4j\args4j\2.0.16\args4j-2.0.16.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\guava\guava\15.0\guava-15.0.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\protobuf\protobuf-java\2.4.1\protobuf-java-2.4.1.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\code\findbugs\jsr305\1.3.9\jsr305-1.3.9.jar;C:\Users\jlrm9621\Documents\maven\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\jlrm9621\Documents\maven\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\jlrm9621\Documents\maven\repository\com\francetelecom\orangetv\ra\iptvkit\iptvkit-core\4.4.1-SNAPSHOT\iptvkit-core-4.4.1-SNAPSHOT-tests.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\gwt\gwt-dev\2.5.1\gwt-dev-2.5.1.jar;C:\Users\jlrm9621\Documents\maven\repository\javax\validation\validation-api\1.0.0.GA\validation-api-1.0.0.GA.jar;C:\Users\jlrm9621\Documents\maven\repository\org\codehaus\mojo\gwt-maven-plugin\2.5.1\gwt-maven-plugin-2.5.1.jar;C:\Users\jlrm9621\Documents\maven\repository\org\apache\maven\surefire\surefire-api\2.4.3\surefire-api-2.4.3.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\gwt\gwt-user\2.5.1\gwt-user-2.5.1.jar;C:\Users\jlrm9621\Documents\maven\repository\com\google\gwt\gwt-dev\2.5.1\gwt-dev-2.5.1.jar"/>
+    <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="C:\Program Files (x86)\Java\jdk1.6.0_20\jre"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="user.language" value="fr"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.6.0_20"/>
+    <property name="java.ext.dirs" value="C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\resources.jar;C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\rt.jar;C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\jsse.jar;C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\jce.jar;C:\Program Files (x86)\Java\jdk1.6.0_20\jre\lib\charsets.jar;C:\Program Files (x86)\Java\jdk1.6.0_20\jre\classes"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+  <testcase time="43.201" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testInit"/>
+  <testcase time="0.053" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testDumpEnv"/>
+  <testcase time="0.042" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testList"/>
+  <testcase time="0.035" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testMap"/>
+  <testcase time="0.065" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testIntMap"/>
+  <testcase time="0.041" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testDate"/>
+  <testcase time="0.551" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testTimeout"/>
+  <testcase time="1.048" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testInterval"/>
+  <testcase time="0.558" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testTimer"/>
+  <testcase time="0.042" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testDeferredCommand"/>
+  <testcase time="0.031" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testJson"/>
+  <testcase time="0.079" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testMD5"/>
+  <testcase time="0.027" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testRegExp"/>
+  <testcase time="0.025" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testFeatures"/>
+  <testcase time="0.031" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testUtils"/>
+  <testcase time="0.105" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestLang" name="testXhr"/>
+  <testcase time="0.036" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testInit"/>
+  <testcase time="3.247" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testInitSpecific"/>
+  <testcase time="0.047" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testSoftwareVersion"/>
+  <testcase time="0.027" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testIpAddr"/>
+  <testcase time="0.026" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testMacAddr"/>
+  <testcase time="0.025" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testEthernetState"/>
+  <testcase time="0.047" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testSerialNum"/>
+  <testcase time="0.027" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testPowerState"/>
+  <testcase time="0.149" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB" name="testPort80">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+wrong status HTTP code! - expected: &lt;200&gt;, actual: &lt;0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+wrong status HTTP code! - expected: &lt;200&gt;, actual: &lt;0&gt;
+Caused by: junit.framework.AssertionFailedError: wrong status HTTP code! - expected: &lt;200&gt;, actual: &lt;0&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestSTB$2.onResponseReceived(GwtTestSTB.java:98)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.stb&gt; getIpAddress()=10.185.110.58
+[DEBUG] test&gt; send request to: http://10.185.110.58:80/notification
+[DEBUG] test&gt; response code/text: 0 - 
+[DEBUG] test&gt; response: 
+</system-out>
+  </testcase>
+  <testcase time="0.06" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testInit"/>
+  <testcase time="0.025" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSetup"/>
+  <testcase time="0.402" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testGetMountedDevices"/>
+  <testcase time="0.051" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testWrite"/>
+  <testcase time="0.028" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testRead"/>
+  <testcase time="0.027" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSize"/>
+  <testcase time="0.028" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testCopy"/>
+  <testcase time="0.049" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testFileExists"/>
+  <testcase time="0.029" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDelete"/>
+  <testcase time="0.026" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testFileDoesntExists"/>
+  <testcase time="0.384" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testMove"/>
+  <testcase time="0.025" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSetup2"/>
+  <testcase time="0.026" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirCreate"/>
+  <testcase time="0.025" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirExists"/>
+  <testcase time="0.064" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirList"/>
+  <testcase time="0.027" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testDirDelete"/>
+  <testcase time="0.024" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testSetup3"/>
+  <testcase time="0.026" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenGet"/>
+  <testcase time="0.388" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenSetGet"/>
+  <testcase time="0.027" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenGetNo"/>
+  <testcase time="0.029" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenReplace"/>
+  <testcase time="0.051" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testTokenRemove"/>
+  <testcase time="0.125" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testNoExistingTokenRemove">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+expected: &lt;false&gt;, actual: &lt;true&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+expected: &lt;false&gt;, actual: &lt;true&gt;
+Caused by: junit.framework.AssertionFailedError: expected: &lt;false&gt;, actual: &lt;true&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at junit.framework.Assert.assertEquals(Boolean.java:45)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestFileSystem_unitTestImpl.doRunTest(FS.java:1195)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+  </testcase>
+  <testcase time="5.221" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFileSystem" name="testMultiSetAndGetToken"/>
+  <testcase time="0.034" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testInit"/>
+  <testcase time="0.111" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testGetHDDState"/>
+  <testcase time="0.409" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testInstall"/>
+  <testcase time="130.248" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestHDD" name="testInstallWithForceFormat"/>
+  <testcase time="0.03" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFrontPanel" name="testInit"/>
+  <testcase time="0.036" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFrontPanel" name="testDisplay"/>
+  <testcase time="0.559" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestFrontPanel" name="testRelease"/>
+  <testcase time="0.031" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testInit"/>
+  <testcase time="0.072" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testMute"/>
+  <testcase time="0.6" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testVolume"/>
+  <testcase time="0.098" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testScreenFormat"/>
+  <testcase time="0.14" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testAdjustPolicy"/>
+  <testcase time="0.607" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testAudioPrefs"/>
+  <testcase time="0.141" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAvSettings" name="testSubtitlePrefs"/>
+  <testcase time="0.539" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDtt" name="testInit"/>
+  <testcase time="112.795" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDtt" name="testScan"/>
+  <testcase time="0.643" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDtt" name="testResultOfScan"/>
+  <testcase time="0.071" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testInit"/>
+  <testcase time="0.082" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testCalibration">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:10)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testInit()] &lt;&lt;&lt; SUCCESS
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testInit&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; skipTest(): test disabled (programmatically)
+</system-out>
+  </testcase>
+  <testcase time="0.089" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testSatelliteName">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:10)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testCalibration()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testCalibration&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; skipTest(): test disabled (programmatically)
+</system-out>
+  </testcase>
+  <testcase time="0.088" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testSatellitesList">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:10)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatelliteName()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatelliteName&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; skipTest(): test disabled (programmatically)
+</system-out>
+  </testcase>
+  <testcase time="0.089" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testGlobalParameters">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:10)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatellitesList()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testSatellitesList&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; skipTest(): test disabled (programmatically)
+</system-out>
+  </testcase>
+  <testcase time="0.089" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testGetTransponders">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:10)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGlobalParameters()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGlobalParameters&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; skipTest(): test disabled (programmatically)
+</system-out>
+  </testcase>
+  <testcase time="0.063" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDth" name="testTuning">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+SKIPPED
+Caused by: junit.framework.AssertionFailedError: SKIPPED
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCaseHistory.$leaveTest(Enum.java:115)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDth_unitTestImpl.reportResultsAndRunNextMethod(__GwtTestDth_unitTestImpl.java:10)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:165)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGetTransponders()] &lt;&lt;&lt; SKIPPED
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDth.testGetTransponders&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; skipTest(): test disabled (programmatically)
+</system-out>
+  </testcase>
+  <testcase time="0.583" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testInit"/>
+  <testcase time="0.579" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup1"/>
+  <testcase time="0.746" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadSuccess"/>
+  <testcase time="0.571" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadSize"/>
+  <testcase time="0.539" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testFileSize"/>
+  <testcase time="0.555" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testUntar"/>
+  <testcase time="0.555" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testRemove"/>
+  <testcase time="5.729" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadCancel"/>
+  <testcase time="0.57" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup2"/>
+  <testcase time="7.513" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadSuspendResume"/>
+  <testcase time="0.577" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup3"/>
+  <testcase time="20.47" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadFailure"/>
+  <testcase time="0.68" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup4"/>
+  <testcase time="0.696" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testDownloadTestLandingArea"/>
+  <testcase time="0.572" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDownload" name="testSetup5"/>
+  <testcase time="0.072" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc" name="testInit"/>
+  <testcase time="0.03" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc" name="testSetup"/>
+  <testcase time="2.103" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc" name="testStartDMCAndFindDMSServer"/>
+  <testcase time="0.123" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc" name="testDmsMetadata">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Unexpected id - expected: &lt;uuid:00113223-e4a5-0011-a5e4-a5e423321100&gt;, actual: &lt;536870912&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Unexpected id - expected: &lt;uuid:00113223-e4a5-0011-a5e4-a5e423321100&gt;, actual: &lt;536870912&gt;
+Caused by: junit.framework.AssertionFailedError: Unexpected id - expected: &lt;uuid:00113223-e4a5-0011-a5e4-a5e423321100&gt;, actual: &lt;536870912&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_unitTestImpl.doRunTest(GwtTestDmc.java:74)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; friendly name: DiskStation
+[DEBUG] test&gt; id: 536870912
+[DEBUG] test&gt; manuf: Synology Inc
+[DEBUG] test&gt; manuf url: http://www.synology.com/
+[DEBUG] test&gt; model desc: Synology DLNA/UPnP Media Server
+[DEBUG] test&gt; model name: DS213j
+[DEBUG] test&gt; model num: 
+[DEBUG] test&gt; model url: http://www.synology.com/
+[DEBUG] test&gt; pres url: http://10.185.110.178:5000/
+[DEBUG] test&gt; S/N: null
+[DEBUG] test&gt; UDN: uuid:00113223-e4a5-0011-a5e4-a5e423321100
+[DEBUG] test&gt; UPC: null
+</system-out>
+  </testcase>
+  <testcase time="0.069" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc" name="testBrowseFail1"/>
+  <testcase time="0.091" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testInit"/>
+  <testcase time="17.779" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testBrowseMusic_mp3"/>
+  <testcase time="0.376" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicObj_mp3"/>
+  <testcase time="0.07" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicRes_mp3"/>
+  <testcase time="2.325" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testPlayMusic_mp3"/>
+  <testcase time="5.038" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusic_mp3"/>
+  <testcase time="0.061" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testStopMusic_mp3"/>
+  <testcase time="0.896" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testBrowseMusic_wav"/>
+  <testcase time="0.362" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicObj_wav"/>
+  <testcase time="0.031" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicRes_wav"/>
+  <testcase time="0.258" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testPlayMusic_wav"/>
+  <testcase time="5.069" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusic_wav"/>
+  <testcase time="0.044" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testStopMusic_wav"/>
+  <testcase time="0.867" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testBrowseMusic_ac3"/>
+  <testcase time="0.032" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicObj_ac3"/>
+  <testcase time="0.158" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicRes_ac3">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+no audio resource found - expected: not null, actual: null" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+no audio resource found - expected: not null, actual: null
+Caused by: junit.framework.AssertionFailedError: no audio resource found - expected: not null, actual: null
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertNotNull(Assert.java:140)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.$metadataMusicRes(GwtTestDmc_Music.java:342)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Music_unitTestImpl.doRunTest(GwtTestDmc_Music.java:148)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[WARN ] test&gt; search: no resource for type: AUDIO
+</system-out>
+  </testcase>
+  <testcase time="0.123" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testPlayMusic_ac3">
+    <error message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11" type="java.lang.RuntimeException">java.lang.RuntimeException: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+	at com.google.gwt.junit.JUnitShell.processTestResult(JUnitShell.java:1283)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1403)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1304)
+	at com.google.gwt.junit.JUnitShell.runTest(JUnitShell.java:652)
+	at com.google.gwt.junit.client.GWTTestCase.runTest(GWTTestCase.java:480)
+	at junit.framework.TestCase.runBare(TestCase.java:141)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:129)
+	at com.google.gwt.junit.client.GWTTestCase.run(GWTTestCase.java:297)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at org.codehaus.mojo.gwt.test.MavenTestRunner.doRun(MavenTestRunner.java:105)
+	at junit.textui.TestRunner.start(TestRunner.java:183)
+	at org.codehaus.mojo.gwt.test.MavenTestRunner.main(MavenTestRunner.java:63)
+Caused by: com.francetelecom.orangetv.gwt.junit.client.ErrorWithLogs: (TypeError) : Result of expression &apos;(l8[b]=Efb+Wfb,qf(),a)&apos; [null] is not an object.
+Caused by: java.lang.Exception: com.google.gwt.core.client.JavaScriptException: (TypeError) : Result of expression &apos;(l8[b]=Efb+Wfb,qf(),a)&apos; [null] is not an object.(wrapped)
+	at java.lang.RuntimeException.RuntimeException(StackTraceCreator.java:60)
+	at com.google.gwt.core.client.JavaScriptException.JavaScriptException(JavaScriptException.java:115)
+	at com.google.gwt.lang.Exceptions.caught(Exceptions.java:29)
+	at com.francetelecom.orangetv.gwt.stb.client.DMC$CDSResource.$getProtocolInfo(DMC.java:615)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.$playMusic(GwtTestDmc_Music.java:391)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Music_unitTestImpl.doRunTest(GwtTestDmc_Music.java:153)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:143)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</error>
+  </testcase>
+  <testcase time="0.095" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusic_ac3">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Music_unitTestImpl.doRunTest(__GwtTestDmc_Music_unitTestImpl.java:278)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.testPlayMusic_ac3()] &lt;&lt;&lt; ERROR
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.testPlayMusic_ac3&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR
+</system-out>
+  </testcase>
+  <testcase time="0.087" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testStopMusic_ac3">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Music_unitTestImpl.doRunTest(__GwtTestDmc_Music_unitTestImpl.java:289)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.testMetadataMusic_ac3()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.testMetadataMusic_ac3&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMusic_ac3(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music) not passed: ERROR
+</system-out>
+  </testcase>
+  <testcase time="1.582" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testBrowseMusic_wma"/>
+  <testcase time="0.057" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicObj_wma"/>
+  <testcase time="0.358" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicRes_wma"/>
+  <testcase time="0.266" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testPlayMusic_wma"/>
+  <testcase time="5.039" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusic_wma"/>
+  <testcase time="0.076" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testStopMusic_wma"/>
+  <testcase time="0.9" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testBrowseMusic_ogg"/>
+  <testcase time="0.366" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicObj_ogg"/>
+  <testcase time="0.065" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicRes_ogg"/>
+  <testcase time="0.512" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testPlayMusic_ogg"/>
+  <testcase time="5.064" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusic_ogg">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected audio duration expected:&lt;44000&gt; but was:&lt;-1&gt; (tolerance:&lt;1500&gt;)" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected audio duration expected:&lt;44000&gt; but was:&lt;-1&gt; (tolerance:&lt;1500&gt;)
+Caused by: junit.framework.AssertionFailedError: unexpected audio duration expected:&lt;44000&gt; but was:&lt;-1&gt; (tolerance:&lt;1500&gt;)
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:68)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music.$metadataMusic(AudioPlayerImplSoftAtHome.java:144)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Music_unitTestImpl$5.run(GwtTestDmc_Music.java:233)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+  </testcase>
+  <testcase time="0.079" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testStopMusic_ogg"/>
+  <testcase time="0.879" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testBrowseMusic_pcm"/>
+  <testcase time="0.362" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicObj_pcm"/>
+  <testcase time="0.057" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusicRes_pcm"/>
+  <testcase time="0.159" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testPlayMusic_pcm"/>
+  <testcase time="5.049" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testMetadataMusic_pcm"/>
+  <testcase time="0.053" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Music" name="testStopMusic_pcm"/>
+  <testcase time="0.114" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testInit"/>
+  <testcase time="2.687" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testBrowseMovie_mp4"/>
+  <testcase time="0.367" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieObj_mp4"/>
+  <testcase time="0.068" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieRes_mp4"/>
+  <testcase time="6.122" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testPlayMovie_mp4">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video start timeout" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video start timeout
+Caused by: com.google.gwt.junit.client.TimeoutFailure: video start timeout
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)
+	at com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)
+	at com.google.gwt.user.client.Timer.fire(Timer.java:149)
+	at Unknown.anonymous(Timer.java:68)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; getSource(http://10.185.110.178:50002/v/AVC_MP4_BL_L3_SD_AAC/428.mp4) ...
+[DEBUG] stb.video&gt; open(http://10.185.110.178:50002/v/AVC_MP4_BL_L3_SD_AAC/428.mp4)
+[INFO ] 15:29:26,693 perf.zapping&gt; VideoPlayer.changeSession(VIDEO)
+[DEBUG] stb.video&gt; changeSession(MEDIA)
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :0
+[DEBUG] stb.video&gt; mimeType: undefined - duration: 138000 - position: 0
+[DEBUG] stb.video&gt; Media.Player.TimeControl.setDuration(VIDEO, 138000)
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setUri(VIDEO, http://10.185.110.178:50002/v/AVC_MP4_BL_L3_SD_AAC/428.mp4) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setSize(VIDEO, 11780900) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setProtocolInfo(VIDEO, http-get:*:video/mp4:DLNA.ORG_PN=AVC_MP4_BL_L3_SD_AAC;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.start(VIDEO) = 0
+[INFO ] 15:29:26,712 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 1
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 1
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 13
+[DEBUG] stb.event&gt; The code of the &apos;MEDIA&apos; event is not yet created. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 2
+[INFO ] 15:29:27,162 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 2
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 2
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VIDEO_START
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_START
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+</system-out>
+  </testcase>
+  <testcase time="0.178" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovie_mp4">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl.doRunTest(__GwtTestDmc_Movie_unitTestImpl.java:146)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testPlayMovie_mp4()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testPlayMovie_mp4&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+</system-out>
+  </testcase>
+  <testcase time="0.102" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testStopMovie_mp4">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl.doRunTest(__GwtTestDmc_Movie_unitTestImpl.java:157)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testMetadataMovie_mp4()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testMetadataMovie_mp4&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMovie_mp4(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+</system-out>
+  </testcase>
+  <testcase time="1.598" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testBrowseMovie_mpg"/>
+  <testcase time="0.074" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieObj_mpg"/>
+  <testcase time="0.365" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieRes_mpg"/>
+  <testcase time="6.148" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testPlayMovie_mpg">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video start timeout" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video start timeout
+Caused by: com.google.gwt.junit.client.TimeoutFailure: video start timeout
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)
+	at com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)
+	at com.google.gwt.user.client.Timer.fire(Timer.java:149)
+	at Unknown.anonymous(Timer.java:68)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; getSource(http://10.185.110.178:50002/v/MPEG_PS_NTSC/514.mpg) ...
+[DEBUG] stb.video&gt; open(http://10.185.110.178:50002/v/MPEG_PS_NTSC/514.mpg)
+[INFO ] 15:29:35,109 perf.zapping&gt; VideoPlayer.changeSession(VIDEO)
+[DEBUG] stb.video&gt; changeSession(MEDIA)
+[DEBUG] stb.video&gt;  ... MEDIA session &apos;VIDEO&apos; is playing: STOP &amp; WAIT
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :1
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 1
+[INFO ] 15:29:35,241 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 0
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 0
+[DEBUG] stb.video&gt; open(http://10.185.110.178:50002/v/MPEG_PS_NTSC/514.mpg)
+[INFO ] 15:29:35,242 perf.zapping&gt; VideoPlayer.changeSession(VIDEO)
+[DEBUG] stb.video&gt; changeSession(MEDIA)
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :0
+[DEBUG] stb.video&gt; mimeType: undefined - duration: 59000 - position: 0
+[DEBUG] stb.video&gt; Media.Player.TimeControl.setDuration(VIDEO, 59000)
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setUri(VIDEO, http://10.185.110.178:50002/v/MPEG_PS_NTSC/514.mpg) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setSize(VIDEO, 30062592) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setProtocolInfo(VIDEO, http-get:*:video/mpeg:DLNA.ORG_PN=MPEG_PS_NTSC;DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.start(VIDEO) = 0
+[INFO ] 15:29:35,258 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 1
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 1
+[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_VIDEO_STOP &gt;&gt;&gt; testPlayMovie_mpg
+[DEBUG] test&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_STOP &gt;&gt;&gt; testPlayMovie_mpg
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 13
+[DEBUG] stb.event&gt; The code of the &apos;MEDIA&apos; event is not yet created. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 2
+[INFO ] 15:29:35,657 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 2
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 2
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VIDEO_START
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_START
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+</system-out>
+  </testcase>
+  <testcase time="0.088" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovie_mpg">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl.doRunTest(__GwtTestDmc_Movie_unitTestImpl.java:212)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testPlayMovie_mpg()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testPlayMovie_mpg&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+</system-out>
+  </testcase>
+  <testcase time="0.136" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testStopMovie_mpg">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl.doRunTest(__GwtTestDmc_Movie_unitTestImpl.java:223)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testMetadataMovie_mpg()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testMetadataMovie_mpg&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMovie_mpg(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+</system-out>
+  </testcase>
+  <testcase time="0.597" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testBrowseMovie_ts"/>
+  <testcase time="0.049" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieObj_ts"/>
+  <testcase time="0.378" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieRes_ts"/>
+  <testcase time="0.551" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testPlayMovie_ts"/>
+  <testcase time="5.162" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovie_ts">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected video duration expected:&lt;169000&gt; but was:&lt;171784&gt; (tolerance:&lt;1500&gt;)" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected video duration expected:&lt;169000&gt; but was:&lt;171784&gt; (tolerance:&lt;1500&gt;)
+Caused by: junit.framework.AssertionFailedError: unexpected video duration expected:&lt;169000&gt; but was:&lt;171784&gt; (tolerance:&lt;1500&gt;)
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:68)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl$3.run(VideoPlayer.java:514)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; &amp;#27;[1;32mMedia.Player.TimeControl.getDuration(VIDEO) = 171784&amp;#27;[0m
+</system-out>
+  </testcase>
+  <testcase time="2.212" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testStopMovie_ts">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video stop timeout" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video stop timeout
+Caused by: com.google.gwt.junit.client.TimeoutFailure: video stop timeout
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)
+	at com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)
+	at com.google.gwt.user.client.Timer.fire(Timer.java:149)
+	at Unknown.anonymous(Timer.java:68)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; close()
+[INFO ] 15:29:48,217 perf.zapping&gt; VideoPlayer.changeSession(null)
+[DEBUG] stb.video&gt; changeSession(null)
+[DEBUG] stb.video&gt;  ... MEDIA session &apos;VIDEO&apos; is playing: STOP &amp; WAIT
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :1
+[DEBUG] stb.video&gt; resetVideoPosition (); cur session: VIDEO
+[ERROR] stb.video&gt;  ... set size failed
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: -23
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 1
+[INFO ] 15:29:48,346 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 0
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 0
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VIDEO_STOP
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_STOP
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+</system-out>
+  </testcase>
+  <testcase time="0.822" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testBrowseMovie_avi"/>
+  <testcase time="0.033" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieObj_avi"/>
+  <testcase time="0.059" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieRes_avi"/>
+  <testcase time="0.537" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testPlayMovie_avi"/>
+  <testcase time="5.056" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovie_avi"/>
+  <testcase time="2.192" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testStopMovie_avi">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video stop timeout" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video stop timeout
+Caused by: com.google.gwt.junit.client.TimeoutFailure: video stop timeout
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)
+	at com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)
+	at com.google.gwt.user.client.Timer.fire(Timer.java:149)
+	at Unknown.anonymous(Timer.java:68)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; close()
+[INFO ] 15:29:56,939 perf.zapping&gt; VideoPlayer.changeSession(null)
+[DEBUG] stb.video&gt; changeSession(null)
+[DEBUG] stb.video&gt;  ... MEDIA session &apos;VIDEO&apos; is playing: STOP &amp; WAIT
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :1
+[DEBUG] stb.video&gt; resetVideoPosition (); cur session: VIDEO
+[ERROR] stb.video&gt;  ... set size failed
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: -23
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 1
+[INFO ] 15:29:57,048 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 0
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 0
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VIDEO_STOP
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_STOP
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+</system-out>
+  </testcase>
+  <testcase time="0.492" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testBrowseMovie_mkv"/>
+  <testcase time="0.396" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieObj_mkv"/>
+  <testcase time="0.033" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieRes_mkv"/>
+  <testcase time="6.125" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testPlayMovie_mkv">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video start timeout" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video start timeout
+Caused by: com.google.gwt.junit.client.TimeoutFailure: video start timeout
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)
+	at com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)
+	at com.google.gwt.user.client.Timer.fire(Timer.java:149)
+	at Unknown.anonymous(Timer.java:68)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; getSource(http://10.185.110.178:50002/v/NDLNA/420.mkv) ...
+[DEBUG] stb.video&gt; open(http://10.185.110.178:50002/v/NDLNA/420.mkv)
+[INFO ] 15:30:00,051 perf.zapping&gt; VideoPlayer.changeSession(VIDEO)
+[DEBUG] stb.video&gt; changeSession(MEDIA)
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :0
+[DEBUG] stb.video&gt; mimeType: undefined - duration: 45000 - position: 0
+[DEBUG] stb.video&gt; Media.Player.TimeControl.setDuration(VIDEO, 45000)
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setUri(VIDEO, http://10.185.110.178:50002/v/NDLNA/420.mkv) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setSize(VIDEO, 9562829) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.setProtocolInfo(VIDEO, http-get:*:video/x-matroska:DLNA.ORG_OP=01;DLNA.ORG_FLAGS=01700000000000000000000000000000) = 0
+[DEBUG] stb.video&gt; Media.Player.Resource.Common.start(VIDEO) = 0
+[INFO ] 15:30:00,071 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 1
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 1
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 13
+[DEBUG] stb.event&gt; The code of the &apos;MEDIA&apos; event is not yet created. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 2
+[INFO ] 15:30:00,545 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 2
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 2
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VIDEO_START
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_START
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+</system-out>
+  </testcase>
+  <testcase time="0.077" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovie_mkv">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl.doRunTest(__GwtTestDmc_Movie_unitTestImpl.java:410)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testPlayMovie_mkv()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testPlayMovie_mkv&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+</system-out>
+  </testcase>
+  <testcase time="0.11" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testStopMovie_mkv">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+Caused by: com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError: Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.junit.client.DependencyFailedError.DependencyFailedError(DependencyFailedError.java:21)
+	at com.francetelecom.orangetv.gwt.junit.client.StbTestCase.$dependencyFailure(StbTestCase.java:146)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Movie_unitTestImpl.doRunTest(__GwtTestDmc_Movie_unitTestImpl.java:421)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[INFO ] test&gt; [com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testMetadataMovie_mkv()] &lt;&lt;&lt; FAILURE
+[TRACE] stb.filesystem&gt; FS.Token.setValue((&apos;/appAR/resources/disk/data//testhistory/19-09-2014.txt&apos;,&apos;com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie.testMetadataMovie_mkv&apos;,&apos;=&apos;,&apos;;&apos;) : 0
+[WARN ] test&gt; Dependency testPlayMovie_mkv(com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie) not passed: FAILURE
+</system-out>
+  </testcase>
+  <testcase time="0.537" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testBrowseMovie_mov"/>
+  <testcase time="0.04" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieObj_mov"/>
+  <testcase time="0.371" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovieRes_mov"/>
+  <testcase time="0.646" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testPlayMovie_mov"/>
+  <testcase time="5.066" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testMetadataMovie_mov"/>
+  <testcase time="2.183" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Movie" name="testStopMovie_mov">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video stop timeout" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+video stop timeout
+Caused by: com.google.gwt.junit.client.TimeoutFailure: video stop timeout
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.google.gwt.junit.client.TimeoutFailure.TimeoutFailure(TimeoutFailure.java:42)
+	at com.google.gwt.junit.client.GWTTestCase$KillTimer.run(GWTTestCase.java:66)
+	at com.google.gwt.user.client.Timer.fire(Timer.java:149)
+	at Unknown.anonymous(Timer.java:68)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:242)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; close()
+[INFO ] 15:30:13,028 perf.zapping&gt; VideoPlayer.changeSession(null)
+[DEBUG] stb.video&gt; changeSession(null)
+[DEBUG] stb.video&gt;  ... MEDIA session &apos;VIDEO&apos; is playing: STOP &amp; WAIT
+[DEBUG] stb.video&gt;  ... nb unstopped sessions :1
+[DEBUG] stb.video&gt; resetVideoPosition (); cur session: VIDEO
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: -23
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 1
+[INFO ] 15:30:13,156 perf.zapping&gt; sessionStateChanged &apos;VIDEO&apos; state changed: 0
+[DEBUG] stb.video&gt; session &apos;VIDEO&apos; state changed : 0
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VIDEO_STOP
+[DEBUG] test_specific&gt; Event &gt;&gt;&gt; EVENT_VOD_STREAM_STOP
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: -23
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: MEDIA_EVENT_AVAILABLE - ATTRIBUTES: {&quot;session_id&quot;:&quot;VIDEO&quot;}
+[DEBUG] stb.event&gt; MEDIA_EVENT_AVAILABLE: 0
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;MEDIA_EVENT_AVAILABLE&quot;, &quot;attributes&quot;: { &quot;session_id&quot;: &quot;VIDEO&quot; } } }
+</system-out>
+  </testcase>
+  <testcase time="0.095" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testInit"/>
+  <testcase time="12.666" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_jpg"/>
+  <testcase time="0.062" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_jpg"/>
+  <testcase time="0.044" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_jpg"/>
+  <testcase time="0.812" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_bmp"/>
+  <testcase time="0.365" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_bmp"/>
+  <testcase time="0.061" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_bmp"/>
+  <testcase time="0.808" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_gif"/>
+  <testcase time="0.034" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_gif"/>
+  <testcase time="0.06" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_gif"/>
+  <testcase time="0.814" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_gifa"/>
+  <testcase time="0.034" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_gifa"/>
+  <testcase time="0.391" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_gifa"/>
+  <testcase time="1.177" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_ico"/>
+  <testcase time="0.364" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_ico"/>
+  <testcase time="0.032" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_ico"/>
+  <testcase time="1.538" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_png"/>
+  <testcase time="0.035" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_png"/>
+  <testcase time="0.361" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_png"/>
+  <testcase time="0.839" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testBrowsePicture_tiff"/>
+  <testcase time="0.034" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureObj_tiff"/>
+  <testcase time="0.165" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture" name="testMetadataPictureRes_tiff">
+    <error message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11" type="java.lang.RuntimeException">java.lang.RuntimeException: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+	at com.google.gwt.junit.JUnitShell.processTestResult(JUnitShell.java:1283)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1403)
+	at com.google.gwt.junit.JUnitShell.runTestImpl(JUnitShell.java:1304)
+	at com.google.gwt.junit.JUnitShell.runTest(JUnitShell.java:652)
+	at com.google.gwt.junit.client.GWTTestCase.runTest(GWTTestCase.java:480)
+	at junit.framework.TestCase.runBare(TestCase.java:141)
+	at junit.framework.TestResult$1.protect(TestResult.java:122)
+	at junit.framework.TestResult.runProtected(TestResult.java:142)
+	at junit.framework.TestResult.run(TestResult.java:125)
+	at junit.framework.TestCase.run(TestCase.java:129)
+	at com.google.gwt.junit.client.GWTTestCase.run(GWTTestCase.java:297)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at junit.framework.TestSuite.runTest(TestSuite.java:255)
+	at junit.framework.TestSuite.run(TestSuite.java:250)
+	at org.codehaus.mojo.gwt.test.MavenTestRunner.doRun(MavenTestRunner.java:105)
+	at junit.textui.TestRunner.start(TestRunner.java:183)
+	at org.codehaus.mojo.gwt.test.MavenTestRunner.main(MavenTestRunner.java:63)
+Caused by: com.francetelecom.orangetv.gwt.junit.client.ErrorWithLogs: (TypeError) : Result of expression &apos;(l8[r]=Pfb+Xfb,Qh((l8[r]=Mfb+B8,l.resolution)))&apos; [null] is not an object.
+Caused by: java.lang.Exception: com.google.gwt.core.client.JavaScriptException: (TypeError) : Result of expression &apos;(l8[r]=Pfb+Xfb,Qh((l8[r]=Mfb+B8,l.resolution)))&apos; [null] is not an object.(wrapped)
+	at java.lang.RuntimeException.RuntimeException(StackTraceCreator.java:60)
+	at com.google.gwt.core.client.JavaScriptException.JavaScriptException(JavaScriptException.java:115)
+	at com.google.gwt.lang.Exceptions.caught(Exceptions.java:29)
+	at com.francetelecom.orangetv.gwt.stb.test.DlnaResourceHelper.search(DlnaBrowseElementResource.java:99)
+	at com.francetelecom.orangetv.gwt.stb.test.GwtTestDmc_Picture.$metadataPictureRes(GwtTestDmc_Picture.java:263)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestDmc_Picture_unitTestImpl.doRunTest(GwtTestDmc_Picture.java:204)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(GWTTestCase.java:143)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</error>
+  </testcase>
+  <testcase time="0.03" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmcEnd" name="testInit"/>
+  <testcase time="0.433" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestDmcEnd" name="testStopDmc"/>
+  <testcase time="0.548" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testInit"/>
+  <testcase time="0.689" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testPlay"/>
+  <testcase time="0.565" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testMetadata"/>
+  <testcase time="0.55" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testPause"/>
+  <testcase time="0.547" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testResume"/>
+  <testcase time="0.592" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testTimeChangePosition"/>
+  <testcase time="0.591" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestAudio" name="testStop"/>
+  <testcase time="0.552" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testInit"/>
+  <testcase time="1.149" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testPlay"/>
+  <testcase time="0.581" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testMetadata"/>
+  <testcase time="0.637" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testChangePosition"/>
+  <testcase time="0.579" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testPositionAfterChangePosition"/>
+  <testcase time="0.6" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testResetPosition"/>
+  <testcase time="0.598" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testPositionAfterResetPosition"/>
+  <testcase time="0.57" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testPause"/>
+  <testcase time="0.56" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testResume"/>
+  <testcase time="0.602" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testChangeTimePosition"/>
+  <testcase time="0.801" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideoFile" name="testStop"/>
+  <testcase time="1.055" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testInit"/>
+  <testcase time="1.868" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testPlay"/>
+  <testcase time="1.078" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testMetadata"/>
+  <testcase time="1.065" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testChangePosition"/>
+  <testcase time="1.061" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testPositionAfterChangePosition"/>
+  <testcase time="1.102" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testResetPosition"/>
+  <testcase time="1.088" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testPositionAfterResetPosition">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected W - expected: &lt;1280&gt;, actual: &lt;0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected W - expected: &lt;1280&gt;, actual: &lt;0&gt;
+Caused by: junit.framework.AssertionFailedError: unexpected W - expected: &lt;1280&gt;, actual: &lt;0&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.failNotEquals(Assert.java:198)
+	at junit.framework.Assert.assertEquals(Assert.java:94)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestVideo.$_testPositionAfterResetPosition(AbstractGwtTestVideo.java:133)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestVideo_DTT_unitTestImpl$7.run(__GwtTestVideo_DTT_unitTestImpl.java:95)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+    <system-out>[DEBUG] stb.video&gt; getVideoPosition (); cur session: LIVE
+[TRACE] stb.video&gt;  ... Media.Player.VideoControl.getDisplayArea(LIVE) &gt;&gt;&gt; 0:0:0:0:0
+[TRACE] stb.video&gt;  ... Media.Player.VideoControl.getAreaPosition(LIVE) &gt;&gt;&gt; 0:0
+[TRACE] stb.video&gt;  ... Media.Player.VideoControl.getAreaSize(LIVE) &gt;&gt;&gt; 0.00:0.00
+</system-out>
+  </testcase>
+  <testcase time="3.388" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testStop"/>
+  <testcase time="3.743" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testPlaySource2"/>
+  <testcase time="3.708" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestVideo_DTT" name="testStopSource2"/>
+  <testcase time="0.068" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testInit"/>
+  <testcase time="0.041" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testSetConfiguration"/>
+  <testcase time="0.363" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testNoTsRecording"/>
+  <testcase time="0.859" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testPlay"/>
+  <testcase time="0.371" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testAfterPlay"/>
+  <testcase time="5.401" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testStartRecording"/>
+  <testcase time="3.249" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testPause"/>
+  <testcase time="2.13" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testAfterPause">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected timeshift end position expected:&lt;5660&gt; but was:&lt;6951&gt; (tolerance:&lt;849&gt;)" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected timeshift end position expected:&lt;5660&gt; but was:&lt;6951&gt; (tolerance:&lt;849&gt;)
+Caused by: junit.framework.AssertionFailedError: unexpected timeshift end position expected:&lt;5660&gt; but was:&lt;6951&gt; (tolerance:&lt;849&gt;)
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:68)
+	at com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:61)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestTimeShift.$_testPositions(TimeShifting.java:38)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestTimeShift.$_testAfterPause(AbstractGwtTestTimeShift.java:214)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestTimeShift_DTT_unitTestImpl$3.run(__GwtTestTimeShift_DTT_unitTestImpl.java:47)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+    <system-out>[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: METADATA_REMOVED - ATTRIBUTES: {&quot;media_id_list&quot;:[{&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;METADATA_REMOVED&quot;, &quot;attributes&quot;: { &quot;media_id_list&quot;: [ { &quot;media_id&quot;: 1, &quot;status&quot;: &quot;ONGOING&quot;, &quot;type&quot;: 2 } ] } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: METADATA_REMOVED - ATTRIBUTES: {&quot;media_id_list&quot;:[{&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;METADATA_REMOVED&quot;, &quot;attributes&quot;: { &quot;media_id_list&quot;: [ { &quot;media_id&quot;: 1, &quot;status&quot;: &quot;ONGOING&quot;, &quot;type&quot;: 2 } ] } } }
+[DEBUG] stb.event&gt; StbEvent&gt; HANDLER: MEDIA - REASON: METADATA_REMOVED - ATTRIBUTES: {&quot;media_id_list&quot;:[{&quot;media_id&quot;:1,&quot;status&quot;:&quot;ONGOING&quot;,&quot;type&quot;:2}]}
+[DEBUG] stb.event&gt; The &apos;MEDIA&apos; event details is unkwown. Event details: { &quot;handler&quot;: &quot;MEDIA&quot;, &quot;object&quot;: { &quot;reason&quot;: &quot;METADATA_REMOVED&quot;, &quot;attributes&quot;: { &quot;media_id_list&quot;: [ { &quot;media_id&quot;: 1, &quot;status&quot;: &quot;ONGOING&quot;, &quot;type&quot;: 2 } ] } } }
+[DEBUG] test&gt; testState3 - processChrono (8s): 11783
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getState(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;state&quot;:&quot;START&quot;,&quot;media_id&quot;:2}}&amp;#27;[0m
+[DEBUG] stb.video&gt; &amp;#27;[1;32mMedia.Player.TimeControl.getSpeed(LIVE) = 0.00&amp;#27;[0m
+[DEBUG] test&gt; _testPositions() - ecart theorique TS endposition - TS timeposition: 2s
+[DEBUG] test&gt; processChrono: 11790
+[DEBUG] test&gt; tsChrono: 3408
+[DEBUG] test&gt; bufferChrono: 5653
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getEndTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:6951}}&amp;#27;[0m
+[DEBUG] test&gt; TS.endTimePosition: 6951
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:4630}} [4630]&amp;#27;[0m
+[DEBUG] test&gt; TS.timePosition: 4630
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getEndTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:6951}}&amp;#27;[0m
+</system-out>
+  </testcase>
+  <testcase time="2.051" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testResume"/>
+  <testcase time="3.062" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testAfterResume"/>
+  <testcase time="3.32" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testChangePosition"/>
+  <testcase time="0.336" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testAfterChangePosition">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected timeshift position expected:&lt;4854&gt; but was:&lt;8870&gt; (tolerance:&lt;728&gt;)" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+unexpected timeshift position expected:&lt;4854&gt; but was:&lt;8870&gt; (tolerance:&lt;728&gt;)
+Caused by: junit.framework.AssertionFailedError: unexpected timeshift position expected:&lt;4854&gt; but was:&lt;8870&gt; (tolerance:&lt;728&gt;)
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:68)
+	at com.francetelecom.orangetv.gwt.stb.test.StbTestUtils.assertApproxEquals(StbTestUtils.java:61)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestTimeShift.$_testPositions(TimeShifting.java:59)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestTimeShift_DTT_unitTestImpl.doRunTest(AbstractGwtTestTimeShift.java:342)
+	at com.google.gwt.junit.client.GWTTestCase.$__doRunTest(TestCase.java:62)
+	at com.google.gwt.junit.client.impl.GWTRunner.$runTest(GWTRunner.java:411)
+	at com.google.gwt.junit.client.impl.GWTRunner.$doRunTest(GWTRunner.java:339)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.$onSuccess(GWTRunner.java:113)
+	at com.google.gwt.junit.client.impl.GWTRunner$TestBlockListener.onSuccess(GWTRunner.java:107)
+	at com.google.gwt.user.client.rpc.impl.RequestCallbackAdapter.onResponseReceived(RequestCallbackAdapter.java:232)
+	at com.google.gwt.http.client.Request.$fireOnResponseReceived(Request.java:258)
+	at com.google.gwt.http.client.RequestBuilder$1.onReadyStateChange(RequestBuilder.java:412)
+	at Unknown.anonymous(XMLHttpRequest.java:351)
+	at com.google.gwt.core.client.impl.Impl.apply(Impl.java:189)
+	at com.google.gwt.core.client.impl.Impl.entry0(Impl.java:249)
+	at Unknown.anonymous(Impl.java:70)
+</failure>
+    <system-out>[DEBUG] test&gt; testState5 - processChrono (16s): 20348
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getState(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;state&quot;:&quot;START&quot;,&quot;media_id&quot;:2}}&amp;#27;[0m
+[DEBUG] stb.video&gt; &amp;#27;[1;32mMedia.Player.TimeControl.getSpeed(LIVE) = 1.00&amp;#27;[0m
+[DEBUG] test&gt; _testPositions() - ecart theorique TS endposition - TS timeposition: 9s
+[DEBUG] test&gt; processChrono: 20353
+[DEBUG] test&gt; tsChrono: 4844
+[DEBUG] test&gt; bufferChrono: 14216
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getEndTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:15279}}&amp;#27;[0m
+[DEBUG] test&gt; TS.endTimePosition: 15279
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:8870}} [8870]&amp;#27;[0m
+[DEBUG] test&gt; TS.timePosition: 8870
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getEndTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:15279}}&amp;#27;[0m
+[DEBUG] stb.timeshift&gt; &amp;#27;[1;32mMedia.Player.Live.Timeshift.getTimePosition(LIVE) = {&quot;status&quot;:0,&quot;data&quot;:{&quot;position&quot;:8870}} [8870]&amp;#27;[0m
+</system-out>
+  </testcase>
+  <testcase time="3.179" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testBackToLive"/>
+  <testcase time="2.382" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testAfterBackToLive"/>
+  <testcase time="1.477" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testStopRecording"/>
+  <testcase time="1.043" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testAfterStopRecording"/>
+  <testcase time="0.338" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestTimeShift_DTT" name="testStop"/>
+  <testcase time="0.651" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testInit"/>
+  <testcase time="0.595" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testTime"/>
+  <testcase time="0.544" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testClearAllSchedules"/>
+  <testcase time="0.55" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testClearAllRecords"/>
+  <testcase time="0.621" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testDiscInfo"/>
+  <testcase time="0.542" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testGetDefaultPadding"/>
+  <testcase time="0.595" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testSource1Exists"/>
+  <testcase time="0.619" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testSource2Exists"/>
+  <testcase time="2.795" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testSchedule"/>
+  <testcase time="0.647" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testScheduleMetadata"/>
+  <testcase time="2.509" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testConflict"/>
+  <testcase time="0.722" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testDiscInfoAfterSchedule">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Reserved disc space must be &gt; 0 - expected: &lt;true&gt;, actual: &lt;false&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Reserved disc space must be &gt; 0 - expected: &lt;true&gt;, actual: &lt;false&gt;
+Caused by: junit.framework.AssertionFailedError: Reserved disc space must be &gt; 0 - expected: &lt;true&gt;, actual: &lt;false&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at junit.framework.Assert.assertTrue(Assert.java:181)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestPVR.$_testDiscInfoAfterSchedule(AbstractGwtTestPVR.java:302)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestPVR_DTT_unitTestImpl$12.run(__GwtTestPVR_DTT_unitTestImpl.java:155)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+    <system-out>[DEBUG] stb.device&gt; DeviceImplNewBox &gt;&gt; getPvrVolumeInfo
+[DEBUG] stb.pvr&gt; new PVRImpl2SoftAtHome.PVRDiscInfoImpl()
+[DEBUG] stb.pvr&gt; new PVRImplNewBox.PVRDiscInfoImpl()
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 0Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76034Mo
+[DEBUG] test&gt; disc info: DiscInfo[name: SATA volume2; mountpath: /Recordtotal: 76034MB; free (total): 76034MB; info: {&quot;device_id&quot;:1,&quot;volume_id&quot;:11,&quot;name&quot;:&quot;SATA volume2&quot;,&quot;fs&quot;:&quot;EXT3&quot;,&quot;alias&quot;:&quot;SATA volume2&quot;,&quot;size&quot;:230757460,&quot;used_space&quot;:210888,&quot;free_space&quot;:218824748,&quot;mount_state&quot;:true,&quot;mount_path&quot;:&quot;/Record&quot;}]
+[DEBUG] test&gt; Before schedule - free: 76034 - used: 0
+[DEBUG] test&gt; After schedule
+[DEBUG] test&gt; &gt;&gt; getName(): SATA volume2
+[DEBUG] test&gt; &gt;&gt; getMountPath(): /Record
+[DEBUG] test&gt; &gt;&gt; getReserved(): 0
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] test&gt; &gt;&gt; getTotal(): 76034
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 0Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76034Mo
+[DEBUG] test&gt; &gt;&gt; getFree(): 76034
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 0Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76034Mo
+[DEBUG] test&gt; &gt;&gt; getUsed(): 0
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 0Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76034Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 0Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76034Mo
+</system-out>
+  </testcase>
+  <testcase time="79.938" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testScheduleAndRecord"/>
+  <testcase time="1.393" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testRecordMetadata"/>
+  <testcase time="0.583" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testDiscInfoAfterRecord"/>
+  <testcase time="1.279" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testPlayForRecordNow"/>
+  <testcase time="10.032" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testRecordNow"/>
+  <testcase time="0.603" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testSearchOngoingRecord"/>
+  <testcase time="1.566" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testGetOngoingRecord"/>
+  <testcase time="1.032" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testDiscInfoAfterStartOngoingRecord">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Reserved disc space must be greater than before ongoing record - expected: &lt;true&gt;, actual: &lt;false&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Reserved disc space must be greater than before ongoing record - expected: &lt;true&gt;, actual: &lt;false&gt;
+Caused by: junit.framework.AssertionFailedError: Reserved disc space must be greater than before ongoing record - expected: &lt;true&gt;, actual: &lt;false&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.assertEquals(Assert.java:111)
+	at junit.framework.Assert.assertTrue(Assert.java:181)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestPVR.$_testDiscInfoAfterStartOngoingRecord(AbstractGwtTestPVR.java:565)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestPVR_DTT_unitTestImpl$20.run(__GwtTestPVR_DTT_unitTestImpl.java:251)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+    <system-out>[DEBUG] stb.device&gt; DeviceImplNewBox &gt;&gt; getPvrVolumeInfo
+[DEBUG] stb.pvr&gt; new PVRImpl2SoftAtHome.PVRDiscInfoImpl()
+[DEBUG] stb.pvr&gt; new PVRImplNewBox.PVRDiscInfoImpl()
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 29Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76005Mo
+[DEBUG] test&gt; disc info: DiscInfo[name: SATA volume2; mountpath: /Recordtotal: 76034MB; free (total): 76005MB; info: {&quot;device_id&quot;:1,&quot;volume_id&quot;:11,&quot;name&quot;:&quot;SATA volume2&quot;,&quot;fs&quot;:&quot;EXT3&quot;,&quot;alias&quot;:&quot;SATA volume2&quot;,&quot;size&quot;:230757460,&quot;used_space&quot;:245240,&quot;free_space&quot;:218790396,&quot;mount_state&quot;:true,&quot;mount_path&quot;:&quot;/Record&quot;}]
+[DEBUG] test&gt; Before ongoing record - free: 76005 - used: 29
+[DEBUG] test&gt; After ongoing record
+[DEBUG] test&gt; &gt;&gt; getName(): SATA volume2
+[DEBUG] test&gt; &gt;&gt; getMountPath(): /Record
+[DEBUG] test&gt; &gt;&gt; getReserved(): 0
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] test&gt; &gt;&gt; getTotal(): 76034
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 29Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76005Mo
+[DEBUG] test&gt; &gt;&gt; getFree(): 76005
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 29Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76005Mo
+[DEBUG] test&gt; &gt;&gt; getUsed(): 29
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 29Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76005Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; PVRImplNewBox.PVRDiscInfoImpl &gt; getFree()
+[DEBUG] stb.pvr&gt; calculatePVRUsedSpace() = 29Mo
+[DEBUG] stb.pvr&gt; getTotal() = 76034Mo
+[DEBUG] stb.pvr&gt; getFree() = 76005Mo
+</system-out>
+  </testcase>
+  <testcase time="2.017" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testRecordNowMetadata">
+    <failure message="Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Wrong parental rating - expected: &lt;10&gt;, actual: &lt;0&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Remote test failed at 10.185.110.58 / Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/525.1+ (KHTML, like Gecko, Safari/525.1+); SAGEM/IHD92/05.04.06/D8:6C:E9:43:4A:11
+Wrong parental rating - expected: &lt;10&gt;, actual: &lt;0&gt;
+Caused by: junit.framework.AssertionFailedError: Wrong parental rating - expected: &lt;10&gt;, actual: &lt;0&gt;
+	at java.lang.Throwable.Throwable(StackTraceCreator.java:60)
+	at java.lang.Error.Error(Error.java:30)
+	at junit.framework.AssertionFailedError.AssertionFailedError(AssertionError.java:51)
+	at junit.framework.Assert.fail(Assert.java:193)
+	at junit.framework.Assert.failNotEquals(Assert.java:198)
+	at junit.framework.Assert.assertEquals(Assert.java:94)
+	at com.francetelecom.orangetv.gwt.stb.test.AbstractGwtTestPVR.$_testRecordNowMetadata(AbstractGwtTestPVR.java:597)
+	at com.francetelecom.orangetv.gwt.stb.test.__GwtTestPVR_DTT_unitTestImpl$21.run(__GwtTestPVR_DTT_unitTestImpl.java:263)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.$fireAndCatch(Timer.java:163)
+	at com.francetelecom.orangetv.gwt.lang.client.Timer.fire(Timer.java:155)
+	at Unknown.anonymous(Timer.java:69)
+</failure>
+    <system-out>[DEBUG] stb.pvr&gt; search(2, null,null,0,0)
+[DEBUG] stb.pvr&gt;  ... found 2 items in 3ms
+[DEBUG] stb.pvr&gt;  ... loaded and sorted 2 recording objects in 2ms
+[DEBUG] stb.pvr&gt; Metadata [4] calling getValue(status)...
+[DEBUG] stb.pvr&gt; Metadata [4] getValue(status) returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;events&quot;:[{&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;DONE&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}]}}
+[DEBUG] stb.pvr&gt; Metadata [4] calling getValue(duration)...
+[DEBUG] stb.pvr&gt; Metadata [4] getValue(duration) returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;events&quot;:[{&quot;event_id&quot;:-1,&quot;int_value&quot;:61,&quot;bool_value&quot;:false,&quot;string_value&quot;:&quot; &quot;},{&quot;event_id&quot;:24,&quot;int_value&quot;:4500,&quot;bool_value&quot;:false,&quot;string_value&quot;:&quot; &quot;}]}}
+[DEBUG] stb.pvr&gt; Metadata [6] calling getValue(status)...
+[DEBUG] stb.pvr&gt; Metadata [6] getValue(status) returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;events&quot;:[{&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;ONGOING&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}]}}
+[DEBUG] stb.pvr&gt; Metadata [6] calling getEntry()...
+[TRACE] stb.pvr&gt; Metadata [6] getEntry() returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;media_id&quot;:6,&quot;event_id_list&quot;:[{&quot;event_id&quot;:-1,&quot;property_list&quot;:[{&quot;name&quot;:&quot;media_id&quot;,&quot;int_value&quot;:6},{&quot;name&quot;:&quot;uid&quot;,&quot;string_value&quot;:&quot;1411133597471910E20342BL1ZRJTP&quot;},{&quot;name&quot;:&quot;size&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;service_name&quot;,&quot;string_value&quot;:&quot;ARTE HD&quot;},{&quot;name&quot;:&quot;USI&quot;,&quot;int_value&quot;:100067},{&quot;name&quot;:&quot;src_type&quot;,&quot;string_value&quot;:&quot;DTT&quot;},{&quot;name&quot;:&quot;start_date_time&quot;,&quot;int_value&quot;:1411133598},{&quot;name&quot;:&quot;end_date_time&quot;,&quot;int_value&quot;:1411137198},{&quot;name&quot;:&quot;duration&quot;,&quot;int_value&quot;:3600},{&quot;name&quot;:&quot;parental_rating&quot;,&quot;int_value&quot;:3},{&quot;name&quot;:&quot;parental_content&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;CA_status&quot;,&quot;bool_value&quot;:1},{&quot;name&quot;:&quot;status&quot;,&quot;string_value&quot;:&quot;ONGOING&quot;},{&quot;name&quot;:&quot;nb_evt&quot;,&quot;int_value&quot;:2},{&quot;name&quot;:&quot;content_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;user_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;recurrent_record&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;serie_record_name&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;string_value&quot;:&quot;Record Now Test [1411133496604]&quot;},{&quot;name&quot;:&quot;short_sum&quot;,&quot;string_value&quot;:&quot;Record Now [1411133496604] summary&quot;},{&quot;name&quot;:&quot;long_sum&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;extended_evt_info&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_format&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_resolution&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_coding&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_lang&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_type&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_mode&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;audio_lang&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;audio_mode&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;audio_coding&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;thumbnail&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;timestamp&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;timer_handle&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;storage_id&quot;,&quot;int_value&quot;:11},{&quot;name&quot;:&quot;dvb_triplet&quot;,&quot;int_value&quot;:263175},{&quot;name&quot;:&quot;record_path&quot;,&quot;string_value&quot;:&quot;/Record/records/1411133597307988&quot;},{&quot;name&quot;:&quot;media_type&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;status_error_code&quot;,&quot;int_value&quot;:0}]},{&quot;event_id&quot;:39,&quot;property_list&quot;:[{&quot;name&quot;:&quot;media_id&quot;,&quot;int_value&quot;:6},{&quot;name&quot;:&quot;uid&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;size&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;service_name&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;USI&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;src_type&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;start_date_time&quot;,&quot;int_value&quot;:1411126440},{&quot;name&quot;:&quot;end_date_time&quot;,&quot;int_value&quot;:1411135987},{&quot;name&quot;:&quot;duration&quot;,&quot;int_value&quot;:9547},{&quot;name&quot;:&quot;parental_rating&quot;,&quot;int_value&quot;:3},{&quot;name&quot;:&quot;parental_content&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;CA_status&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;status&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;nb_evt&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;content_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;user_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;recurrent_record&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;serie_record_name&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;string_value&quot;:&quot;IL ÉTAIT UNE FOIS DANS L&apos;OUEST (VM) (HD)&quot;},{&quot;name&quot;:&quot;short_sum&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;long_sum&quot;,&quot;string_value&quot;:&quot;Film de Sergio Leone (Italie, 1968, 2h40mn) ?Au cours de la conquête de l&apos;Ouest, la construction du chemin de fer draine toutes sortes d&apos;aventuriers en mal de rêve américain et de criminels... Le chef-d&apos;oeuvre absolu du western italien, signé Sergio Leone, en version restaurée. Avec les regards bleus de Charles Bronson et d&apos;Henry Fonda, le chignon rebelle de Claudia Cardinale et l&apos;air d&apos;harmonica d&apos;Ennio Morricone.?AUDIO 1 : FRANÇAIS / AUDIO 2 : ALLEMAND / AUDIO 3 : VERSION ORIGINALE - VM (sous-titres optionnels)?Sous-titres pour sourds et malentendants disponibles pour ce programme&quot;},{&quot;name&quot;:&quot;extended_evt_info&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_format&quot;,&quot;string_value&quot;:&quot;16/9&quot;},{&quot;name&quot;:&quot;video_resolution&quot;,&quot;string_value&quot;:&quot;HD&quot;},{&quot;name&quot;:&quot;video_coding&quot;,&quot;string_value&quot;:&quot;MPEG4_AVC_HP&quot;},{&quot;name&quot;:&quot;subtitles_lang&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_type&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_mode&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;audio_lang&quot;,&quot;string_value&quot;:&quot;fre&quot;},{&quot;name&quot;:&quot;audio_mode&quot;,&quot;int_value&quot;:3},{&quot;name&quot;:&quot;audio_coding&quot;,&quot;string_value&quot;:&quot;MP2&quot;},{&quot;name&quot;:&quot;thumbnail&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;timestamp&quot;,&quot;int_value&quot;:4362},{&quot;name&quot;:&quot;timer_handle&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;storage_id&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;dvb_triplet&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;record_path&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;media_type&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;status_error_code&quot;,&quot;int_value&quot;:0}]},{&quot;event_id&quot;:39,&quot;property_list&quot;:[{&quot;name&quot;:&quot;media_id&quot;,&quot;int_value&quot;:6},{&quot;name&quot;:&quot;uid&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;size&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;service_name&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;USI&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;src_type&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;start_date_time&quot;,&quot;int_value&quot;:1411126440},{&quot;name&quot;:&quot;end_date_time&quot;,&quot;int_value&quot;:1411135987},{&quot;name&quot;:&quot;duration&quot;,&quot;int_value&quot;:9547},{&quot;name&quot;:&quot;parental_rating&quot;,&quot;int_value&quot;:3},{&quot;name&quot;:&quot;parental_content&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;CA_status&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;status&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;nb_evt&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;content_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;user_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;recurrent_record&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;serie_record_name&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;string_value&quot;:&quot;IL ÉTAIT UNE FOIS DANS L&apos;OUEST (VM) (HD)&quot;},{&quot;name&quot;:&quot;short_sum&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;long_sum&quot;,&quot;string_value&quot;:&quot;Film de Sergio Leone (Italie, 1968, 2h40mn) ?Au cours de la conquête de l&apos;Ouest, la construction du chemin de fer draine toutes sortes d&apos;aventuriers en mal de rêve américain et de criminels... Le chef-d&apos;oeuvre absolu du western italien, signé Sergio Leone, en version restaurée. Avec les regards bleus de Charles Bronson et d&apos;Henry Fonda, le chignon rebelle de Claudia Cardinale et l&apos;air d&apos;harmonica d&apos;Ennio Morricone.?AUDIO 1 : FRANÇAIS / AUDIO 2 : ALLEMAND / AUDIO 3 : VERSION ORIGINALE - VM (sous-titres optionnels)?Sous-titres pour sourds et malentendants disponibles pour ce programme&quot;},{&quot;name&quot;:&quot;extended_evt_info&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_format&quot;,&quot;string_value&quot;:&quot;16/9&quot;},{&quot;name&quot;:&quot;video_resolution&quot;,&quot;string_value&quot;:&quot;HD&quot;},{&quot;name&quot;:&quot;video_coding&quot;,&quot;string_value&quot;:&quot;MPEG4_AVC_HP&quot;},{&quot;name&quot;:&quot;subtitles_lang&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_type&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_mode&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;audio_lang&quot;,&quot;string_value&quot;:&quot;ger&quot;},{&quot;name&quot;:&quot;audio_mode&quot;,&quot;int_value&quot;:3},{&quot;name&quot;:&quot;audio_coding&quot;,&quot;string_value&quot;:&quot;MP2&quot;},{&quot;name&quot;:&quot;thumbnail&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;timestamp&quot;,&quot;int_value&quot;:4362},{&quot;name&quot;:&quot;timer_handle&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;storage_id&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;dvb_triplet&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;record_path&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;media_type&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;status_error_code&quot;,&quot;int_value&quot;:0}]}]}}
+[TRACE] stb.pvr&gt; Metadata [6] getValue(status) from cache: {&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;ONGOING&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}
+[DEBUG] stb.pvr&gt; Metadata [6] calling getValue(status)...
+[DEBUG] stb.pvr&gt; Metadata [6] getValue(status) returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;events&quot;:[{&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;ONGOING&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}]}}
+[ERROR] stb.pvr&gt; error while retrieving recId from mediaId (6): -2
+[DEBUG] stb.pvr&gt; Metadata [6] calling getEntry()...
+[TRACE] stb.pvr&gt; Metadata [6] getEntry() returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;media_id&quot;:6,&quot;event_id_list&quot;:[{&quot;event_id&quot;:-1,&quot;property_list&quot;:[{&quot;name&quot;:&quot;media_id&quot;,&quot;int_value&quot;:6},{&quot;name&quot;:&quot;uid&quot;,&quot;string_value&quot;:&quot;1411133597471910E20342BL1ZRJTP&quot;},{&quot;name&quot;:&quot;size&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;service_name&quot;,&quot;string_value&quot;:&quot;ARTE HD&quot;},{&quot;name&quot;:&quot;USI&quot;,&quot;int_value&quot;:100067},{&quot;name&quot;:&quot;src_type&quot;,&quot;string_value&quot;:&quot;DTT&quot;},{&quot;name&quot;:&quot;start_date_time&quot;,&quot;int_value&quot;:1411133598},{&quot;name&quot;:&quot;end_date_time&quot;,&quot;int_value&quot;:1411137198},{&quot;name&quot;:&quot;duration&quot;,&quot;int_value&quot;:3600},{&quot;name&quot;:&quot;parental_rating&quot;,&quot;int_value&quot;:3},{&quot;name&quot;:&quot;parental_content&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;CA_status&quot;,&quot;bool_value&quot;:1},{&quot;name&quot;:&quot;status&quot;,&quot;string_value&quot;:&quot;ONGOING&quot;},{&quot;name&quot;:&quot;nb_evt&quot;,&quot;int_value&quot;:2},{&quot;name&quot;:&quot;content_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;user_nibble&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;recurrent_record&quot;,&quot;bool_value&quot;:0},{&quot;name&quot;:&quot;serie_record_name&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;title&quot;,&quot;string_value&quot;:&quot;Record Now Test [1411133496604]&quot;},{&quot;name&quot;:&quot;short_sum&quot;,&quot;string_value&quot;:&quot;Record Now [1411133496604] summary&quot;},{&quot;name&quot;:&quot;long_sum&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;extended_evt_info&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_format&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_resolution&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;video_coding&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_lang&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_type&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;subtitles_mode&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;audio_lang&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;audio_mode&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;audio_coding&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;thumbnail&quot;,&quot;string_value&quot;:&quot;&quot;},{&quot;name&quot;:&quot;timestamp&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;timer_handle&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;storage_id&quot;,&quot;int_value&quot;:11},{&quot;name&quot;:&quot;dvb_triplet&quot;,&quot;int_value&quot;:263175},{&quot;name&quot;:&quot;record_path&quot;,&quot;string_value&quot;:&quot;/Record/records/1411133597307988&quot;},{&quot;name&quot;:&quot;media_type&quot;,&quot;int_value&quot;:0},{&quot;name&quot;:&quot;status_error_code&quot;,&quot;int_value&quot;:0}]}]}}
+[TRACE] stb.pvr&gt; Schedule.getDuration(): end (1411137198) - start (1411133598)=3600; duration: 3600
+[TRACE] stb.pvr&gt; Metadata [6] getValue(start_date_time) from cache: {&quot;name&quot;:&quot;start_date_time&quot;,&quot;int_value&quot;:1411133598,&quot;event_id&quot;:-1}
+[TRACE] stb.pvr&gt; Metadata [6] getValue(status) from cache: {&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;ONGOING&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}
+[DEBUG] stb.pvr&gt; Metadata [6] calling getValue(status)...
+[DEBUG] stb.pvr&gt; Metadata [6] getValue(status) returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;events&quot;:[{&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;ONGOING&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}]}}
+[TRACE] stb.pvr&gt; Metadata [6] getValue(status) from cache: {&quot;event_id&quot;:-1,&quot;string_value&quot;:&quot;ONGOING&quot;,&quot;int_value&quot;:0,&quot;bool_value&quot;:false}
+[DEBUG] stb.pvr&gt; Metadata [6] calling getValue(status_error_code)...
+[DEBUG] stb.pvr&gt; Metadata [6] getValue(status_error_code) returned: {&quot;status&quot;:0,&quot;data&quot;:{&quot;events&quot;:[{&quot;event_id&quot;:-1,&quot;int_value&quot;:0,&quot;bool_value&quot;:false,&quot;string_value&quot;:&quot; &quot;}]}}
+</system-out>
+  </testcase>
+  <testcase time="1.626" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testAdjustEndOngoingRecord"/>
+  <testcase time="1.756" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testNewDurationOngoingRecord"/>
+  <testcase time="1.104" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testChangeTitleOngoingRecord"/>
+  <testcase time="1.205" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testNewTitleOngoingRecord"/>
+  <testcase time="30.432" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testStopAndRemoveOngoingRecord"/>
+  <testcase time="4.169" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testDiscInfoAfterStopOngoingRecord"/>
+  <testcase time="1.128" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testStartRecordPlayback"/>
+  <testcase time="6.284" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testStopRecordPlayback"/>
+  <testcase time="0.583" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testSearchSchedule"/>
+  <testcase time="0.548" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testSearchRecord"/>
+  <testcase time="1.477" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testRemoveRecords"/>
+  <testcase time="0.689" classname="com.francetelecom.orangetv.gwt.stb.test.GwtTestPVR_DTT" name="testRemoveSchedules"/>
+</testsuite>

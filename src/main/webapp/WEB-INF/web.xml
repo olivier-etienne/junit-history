@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+         
+    
+    <!-- timeout value in “minute” -->     
+         <session-config>
+		<session-timeout>2</session-timeout>
+	</session-config>
+
+
+<!--  HttpSessionListener -->
+<listener>
+  <listener-class>com.francetelecom.orangetv.junithistory.server.manager.SessionManager</listener-class>
+</listener>
+
+<!--  ServletContextListener -->
+<listener>
+  <listener-class>com.francetelecom.orangetv.junithistory.server.manager.ContextManager</listener-class>
+</listener>
+
+ 
+ <!-- ========================== -->
+  <!-- Service Servlet -->
+  <!-- ========================== -->
+  <servlet>
+    <servlet-name>reportServlet</servlet-name>
+    <servlet-class>com.francetelecom.orangetv.junithistory.server.GwtJUnitHistoryServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>reportServlet</servlet-name>
+    <url-pattern>/gwtjunithistory/report</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>uploadServlet</servlet-name>
+    <servlet-class>com.francetelecom.orangetv.junithistory.server.service.FileUploadServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>uploadServlet</servlet-name>
+    <url-pattern>/fileupload</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  <servlet>
+    <servlet-name>showHtmlServlet</servlet-name>
+    <servlet-class>com.francetelecom.orangetv.junithistory.server.service.ShowHtmlServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>showHtmlServlet</servlet-name>
+    <url-pattern>/showhtml</url-pattern>
+  </servlet-mapping>
+ 
+ <!-- ===================================== -->
+ <!-- MYSQL Qualif                          -->
+ <!-- ===================================== -->
+  
+  <context-param>
+   <param-name>jdbcDriver</param-name>
+   <param-value>com.mysql.jdbc.Driver</param-value>
+</context-param>
+
+  <context-param>
+   <param-name>bddUrl</param-name>
+   <param-value>jdbc:mysql://xx.xx.xx.xx/xxxx</param-value>
+</context-param>
+
+  <context-param>
+   <param-name>bddUser</param-name>
+   <param-value>xxxx</param-value>
+</context-param>  
+
+  <context-param>
+   <param-name>bddPwd</param-name>
+   <param-value>xxxx</param-value>
+</context-param>
+
+<!-- ===================================== -->
+ <!-- APPLICATION                          -->
+ <!-- ===================================== -->
+ 
+  <context-param>
+   <param-name>modeTest</param-name>
+   <param-value>false</param-value>
+</context-param> 
+
+<context-param>
+   <param-name>refreshIntervalMs</param-name>
+   <param-value>0</param-value>
+</context-param> 
+   
+   
+   <!-- chemin de sauvegarde des fichiers xml uploades -->
+<context-param>
+   <param-name>historyBackupPath</param-name>
+   <param-value>C:/Users/ndmz2720/Documents/temp/gwtjunithistory/temp</param-value>
+</context-param> 
+<!-- ===================================== -->
+<!-- Credential pour UserProfil admin -->
+<!-- ===================================== -->	
+ <context-param>
+   <param-name>login_admin</param-name>
+   <param-value>xxxx</param-value>
+</context-param> 
+<context-param>
+   <param-name>pwd_admin</param-name>
+   <param-value>xxxx</param-value>
+</context-param> 
+
+<!-- ===================================== -->
+<!-- Credential pour UserProfil manager -->
+<!-- ===================================== -->
+ <context-param>
+   <param-name>login_manager</param-name>
+   <param-value>xxxx</param-value>
+</context-param> 
+<context-param>
+   <param-name>pwd_manager</param-name>
+   <param-value>xxxx</param-value>
+</context-param> 
+
+  
+  
+  <!-- ========================== -->
+  <!-- Default page to serve -->
+  <!-- ========================== -->
+  <welcome-file-list>
+    <welcome-file>GwtJUnitHistory.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

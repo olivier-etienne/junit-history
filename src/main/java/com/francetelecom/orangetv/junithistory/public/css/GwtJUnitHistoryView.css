@@ -1,0 +1,259 @@
+
+/* DialogBox */
+.gwt-DialogBox .dialogMiddleCenter {
+    background: none repeat scroll 0 0 aquamarine;
+    padding: 3px;
+}
+
+/* common */
+
+.textAlignCenter {
+	text-align: center;
+}
+.textAlignLeft {
+	text-align: left;
+}
+.log {
+	padding: 2px;
+background-color: beige;
+}
+
+.error {
+	color: red;
+}
+
+.warn {
+	color: chocolate;
+}
+
+.success {
+	color: green;
+}
+
+.cursorWait{
+	cursor: wait;
+}
+.marginLeft10 {
+	margin-left: 10px;
+}
+
+/* Common Status */
+
+.badge {
+    background-color: #999999;
+    border-radius: 10px;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    min-width: 10px;
+    padding: 4px 5px;
+   
+	height: 15px;
+	line-height: 1;
+}
+
+.labelStatus {
+	text-align: center;
+	font-family: verdana;
+	 width: 80px;
+}
+
+/* Panel view */
+
+
+#profileUserText {
+	 background-color: #FFFF00;
+    border-radius: 15px;
+    color: #0000FF;
+    padding: 5px;
+}
+
+.panelView {
+   background-color: lightcyan;
+   	border-color: blue;
+   border-style: solid;
+   border-width: thin;
+   overflow: scroll;
+   display: -webkit-box;
+}
+
+.panelViewButton {
+	background-color: burlywood;
+	padding: 10px;
+}
+
+.titleLabelView {
+	font-size: 2em;
+	font-weight: bold;
+	color: green;
+}
+.titlePanelView {
+	background-color: lightyellow;
+	margin-right: 20px;
+	padding: 5px;
+	border-radius: 5px;	
+	width: 95%;
+	height: 30px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.buttonViewAction.selected  {
+	background-color: blue;
+	color: beige;
+}
+.buttonViewAction:disabled, .buttonViewUpload:disabled, .buttonMenu:disabled{
+	background-color: grey;
+}
+.buttonViewAction:disabled:hover, .buttonViewUpload:disabled:hover, .buttonMenu:disabled:hover{
+	background-color: grey;
+	cursor: not-allowed;
+}
+.buttonViewAction:hover, .buttonViewUpload:hover, .buttonMenu:hover{
+	background-color: lightcoral;
+	cursor: pointer;
+}
+.buttonViewAction {
+	width: 140px;
+	height: 35px;
+	background-color: beige;
+	color: blue;
+	margin: 10px;
+	
+}
+
+.buttonViewUpload {
+	width: 140px;
+	background-color: burlywood;
+	color: blue;
+	margin: 10px;
+	text-align: center;
+padding: 5px;
+border-radius: 10px;
+}
+
+/* SingleReport View*/
+.singleReportComment {
+	width: 300px;
+	height: 150px;
+}
+
+.uploadDone {
+	 background-color: lightgreen !important;
+}
+.uploadError {
+	background-color: #F56954 !important;
+}
+.uploadCanceled {
+	  background-color: darkgray;
+}
+.uploadInProgress {
+	 background-color: #FF851B !important;
+}
+
+/* Panel menu */
+
+.buttonMenu.selected {
+	background-color: green;
+	color: beige;
+}
+.buttonMenu:hover{
+	background-color: lightcoral;
+}
+.buttonMenu {
+	width: 120px;
+	height: 35px;
+	background-color: beige;
+	color: green;
+	margin: 10px;
+}
+
+.panelMenu {
+	float: left;
+   height: 500px;
+   width: 13%;
+   margin-right: 10px;
+	}
+
+/* widgets */
+.boxError {
+		background-color: orange;
+	color: crimson;
+}
+.panelInput {
+	background-color: beige;
+	height: 40px;
+}
+
+/* Progress Bar */
+.gwt-ProgressBar-shell {
+    border: 2px solid #848280;
+    background-color: #454545;
+    height: 16px;
+    width: 50%;
+    margin-left: 10px;
+}
+
+.gwt-ProgressBar-shell .gwt-ProgressBar-bar {
+    background-color: #BB4B44;
+}
+
+.gwt-ProgressBar-shell .gwt-ProgressBar-text {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+.progressLabel {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+/* Grid suite */
+.advanced-Grid{
+	width: 100%;
+}
+.gridSuite {
+	color: darkblue;
+}
+.gridSuiteHeader {
+	background-color: aquamarine;
+	color: blue;	
+	padding: 5px;
+}
+
+.gridSuiteLabel {
+	
+}
+
+.gridRowPair {
+	background-color: bisque;
+}
+.gridRowImpair {
+	background-color: lavenderblush;
+}
+
+.imgAction {
+height: 24px;
+width: 100%;
+border-style: none;
+background-position: 0;
+}
+.imgEnabled{
+	background: url("../images/enabled.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.imgLink {
+	background: url("../images/link.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.imgEmpty {
+background: url("../images/Empty16x16.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.imgDelete {
+background: url("../images/delete.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.imgShow {
+	background: url("../images/show.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.imgEdit{
+	background: url("../images/edit.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
