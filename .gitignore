@@ -1,5 +1,6 @@
 *.launch
 *.class
+*.docx
 
 # Package Files #
 *.jar

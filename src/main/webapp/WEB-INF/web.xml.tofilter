@@ -101,7 +101,7 @@
    <!-- chemin de sauvegarde des fichiers xml uploades -->
 <context-param>
    <param-name>historyBackupPath</param-name>
-   <param-value>C:/Users/ndmz2720/Documents/temp/gwtjunithistory/${backup_name}</param-value>
+   <param-value>/usr/local/gwtjunithistory/${backup_name}</param-value>
 </context-param> 
 
 <!-- ===================================== --> 

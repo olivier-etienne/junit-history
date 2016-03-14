@@ -1,2 +1,31 @@
 Orange NewTV Blagnac
 JUnitHistory project
+
+
+Documentation complète
+=======================
+
+Manuel d'utilisateur: /doc/JUnitHistoryUser-1.0.pdf
+
+Manuel d'administration: /doc/JUnitHistoryAdmin-1.0.pdf
+
+
+Presentation
+==============
+
+Cette application web fonctionne avec une base de données associée.
+Elle a été développée au sein de l'équipe Orange NewTV afin de visualiser et archiver les tests Gwt/Iptvkit passés sur les différentes STB et firmware.
+
+Elle permet de visualiser sous la forme d'une page html un rapport xml issu des test GWT JUnit.
+
+Il est possible également d'ajouter une suite de tests complète à l'historique existant et de visualiser tous les tests passés groupés par catégories.
+
+Un onglet d'administration est disponible pour le profil admin.
+
+Trois profiles utilisateurs sont proposés:
+
+- anybody: accès à tous sans authentification (consultation)
+
+- manager: authentification nécessaire. Permet d'ajouter ou de supprimer des suites de tests dans l'historique
+
+- admin: authentification nécessaire. Tous les droits.
