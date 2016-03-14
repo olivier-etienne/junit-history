@@ -29,3 +29,4 @@ Trois profiles utilisateurs sont proposés:
 - manager: authentification nécessaire. Permet d'ajouter ou de supprimer des suites de tests dans l'historique
 
 - admin: authentification nécessaire. Tous les droits.
+
