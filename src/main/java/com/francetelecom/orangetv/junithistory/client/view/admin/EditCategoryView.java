@@ -17,6 +17,8 @@ public class EditCategoryView extends AbstractEditView implements IEditCategoryV
 
 	private final static Logger log = Logger.getLogger("EditCategoryView");
 
+	private final static String TITLE = "category";
+
 	private final LabelAndBoxWidget tbName = new LabelAndBoxWidget("name:", 80, 300);
 	private final LabelAndBoxWidget tbListClasses = new LabelAndBoxWidget("classe names:", 80, 300);
 
@@ -24,8 +26,8 @@ public class EditCategoryView extends AbstractEditView implements IEditCategoryV
 
 	// ---------------------------- constructor
 	public EditCategoryView() {
-		super("category");
-		super.init("Edit category");
+		super(TITLE);
+		super.init(TITLE);
 	}
 
 	// ---------------------------- implementing IEditItemView
@@ -44,6 +46,8 @@ public class EditCategoryView extends AbstractEditView implements IEditCategoryV
 
 	@Override
 	public void setDatas(VoCategoryForEdit voCategory) {
+
+		super.changeTitle(TITLE, voCategory.isIdUndefined());
 
 		this.category = voCategory;
 		this.tbName.setValue(voCategory.getName());

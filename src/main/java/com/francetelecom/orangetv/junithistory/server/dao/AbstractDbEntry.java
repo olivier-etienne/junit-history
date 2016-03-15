@@ -1,6 +1,7 @@
 package com.francetelecom.orangetv.junithistory.server.dao;
 
 import com.francetelecom.orangetv.junithistory.server.model.ILazy;
+import com.francetelecom.orangetv.junithistory.shared.vo.IVoId;
 
 public abstract class AbstractDbEntry implements IDbEntry {
 
@@ -25,6 +26,11 @@ public abstract class AbstractDbEntry implements IDbEntry {
 	// ------------------------- package methods
 	protected void setId(int id) {
 		this.id = id;
+	}
+
+	// ---------------------------------- public methods
+	public boolean isIdUndefined() {
+		return this.id == IVoId.ID_UNDEFINED;
 	}
 
 	// -------------------------------- overriding Object

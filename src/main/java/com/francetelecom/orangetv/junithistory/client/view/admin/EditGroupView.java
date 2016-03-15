@@ -15,6 +15,8 @@ public class EditGroupView extends AbstractEditView implements IEditGroupView {
 
 	private final static Logger log = Logger.getLogger("EditUserView");
 
+	private final static String TITLE = "STB group";
+
 	private final LabelAndBoxWidget tbName = new LabelAndBoxWidget("name:", 80, 300);
 	private final LabelAndBoxWidget tbStb = new LabelAndBoxWidget("STB:", 80, 300);
 	private final LabelAndBoxWidget tbPrefix = new LabelAndBoxWidget("PREFIX:", 80, 300);
@@ -24,7 +26,7 @@ public class EditGroupView extends AbstractEditView implements IEditGroupView {
 	// ---------------------------- constructor
 	public EditGroupView() {
 		super("stb");
-		super.init("Edit STB group");
+		super.init(TITLE);
 	}
 
 	// ---------------------------- implementing IEditItemView
@@ -45,6 +47,7 @@ public class EditGroupView extends AbstractEditView implements IEditGroupView {
 	@Override
 	public void setDatas(VoGroupForEdit voGroup) {
 
+		super.changeTitle(TITLE, voGroup.isIdUndefined());
 		this.group = voGroup;
 		this.tbName.setValue(voGroup.getName());
 		this.tbStb.setValue(voGroup.getStb());
@@ -52,6 +55,7 @@ public class EditGroupView extends AbstractEditView implements IEditGroupView {
 
 		VoGroupProtection groupProtection = voGroup.getGroupProtection();
 		this.tbPrefix.setEnabled(groupProtection == null ? true : groupProtection.canUpdatePrefix());
+
 	}
 
 	// --------------------------- overriding AbstractView

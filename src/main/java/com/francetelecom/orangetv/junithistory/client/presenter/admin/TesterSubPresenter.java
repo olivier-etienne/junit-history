@@ -16,12 +16,12 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author sylvie
  * 
  */
-public class UserSubPresenter extends AbstractGridSubPresenter<VoUserForGrid> {
+public class TesterSubPresenter extends AbstractGridSubPresenter<VoUserForGrid> {
 
-	private final static Logger log = Logger.getLogger("UserSubPresenter");
+	private final static Logger log = Logger.getLogger("TesterSubPresenter");
 
 	// ------------------------------------- constructor
-	public UserSubPresenter(ClientFactory clientFactory, IGwtJUnitHistoryServiceAsync service, EventBus eventBus,
+	public TesterSubPresenter(ClientFactory clientFactory, IGwtJUnitHistoryServiceAsync service, EventBus eventBus,
 			IUserSubView view) {
 		super(clientFactory, service, eventBus, view);
 
@@ -30,14 +30,14 @@ public class UserSubPresenter extends AbstractGridSubPresenter<VoUserForGrid> {
 	// ---------------------------------- implementing AbstractGridSubPresenter
 	@Override
 	protected TabViewEnum getType() {
-		return TabViewEnum.tabUser;
+		return TabViewEnum.tabTester;
 	}
 
 	//
 	@Override
 	protected void doDeleteItem(int userId, IDeleteCallback callback) {
 
-		this.rpcService.deleteTestUser(userId, new MyDeleteAsyncCallback(" when deleting user!", callback));
+		this.rpcService.deleteTestUser(userId, new MyDeleteAsyncCallback(" when deleting tester!", callback));
 
 	}
 
@@ -61,7 +61,7 @@ public class UserSubPresenter extends AbstractGridSubPresenter<VoUserForGrid> {
 	@Override
 	protected void loadDatas(boolean forceRefresh) {
 
-		this.rpcService.getListUsers(this.buildGetListCallback(" when getting list of users."));
+		this.rpcService.getListUsers(this.buildGetListCallback(" when getting list of testers."));
 	}
 
 	// ------------------------- private methods

@@ -156,9 +156,8 @@ public abstract class AbstractGridSubView<T extends AbstractVoIdName> extends Ab
 			this.itemName = itemName;
 			this.setStyleName(GRID_SUITE);
 			this.initHeaders();
-			// enable verticall scrolling
-			this.enableVerticalScrolling(true);
 			this.setCellPadding(2);
+
 		}
 
 		@Override

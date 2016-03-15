@@ -3,47 +3,51 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditUserPresenter.IEditUserView;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditUserView;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserProtection;
 
-public class EditUserView extends AbstractEditView implements IEditUserView {
+public class EditTesterView extends AbstractEditView implements IEditUserView {
 
-	private final static Logger log = Logger.getLogger("EditUserView");
+	private final static Logger log = Logger.getLogger("EditTesterView");
+
+	private final static String TITLE = "tester";
 
 	private final LabelAndBoxWidget tbName = new LabelAndBoxWidget("name:", 80, 300);
 	private final LabelAndBoxWidget tbDescription = new LabelAndBoxWidget("description:", 80, 300);
 
-	private VoUserForEdit user;
+	private VoUserForEdit tester;
 
 	// ---------------------------- constructor
-	public EditUserView() {
-		super("user");
-		super.init("Edit user");
+	public EditTesterView() {
+		super(TITLE);
+		super.init(TITLE);
 	}
 
 	// ---------------------------- implementing IEditItemView
 	@Override
 	public TabViewEnum getType() {
-		return TabViewEnum.tabUser;
+		return TabViewEnum.tabTester;
 	}
 
 	// --------------------------- overriding IEditUserView
 	@Override
 	public VoUserForEdit getVoDatas() {
-		this.user.setName(this.tbName.getBoxUserInput());
-		this.user.setDescription(this.tbDescription.getBoxUserInput());
-		return this.user;
+		this.tester.setName(this.tbName.getBoxUserInput());
+		this.tester.setDescription(this.tbDescription.getBoxUserInput());
+		return this.tester;
 	}
 
 	@Override
-	public void setDatas(VoUserForEdit voUser) {
+	public void setDatas(VoUserForEdit voTester) {
 
-		VoUserProtection protection = voUser.getUserProtection();
-		this.user = voUser;
-		this.tbName.setValue(voUser.getName());
-		this.tbDescription.setValue(voUser.getDescription());
+		super.changeTitle(TITLE, voTester.isIdUndefined());
+
+		VoUserProtection protection = voTester.getUserProtection();
+		this.tester = voTester;
+		this.tbName.setValue(voTester.getName());
+		this.tbDescription.setValue(voTester.getDescription());
 
 		this.tbName.setEnabled(protection == null ? true : protection.canUpdateName());
 	}

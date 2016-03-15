@@ -21,7 +21,7 @@ public class PageAdminPresenter extends AbstractMainPresenter {
 	private final static Logger log = Logger.getLogger("PageAdminPresenter");
 
 	public enum TabViewEnum {
-		tabUser("user"), tabCategory("category"), tabGroup("STB group");
+		tabTester("tester"), tabCategory("category"), tabGroup("STB group");
 
 		private final String itemName;
 
@@ -86,7 +86,7 @@ public class PageAdminPresenter extends AbstractMainPresenter {
 				int item = event.getSelectedItem();
 				switch (item) {
 				case INDEX_TAB_USER:
-					displaySubView(TabViewEnum.tabUser);
+					displaySubView(TabViewEnum.tabTester);
 					break;
 				case INDEX_TAB_CAT:
 					displaySubView(TabViewEnum.tabCategory);

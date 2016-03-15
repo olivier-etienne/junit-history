@@ -3,15 +3,15 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.UserSubPresenter.IUserSubView;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter.IUserSubView;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForGrid;
 
 /*
  * Vue simple sans panel de connection
  */
-public class UserSubView extends AbstractGridSubView<VoUserForGrid> implements IUserSubView {
+public class TesterSubView extends AbstractGridSubView<VoUserForGrid> implements IUserSubView {
 
-	private final static Logger log = Logger.getLogger("UserSubView");
+	private final static Logger log = Logger.getLogger("TesterSubView");
 
 	private static final HeaderLabel[] HEADERS = new HeaderLabel[] { // ...
 
@@ -24,9 +24,9 @@ public class UserSubView extends AbstractGridSubView<VoUserForGrid> implements I
 	};
 
 	// ------------------------- constructor
-	public UserSubView() {
-		super("user");
-		super.init("Users");
+	public TesterSubView() {
+		super("tester");
+		super.init("Testers");
 	}
 
 	// ---------------------------- overriding AbstractView
@@ -40,7 +40,7 @@ public class UserSubView extends AbstractGridSubView<VoUserForGrid> implements I
 	@Override
 	protected MySimpleGrid createGrid() {
 
-		MySimpleGrid grid = new MySimpleGrid("user") {
+		MySimpleGrid grid = new MySimpleGrid("tester") {
 
 			@Override
 			protected void addOtherColumns(int row, VoUserForGrid item) {
@@ -60,7 +60,7 @@ public class UserSubView extends AbstractGridSubView<VoUserForGrid> implements I
 
 	@Override
 	public TabViewEnum getType() {
-		return TabViewEnum.tabUser;
+		return TabViewEnum.tabTester;
 	}
 
 	@Override

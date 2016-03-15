@@ -311,12 +311,12 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 		final VoGroupName group = this.mapId2Groups.get(datas.getGroupId());
 		final VoUser user = this.mapId2Users.get(datas.getUserId());
 
-		String[] description = new String[4];
+		String[] description = new String[5];
 		description[0] = "STB     : " + ((group == null) ? "undefined" : group.getName());
 		description[1] = "FIRMWARE: " + ((datas.getFirmware() == null) ? "undefined" : datas.getFirmware());
 		description[2] = "IPTVKIT : " + ((datas.getIptvkit() == null) ? "undefined" : datas.getIptvkit());
 		description[3] = "USER    : " + ((user == null) ? "undefined" : user.getName());
-		description[3] = "DATE    : " + ((datas.getDate() == null) ? "undefined" : DF.format(datas.getDate()));
+		description[4] = "DATE    : " + ((datas.getDate() == null) ? "undefined" : DF.format(datas.getDate()));
 		return description;
 	}
 

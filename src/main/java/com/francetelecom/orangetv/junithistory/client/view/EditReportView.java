@@ -26,29 +26,23 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 
 	private final static Logger log = Logger.getLogger("EditReportView");
 
-	private final LabelAndBoxWidget wboxName = new LabelAndBoxWidget("name",
-			50, 200);
+	private final LabelAndBoxWidget wboxName = new LabelAndBoxWidget("name", 50, 200);
 
-	private final LabelAndBoxWidget wboxFirmware = new LabelAndBoxWidget(
-			"firmware", 50, 200);
-	private final LabelAndBoxWidget wboxIptvkit = new LabelAndBoxWidget(
-			"iptvkit", 50, 200);
+	private final LabelAndBoxWidget wboxFirmware = new LabelAndBoxWidget("firmware", 50, 200);
+	private final LabelAndBoxWidget wboxIptvkit = new LabelAndBoxWidget("iptvkit", 50, 200);
 
-	private ListBox lbUsers = new ListBox();
-	private final LabelAndListWidget wlistUsers = new LabelAndListWidget(
-			"user", 50, 212, lbUsers, 1);
+	private ListBox lbTesters = new ListBox();
+	private final LabelAndListWidget wlistTesters = new LabelAndListWidget("tester", 50, 212, lbTesters, 1);
 
-	private final LabelAndDateWidget wboxDate = new LabelAndDateWidget("Date",
-			50, 200, DF, null);
+	private final LabelAndDateWidget wboxDate = new LabelAndDateWidget("Date", 50, 200, DF, null);
 
 	private final TextArea taComment = new TextArea();
 
-	private final ButtonViewAction btActionUpdateReport = new ButtonViewAction(
-			"Update report", ViewActionEnum.update.name(),
-			"Update the current report");
+	private final ButtonViewAction btActionUpdateReport = new ButtonViewAction("Update report",
+			ViewActionEnum.update.name(), "Update the current report");
 
-	private final ButtonViewAction btActionCancel = new ButtonViewAction(
-			"Cancel", ViewActionEnum.cancel.name(), "cancel and close");
+	private final ButtonViewAction btActionCancel = new ButtonViewAction("Cancel", ViewActionEnum.cancel.name(),
+			"cancel and close");
 
 	private VoTestSuiteForEdit currentTestSuite;
 
@@ -73,8 +67,8 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 		this.wboxIptvkit.setValue(null);
 		this.taComment.setValue(null);
 
-		this.lbUsers.clear();
-		this.wlistUsers.setValue(null);
+		this.lbTesters.clear();
+		this.wlistTesters.setValue(null);
 
 	}
 
@@ -98,7 +92,7 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 		this.main.add(this.wboxIptvkit);
 		this.main.add(this.wboxDate);
 
-		this.main.add(this.wlistUsers);
+		this.main.add(this.wlistTesters);
 		this.main.add(this.taComment);
 
 	}
@@ -119,8 +113,8 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 		this.wboxIptvkit.setValue(this.currentTestSuite.getIptvkit());
 		this.wboxDate.setValue(this.currentTestSuite.getDate());
 		this.taComment.setValue(this.currentTestSuite.getComment());
-		super.populateList(this.lbUsers, datas.getListUsers());
-		this.wlistUsers.setValue(this.currentTestSuite.getUserId() + "");
+		super.populateList(this.lbTesters, datas.getListUsers());
+		this.wlistTesters.setValue(this.currentTestSuite.getUserId() + "");
 	}
 
 	@Override
@@ -128,8 +122,8 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 
 		this.currentTestSuite.setComment(this.taComment.getValue());
 		this.currentTestSuite.setDate(this.wboxDate.getUserInput());
-		this.currentTestSuite.setUserId(ValueHelper.getIntValue(
-				this.wlistUsers.getListUserInput(), IVo.ID_UNDEFINED));
+		this.currentTestSuite
+				.setUserId(ValueHelper.getIntValue(this.wlistTesters.getListUserInput(), IVo.ID_UNDEFINED));
 		this.currentTestSuite.setIptvkit(this.wboxIptvkit.getBoxUserInput());
 		this.currentTestSuite.setFirmware(this.wboxFirmware.getBoxUserInput());
 
@@ -166,7 +160,7 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 	private void enableButtonAndField(boolean enabled) {
 		this.wboxDate.setEnabled(enabled);
 		this.wboxIptvkit.setEnabled(enabled);
-		this.wlistUsers.setEnabled(enabled);
+		this.wlistTesters.setEnabled(enabled);
 		this.taComment.setEnabled(enabled);
 
 		this.btActionUpdateReport.enableButtonIfActif(enabled);

@@ -18,15 +18,15 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author sylvie
  * 
  */
-public class EditUserPresenter extends AbstractEditItemPresenter implements IEditItemPresenter {
+public class EditTesterPresenter extends AbstractEditItemPresenter implements IEditItemPresenter {
 
-	private final static Logger log = Logger.getLogger("EditUserPresenter");
+	private final static Logger log = Logger.getLogger("EditTesterPresenter");
 
 	private final IEditUserView view;
 
 	// -------------------------------- constructor
-	public EditUserPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IEditUserView view) {
-		super(service, eventBus, "user");
+	public EditTesterPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IEditUserView view) {
+		super(service, eventBus, "tester");
 		this.view = view;
 		this.bind();
 	}
@@ -47,7 +47,7 @@ public class EditUserPresenter extends AbstractEditItemPresenter implements IEdi
 
 	@Override
 	protected void doUpdateItem(final IValidationCallback validationCallback) {
-		final String message = " when updating user!";
+		final String message = " when updating tester!";
 		this.rpcService.createOrUpdateTestUser(view.getVoDatas(), new MyAsyncCallback<VoDatasValidation>(message) {
 
 			@Override
@@ -65,7 +65,7 @@ public class EditUserPresenter extends AbstractEditItemPresenter implements IEdi
 	@Override
 	protected void doValidItem(final IValidationCallback validationCallback) {
 
-		final String message = " when validating user!";
+		final String message = " when validating tester!";
 		this.rpcService.validTestUser(view.getVoDatas(), new MyAsyncCallback<VoDatasValidation>(message) {
 
 			@Override
@@ -111,7 +111,7 @@ public class EditUserPresenter extends AbstractEditItemPresenter implements IEdi
 
 	private void doGetUserInfo(int userId) {
 
-		final String message = " when loading user!";
+		final String message = " when loading tester!";
 		this.rpcService.getUserForEdit(userId, new MyAsyncCallback<VoUserForEdit>(message) {
 
 			@Override

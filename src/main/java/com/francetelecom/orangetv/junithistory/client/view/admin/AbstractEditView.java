@@ -71,6 +71,13 @@ public abstract class AbstractEditView extends AbstractView implements IEditItem
 
 	}
 
+	// ------------------------------------- protected
+	protected void changeTitle(String title, boolean create) {
+
+		final String newTitle = ((create) ? "Create " : "Edit ") + title;
+		this.labelTitle.setText(newTitle);
+	}
+
 	// ------------------------------------ private methods
 	private void enableButtonAndField(boolean enabled) {
 		this.btUpdate.setEnabled(enabled);

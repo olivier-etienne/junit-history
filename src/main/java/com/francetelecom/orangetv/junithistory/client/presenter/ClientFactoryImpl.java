@@ -14,13 +14,13 @@ import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditCatego
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditCategoryPresenter.IEditCategoryView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditGroupPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditGroupPresenter.IEditGroupView;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditUserPresenter;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditUserPresenter.IEditUserView;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditUserView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.GroupSubPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.GroupSubPresenter.IGroupSubView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.IEditItemPresenter;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.UserSubPresenter;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.UserSubPresenter.IUserSubView;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter.IUserSubView;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryService;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.view.EditReportView;
@@ -31,11 +31,11 @@ import com.francetelecom.orangetv.junithistory.client.view.SingleReportView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.CategorySubView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.EditCategoryView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.EditGroupView;
-import com.francetelecom.orangetv.junithistory.client.view.admin.EditUserView;
+import com.francetelecom.orangetv.junithistory.client.view.admin.EditTesterView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.GroupSubView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.IAdminSubView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.IEditItemView;
-import com.francetelecom.orangetv.junithistory.client.view.admin.UserSubView;
+import com.francetelecom.orangetv.junithistory.client.view.admin.TesterSubView;
 import com.google.gwt.core.client.GWT;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
@@ -59,7 +59,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	private IPageAdminView pageAdminView;
 	private PageAdminPresenter pageAdminPresenter;
 
-	private UserSubPresenter userSubPresenter;
+	private TesterSubPresenter userSubPresenter;
 	private IUserSubView userSubView;
 
 	private CategorySubPresenter categorySubPresenter;
@@ -68,8 +68,8 @@ public class ClientFactoryImpl implements ClientFactory {
 	private GroupSubPresenter groupSubPresenter;
 	private IGroupSubView groupSubView;
 
-	private EditUserView editUserView;
-	private EditUserPresenter editUserPresenter;
+	private EditTesterView editUserView;
+	private EditTesterPresenter editUserPresenter;
 
 	private EditCategoryView editCategoryView;
 	private EditCategoryPresenter editCategoryPresenter;
@@ -117,7 +117,7 @@ public class ClientFactoryImpl implements ClientFactory {
 			return null;
 		}
 		switch (viewType) {
-		case tabUser:
+		case tabTester:
 			return this.getUserSubView();
 
 		case tabCategory:
@@ -137,7 +137,7 @@ public class ClientFactoryImpl implements ClientFactory {
 			return null;
 		}
 		switch (viewType) {
-		case tabUser:
+		case tabTester:
 			return this.getEditUserView();
 
 		case tabCategory:
@@ -206,7 +206,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		TabViewEnum viewType = view.getType();
 
 		switch (viewType) {
-		case tabUser:
+		case tabTester:
 			return this.buildUserSubPresenter((IUserSubView) view);
 
 		case tabCategory:
@@ -229,7 +229,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		TabViewEnum viewType = view.getType();
 
 		switch (viewType) {
-		case tabUser:
+		case tabTester:
 			return this.buildEditUserPresenter((IEditUserView) view);
 
 		case tabCategory:
@@ -252,7 +252,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		}
 
 		switch (viewType) {
-		case tabUser:
+		case tabTester:
 			return this.userSubPresenter;
 
 		case tabCategory:
@@ -275,7 +275,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		}
 
 		switch (viewType) {
-		case tabUser:
+		case tabTester:
 			return this.editUserPresenter;
 
 		case tabCategory:
@@ -322,7 +322,7 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	private IUserSubView getUserSubView() {
 		if (this.userSubView == null) {
-			this.userSubView = new UserSubView();
+			this.userSubView = new TesterSubView();
 		}
 		return this.userSubView;
 	}
@@ -343,7 +343,7 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	private IEditItemView getEditUserView() {
 		if (this.editUserView == null) {
-			this.editUserView = new EditUserView();
+			this.editUserView = new EditTesterView();
 		}
 		return this.editUserView;
 	}
@@ -375,7 +375,7 @@ public class ClientFactoryImpl implements ClientFactory {
 
 	private IPresenter buildUserSubPresenter(IUserSubView view) {
 
-		this.userSubPresenter = new UserSubPresenter(this, service, eventBus, view);
+		this.userSubPresenter = new TesterSubPresenter(this, service, eventBus, view);
 		return this.userSubPresenter;
 	}
 
@@ -400,8 +400,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		return this.pageAdminPresenter;
 	}
 
-	private EditUserPresenter buildEditUserPresenter(IEditUserView view) {
-		this.editUserPresenter = new EditUserPresenter(service, eventBus, view);
+	private EditTesterPresenter buildEditUserPresenter(IEditUserView view) {
+		this.editUserPresenter = new EditTesterPresenter(service, eventBus, view);
 		return this.editUserPresenter;
 	}
 

@@ -37,6 +37,11 @@ public abstract class AbstractVoIdName implements IVoId, Comparable<AbstractVoId
 		this.name = name;
 	}
 
+	// ---------------------------------- public methods
+	public boolean isIdUndefined() {
+		return this.id == IVoId.ID_UNDEFINED;
+	}
+
 	// ------------------------------- protected methods
 	protected void setName(String name) {
 		this.name = name;

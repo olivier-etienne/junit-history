@@ -23,7 +23,7 @@ public class PageAdminView extends AbstractMainView implements IPageAdminView {
 
 	private final TabPanel tabPanel = new TabPanel();
 
-	private final Panel userPanel = new SimplePanel();
+	private final Panel testerPanel = new SimplePanel();
 	private final Panel catPanel = new SimplePanel();
 	private final Panel groupPanel = new SimplePanel();
 
@@ -68,9 +68,9 @@ public class PageAdminView extends AbstractMainView implements IPageAdminView {
 	protected void buildBodyPanel() {
 
 		this.tabPanel.setWidth(MAX_WIDTH);
-		this.tabPanel.add(this.userPanel, "Users");
+		this.tabPanel.add(this.testerPanel, "Testers");
 		this.tabPanel.add(this.catPanel, "Categories");
-		this.tabPanel.add(this.groupPanel, "groups");
+		this.tabPanel.add(this.groupPanel, "STB groups");
 		this.main.add(this.tabPanel);
 		this.tabPanel.selectTab(0);
 	}
@@ -103,8 +103,8 @@ public class PageAdminView extends AbstractMainView implements IPageAdminView {
 		log.config("getContainer(): " + viewType);
 
 		switch (viewType) {
-		case tabUser:
-			return this.userPanel;
+		case tabTester:
+			return this.testerPanel;
 		case tabCategory:
 			return this.catPanel;
 		case tabGroup:
@@ -115,8 +115,7 @@ public class PageAdminView extends AbstractMainView implements IPageAdminView {
 	}
 
 	@Override
-	public void addSelectionHandler(SelectionHandler<Integer> handler,
-			int indexToSelect) {
+	public void addSelectionHandler(SelectionHandler<Integer> handler, int indexToSelect) {
 
 		this.tabPanel.addSelectionHandler(handler);
 		handler.onSelection(new SelectionEvent<Integer>(indexToSelect) {

@@ -28,6 +28,7 @@ public abstract class AbstractView extends Composite implements IView, CssConsta
 	protected final VerticalPanel main = new VerticalPanel();
 	private final FlowPanel panelButton = new FlowPanel();
 	protected final Label labelResult = new Label();
+	protected final Label labelTitle = new Label("");
 
 	protected final DateTimeFormat DF = AbstractMainPresenter.DF;
 
@@ -140,7 +141,7 @@ public abstract class AbstractView extends Composite implements IView, CssConsta
 		panelTop.setWidth(MAX_WIDTH);
 		panelTop.addStyleName(TITLE_PANEL_VIEW);
 
-		Label labelTitle = new Label(title);
+		this.labelTitle.setText(title);
 		labelTitle.addStyleName(TITLE_LABEL_VIEW);
 		panelTop.add(labelTitle);
 		panelTop.setCellHorizontalAlignment(labelTitle, HasHorizontalAlignment.ALIGN_CENTER);

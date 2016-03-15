@@ -35,7 +35,7 @@ public class SingleReportView extends AbstractMainView implements ISingleReportV
 	private final LabelAndBoxWidget wboxIptvkit = new LabelAndBoxWidget("iptvkit", 50, 200);
 
 	private ListBox lbUsers = new ListBox();
-	private final LabelAndListWidget wlistUsers = new LabelAndListWidget("user", 50, 212, lbUsers, 1);
+	private final LabelAndListWidget wlistTesters = new LabelAndListWidget("tester", 50, 212, lbUsers, 1);
 
 	private final LabelAndBoxWidget wboxDate = new LabelAndBoxWidget("date", 50, 100);
 	private final DatePicker datePicker = new DatePicker();
@@ -85,7 +85,7 @@ public class SingleReportView extends AbstractMainView implements ISingleReportV
 		this.taComment.setValue(null);
 
 		this.wlistGroups.setValue(null);
-		this.wlistUsers.setValue(null);
+		this.wlistTesters.setValue(null);
 	}
 
 	// ------------------------- constructor
@@ -111,7 +111,7 @@ public class SingleReportView extends AbstractMainView implements ISingleReportV
 		vPanelLeft.add(this.wlistGroups);
 		vPanelLeft.add(this.wboxFirmware);
 		vPanelLeft.add(this.wboxIptvkit);
-		vPanelLeft.add(this.wlistUsers);
+		vPanelLeft.add(this.wlistTesters);
 
 		VerticalPanel vPanelCenter = new VerticalPanel();
 		vPanelCenter.setWidth(MAX_WIDTH);
@@ -173,7 +173,7 @@ public class SingleReportView extends AbstractMainView implements ISingleReportV
 		datas.setGroupId(ValueHelper.getIntValue(this.wlistGroups.getListUserInput(), IVo.ID_UNDEFINED));
 		datas.setFirmware(this.wboxFirmware.getBoxUserInput());
 		datas.setIptvkit(this.wboxIptvkit.getBoxUserInput());
-		datas.setUserId(ValueHelper.getIntValue(this.wlistUsers.getListUserInput(), IVo.ID_UNDEFINED));
+		datas.setUserId(ValueHelper.getIntValue(this.wlistTesters.getListUserInput(), IVo.ID_UNDEFINED));
 		datas.setComment(this.taComment.getText());
 
 		return datas;
@@ -218,7 +218,7 @@ public class SingleReportView extends AbstractMainView implements ISingleReportV
 		this.wboxDate.setEnabled(enabled);
 		this.wboxFirmware.setEnabled(enabled);
 		this.wboxIptvkit.setEnabled(enabled);
-		this.wlistUsers.setEnabled(enabled);
+		this.wlistTesters.setEnabled(enabled);
 		this.taComment.setEnabled(enabled);
 		this.uploader.setButtonDisabled(!enabled);
 
