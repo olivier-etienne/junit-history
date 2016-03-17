@@ -106,7 +106,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 			return new ArrayList<>(0);
 		}
 
-		return super.listEntry(SQL_SELECT_TEST_JOIN_MESS, this.buildMapParams());
+		return super.listEntry(SQL_SELECT_TEST_JOIN_MESS, this.buildMapTClassesParams());
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 			return new ArrayList<>(0);
 		}
 
-		Map<String, Object> map = this.buildMapParams();
+		Map<String, Object> map = this.buildMapTClassesParams();
 		if (!lazyMessage) {
 			final List<DbTestMessage> listMessageForSuite = DaoTestMessage.get().listMessagesForSuite(suiteId);
 			final Map<Integer, DbTestMessage> mapId2Message = VoIdUtils.getMapId2Item(listMessageForSuite);
@@ -131,6 +131,27 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		}
 
 		return super.listEntry(MF_SELECT_TEST_JOIN_MESS_FOR_SUITE.format(new Integer[] { suiteId }), map);
+	}
+
+	/**
+	 * Return a list of tests for a groupId and whose name contains likeTestName
+	 * 
+	 * @param groupId
+	 * @param likeTestName
+	 * @return
+	 */
+	public List<DbTestInstance> listTestsForGroupAndTestName(int groupId, String likeTestName)
+			throws JUnitHistoryException {
+
+		if (this.countTestsForGroupAndTestName(groupId, likeTestName) == 0) {
+			return new ArrayList<>(0);
+		}
+		Map<String, Object> map = this.buildMapTClassesParams();
+		return super.listEntry(MF_SELECT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, likeTestName }), map);
+	}
+
+	public int countTestsForGroupAndTestName(int groupId, String likeTestName) {
+		return super.count(MF_COUNT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, likeTestName }));
 	}
 
 	/**
@@ -252,7 +273,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		return true;
 	}
 
-	private Map<String, Object> buildMapParams() throws JUnitHistoryException {
+	private Map<String, Object> buildMapTClassesParams() throws JUnitHistoryException {
 		// Aggregation with DbTestClass
 		Map<Integer, DbTestClass> mapId2TClass = DaoTestClass.getWithTransaction(this.getToken()).getMapId2TClass();
 		return ObjectUtils.buildMapWithOneItem(PARAM_TCLASS_LIST, mapId2TClass);

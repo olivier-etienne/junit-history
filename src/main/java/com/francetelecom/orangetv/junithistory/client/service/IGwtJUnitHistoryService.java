@@ -9,10 +9,13 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
@@ -27,6 +30,15 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("report")
 public interface IGwtJUnitHistoryService extends RemoteService {
+
+	/**
+	 * Get the list of tests for a group and a search input
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoResultDefectTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException;
 
 	/**
 	 * Suppression d'une tclass category
@@ -107,7 +119,8 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 * @return
 	 * @throws JUnitHistoryException
 	 */
-	public VoDatasValidation createOrUpdateTestCategory(VoCategoryForEdit categoryToUpdate) throws JUnitHistoryException;
+	public VoDatasValidation createOrUpdateTestCategory(VoCategoryForEdit categoryToUpdate)
+			throws JUnitHistoryException;
 
 	/**
 	 * Get user info for edition
@@ -229,6 +242,15 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 */
 
 	public void afterUploadEnd() throws JUnitHistoryException;
+
+	/**
+	 * Retourne la listes nécessaires à l'initialisation de la vue
+	 * DefectView
+	 * 
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoInitDefectDatas getVoInitDefectDatas() throws JUnitHistoryException;
 
 	/**
 	 * Retourne la listes nécessaires à l'initialisation de la vue

@@ -3,6 +3,7 @@ package com.francetelecom.orangetv.junithistory.server.dao;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -79,6 +80,36 @@ public class DaoTestInstanceTest extends AbstractTest {
 			}
 		}
 
+	}
+
+	@Test
+	public void testCountTestsForGroupAndName() throws Exception {
+
+		int count = DaoTestInstance.get().countTestsForGroupAndTestName(3, "toto");
+		assertEquals("Wrong count tests for name 'toto'!", 0, count);
+
+		count = DaoTestInstance.get().countTestsForGroupAndTestName(11, "Schedule");
+		log.info("count of tests: " + count);
+		assertNotSame("Wrong count tests for name 'Schedule'!", 0, count);
+	}
+
+	@Test
+	public void testListTestsForGroupAndName() throws Exception {
+
+		List<DbTestInstance> result = DaoTestInstance.get().listTestsForGroupAndTestName(3, "toto");
+		assertNotNull("list of tests cannot be null", result);
+		assertEquals("Wrong size for count test 'toto'", 0, result.size());
+
+		result = DaoTestInstance.get().listTestsForGroupAndTestName(11, "Schedule");
+		assertNotNull("list of tests cannot be null", result);
+		assertNotSame("Wrong size for count test 'toto'", 0, result.size());
+
+		for (DbTestInstance dbTestInstance : result) {
+			log.info(dbTestInstance.toString());
+			if (dbTestInstance.getMessage() != null) {
+				assertTrue(dbTestInstance.getMessage().isLazy());
+			}
+		}
 	}
 
 	@Test

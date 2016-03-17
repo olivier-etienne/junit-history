@@ -34,8 +34,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class AppController extends AbstractMainPresenter implements
-		ValueChangeHandler<String> {
+public class AppController extends AbstractMainPresenter implements ValueChangeHandler<String> {
 
 	private final static Logger log = Logger.getLogger("AppController");
 
@@ -50,7 +49,7 @@ public class AppController extends AbstractMainPresenter implements
 
 	public enum MainPanelViewEnum {
 
-		singleReport, historicReport, editReport, admin, analyse
+		singleReport, historicReport, editReport, admin, defect
 	}
 
 	private ClickHandler connectUseClickHandler;
@@ -84,8 +83,7 @@ public class AppController extends AbstractMainPresenter implements
 	// ------------------------------ overriding IPresenter
 	@Override
 	public IView getView() {
-		return (this.currentPresenter == null) ? null : this.currentPresenter
-				.getView();
+		return (this.currentPresenter == null) ? null : this.currentPresenter.getView();
 	}
 
 	// ---------------------------- overriding AbstractPresenter
@@ -149,21 +147,18 @@ public class AppController extends AbstractMainPresenter implements
 
 			public void onChangeView(ViewReportEvent event) {
 
-				MainPanelViewEnum viewEnum = (event != null) ? event
-						.getMainPanelViewEnum() : null;
+				MainPanelViewEnum viewEnum = (event != null) ? event.getMainPanelViewEnum() : null;
 				if (viewEnum != null) {
 					panelMenu.selectButton(viewEnum);
 
 					boolean manageUserProfile = true;
 					switch (viewEnum) {
 					case singleReport:
-						diplayView(MainPanelViewEnum.singleReport, params,
-								false, panelView);
+						diplayView(MainPanelViewEnum.singleReport, params, false, panelView);
 						break;
 
 					case historicReport:
-						diplayView(MainPanelViewEnum.historicReport, params,
-								false, panelView);
+						diplayView(MainPanelViewEnum.historicReport, params, false, panelView);
 						break;
 
 					case editReport:
@@ -176,11 +171,11 @@ public class AppController extends AbstractMainPresenter implements
 						break;
 
 					case admin:
-						diplayView(MainPanelViewEnum.admin, params, true,
-								panelView);
+						diplayView(MainPanelViewEnum.admin, params, true, panelView);
 						break;
 
-					case analyse:
+					case defect:
+						diplayView(MainPanelViewEnum.defect, params, false, panelView);
 						break;
 					}
 					if (manageUserProfile) {
@@ -213,16 +208,14 @@ public class AppController extends AbstractMainPresenter implements
 	/*
 	 * Creation generique vue et presenter
 	 */
-	private void diplayView(MainPanelViewEnum viewEnum,
-			Map<String, Object> params, boolean adminOnly, HasWidgets container) {
+	private void diplayView(MainPanelViewEnum viewEnum, Map<String, Object> params, boolean adminOnly,
+			HasWidgets container) {
 
 		if (adminOnly) {
 			// on verifie que le user est bien admin
-			if (this.currentUserProfile == null
-					|| this.currentUserProfile != UserProfile.admin) {
+			if (this.currentUserProfile == null || this.currentUserProfile != UserProfile.admin) {
 				History.back();
-				this.getView().setActionResult("User is not admin!",
-						LogStatus.warning);
+				this.getView().setActionResult("User is not admin!", LogStatus.warning);
 				return;
 			}
 		}
@@ -231,11 +224,9 @@ public class AppController extends AbstractMainPresenter implements
 		History.newItem(viewEnum.name(), false);
 
 		IMainView view = this.clientFactory.getMainView(viewEnum);
-		view.getConnectUserButton().addClickHandler(
-				this.getConnectUserClickHandler());
+		view.getConnectUserButton().addClickHandler(this.getConnectUserClickHandler());
 
-		IMainPresenter presenter = this.clientFactory
-				.getMainPresenter(viewEnum);
+		IMainPresenter presenter = this.clientFactory.getMainPresenter(viewEnum);
 		if (presenter == null) {
 
 			presenter = this.clientFactory.buildMainPresenter(view);
@@ -251,25 +242,22 @@ public class AppController extends AbstractMainPresenter implements
 		final MyDialogView container = WidgetUtils.buildDialogView("");
 		this.diplayView(MainPanelViewEnum.editReport, params, false, container);
 
-		((EditReportPresenter) this.currentPresenter)
-				.setCloseDialogClickHandler(new ClickHandler() {
+		((EditReportPresenter) this.currentPresenter).setCloseDialogClickHandler(new ClickHandler() {
 
-					@Override
-					public void onClick(ClickEvent event) {
-						container.hide();
+			@Override
+			public void onClick(ClickEvent event) {
+				container.hide();
 
-						// on revient à l'historique et on force le
-						// rafraichissement
-						fireEventToView(MainPanelViewEnum.historicReport,
-								params, true);
-					}
-				});
+				// on revient à l'historique et on force le
+				// rafraichissement
+				fireEventToView(MainPanelViewEnum.historicReport, params, true);
+			}
+		});
 
 		WidgetUtils.centerDialogAndShow(container);
 	}
 
-	private void fireEventToView(MainPanelViewEnum viewEnum,
-			Map<String, Object> params, boolean forceRefresh) {
+	private void fireEventToView(MainPanelViewEnum viewEnum, Map<String, Object> params, boolean forceRefresh) {
 
 		ViewReportEvent viewEvent = new ViewReportEvent(viewEnum);
 		viewEvent.setParams(params);
@@ -290,20 +278,17 @@ public class AppController extends AbstractMainPresenter implements
 			this.doAuthenticateUser(null);
 		} else { // connection
 			final PanelConnection connectionPanel = new PanelConnection();
-			final MyDialogBox dialogBox = WidgetUtils.buildDialogBox(
-					"Identification", null, connectionPanel, true, true, false,
-					new IActionCallback() {
+			final MyDialogBox dialogBox = WidgetUtils.buildDialogBox("Identification", null, connectionPanel, true,
+					true, false, new IActionCallback() {
 
 						@Override
 						public void onOk() {
-							doAuthenticateUser(connectionPanel
-									.getDataFromWidget());
+							doAuthenticateUser(connectionPanel.getDataFromWidget());
 						}
 
 						@Override
 						public void onCancel() {
-							setActionResult("Identification canceled!",
-									LogStatus.warning);
+							setActionResult("Identification canceled!", LogStatus.warning);
 						}
 					});
 
@@ -318,22 +303,20 @@ public class AppController extends AbstractMainPresenter implements
 		String login = (credential == null) ? "" : credential.getLogin();
 		String pwd = (credential == null) ? "" : credential.getPwd();
 
-		this.rpcService.authenticateUserProfile(login, pwd,
-				new AsyncCallback<String>() {
+		this.rpcService.authenticateUserProfile(login, pwd, new AsyncCallback<String>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						setActionResult("Authentication failed!",
-								LogStatus.warning);
-					}
+			@Override
+			public void onFailure(Throwable caught) {
+				setActionResult("Authentication failed!", LogStatus.warning);
+			}
 
-					@Override
-					public void onSuccess(String newProfile) {
+			@Override
+			public void onSuccess(String newProfile) {
 
-						// manage profile
-						manageUserProfil(newProfile);
-					}
-				});
+				// manage profile
+				manageUserProfil(newProfile);
+			}
+		});
 	}
 
 	public void setActionResult(String text, LogStatus logStatus) {
@@ -367,8 +350,7 @@ public class AppController extends AbstractMainPresenter implements
 		log.config("UserProfile: " + newProfile);
 		UserProfile profile = UserProfile.valueOf(newProfile);
 		if (profile != null && profile != currentUserProfile) {
-			log.info("change profile from " + currentUserProfile + " to "
-					+ profile);
+			log.info("change profile from " + currentUserProfile + " to " + profile);
 			currentUserProfile = profile;
 			manageUserProfil();
 		}

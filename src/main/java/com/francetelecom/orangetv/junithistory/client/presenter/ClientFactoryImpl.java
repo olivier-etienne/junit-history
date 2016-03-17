@@ -3,6 +3,7 @@ package com.francetelecom.orangetv.junithistory.client.presenter;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.DefectPresenter.IDefectView;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter.IEditReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.HistoricReportPresenter.IHistoricReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.IPageAdminView;
@@ -23,6 +24,7 @@ import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubP
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter.IUserSubView;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryService;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
+import com.francetelecom.orangetv.junithistory.client.view.DefectView;
 import com.francetelecom.orangetv.junithistory.client.view.EditReportView;
 import com.francetelecom.orangetv.junithistory.client.view.HistoricReportView;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
@@ -77,6 +79,9 @@ public class ClientFactoryImpl implements ClientFactory {
 	private EditGroupView editGroupView;
 	private EditGroupPresenter editGroupPresenter;
 
+	private DefectView defectView;
+	private DefectPresenter defectPresenter;
+
 	// ----------------------------- implementing ClientFactory
 	@Override
 	public EventBus getEventBus() {
@@ -97,8 +102,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (viewType) {
 		case admin:
 			return this.getPageAdminView();
-		case analyse:
-			return null;
+		case defect:
+			return this.getDefectView();
 		case editReport:
 			return this.getEditReportView();
 		case historicReport:
@@ -160,8 +165,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (view) {
 		case admin:
 			return this.pageAdminPresenter;
-		case analyse:
-			return null;
+		case defect:
+			return this.defectPresenter;
 		case editReport:
 			return this.editReportPresenter;
 		case historicReport:
@@ -184,8 +189,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		case admin:
 
 			return this.buildPageAdminPresenter((IPageAdminView) view);
-		case analyse:
-			return null;
+		case defect:
+			return this.buildDefectPresenter((IDefectView) view);
 		case editReport:
 			return this.buildEditReportPresenter((IEditReportView) view);
 		case historicReport:
@@ -320,6 +325,13 @@ public class ClientFactoryImpl implements ClientFactory {
 		return this.pageAdminView;
 	}
 
+	private IDefectView getDefectView() {
+		if (this.defectView == null) {
+			this.defectView = new DefectView();
+		}
+		return this.defectView;
+	}
+
 	private IUserSubView getUserSubView() {
 		if (this.userSubView == null) {
 			this.userSubView = new TesterSubView();
@@ -413,6 +425,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	private EditGroupPresenter buildEditGroupPresenter(IEditGroupView view) {
 		this.editGroupPresenter = new EditGroupPresenter(service, eventBus, view);
 		return this.editGroupPresenter;
+	}
+
+	private DefectPresenter buildDefectPresenter(IDefectView view) {
+		this.defectPresenter = new DefectPresenter(service, eventBus, view);
+		return this.defectPresenter;
 	}
 
 }

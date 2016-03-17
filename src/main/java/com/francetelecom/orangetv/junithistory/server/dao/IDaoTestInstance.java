@@ -30,17 +30,23 @@ public interface IDaoTestInstance extends IDao {
 	public final static String SQL_SELECT_TEST = SELECT + TEST_ATTRIBUTS + FROM_TABLE_NAME;
 
 	// =============================================
-	// TEST INSTANCE WITH MESSAGEID
-	// =============================================
-	public final static String MESS_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_ID;
-	public final static String MESS_TEST_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_TEST_ID;
-	public final static String TEST_ATTRIBUTS_JOIN_MESS = // ...
+	// TEST MESSAGE ATTRIBUT JOIN...
+	// ============================================
+	public final static String TEST_ATTRIBUTS_JOIN = // ...
 	TP + DB_ID + ", " // ...
 			+ TP + DB_NAME + ", " // ...
 			+ TP + DB_STATUS + ", " // ...
 			+ TP + DB_SUITE_ID + ", " // ...
 			+ TP + DB_TIME + ", " // ...
-			+ TP + DB_TCLASS_ID + ", " // ...
+			+ TP + DB_TCLASS_ID + " ";// ...
+
+	// =============================================
+	// TEST INSTANCE WITH MESSAGEID
+	// =============================================
+	public final static String MESS_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_ID;
+	public final static String MESS_TEST_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_TEST_ID;
+	public final static String TEST_ATTRIBUTS_JOIN_MESS = // ...
+	TEST_ATTRIBUTS_JOIN + ", "// ...
 			+ MESS_ID + " "; // ...
 
 	// left join message as m on t.id = m.testId
@@ -52,6 +58,42 @@ public interface IDaoTestInstance extends IDao {
 
 	public final static MessageFormat MF_SELECT_ONE_ENTRY_JOIN_MESS = new MessageFormat(SQL_SELECT_TEST_JOIN_MESS
 			+ WHERE + TP + DB_ID + EGAL_NUMBER);
+
+	// ===================================
+	// DIVERS
+	// ===================================
+
+	public final static String SQL_SELECT_MAX_ID = SELECT + MAX + "(" + DB_ID + ") " + FROM_TABLE_NAME;
+
+	public final static String SQL_COUNT_TEST = SELECT + COUNT_ALL + FROM_TABLE_NAME;
+
+	// ===============================================
+	// TEST INSTANCE FOR GROUP_ID AND NAME
+	// =============================================
+	public final static String SUITE_ID = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_ID;
+	public final static String SUITE_GROUPID = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_GROUP_ID;
+
+	// left join suite on test.suiteId = suite.id
+	public final static String LEFT_JOIN_SUITE = LEFT_JOIN + IDaoTestSuiteInstance.TABLE_ALIAS + ON + TP + DB_SUITE_ID
+			+ " = " + SUITE_ID + " ";
+
+	public final static String SQL_SELECT_JOIN_SUITE = SELECT + TEST_ATTRIBUTS_JOIN_MESS + FROM + TABLE_ALIAS
+			+ LEFT_JOIN_SUITE;
+
+	// WHERE suite.groupId = 11 and test.name like '%Schedule%'
+	public final static String WHERE_WITH_GROUP_AND_TEST_NAME = WHERE // ...
+			+ SUITE_GROUPID + EGAL_NUMBER // ...
+			+ AND // ...
+			+ TP + DB_NAME + " " + LIKE + " ''%{1}%''";
+
+	public final static MessageFormat MF_SELECT_WITH_GROUP_AND_TEST_NAME = new MessageFormat(SQL_SELECT_JOIN_SUITE
+			+ LEFT_JOIN_MESS + WHERE_WITH_GROUP_AND_TEST_NAME);
+
+	public final static MessageFormat MF_COUNT_WITH_GROUP_AND_TEST_NAME = new MessageFormat(SELECT + COUNT_ALL + FROM
+			+ TABLE_ALIAS + LEFT_JOIN_SUITE // ...
+			+ WHERE_WITH_GROUP_AND_TEST_NAME // ...
+
+	);
 
 	// =============================================
 	// CREATE, DELETE
@@ -68,14 +110,6 @@ public interface IDaoTestInstance extends IDao {
 			+ " {4, number, ##########}, " // time...
 			+ " {5, number, #####}" // tclassId...
 			+ ");"); // ...
-
-	// ===================================
-	// DIVERS
-	// ===================================
-
-	public final static String SQL_SELECT_MAX_ID = SELECT + MAX + "(" + DB_ID + ") " + FROM_TABLE_NAME;
-
-	public final static String SQL_COUNT_TEST = SELECT + COUNT_ALL + FROM_TABLE_NAME;
 
 	// ===================================
 	// FOR SUITE WITH MESS ID

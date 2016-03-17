@@ -70,17 +70,17 @@
 
   <context-param>
    <param-name>bddUrl</param-name>
-   <param-value>jdbc:mysql://xx.xx.xx.xx/xxxx</param-value>
+   <param-value>jdbc:mysql://10.185.111.250/JUnitHistoryTools_dev</param-value>
 </context-param>
 
   <context-param>
    <param-name>bddUser</param-name>
-   <param-value>xxxx</param-value>
+   <param-value>test</param-value>
 </context-param>  
 
   <context-param>
    <param-name>bddPwd</param-name>
-   <param-value>xxxx</param-value>
+   <param-value>univers</param-value>
 </context-param>
 
 <!-- ===================================== -->

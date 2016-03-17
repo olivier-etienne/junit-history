@@ -1,6 +1,8 @@
 *.launch
 *.class
 *.docx
+.classpath
+.settings/
 
 # Package Files #
 *.jar
@@ -16,7 +18,8 @@ gwt-unitCache/
 # more caches and things from deploy #
 src/main/webapp/WEB-INF/deploy/
 src/main/webapp/WEB-INF/classes/
-src/main/webapp/streammanager/
+src/main/webapp/META-INF/
+src/main/webapp/gwtjunithistory/
 
 #compilation logs
 .gwt/

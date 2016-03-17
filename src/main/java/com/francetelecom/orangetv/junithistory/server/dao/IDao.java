@@ -10,6 +10,7 @@ public interface IDao {
 	public static final String MAX = "max";
 	public static final String AND = "and ";
 	public static final String OR = "or ";
+	public static final String LIKE = "like ";
 	public static final String COUNT_ALL = "count(*) ";
 	public static final String COUNT = "count";
 	public static final String UPDATE = "update ";

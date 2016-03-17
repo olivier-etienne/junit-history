@@ -49,7 +49,7 @@
   
     <!-- logging -->
     <set-property name="gwt.logging.logLevel" value="CONFIG"/>           # To change the default logLevel
-    <set-property name="gwt.logging.enabled" value="FALSE"/>            # To disable logging
+    <set-property name="gwt.logging.enabled" value="TRUE"/>            # To disable logging
     <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
   
 </module>

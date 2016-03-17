@@ -21,6 +21,7 @@ import com.francetelecom.orangetv.junithistory.server.dao.IDbEntry;
 import com.francetelecom.orangetv.junithistory.server.dto.DtoTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.manager.AdminManager;
 import com.francetelecom.orangetv.junithistory.server.manager.DaoManager;
+import com.francetelecom.orangetv.junithistory.server.manager.DefectManager;
 import com.francetelecom.orangetv.junithistory.server.manager.PathManager;
 import com.francetelecom.orangetv.junithistory.server.manager.ProfileManager;
 import com.francetelecom.orangetv.junithistory.server.manager.ShowHtmlManager;
@@ -44,11 +45,14 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
@@ -364,15 +368,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	public VoInitSingleReportDatas getVoInitSingleReportDatas() throws JUnitHistoryException {
 
 		VoInitSingleReportDatas vo = new VoInitSingleReportDatas();
-		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
-		if (listGroups != null) {
-
-			List<VoGroupName> listVoGroupNames = vo.getListGroups();
-			for (DbTestSuiteGroup group : listGroups) {
-				listVoGroupNames.add(group.toVo());
-			}
-			Collections.sort(listVoGroupNames);
-		}
+		this.populateListGroupsFromBdd(vo.getListGroups());
 
 		vo.getListUsers().addAll(this.buildListVoUsers(false));
 		vo.setProtection(this.getSingleReportProtection());
@@ -385,15 +381,15 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	public VoInitHistoricReportDatas getVoInitHistoricReportDatas() throws JUnitHistoryException {
 
 		VoInitHistoricReportDatas vo = new VoInitHistoricReportDatas();
-		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
-		if (listGroups != null) {
+		this.populateListGroupsFromBdd(vo.getListGroups());
+		return vo;
+	}
 
-			List<VoGroupName> listVoGroupNames = vo.getListGroups();
-			for (DbTestSuiteGroup group : listGroups) {
-				listVoGroupNames.add(group.toVo());
-			}
-			Collections.sort(listVoGroupNames);
-		}
+	@Override
+	public VoInitDefectDatas getVoInitDefectDatas() throws JUnitHistoryException {
+
+		VoInitDefectDatas vo = new VoInitDefectDatas();
+		this.populateListGroupsFromBdd(vo.getListGroups());
 
 		return vo;
 	}
@@ -679,6 +675,15 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		return this.getThreadLocalRequest().getSession(true);
 	}
 
+	// ===============================================
+	// DEFECTS
+	// ===============================================
+	@Override
+	public VoResultDefectTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
+
+		return DefectManager.get().searchDefectTestList(vo);
+	}
+
 	// ================================================
 	// HTML REPORT
 	// ================================================
@@ -728,6 +733,19 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	private void verifProfileAdminForPageAccess() throws JUnitHistoryException {
 		if (!this.isSessionAtLeastAdmin()) {
 			throw new JUnitHistoryException("User must be admin in order to access this page!");
+		}
+
+	}
+
+	private void populateListGroupsFromBdd(List<VoGroupName> listVoGroupNames) throws JUnitHistoryException {
+
+		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
+		if (listGroups != null) {
+
+			for (DbTestSuiteGroup group : listGroups) {
+				listVoGroupNames.add(group.toVo());
+			}
+			Collections.sort(listVoGroupNames);
 		}
 
 	}

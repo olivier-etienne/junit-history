@@ -8,10 +8,13 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
@@ -83,5 +86,9 @@ public interface IGwtJUnitHistoryServiceAsync {
 	void deleteTestGroup(int groupId, AsyncCallback<Boolean> callback);
 
 	void deleteCategory(int categoryId, AsyncCallback<Boolean> callback);
+
+	void getVoInitDefectDatas(AsyncCallback<VoInitDefectDatas> callback);
+
+	void searchDefectTestList(VoSearchDefectDatas vo, AsyncCallback<VoResultDefectTestDatas> callback);
 
 }
