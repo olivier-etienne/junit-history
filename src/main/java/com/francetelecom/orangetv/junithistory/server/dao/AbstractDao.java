@@ -463,6 +463,12 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 		}
 	}
 
+	protected void verifyIdDefined(String comment, int itemId) throws JUnitHistoryException {
+		if (itemId == IDbEntry.ID_UNDEFINED) {
+			throw new JUnitHistoryException(comment + " must be defined!");
+		}
+	}
+
 	protected void verifyIdForUpdateEntry(AbstractDbEntry entry) throws JUnitHistoryException {
 		if (entry.getId() == IDbEntry.ID_UNDEFINED) {
 			throw new JUnitHistoryException("Id must be defined for update!");

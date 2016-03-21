@@ -1,19 +1,19 @@
 package com.francetelecom.orangetv.junithistory.server.model;
 
 /**
- * Encapuse un DbTestMessage
+ * Encapsule un TestUser
  * 
  * @author ndmz2720
  *
  */
-public class LazyTestMessage extends DbTestMessage implements ILazy {
+public class LazyTestUser extends DbTestUser implements ILazy {
 
 	private static final long serialVersionUID = 1L;
 
 	private boolean lazy = true;
 
 	// --------------------- constructor
-	public LazyTestMessage(int id) {
+	public LazyTestUser(int id) {
 		super.setId(id);
 	}
 
@@ -34,5 +34,4 @@ public class LazyTestMessage extends DbTestMessage implements ILazy {
 
 	// TODO mettre les autres
 	// ----------------------- accessor
-
 }

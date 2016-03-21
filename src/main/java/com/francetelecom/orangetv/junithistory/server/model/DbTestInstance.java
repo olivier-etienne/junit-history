@@ -1,7 +1,5 @@
 package com.francetelecom.orangetv.junithistory.server.model;
 
-import java.util.List;
-
 import com.francetelecom.orangetv.junithistory.server.dao.AbstractDbEntry;
 import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 
@@ -25,8 +23,8 @@ public class DbTestInstance extends AbstractDbEntry {
 
 	// 0..1 message
 	private DbTestMessage message; // lazy
-	// 0..n comment
-	private List<DbTestComment> listComments; // lazy
+	// 0..1 comment
+	private DbTestComment comment; // lazy
 
 	// ------------------------------------ constructor
 
@@ -72,12 +70,12 @@ public class DbTestInstance extends AbstractDbEntry {
 		this.message = message;
 	}
 
-	public List<DbTestComment> getListComments() {
-		return listComments;
+	public DbTestComment getComment() {
+		return comment;
 	}
 
-	public void setListComments(List<DbTestComment> listComments) {
-		this.listComments = listComments;
+	public void setComment(DbTestComment comment) {
+		this.comment = comment;
 	}
 
 	public DbTestSuiteInstance getTestSuiteInstance() {

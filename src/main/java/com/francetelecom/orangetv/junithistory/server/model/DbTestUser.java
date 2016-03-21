@@ -13,8 +13,16 @@ public class DbTestUser extends AbstractDbEntry {
 
 	private boolean admin = false;
 
+	// ------------------------------- constructor
+	protected DbTestUser() {
+	}
+
 	public DbTestUser(String name) {
 		this.name = name;
+	}
+
+	public DbTestUser(int id) {
+		this.setId(id);
 	}
 
 	// ------------------------------ accessors
