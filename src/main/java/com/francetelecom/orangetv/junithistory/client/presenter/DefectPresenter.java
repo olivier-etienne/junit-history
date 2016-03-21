@@ -12,7 +12,8 @@ import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
@@ -78,12 +79,27 @@ public class DefectPresenter extends AbstractMainPresenter {
 
 	private void bind() {
 
+		// handler pour la selection d'un test name dans la liste des nom des
+		// tests
+		// (resultat du search)
+		this.view.setSelectTestHandler(new ChangeHandler() {
+
+			@Override
+			public void onChange(ChangeEvent event) {
+
+				VoSearchDefectDatas selectTestDatas = view.getTestDatas();
+				doGetListTests(selectTestDatas);
+			}
+		});
+
+		// handler pour la saisie dans la zone de recherche ou la modification
+		// de la STB dans la listbox
 		this.view.setSearchHandler(new ChangeHandler() {
 
 			@Override
 			public void onChange(ChangeEvent event) {
 
-				VoSearchDefectDatas searchDatas = view.getDatas();
+				VoSearchDefectDatas searchDatas = view.getSearchDatas();
 				if (searchDatas.getSearch().length() < 3 || searchDatas.getGroupId() == IVo.ID_UNDEFINED) {
 					currentSearch = null;
 					view.setActionResult("", LogStatus.success);
@@ -114,7 +130,7 @@ public class DefectPresenter extends AbstractMainPresenter {
 	}
 
 	/*
-	 * Récupère la liste des tests contenant le mot saisi par l'utilisateur dans la boite de recherche
+	 * Récupère la liste des nom de tests contenant le mot saisi par l'utilisateur dans la boite de recherche
 	 */
 	private void doSearch(final VoSearchDefectDatas searchDatas) {
 
@@ -122,21 +138,53 @@ public class DefectPresenter extends AbstractMainPresenter {
 			return;
 		}
 		this.searchRunning = true;
+		this.view.waiting(true);
 
 		log.config("doSearch(" + searchDatas.toString() + ")");
-		this.rpcService.searchDefectTestList(searchDatas, new MyAsyncCallback<VoResultDefectTestDatas>(
-				"Error getting list of tests and defects") {
+		this.rpcService.searchDefectTestList(searchDatas, new MyAsyncCallback<VoResultSearchTestDatas>(
+				"Error getting list of test names!") {
 
 			@Override
-			public void onSuccess(VoResultDefectTestDatas datas) {
+			public void onSuccess(VoResultSearchTestDatas datas) {
 				view.setResultSearchDatas(datas);
 
-				view.setActionResult("Success gettting list of tests for " + searchDatas.toString(), LogStatus.success);
+				view.setActionResult("Success gettting list of test names for " + searchDatas.toString(),
+						LogStatus.success);
 				view.setResultSearchDatas(datas);
 
 				searchRunning = false;
+				view.waiting(false);
 			}
 		});
+	}
+
+	/*
+	 * Récupère la liste des tests du nom choisi par l'utilisateur pour le groupId courant 
+	 */
+	private void doGetListTests(final VoSearchDefectDatas testDatas) {
+
+		if (searchRunning) {
+			return;
+		}
+
+		this.searchRunning = true;
+		this.view.waiting(true);
+		log.config("doGetListTests(" + testDatas.toString() + ")");
+		this.rpcService.getListTestsForGroupSameName(testDatas, new MyAsyncCallback<VoListTestsSameNameDatas>(
+				"Error getting list of tests!") {
+
+			@Override
+			public void onSuccess(VoListTestsSameNameDatas datas) {
+
+				view.setActionResult("Success gettting list of tests for " + testDatas.toString(), LogStatus.success);
+				view.setTestDatas(datas);
+
+				searchRunning = false;
+				view.waiting(false);
+
+			}
+		});
+
 	}
 
 	// ================================= INNER CLASS
@@ -168,9 +216,15 @@ public class DefectPresenter extends AbstractMainPresenter {
 
 		public void setSearchHandler(ChangeHandler searchHandler);
 
-		public VoSearchDefectDatas getDatas();
+		public void setSelectTestHandler(ChangeHandler selectTestHandler);
 
-		public void setResultSearchDatas(VoResultDefectTestDatas datas);
+		public VoSearchDefectDatas getSearchDatas();
+
+		public VoSearchDefectDatas getTestDatas();
+
+		public void setResultSearchDatas(VoResultSearchTestDatas datas);
+
+		public void setTestDatas(VoListTestsSameNameDatas testDatas);
 	}
 
 }

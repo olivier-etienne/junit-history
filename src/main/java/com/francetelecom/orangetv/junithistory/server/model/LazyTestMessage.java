@@ -14,7 +14,7 @@ public class LazyTestMessage extends DbTestMessage implements ILazy {
 
 	// --------------------- constructor
 	public LazyTestMessage(int id) {
-		this.setId(id);
+		super.setId(id);
 	}
 
 	// ---------------------- implementing IDbEntry
@@ -30,10 +30,10 @@ public class LazyTestMessage extends DbTestMessage implements ILazy {
 		this.lazy = lazy;
 	}
 
-	@Override
-	public int getInternalId() {
-		return this.getId();
-	}
+	// @Override
+	// public int getInternalId() {
+	// return super.getId();
+	// }
 
 	// ---------------------- overriding DtTestMessage
 

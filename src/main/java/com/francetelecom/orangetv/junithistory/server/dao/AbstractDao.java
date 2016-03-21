@@ -294,6 +294,38 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 		return list;
 	}
 
+	protected List<String> listStringAttribute(String sql, String key) throws JUnitHistoryException {
+
+		List<String> list = new ArrayList<>();
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+
+			con = DatabaseManager.get().getConnection(this.token);
+			stmt = con.createStatement();
+
+			getLog().fine("sql: " + sql);
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				String name = rs.getString(key);
+				if (name != null) {
+					list.add(name);
+				}
+			}
+
+		} catch (SQLException ex) {
+			throw new JUnitHistoryException("SQLException: " + ex.getMessage());
+		} finally {
+			this.close(rs, stmt, con);
+		}
+
+		return list;
+	}
+
 	/**
 	 * permet de traiter une requete de type select id, count(id) from table
 	 * group by id pour n'importe quelle type de table et d'id

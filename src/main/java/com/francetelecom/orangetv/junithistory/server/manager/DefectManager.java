@@ -4,12 +4,19 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.server.dao.DaoTestInstance;
+import com.francetelecom.orangetv.junithistory.server.dao.DaoTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestInstance;
+import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
+import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
+import com.francetelecom.orangetv.junithistory.server.model.TestStatusEnum;
+import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoTestInstanceForList;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestDistinctName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestInstanceForEdit;
 
 /**
  * Manager pour la gestion des defects
@@ -35,24 +42,70 @@ public class DefectManager implements IManager {
 	}
 
 	// ------------------------------------- public methods
-	public VoResultDefectTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
+	public VoResultSearchTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
 
-		VoResultDefectTestDatas result = new VoResultDefectTestDatas();
-		if (vo.getGroupId() == IVo.ID_UNDEFINED) {
-			return result;
+		VoResultSearchTestDatas listTestNames = new VoResultSearchTestDatas();
+		if (vo == null || vo.getGroupId() == IVo.ID_UNDEFINED || vo.getSearch() == null) {
+			return listTestNames;
 		}
-		final List<DbTestInstance> listTests = DaoTestInstance.get().listTestsForGroupAndTestName(vo.getGroupId(),
-				vo.getSearch());
+		final List<String> listDBDistinctTestNames = DaoTestInstance.get().searchDistinctNamesForGroupAndContainsName(
+				vo.getGroupId(), vo.getSearch());
 
-		if (listTests == null) {
-			return result;
+		if (listDBDistinctTestNames == null) {
+			return listTestNames;
+		}
+
+		// for each test name
+		for (String testDistinctName : listDBDistinctTestNames) {
+			listTestNames.addTest(new VoTestDistinctName(testDistinctName));
+		}
+
+		return listTestNames;
+	}
+
+	public VoListTestsSameNameDatas getListTestsForGroupSameName(VoSearchDefectDatas vo) throws JUnitHistoryException {
+
+		final VoListTestsSameNameDatas listTests = new VoListTestsSameNameDatas();
+		if (vo == null || vo.getGroupId() == IVo.ID_UNDEFINED || vo.getSearch() == null) {
+			return listTests;
+		}
+
+		final List<DbTestInstance> listDbTestInstances = DaoTestInstance.get().listTestsForGroupAndTestName(
+				vo.getGroupId(), vo.getSearch());
+		if (listDbTestInstances == null) {
+			return listTests;
 		}
 
 		// for each test
-		for (DbTestInstance test : listTests) {
-			result.addTest(new VoTestInstanceForList(test.getId(), test.getName()));
+		// TODO recuperer tous les messages en une seule requete!!
+		for (DbTestInstance test : listDbTestInstances) {
+
+			VoTestInstanceForEdit voTest = new VoTestInstanceForEdit(test.getId(), test.getName());
+			TestSubStatusEnum status = test.getStatus();
+			boolean success = status.getStatus() == TestStatusEnum.Success;
+			boolean skipped = status.getStatus() == TestStatusEnum.Skipped;
+
+			voTest.setStatus(status.name());
+			voTest.setSuccess(success);
+			voTest.setSkipped(skipped);
+
+			// suite
+			DbTestSuiteInstance testSuite = test.getTestSuiteInstance();
+			voTest.setSuiteName(testSuite.getName());
+			voTest.setSuiteDate(DATE_FORMAT.format(testSuite.getDate()));
+
+			DbTestMessage message = test.getMessage();
+			if (message != null && message.isLazy()) {
+				message = DaoTestMessage.get().getById(message.getId());
+
+				voTest.setType(message.getType());
+				voTest.setMessage(message.getMessage());
+				voTest.setOutputLog(message.getOutputLog());
+				voTest.setStackTrace(message.getStackTrace());
+			}
 		}
 
-		return result;
+		return listTests;
+
 	}
 }

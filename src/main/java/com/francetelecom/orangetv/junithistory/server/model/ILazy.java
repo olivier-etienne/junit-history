@@ -4,6 +4,6 @@ public interface ILazy {
 
 	public void setLazy(boolean lazy);
 
-	public int getInternalId();
+	// public int getInternalId();
 
 }

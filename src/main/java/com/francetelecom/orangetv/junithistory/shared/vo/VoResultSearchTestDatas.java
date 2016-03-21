@@ -9,22 +9,22 @@ import java.util.List;
  * @author NDMZ2720
  *
  */
-public class VoResultDefectTestDatas implements IVo {
+public class VoResultSearchTestDatas implements IVo {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<VoTestInstanceForList> listTests = new ArrayList<>();
+	private List<VoTestDistinctName> listTests = new ArrayList<>();
 
 	// -------------------------------- constructor
-	public VoResultDefectTestDatas() {
+	public VoResultSearchTestDatas() {
 	}
 
 	// --------------------------------- public methods
-	public void addTest(VoTestInstanceForList vo) {
+	public void addTest(VoTestDistinctName vo) {
 		this.listTests.add(vo);
 	}
 
-	public List<VoTestInstanceForList> getListTests() {
+	public List<VoTestDistinctName> getListTests() {
 		return this.listTests;
 	}
 

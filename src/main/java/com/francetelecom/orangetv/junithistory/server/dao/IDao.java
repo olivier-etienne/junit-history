@@ -7,6 +7,7 @@ public interface IDao {
 
 	public static final String AS = " as ";
 	public static final String SELECT = "select ";
+	public static final String DINSTINCT = "distinct ";
 	public static final String MAX = "max";
 	public static final String AND = "and ";
 	public static final String OR = "or ";

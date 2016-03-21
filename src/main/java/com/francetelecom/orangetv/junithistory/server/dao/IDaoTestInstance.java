@@ -68,33 +68,56 @@ public interface IDaoTestInstance extends IDao {
 	public final static String SQL_COUNT_TEST = SELECT + COUNT_ALL + FROM_TABLE_NAME;
 
 	// ===============================================
-	// TEST INSTANCE FOR GROUP_ID AND NAME
+	// TEST FOR GROUP_ID AND NAME
 	// =============================================
 	public final static String SUITE_ID = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_ID;
+	public final static String SUITE_NAME = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_NAME;
 	public final static String SUITE_GROUPID = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_GROUP_ID;
 
 	// left join suite on test.suiteId = suite.id
 	public final static String LEFT_JOIN_SUITE = LEFT_JOIN + IDaoTestSuiteInstance.TABLE_ALIAS + ON + TP + DB_SUITE_ID
 			+ " = " + SUITE_ID + " ";
 
-	public final static String SQL_SELECT_JOIN_SUITE = SELECT + TEST_ATTRIBUTS_JOIN_MESS + FROM + TABLE_ALIAS
-			+ LEFT_JOIN_SUITE;
+	// ----------------------------
+	// CONTAINS NAME
+	// ---------------------------
+
+	public final static String SQL_DISTINCT_NAME_JOIN_SUITE = SELECT + DISTINCT + TP + DB_NAME + " " + FROM
+			+ TABLE_ALIAS + LEFT_JOIN_SUITE;
 
 	// WHERE suite.groupId = 11 and test.name like '%Schedule%'
-	public final static String WHERE_WITH_GROUP_AND_TEST_NAME = WHERE // ...
+	public final static String WHERE_WITH_GROUP_AND_CONTAINS_NAME = WHERE // ...
 			+ SUITE_GROUPID + EGAL_NUMBER // ...
 			+ AND // ...
 			+ TP + DB_NAME + " " + LIKE + " ''%{1}%''";
 
-	public final static MessageFormat MF_SELECT_WITH_GROUP_AND_TEST_NAME = new MessageFormat(SQL_SELECT_JOIN_SUITE
-			+ LEFT_JOIN_MESS + WHERE_WITH_GROUP_AND_TEST_NAME);
+	public final static MessageFormat MF_DISTINCT_NAME_WITH_GROUP_AND_CONTAINS_NAME = new MessageFormat(
+			SQL_DISTINCT_NAME_JOIN_SUITE + WHERE_WITH_GROUP_AND_CONTAINS_NAME + " " + ORDER_BY + TP + DB_NAME);
 
-	public final static MessageFormat MF_COUNT_WITH_GROUP_AND_TEST_NAME = new MessageFormat(SELECT + COUNT_ALL + FROM
-			+ TABLE_ALIAS + LEFT_JOIN_SUITE // ...
-			+ WHERE_WITH_GROUP_AND_TEST_NAME // ...
+	public final static MessageFormat MF_COUNT_WITH_GROUP_AND_CONTAINS_NAME = new MessageFormat(SELECT + COUNT_ALL
+			+ FROM + TABLE_ALIAS + LEFT_JOIN_SUITE // ...
+			+ WHERE_WITH_GROUP_AND_CONTAINS_NAME // ...
 
 	);
 
+	// ----------------------------
+	// EQUALS NAME
+	// ---------------------------
+	// WHERE suite.groupId = 11 and test.name like '%Schedule%'
+	public final static String WHERE_WITH_GROUP_AND_NAME = WHERE // ...
+			+ SUITE_GROUPID + EGAL_NUMBER // ...
+			+ AND // ...
+			+ TP + DB_NAME + " = ''{1}''";
+
+	public final static String SQL_SELECT_JOIN_SUITE = SELECT + TEST_ATTRIBUTS_JOIN_MESS + FROM + TABLE_ALIAS
+			+ LEFT_JOIN_SUITE + LEFT_JOIN_MESS;
+
+	public final static MessageFormat MF_SELECT_WITH_GROUP_AND_TEST_NAME = new MessageFormat(SQL_SELECT_JOIN_SUITE
+			+ WHERE_WITH_GROUP_AND_NAME + " " + ORDER_BY + SUITE_NAME);
+
+	public final static MessageFormat MF_COUNT_WITH_GROUP_AND_TEST_NAME = new MessageFormat(SELECT + COUNT_ALL + FROM
+			+ TABLE_ALIAS + LEFT_JOIN_SUITE // ...
+			+ WHERE_WITH_GROUP_AND_NAME);
 	// =============================================
 	// CREATE, DELETE
 	// =============================================

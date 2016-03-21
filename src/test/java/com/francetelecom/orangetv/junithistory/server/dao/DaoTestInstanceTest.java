@@ -83,32 +83,54 @@ public class DaoTestInstanceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testCountTestsForGroupAndName() throws Exception {
+	public void testListTestsForGroupAndTestName() throws Exception {
 
-		int count = DaoTestInstance.get().countTestsForGroupAndTestName(3, "toto");
-		assertEquals("Wrong count tests for name 'toto'!", 0, count);
+		List<DbTestInstance> result = DaoTestInstance.get().listTestsForGroupAndTestName(11, "toto");
+		assertNotNull("list of DbTestInstance cannot be null!", result);
+		assertEquals("No tests with name toto!", 0, result.size());
 
-		count = DaoTestInstance.get().countTestsForGroupAndTestName(11, "Schedule");
-		log.info("count of tests: " + count);
-		assertNotSame("Wrong count tests for name 'Schedule'!", 0, count);
-	}
-
-	@Test
-	public void testListTestsForGroupAndName() throws Exception {
-
-		List<DbTestInstance> result = DaoTestInstance.get().listTestsForGroupAndTestName(3, "toto");
-		assertNotNull("list of tests cannot be null", result);
-		assertEquals("Wrong size for count test 'toto'", 0, result.size());
-
-		result = DaoTestInstance.get().listTestsForGroupAndTestName(11, "Schedule");
-		assertNotNull("list of tests cannot be null", result);
-		assertNotSame("Wrong size for count test 'toto'", 0, result.size());
+		result = DaoTestInstance.get().listTestsForGroupAndTestName(11, "testRecurrentSchedule");
+		assertNotNull("list of DbTestInstance cannot be null!", result);
+		assertNotSame("There must be tests with name 'testRecurentList'!", 0, result.size());
 
 		for (DbTestInstance dbTestInstance : result) {
 			log.info(dbTestInstance.toString());
 			if (dbTestInstance.getMessage() != null) {
 				assertTrue(dbTestInstance.getMessage().isLazy());
 			}
+
+			// test suite
+			DbTestSuiteInstance testSuite = dbTestInstance.getTestSuiteInstance();
+			assertNotNull("Suite cannot be null!", testSuite);
+			assertFalse("Suite cannot be lazy!", testSuite.isLazy());
+		}
+
+	}
+
+	@Test
+	public void testCountTestsForGroupAndContainsName() throws Exception {
+
+		int count = DaoTestInstance.get().countTestsForGroupAndContainsName(3, "toto");
+		assertEquals("Wrong count tests for name 'toto'!", 0, count);
+
+		count = DaoTestInstance.get().countTestsForGroupAndContainsName(11, "Schedule");
+		log.info("count of tests: " + count);
+		assertNotSame("Wrong count tests for name 'Schedule'!", 0, count);
+	}
+
+	@Test
+	public void testListDistinctNamesForGroupAndTestName() throws Exception {
+
+		List<String> result = DaoTestInstance.get().searchDistinctNamesForGroupAndContainsName(3, "toto");
+		assertNotNull("list of tests cannot be null", result);
+		assertEquals("Wrong size for count test 'toto'", 0, result.size());
+
+		result = DaoTestInstance.get().searchDistinctNamesForGroupAndContainsName(11, "Schedule");
+		assertNotNull("list of tests cannot be null", result);
+		assertNotSame("Wrong size for count test 'toto'", 0, result.size());
+
+		for (String distinctName : result) {
+			log.info(distinctName);
 		}
 	}
 

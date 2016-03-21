@@ -14,7 +14,8 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDat
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
@@ -30,15 +31,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
  */
 @RemoteServiceRelativePath("report")
 public interface IGwtJUnitHistoryService extends RemoteService {
-
-	/**
-	 * Get the list of tests for a group and a search input
-	 * 
-	 * @param vo
-	 * @return
-	 * @throws JUnitHistoryException
-	 */
-	public VoResultDefectTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException;
 
 	/**
 	 * Suppression d'une tclass category
@@ -327,5 +319,23 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 * @throws JUnitHistoryException
 	 */
 	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException;
+
+	/**
+	 * Get the list of distinct testname for a group and a search input
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoResultSearchTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException;
+
+	/**
+	 * Retourne la liste des tests de meme nom pour un groupId donne
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoListTestsSameNameDatas getListTestsForGroupSameName(VoSearchDefectDatas vo) throws JUnitHistoryException;
 
 }

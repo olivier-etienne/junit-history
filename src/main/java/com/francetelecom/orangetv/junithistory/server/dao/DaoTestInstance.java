@@ -27,6 +27,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	private static final String PARAM_TCLASS_LIST = "paramTClassList";
 	private static final String PARAM_MESS_LIST = "paramMessList";
 	private static final String PARAM_MESS = "paramMess";
+	private static final String PARAM_SUITE_LIST = "paramSuiteList";
 	// ---------------------------------- Singleton
 	private static DaoTestInstance instance;
 	private static final Map<String, DaoTestInstance> mapToken2Dao = Collections
@@ -76,6 +77,9 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		Map<Integer, DbTestMessage> mapId2Message = (params != null && params.containsKey(PARAM_MESS_LIST)) ? (Map<Integer, DbTestMessage>) params
 				.get(PARAM_MESS_LIST) : null;
 
+		Map<Integer, DbTestSuiteInstance> mapId2Suite = (params != null && params.containsKey(PARAM_SUITE_LIST)) ? (Map<Integer, DbTestSuiteInstance>) params
+				.get(PARAM_SUITE_LIST) : null;
+
 		final DbTestMessage message = (params != null && params.containsKey(PARAM_MESS)) ? (DbTestMessage) params
 				.get(PARAM_MESS) : null;
 
@@ -83,7 +87,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 			mapId2Message = ObjectUtils.buildMapIdWithOneItem(message.getId(), message);
 		}
 
-		return this.buildTest(rs, mapId2TClass, mapId2Message);
+		return this.buildTest(rs, mapId2TClass, mapId2Message, mapId2Suite);
 	}
 
 	@Override
@@ -134,24 +138,55 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	}
 
 	/**
-	 * Return a list of tests for a groupId and whose name contains likeTestName
+	 * Return a list of tests for a groupId and whose name equals testName
+	 * 
+	 * @param groupId
+	 * @param testName
+	 * @return
+	 */
+
+	public List<DbTestInstance> listTestsForGroupAndTestName(int groupId, String testName) throws JUnitHistoryException {
+
+		if (this.countTestsForGroupAndTestName(groupId, testName) == 0) {
+			return new ArrayList<>();
+		}
+
+		Map<String, Object> map = this.buildMapTClassesParams();
+
+		// recuperer la liste des TestSuite du group
+		final List<DbTestSuiteInstance> listSuiteForGroup = DaoTestSuiteInstance.get().listSuitesByGroup(groupId);
+		final Map<Integer, DbTestSuiteInstance> mapId2Suite = VoIdUtils.getMapId2Item(listSuiteForGroup);
+		map.put(PARAM_SUITE_LIST, mapId2Suite);
+
+		return super.listEntry(MF_SELECT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, testName }), map);
+
+	}
+
+	public int countTestsForGroupAndTestName(int groupId, String testName) {
+		return super.count(MF_COUNT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, testName }));
+	}
+
+	/**
+	 * Retourne une liste de nom de tests ordonnes alpha
+	 * pour un group donne et dont le nom (du test) contient une valeur donnee.
 	 * 
 	 * @param groupId
 	 * @param likeTestName
 	 * @return
+	 * @throws JUnitHistoryException
 	 */
-	public List<DbTestInstance> listTestsForGroupAndTestName(int groupId, String likeTestName)
+	public List<String> searchDistinctNamesForGroupAndContainsName(int groupId, String likeTestName)
 			throws JUnitHistoryException {
 
-		if (this.countTestsForGroupAndTestName(groupId, likeTestName) == 0) {
+		if (this.countTestsForGroupAndContainsName(groupId, likeTestName) == 0) {
 			return new ArrayList<>(0);
 		}
-		Map<String, Object> map = this.buildMapTClassesParams();
-		return super.listEntry(MF_SELECT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, likeTestName }), map);
+		return super.listStringAttribute(
+				MF_DISTINCT_NAME_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }), DB_NAME);
 	}
 
-	public int countTestsForGroupAndTestName(int groupId, String likeTestName) {
-		return super.count(MF_COUNT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, likeTestName }));
+	public int countTestsForGroupAndContainsName(int groupId, String likeTestName) {
+		return super.count(MF_COUNT_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }));
 	}
 
 	/**
@@ -203,10 +238,18 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	 * Attention le message peut etre lazy!
 	 */
 	private DbTestInstance buildTest(ResultSet rs, Map<Integer, DbTestClass> mapId2TClass,
-			Map<Integer, DbTestMessage> mapId2Message) throws JUnitHistoryException {
+			Map<Integer, DbTestMessage> mapId2Message, Map<Integer, DbTestSuiteInstance> mapId2Suite)
+			throws JUnitHistoryException {
 		try {
 			// test suite
-			DbTestSuiteInstance testSuiteInstance = new LazyTestSuiteInstance(rs.getInt(DB_SUITE_ID));
+			int suiteId = rs.getInt(DB_SUITE_ID);
+			DbTestSuiteInstance testSuiteInstance = null;
+			if (mapId2Suite != null && mapId2Suite.containsKey(suiteId)) {
+				testSuiteInstance = mapId2Suite.get(suiteId);
+			} else {
+				// lazy
+				testSuiteInstance = new LazyTestSuiteInstance(suiteId);
+			}
 
 			// test class
 			int tclassId = rs.getInt(DB_TCLASS_ID);

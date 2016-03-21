@@ -51,7 +51,8 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas
 import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoResultDefectTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
@@ -679,9 +680,15 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	// DEFECTS
 	// ===============================================
 	@Override
-	public VoResultDefectTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
+	public VoResultSearchTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
 
 		return DefectManager.get().searchDefectTestList(vo);
+	}
+
+	@Override
+	public VoListTestsSameNameDatas getListTestsForGroupSameName(VoSearchDefectDatas vo) throws JUnitHistoryException {
+
+		return DefectManager.get().getListTestsForGroupSameName(vo);
 	}
 
 	// ================================================

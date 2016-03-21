@@ -1,6 +1,5 @@
 package com.francetelecom.orangetv.junithistory.server.dao;
 
-import com.francetelecom.orangetv.junithistory.server.model.ILazy;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVoId;
 
 public abstract class AbstractDbEntry implements IDbEntry {
@@ -11,9 +10,9 @@ public abstract class AbstractDbEntry implements IDbEntry {
 	@Override
 	public int getId() {
 
-		if (this.isLazy() && this instanceof ILazy) {
-			return ((ILazy) this).getInternalId();
-		}
+		// if (this.isLazy() && this instanceof ILazy) {
+		// return ((ILazy) this).getInternalId();
+		// }
 
 		return this.id;
 	}

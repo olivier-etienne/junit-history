@@ -94,7 +94,7 @@ public class DbTestInstance extends AbstractDbEntry {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.name);
 		sb.append(" - suite: ");
-		sb.append(this.testSuiteInstance.getName());
+		sb.append(this.testSuiteInstance.isLazy() ? this.testSuiteInstance.getId() : this.testSuiteInstance.getName());
 		sb.append(" - time: ");
 		sb.append(this.time);
 		sb.append(" - status: ");
