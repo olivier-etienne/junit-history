@@ -3,6 +3,7 @@ package com.francetelecom.orangetv.junithistory.server.model;
 import java.util.List;
 
 import com.francetelecom.orangetv.junithistory.server.dao.AbstractDbEntry;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 
 /**
  * Instance concrete d'un test

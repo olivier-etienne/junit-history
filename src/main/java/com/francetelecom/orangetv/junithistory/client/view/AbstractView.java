@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 import com.francetelecom.orangetv.junithistory.client.presenter.AbstractMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.util.CssConstants;
 import com.francetelecom.orangetv.junithistory.client.util.StatusUtils;
-import com.francetelecom.orangetv.junithistory.shared.vo.AbstractVoIdName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -192,11 +192,11 @@ public abstract class AbstractView extends Composite implements IView, CssConsta
 		if (datas != null && !datas.isEmpty()) {
 
 			Object data = datas.get(0);
-			if (data instanceof AbstractVoIdName) {
+			if (data instanceof VoIdName) {
 
 				for (Object obj : datas) {
 
-					AbstractVoIdName voIdName = (AbstractVoIdName) obj;
+					VoIdName voIdName = (VoIdName) obj;
 					listBox.addItem(voIdName.getName(), voIdName.getId() + "");
 				}
 			}

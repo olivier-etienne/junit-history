@@ -17,8 +17,8 @@ import com.francetelecom.orangetv.junithistory.server.model.DbTestInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.model.LazyTestSuiteInstance;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.server.service.AbstractTest;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 
 public class DaoTestMessageTest extends AbstractTest {
 

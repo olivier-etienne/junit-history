@@ -1,6 +1,7 @@
 package com.francetelecom.orangetv.junithistory.client.presenter;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -9,7 +10,7 @@ import com.francetelecom.orangetv.junithistory.client.view.IMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
@@ -26,7 +27,7 @@ public class DefectPresenter extends AbstractMainPresenter {
 
 	private final IDefectView view;
 
-	private Map<Integer, VoGroupName> mapId2Groups = new HashMap<>();
+	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>();
 	private boolean searchRunning = false;
 
 	// ------------------------------- constructor
@@ -79,6 +80,19 @@ public class DefectPresenter extends AbstractMainPresenter {
 
 	private void bind() {
 
+		// handler pour la selection d'une tclass de test
+		this.view.setSelectTClassHandler(new ChangeHandler() {
+
+			@Override
+			public void onChange(ChangeEvent event) {
+
+				VoSearchDefectDatas selectTestDatas = view.getTestDatas();
+				// TODO ajouter la tclass
+				doGetListTests(selectTestDatas);
+
+			}
+		});
+
 		// handler pour la selection d'un test name dans la liste des nom des
 		// tests
 		// (resultat du search)
@@ -88,7 +102,7 @@ public class DefectPresenter extends AbstractMainPresenter {
 			public void onChange(ChangeEvent event) {
 
 				VoSearchDefectDatas selectTestDatas = view.getTestDatas();
-				doGetListTests(selectTestDatas);
+				doGetListTClasses(selectTestDatas);
 			}
 		});
 
@@ -159,6 +173,41 @@ public class DefectPresenter extends AbstractMainPresenter {
 	}
 
 	/*
+	 * Récupère la liste des tclass pour le nom de test choisi et le groupid courant
+	 */
+	private void doGetListTClasses(final VoSearchDefectDatas testDatas) {
+
+		if (searchRunning) {
+			return;
+		}
+
+		this.searchRunning = true;
+		this.view.waiting(true);
+		log.config("doGetListTClasses(" + testDatas.toString() + ")");
+
+		this.rpcService.listTClassesForGroupIdAndTestName(testDatas, new MyAsyncCallback<List<VoIdName>>("") {
+
+			@Override
+			public void onSuccess(List<VoIdName> listTClasses) {
+
+				view.setActionResult("Success gettting list of tclass for " + testDatas.toString(), LogStatus.success);
+				view.setTestTClasses(testDatas.getSearch(), listTClasses);
+
+				searchRunning = false;
+				view.waiting(false);
+
+				// récupérer la liste des tests pour la première tclass de la
+				// box
+				if (listTClasses != null && listTClasses.size() > 0) {
+					doGetListTests(view.getTestDatas());
+				}
+			}
+
+		});
+
+	}
+
+	/*
 	 * Récupère la liste des tests du nom choisi par l'utilisateur pour le groupId courant 
 	 */
 	private void doGetListTests(final VoSearchDefectDatas testDatas) {
@@ -170,20 +219,21 @@ public class DefectPresenter extends AbstractMainPresenter {
 		this.searchRunning = true;
 		this.view.waiting(true);
 		log.config("doGetListTests(" + testDatas.toString() + ")");
-		this.rpcService.getListTestsForGroupSameName(testDatas, new MyAsyncCallback<VoListTestsSameNameDatas>(
-				"Error getting list of tests!") {
+		this.rpcService.getListTestsForGroupIdTClassIdAndTestName(testDatas,
+				new MyAsyncCallback<VoListTestsSameNameDatas>("Error getting list of tests!") {
 
-			@Override
-			public void onSuccess(VoListTestsSameNameDatas datas) {
+					@Override
+					public void onSuccess(VoListTestsSameNameDatas datas) {
 
-				view.setActionResult("Success gettting list of tests for " + testDatas.toString(), LogStatus.success);
-				view.setTestDatas(datas);
+						view.setActionResult("Success gettting list of tests for " + testDatas.toString(),
+								LogStatus.success);
+						view.setTestDatas(datas);
 
-				searchRunning = false;
-				view.waiting(false);
+						searchRunning = false;
+						view.waiting(false);
 
-			}
-		});
+					}
+				});
 
 	}
 
@@ -218,6 +268,8 @@ public class DefectPresenter extends AbstractMainPresenter {
 
 		public void setSelectTestHandler(ChangeHandler selectTestHandler);
 
+		public void setSelectTClassHandler(ChangeHandler selectTClassHandler);
+
 		public VoSearchDefectDatas getSearchDatas();
 
 		public VoSearchDefectDatas getTestDatas();
@@ -225,6 +277,8 @@ public class DefectPresenter extends AbstractMainPresenter {
 		public void setResultSearchDatas(VoResultSearchTestDatas datas);
 
 		public void setTestDatas(VoListTestsSameNameDatas testDatas);
+
+		public void setTestTClasses(String testName, List<VoIdName> listTClasses);
 	}
 
 }

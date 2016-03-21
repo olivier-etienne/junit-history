@@ -16,7 +16,7 @@ import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
@@ -48,7 +48,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 
 	private final IHistoricReportView view;
 
-	private Map<Integer, VoGroupName> mapId2Groups = new HashMap<>(0);
+	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>(0);
 	private Map<Integer, VoTestSuiteForGrid> mapId2TestSuites = new HashMap<>(0);
 
 	private String urlToShare;
@@ -202,7 +202,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 		if (this.urlToShare != null) {
 
 			int groupId = this.view.getCurrentGroupId();
-			VoGroupName group = mapId2Groups.get(groupId);
+			VoIdName group = mapId2Groups.get(groupId);
 
 			if (group != null) {
 				this.doBuildUrl("Public url for STB " + group.getName(), this.urlToShare);
@@ -398,7 +398,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 			return;
 		}
 
-		final VoGroupName group = this.mapId2Groups.get(groupId);
+		final VoIdName group = this.mapId2Groups.get(groupId);
 		final String message = " when getting list of suite for group: " + group.getName();
 		this.rpcService.getListTestSuiteByGroup(groupId, new MyAsyncCallback<VoListSuiteForGrid>("Error" + message) {
 

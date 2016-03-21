@@ -18,6 +18,7 @@ import com.francetelecom.orangetv.junithistory.server.manager.SessionManager.IJU
 import com.francetelecom.orangetv.junithistory.server.manager.SessionManager.SessionSubscription;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 
 public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySessionListener {
@@ -294,9 +295,9 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 		return list;
 	}
 
-	protected List<String> listStringAttribute(String sql, String key) throws JUnitHistoryException {
+	protected List<VoIdName> listVoIdName(String sql, String idKey, String nameKey) throws JUnitHistoryException {
 
-		List<String> list = new ArrayList<>();
+		List<VoIdName> list = new ArrayList<VoIdName>();
 
 		Connection con = null;
 		Statement stmt = null;
@@ -311,10 +312,9 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 
 			while (rs.next()) {
 
-				String name = rs.getString(key);
-				if (name != null) {
-					list.add(name);
-				}
+				int id = (idKey == null) ? IDbEntry.ID_UNDEFINED : rs.getInt(idKey);
+				String name = (nameKey == null) ? "" : rs.getString(nameKey);
+				list.add(new VoIdName(id, name));
 			}
 
 		} catch (SQLException ex) {
@@ -324,6 +324,7 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 		}
 
 		return list;
+
 	}
 
 	/**

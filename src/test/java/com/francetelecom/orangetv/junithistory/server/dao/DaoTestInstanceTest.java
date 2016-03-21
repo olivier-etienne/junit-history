@@ -19,8 +19,9 @@ import com.francetelecom.orangetv.junithistory.server.model.DbTestInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.model.LazyTestSuiteInstance;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.server.service.AbstractTest;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 
 public class DaoTestInstanceTest extends AbstractTest {
 
@@ -83,13 +84,13 @@ public class DaoTestInstanceTest extends AbstractTest {
 	}
 
 	@Test
-	public void testListTestsForGroupAndTestName() throws Exception {
+	public void testListTestsForGroupAndTClassAndTestName() throws Exception {
 
-		List<DbTestInstance> result = DaoTestInstance.get().listTestsForGroupAndTestName(11, "toto");
+		List<DbTestInstance> result = DaoTestInstance.get().listTestsForGroupIdTClassIdAndTestName(11, -1, "toto");
 		assertNotNull("list of DbTestInstance cannot be null!", result);
 		assertEquals("No tests with name toto!", 0, result.size());
 
-		result = DaoTestInstance.get().listTestsForGroupAndTestName(11, "testRecurrentSchedule");
+		result = DaoTestInstance.get().listTestsForGroupIdTClassIdAndTestName(11, 31, "testRecurrentSchedule");
 		assertNotNull("list of DbTestInstance cannot be null!", result);
 		assertNotSame("There must be tests with name 'testRecurentList'!", 0, result.size());
 
@@ -108,6 +109,21 @@ public class DaoTestInstanceTest extends AbstractTest {
 	}
 
 	@Test
+	public void testlistTClassForGroupAndName() throws Exception {
+
+		List<VoIdName> result = DaoTestInstance.get().listTClassForGroupAndName(11, "toto");
+		assertNotNull("list of tclass cannot be null", result);
+
+		result = DaoTestInstance.get().listTClassForGroupAndName(11, "testRecurrentSchedule");
+		assertNotNull("list of tclass cannot be null", result);
+		assertNotSame("Wrong size for count tclass 'Schedule'", 0, result.size());
+
+		for (VoIdName voIdName : result) {
+			log.info("id: " + voIdName.getId() + " - name: " + voIdName.getName());
+		}
+	}
+
+	@Test
 	public void testCountTestsForGroupAndContainsName() throws Exception {
 
 		int count = DaoTestInstance.get().countTestsForGroupAndContainsName(3, "toto");
@@ -121,7 +137,7 @@ public class DaoTestInstanceTest extends AbstractTest {
 	@Test
 	public void testListDistinctNamesForGroupAndTestName() throws Exception {
 
-		List<String> result = DaoTestInstance.get().searchDistinctNamesForGroupAndContainsName(3, "toto");
+		List<VoIdName> result = DaoTestInstance.get().searchDistinctNamesForGroupAndContainsName(3, "toto");
 		assertNotNull("list of tests cannot be null", result);
 		assertEquals("Wrong size for count test 'toto'", 0, result.size());
 
@@ -129,8 +145,8 @@ public class DaoTestInstanceTest extends AbstractTest {
 		assertNotNull("list of tests cannot be null", result);
 		assertNotSame("Wrong size for count test 'toto'", 0, result.size());
 
-		for (String distinctName : result) {
-			log.info(distinctName);
+		for (VoIdName distinctName : result) {
+			log.info(distinctName.getName());
 		}
 	}
 

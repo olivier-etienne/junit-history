@@ -2,9 +2,39 @@ package com.francetelecom.orangetv.junithistory.client.util;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.SingleReportPresenter.UploadState;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.google.gwt.user.client.ui.Label;
 
 public class StatusUtils {
+
+	public static void buildTestStatus(Label label, TestSubStatusEnum subStatus) {
+
+		String text = subStatus.getLabel();
+		String styleName = CssConstants.STYLE_LABEL_TEST_STATUS + " ";
+
+		switch (subStatus.getStatus()) {
+		case Success:
+			styleName += CssConstants.STATUS_TEST_SUCCESS;
+			break;
+
+		case Error:
+			styleName += CssConstants.STATUS_TEST_ERROR;
+			break;
+
+		case Failure:
+			styleName += CssConstants.STATUS_TEST_FAILURE;
+			break;
+
+		case Skipped:
+			styleName += CssConstants.STATUS_TEST_SKIPPED;
+			break;
+
+		}
+
+		label.setText(text);
+		label.setTitle("Test status: " + text);
+		label.setStyleName(styleName);
+	}
 
 	public static void buildLabelStatus(Label label, UploadState state) {
 

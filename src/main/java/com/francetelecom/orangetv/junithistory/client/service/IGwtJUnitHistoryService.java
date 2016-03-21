@@ -9,6 +9,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
@@ -336,6 +337,16 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 * @return
 	 * @throws JUnitHistoryException
 	 */
-	public VoListTestsSameNameDatas getListTestsForGroupSameName(VoSearchDefectDatas vo) throws JUnitHistoryException;
+	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException;
+
+	/**
+	 * Retourne la liste des Tclass (id & name) pour un test de nom donne et un
+	 * groupId
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public List<VoIdName> listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException;
 
 }

@@ -18,7 +18,7 @@ import com.francetelecom.orangetv.junithistory.client.view.admin.AbstractGridSub
 import com.francetelecom.orangetv.junithistory.client.view.admin.IAdminSubView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.IEditItemView;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
-import com.francetelecom.orangetv.junithistory.shared.vo.AbstractVoIdName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -33,7 +33,7 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author sylvie
  * 
  */
-public abstract class AbstractGridSubPresenter<T extends AbstractVoIdName> extends AbstractPresenter implements
+public abstract class AbstractGridSubPresenter<T extends VoIdName> extends AbstractPresenter implements
 		IGridSubPresenter {
 
 	private final IAdminSubView<T> view;

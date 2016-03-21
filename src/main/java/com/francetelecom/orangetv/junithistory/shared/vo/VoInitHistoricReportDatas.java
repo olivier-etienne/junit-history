@@ -13,10 +13,10 @@ public class VoInitHistoricReportDatas implements IVo {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<VoGroupName> listGroups = new ArrayList<>();
+	private List<VoIdName> listGroups = new ArrayList<>();
 
 	// --------------------------------- accessors
-	public List<VoGroupName> getListGroups() {
+	public List<VoIdName> getListGroups() {
 		return listGroups;
 	}
 

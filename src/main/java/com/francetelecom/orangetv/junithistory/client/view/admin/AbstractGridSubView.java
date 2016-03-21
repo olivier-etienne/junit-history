@@ -7,7 +7,7 @@ import org.gwt.advanced.client.ui.widget.SimpleGrid;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.IGridSubPresenter.GridActionButtonEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.IGridSubPresenter.ViewActionEnum;
 import com.francetelecom.orangetv.junithistory.client.view.AbstractView;
-import com.francetelecom.orangetv.junithistory.shared.vo.AbstractVoIdName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -22,7 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
  * @author sylvie
  * 
  */
-public abstract class AbstractGridSubView<T extends AbstractVoIdName> extends AbstractView implements IAdminSubView<T> {
+public abstract class AbstractGridSubView<T extends VoIdName> extends AbstractView implements IAdminSubView<T> {
 
 	protected ClickHandler gridActionClickHandler;
 	protected boolean locked;

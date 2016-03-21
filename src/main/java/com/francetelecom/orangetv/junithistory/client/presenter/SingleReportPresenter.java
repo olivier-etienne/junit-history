@@ -18,7 +18,7 @@ import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
@@ -76,7 +76,7 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 	private UploadState uploadState = UploadState.none;
 	private String filename;
 
-	private Map<Integer, VoGroupName> mapId2Groups = new HashMap<>();
+	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>();
 	private Map<Integer, VoUser> mapId2Users = new HashMap<>();
 	private VoSingleReportProtection protection;
 
@@ -308,7 +308,7 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 
 		VoSingleReportData datas = view.getSingleReportData();
 
-		final VoGroupName group = this.mapId2Groups.get(datas.getGroupId());
+		final VoIdName group = this.mapId2Groups.get(datas.getGroupId());
 		final VoUser user = this.mapId2Users.get(datas.getUserId());
 
 		String[] description = new String[5];

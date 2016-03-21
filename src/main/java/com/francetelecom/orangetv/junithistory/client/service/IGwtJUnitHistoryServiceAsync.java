@@ -8,6 +8,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
@@ -92,6 +93,8 @@ public interface IGwtJUnitHistoryServiceAsync {
 
 	void searchDefectTestList(VoSearchDefectDatas vo, AsyncCallback<VoResultSearchTestDatas> callback);
 
-	void getListTestsForGroupSameName(VoSearchDefectDatas vo, AsyncCallback<VoListTestsSameNameDatas> callback);
+	void getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo, AsyncCallback<VoListTestsSameNameDatas> callback);
+
+	void listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo, AsyncCallback<List<VoIdName>> callback);
 
 }

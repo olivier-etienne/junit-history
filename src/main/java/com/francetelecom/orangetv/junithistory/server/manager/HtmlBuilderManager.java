@@ -22,11 +22,11 @@ import com.francetelecom.orangetv.junithistory.server.model.DbTestInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteGroup;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
-import com.francetelecom.orangetv.junithistory.server.model.TestStatusEnum;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.server.util.HtmlUtils;
 import com.francetelecom.orangetv.junithistory.server.util.ListLines;
 import com.francetelecom.orangetv.junithistory.server.util.TestStatistics;
+import com.francetelecom.orangetv.junithistory.shared.TestStatusEnum;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
 

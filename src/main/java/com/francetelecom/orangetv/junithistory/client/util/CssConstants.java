@@ -66,4 +66,17 @@ public interface CssConstants {
 	public final static String STYLE_IMG_EMPTY = "imgEmpty";
 	public final static String STYLE_IMG_ENABLED = "imgEnabled";
 
+	// defectview
+	public final static String PANEL_TEST_INFO = "testInfoPanel";
+	public final static String TEXT_AREA_TEST_INFO = "testTextArea";
+	public final static String LIST_TEST_NAMES = "listTestNames";
+	public final static String STYLE_SUITE_NAME = "suiteName";
+	public final static String STYLE_SUITE_DATE = "suiteDate";
+
+	public final static String STATUS_TEST_SUCCESS = "TestStatusSuccess";
+	public final static String STATUS_TEST_FAILURE = "TestStatusFailure";
+	public final static String STATUS_TEST_ERROR = "TestStatusError";
+	public final static String STATUS_TEST_SKIPPED = "TestStatusSkipped";
+	public final static String STYLE_LABEL_TEST_STATUS = "badge labelTestStatus";
+
 }

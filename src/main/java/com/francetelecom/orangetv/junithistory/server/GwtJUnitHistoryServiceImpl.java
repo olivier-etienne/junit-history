@@ -44,7 +44,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
@@ -686,9 +686,14 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	}
 
 	@Override
-	public VoListTestsSameNameDatas getListTestsForGroupSameName(VoSearchDefectDatas vo) throws JUnitHistoryException {
+	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException {
 
-		return DefectManager.get().getListTestsForGroupSameName(vo);
+		return DefectManager.get().getListTestsForGroupIdTClassIdAndTestName(vo);
+	}
+
+	@Override
+	public List<VoIdName> listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException {
+		return DefectManager.get().listTClassesForGroupIdAndTestName(vo);
 	}
 
 	// ================================================
@@ -744,7 +749,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 
 	}
 
-	private void populateListGroupsFromBdd(List<VoGroupName> listVoGroupNames) throws JUnitHistoryException {
+	private void populateListGroupsFromBdd(List<VoIdName> listVoGroupNames) throws JUnitHistoryException {
 
 		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
 		if (listGroups != null) {

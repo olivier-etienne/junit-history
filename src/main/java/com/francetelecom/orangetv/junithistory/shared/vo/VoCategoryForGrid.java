@@ -1,6 +1,6 @@
 package com.francetelecom.orangetv.junithistory.shared.vo;
 
-public class VoCategoryForGrid extends AbstractVoIdName {
+public class VoCategoryForGrid extends VoIdName {
 
 	private static final long serialVersionUID = 1L;
 

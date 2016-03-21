@@ -18,7 +18,7 @@ public class DefectManagerTest {
 	public void testGetListTestsForGroupSameName() throws Exception {
 
 		VoSearchDefectDatas selectDatas = new VoSearchDefectDatas(11, "testModifySchedule");
-		VoListTestsSameNameDatas vo = manager.getListTestsForGroupSameName(selectDatas);
+		VoListTestsSameNameDatas vo = manager.getListTestsForGroupIdTClassIdAndTestName(selectDatas);
 
 		assertNotNull("VoListTestsSameNameDatas cannot be null!!", vo);
 	}

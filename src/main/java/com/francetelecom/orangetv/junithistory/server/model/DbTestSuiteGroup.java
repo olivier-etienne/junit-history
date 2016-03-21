@@ -2,7 +2,7 @@ package com.francetelecom.orangetv.junithistory.server.model;
 
 import com.francetelecom.orangetv.junithistory.server.dao.AbstractDbEntry;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 
 /**
  * Categorie dans laquelle sont groupées les suites de tests correspondant à une
@@ -39,9 +39,9 @@ public class DbTestSuiteGroup extends AbstractDbEntry {
 	}
 
 	// ------------------------------ public methods
-	public VoGroupName toVo() {
+	public VoIdName toVo() {
 
-		return new VoGroupName(this.getId(), this.name);
+		return new VoIdName(this.getId(), this.name);
 	}
 
 	public void update(VoGroupForEdit voGroup) {

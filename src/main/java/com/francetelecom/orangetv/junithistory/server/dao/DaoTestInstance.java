@@ -15,9 +15,10 @@ import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.model.LazyTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.LazyTestSuiteInstance;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 
 public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDaoTestInstance {
@@ -145,9 +146,10 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	 * @return
 	 */
 
-	public List<DbTestInstance> listTestsForGroupAndTestName(int groupId, String testName) throws JUnitHistoryException {
+	public List<DbTestInstance> listTestsForGroupIdTClassIdAndTestName(int groupId, int tclassId, String testName)
+			throws JUnitHistoryException {
 
-		if (this.countTestsForGroupAndTestName(groupId, testName) == 0) {
+		if (this.countTestsForGroupIdTClassIdAndTestName(groupId, tclassId, testName) == 0) {
 			return new ArrayList<>();
 		}
 
@@ -158,12 +160,15 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		final Map<Integer, DbTestSuiteInstance> mapId2Suite = VoIdUtils.getMapId2Item(listSuiteForGroup);
 		map.put(PARAM_SUITE_LIST, mapId2Suite);
 
-		return super.listEntry(MF_SELECT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, testName }), map);
+		return super
+				.listEntry(MF_SELECT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS.format(new Object[] { groupId, testName,
+						tclassId }), map);
 
 	}
 
-	public int countTestsForGroupAndTestName(int groupId, String testName) {
-		return super.count(MF_COUNT_WITH_GROUP_AND_TEST_NAME.format(new Object[] { groupId, testName }));
+	public int countTestsForGroupIdTClassIdAndTestName(int groupId, int tclassId, String testName) {
+		return super.count(MF_COUNT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS.format(new Object[] { groupId, testName,
+				tclassId }));
 	}
 
 	/**
@@ -175,18 +180,30 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	 * @return
 	 * @throws JUnitHistoryException
 	 */
-	public List<String> searchDistinctNamesForGroupAndContainsName(int groupId, String likeTestName)
+	public List<VoIdName> searchDistinctNamesForGroupAndContainsName(int groupId, String likeTestName)
 			throws JUnitHistoryException {
 
 		if (this.countTestsForGroupAndContainsName(groupId, likeTestName) == 0) {
 			return new ArrayList<>(0);
 		}
-		return super.listStringAttribute(
-				MF_DISTINCT_NAME_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }), DB_NAME);
+		return super.listVoIdName(
+				MF_DISTINCT_NAME_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }), null,
+				DB_NAME);
 	}
 
 	public int countTestsForGroupAndContainsName(int groupId, String likeTestName) {
 		return super.count(MF_COUNT_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }));
+	}
+
+	/**
+	 * Retourne une liste de VoTClassName (id and name) pour tous les tests d'un
+	 * groupId d'un nom
+	 * donné.
+	 */
+	public List<VoIdName> listTClassForGroupAndName(int groupId, String testName) throws JUnitHistoryException {
+
+		return super.listVoIdName(MF_LIST_TCLASS_NAME_WITH_GROUP_AND_NAME.format(new Object[] { groupId, testName }),
+				TCLASS_ID, TCLASS_NAME);
 	}
 
 	/**

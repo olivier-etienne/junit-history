@@ -112,6 +112,10 @@ public class LabelAndBoxWidget extends Composite implements CssConstants {
 		this.getTextBox().addKeyUpHandler(handler);
 	}
 
+	public void setBoxStyleName(String styleName) {
+		this.getTextBox().setStyleName(styleName);
+	}
+
 	// --------------------------------------------- constructor
 	public LabelAndBoxWidget(final String labelText, final int labelWidth, final int boxWidth) {
 		this(labelText, labelWidth, boxWidth, false);

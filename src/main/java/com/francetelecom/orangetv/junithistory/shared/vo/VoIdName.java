@@ -1,6 +1,6 @@
 package com.francetelecom.orangetv.junithistory.shared.vo;
 
-public abstract class AbstractVoIdName implements IVoId, Comparable<AbstractVoIdName> {
+public class VoIdName implements IVoId, Comparable<VoIdName> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -28,11 +28,11 @@ public abstract class AbstractVoIdName implements IVoId, Comparable<AbstractVoId
 	}
 
 	// ---------------------------- constructor
-	public AbstractVoIdName() {
+	public VoIdName() {
 		this(ID_UNDEFINED, null);
 	}
 
-	public AbstractVoIdName(int id, String name) {
+	public VoIdName(int id, String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -49,7 +49,7 @@ public abstract class AbstractVoIdName implements IVoId, Comparable<AbstractVoId
 
 	// --------------------------------- overriding Comparable
 	@Override
-	public int compareTo(AbstractVoIdName o) {
+	public int compareTo(VoIdName o) {
 		if (o == null) {
 			return 1;
 		}
