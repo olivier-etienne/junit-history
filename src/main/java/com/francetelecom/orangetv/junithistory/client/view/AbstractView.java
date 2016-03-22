@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.AbstractMainPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.AbstractProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.util.CssConstants;
 import com.francetelecom.orangetv.junithistory.client.util.StatusUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
@@ -30,7 +30,7 @@ public abstract class AbstractView extends Composite implements IView, CssConsta
 	protected final Label labelResult = new Label();
 	protected final Label labelTitle = new Label("");
 
-	protected final DateTimeFormat DF = AbstractMainPresenter.DF;
+	protected final DateTimeFormat DF = AbstractProfilMainPresenter.DF;
 
 	private final Map<String, ButtonViewAction> mapAction2ButtonViewActions = new HashMap<>();
 

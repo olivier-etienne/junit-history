@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
-import com.francetelecom.orangetv.junithistory.client.presenter.DefectPresenter.IDefectView;
-import com.francetelecom.orangetv.junithistory.client.util.StatusUtils;
+import com.francetelecom.orangetv.junithistory.client.panel.analysis.TestInfoPanel;
+import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.IAnalysisView;
+import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.TestActionButtonEnum;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndListWidget;
-import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
@@ -20,20 +20,18 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoTestDistinctName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestInstanceForEdit;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.TabPanel;
-import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class DefectView extends AbstractMainView implements IDefectView {
-	private final static Logger log = Logger.getLogger("DefectView");
+public class AnalysisView extends AbstractMainView implements IAnalysisView {
+	private final static Logger log = Logger.getLogger("AnalysisView");
 
 	private ListBox lbGroups = new ListBox();
 	private final LabelAndListWidget wlistGroups = new LabelAndListWidget("STB", 50, 212, lbGroups, 1);
@@ -43,17 +41,21 @@ public class DefectView extends AbstractMainView implements IDefectView {
 	private final ListBox lbSearchResult = new ListBox();
 	private final LabelAndListWidget wlistSearchResult = new LabelAndListWidget("", 0, 200, lbSearchResult, 20);
 
-	private final TabPanel tabPanel = new TabPanel();
-
 	private final Panel defectPanel = new SimplePanel();
-	private final Panel commentPanel = new SimplePanel();
 
 	private final LabelAndBoxWidget wTestNameBox = new LabelAndBoxWidget("Test name", 100, 250);
 
 	private final ListBox lbTClasses = new ListBox();
 	private final LabelAndListWidget wlistTClasses = new LabelAndListWidget("TClass", 100, 250, this.lbTClasses, 1);
 
-	// ------------------------------- implementing IDefectView
+	private ClickHandler actionClickHandler;
+
+	// ------------------------------- implementing IAnalysisView
+	@Override
+	public void setTestActionClickHandler(ClickHandler actionClickHandler) {
+		this.actionClickHandler = actionClickHandler;
+	}
+
 	@Override
 	public void setInitDatas(VoInitDefectDatas initDatas) {
 
@@ -137,7 +139,8 @@ public class DefectView extends AbstractMainView implements IDefectView {
 		for (VoTestInstanceForEdit voTest : testDatas.getListTestsSameName()) {
 
 			log.config("add test: " + voTest.getId());
-			TestInformationPanel testPanel = new TestInformationPanel();
+			TestInfoPanel testPanel = new TestInfoPanel();
+			testPanel.setTestActionClickHandler(this.actionClickHandler);
 			vpTests.add(testPanel);
 
 			testPanel.setDatas(voTest);
@@ -179,15 +182,15 @@ public class DefectView extends AbstractMainView implements IDefectView {
 	}
 
 	// ------------------------- constructor
-	public DefectView() {
+	public AnalysisView() {
 		super();
-		super.init("Gestion des defects");
+		super.init("Analyse des tests");
 	}
 
 	// ----------------------------- implementing IMainView
 	@Override
 	public MainPanelViewEnum getViewType() {
-		return MainPanelViewEnum.defect;
+		return MainPanelViewEnum.analysis;
 	}
 
 	// ----------------------------- implementing IView
@@ -225,13 +228,6 @@ public class DefectView extends AbstractMainView implements IDefectView {
 		hpStbAndSearch.add(this.wSearchBox);
 		this.main.add(hpStbAndSearch);
 
-		// tab panel
-		this.tabPanel.setWidth(MAX_WIDTH);
-		this.tabPanel.setHeight(MAX_WIDTH);
-		this.tabPanel.add(this.defectPanel, "output");
-		this.tabPanel.add(this.commentPanel, "comments");
-		this.tabPanel.selectTab(0);
-
 		final HorizontalPanel hpTitle = new HorizontalPanel();
 		hpTitle.setWidth(MAX_WIDTH);
 		hpTitle.setSpacing(PANEL_SPACING);
@@ -242,7 +238,7 @@ public class DefectView extends AbstractMainView implements IDefectView {
 		vpInfoTest.setWidth(MAX_WIDTH);
 		vpInfoTest.setSpacing(PANEL_SPACING);
 		vpInfoTest.add(hpTitle);
-		vpInfoTest.add(this.tabPanel);
+		vpInfoTest.add(this.defectPanel);
 
 		final HorizontalPanel hpResult = new HorizontalPanel();
 		hpResult.setWidth(MAX_WIDTH);
@@ -280,7 +276,6 @@ public class DefectView extends AbstractMainView implements IDefectView {
 	// ----------------------------------- private methods
 	private void clearTestPanels() {
 		this.defectPanel.clear();
-		this.commentPanel.clear();
 
 	}
 
@@ -297,99 +292,57 @@ public class DefectView extends AbstractMainView implements IDefectView {
 	}
 
 	// ===================================== INNER CLASS
+	public static class CreateCommentButton extends TestActionButton {
 
-	/**
-	 * Panel pour les informations d'un TestInstance
-	 * 
-	 * @author NDMZ2720
-	 *
-	 */
-	private final class TestInformationPanel extends SimplePanel {
+		public CreateCommentButton(int testId) {
+			super(testId, TestActionButtonEnum.createComment, "Create a comment");
+			this.addButtonStyleName(STYLE_IMG_CREATE_COMMENT);
+		}
+	}
 
-		private VerticalPanel vpBody = new VerticalPanel();
+	public static class DeleteCommentButton extends TestActionButton {
 
-		private Panel suiteNamePanel = new SimplePanel();
-		private Label labelSuiteDate = new Label();
-		private Label labelTestStatus = new Label();
+		public DeleteCommentButton(int testId) {
+			super(testId, TestActionButtonEnum.deleteComment, "Delete the comment");
+			this.addButtonStyleName(STYLE_IMG_DELETE);
+		}
+	}
 
-		private LabelAndBoxWidget wTypeBox = new LabelAndBoxWidget("Type", 50, 500);
-		private LabelAndBoxWidget wMessageBox = new LabelAndBoxWidget("Message", 50, 500);
+	public static class EditCommentButton extends TestActionButton {
 
-		private TextArea taOutputLogs = new TextArea();
-		private TextArea taStackTrace = new TextArea();
+		public EditCommentButton(int testId) {
+			super(testId, TestActionButtonEnum.editComment, "Edit the comment");
+			this.addButtonStyleName(STYLE_IMG_EDIT);
+		}
+	}
 
-		// ------------------------------ constructor
-		private TestInformationPanel() {
-			this.initComposants();
-			this.add(this.buildBodyPanel());
+	public static abstract class TestActionButton extends Button {
+
+		private final int testId;
+		private final TestActionButtonEnum action;
+
+		public TestActionButtonEnum getAction() {
+			return this.action;
 		}
 
-		// ---------------------------- private methods
-		private void initComposants() {
-
-			this.setStyleName(PANEL_TEST_INFO);
-
-			this.taOutputLogs.setStyleName(TEXT_AREA_TEST_INFO);
-			this.taOutputLogs.setEnabled(false);
-
-			this.taStackTrace.setStyleName(TEXT_AREA_TEST_INFO);
-			this.taStackTrace.setEnabled(false);
-
-			this.wTypeBox.setEnabled(false);
-			this.wMessageBox.setEnabled(false);
-
-			this.suiteNamePanel.addStyleName(STYLE_SUITE_NAME);
-			this.labelSuiteDate.addStyleName(STYLE_SUITE_DATE);
-
+		public int getTestId() {
+			return this.testId;
 		}
 
-		private Panel buildBodyPanel() {
-
-			this.vpBody.setWidth(MAX_WIDTH);
-
-			final VerticalPanel vpPanel = new VerticalPanel();
-			vpPanel.setSpacing(PANEL_SPACING);
-			vpPanel.setWidth(MAX_WIDTH);
-			vpPanel.setBorderWidth(1);
-
-			final HorizontalPanel hpTitle = new HorizontalPanel();
-			hpTitle.setSpacing(PANEL_SPACING);
-			hpTitle.setWidth(MAX_WIDTH);
-			hpTitle.add(this.suiteNamePanel);
-			hpTitle.add(this.labelSuiteDate);
-			hpTitle.setCellHorizontalAlignment(this.labelSuiteDate, HasHorizontalAlignment.ALIGN_CENTER);
-			hpTitle.add(this.labelTestStatus);
-			hpTitle.setCellHorizontalAlignment(this.labelTestStatus, HasHorizontalAlignment.ALIGN_RIGHT);
-			vpPanel.add(hpTitle);
-
-			// body (peut etre masqué)
-			this.vpBody.add(this.wTypeBox);
-			this.vpBody.add(this.wMessageBox);
-
-			this.vpBody.add(new Label("output logs:"));
-			this.vpBody.add(this.taOutputLogs);
-
-			this.vpBody.add(new Label("stack trace"));
-			this.vpBody.add(this.taStackTrace);
-			vpPanel.add(this.vpBody);
-			return vpPanel;
-		}
-
-		private void setDatas(VoTestInstanceForEdit voTest) {
-
-			this.suiteNamePanel.add(new Label(voTest.getSuiteName()));
-			this.labelSuiteDate.setText(voTest.getSuiteDate());
-			StatusUtils.buildTestStatus(this.labelTestStatus, TestSubStatusEnum.valueOf(voTest.getStatus()));
-
-			if (voTest.getType() != null) {
-				this.wTypeBox.setValue(voTest.getType());
-				this.wMessageBox.setValue(voTest.getMessage());
-				this.taOutputLogs.setValue(voTest.getOutputLog());
-				this.taStackTrace.setValue(voTest.getStackTrace());
-				this.vpBody.setVisible(true);
-			} else {
-				this.vpBody.setVisible(false);
+		private TestActionButton(int testId, TestActionButtonEnum action, String title) {
+			this.testId = testId;
+			this.action = action;
+			if (title != null) {
+				super.setTitle(title);
 			}
+		}
+
+		protected void addButtonStyleName(String stylename) {
+			this.addStyleName(STYLE_IMG_ACTION + " " + stylename);
+		}
+
+		protected void removeButtonStyleName(String stylename) {
+			this.removeStyleName(STYLE_IMG_ACTION + " " + stylename);
 		}
 
 	}

@@ -2,7 +2,7 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 
 import java.util.logging.Logger;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.CategorySubPresenter.ICategorySubView;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForGrid;
@@ -59,8 +59,8 @@ public class CategorySubView extends AbstractGridSubView<VoCategoryForGrid> impl
 	}
 
 	@Override
-	public TabViewEnum getType() {
-		return TabViewEnum.tabCategory;
+	public TabAdminViewEnum getType() {
+		return TabAdminViewEnum.tabCategory;
 	}
 
 	@Override

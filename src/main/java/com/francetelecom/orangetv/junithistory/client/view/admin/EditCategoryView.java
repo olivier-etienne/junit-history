@@ -2,7 +2,7 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 
 import java.util.logging.Logger;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditCategoryPresenter.IEditCategoryView;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForEdit;
@@ -13,7 +13,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForEdit;
  * @author ndmz2720
  *
  */
-public class EditCategoryView extends AbstractEditView implements IEditCategoryView {
+public class EditCategoryView extends AbstractEditAdminView implements IEditCategoryView {
 
 	private final static Logger log = Logger.getLogger("EditCategoryView");
 
@@ -32,8 +32,8 @@ public class EditCategoryView extends AbstractEditView implements IEditCategoryV
 
 	// ---------------------------- implementing IEditItemView
 	@Override
-	public TabViewEnum getType() {
-		return TabViewEnum.tabCategory;
+	public TabAdminViewEnum getType() {
+		return TabAdminViewEnum.tabCategory;
 	}
 
 	// --------------------------- overriding IEditUserView

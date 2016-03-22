@@ -4,7 +4,7 @@ import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.IPageAdminView;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.Panel;
@@ -94,7 +94,7 @@ public class PageAdminView extends AbstractMainView implements IPageAdminView {
 
 	// --------------------- implementing IPageAdminView
 	@Override
-	public Panel getContainer(TabViewEnum viewType) {
+	public Panel getContainer(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;

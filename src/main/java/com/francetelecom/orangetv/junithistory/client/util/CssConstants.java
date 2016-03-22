@@ -65,10 +65,12 @@ public interface CssConstants {
 	public final static String STYLE_IMG_EDIT = "imgEdit";
 	public final static String STYLE_IMG_EMPTY = "imgEmpty";
 	public final static String STYLE_IMG_ENABLED = "imgEnabled";
+	public final static String STYLE_IMG_CREATE_COMMENT = "imgCreateComment";
 
 	// defectview
 	public final static String PANEL_TEST_INFO = "testInfoPanel";
-	public final static String TEXT_AREA_TEST_INFO = "testTextArea";
+	public final static String TEXT_AREA_TEST_INFO = "testTextAreaInfo";
+	public final static String TEXT_AREA_TEST_COMMENT = "testTextAreaComment";
 	public final static String LIST_TEST_NAMES = "listTestNames";
 	public final static String STYLE_SUITE_NAME = "suiteName";
 	public final static String STYLE_SUITE_DATE = "suiteDate";

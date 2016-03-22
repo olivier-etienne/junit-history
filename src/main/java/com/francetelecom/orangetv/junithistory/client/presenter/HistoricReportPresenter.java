@@ -12,6 +12,7 @@ import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.view.AbstractView.ButtonViewAction;
 import com.francetelecom.orangetv.junithistory.client.view.HistoricReportView.GridActionButton;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
@@ -33,7 +34,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
-public class HistoricReportPresenter extends AbstractMainPresenter {
+public class HistoricReportPresenter extends AbstractProfilMainPresenter {
 
 	private final static Logger log = Logger.getLogger("HistoricReportPresenter");
 
@@ -416,7 +417,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 	}
 
 	// -------------------------------- VIEW
-	public interface IHistoricReportView extends IMainView {
+	public interface IHistoricReportView extends IProfilMainView {
 
 		public void setInitDatas(VoInitHistoricReportDatas datas);
 

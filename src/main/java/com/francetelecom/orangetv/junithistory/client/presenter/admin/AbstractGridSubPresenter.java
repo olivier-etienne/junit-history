@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.AbstractPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
@@ -54,7 +54,7 @@ public abstract class AbstractGridSubPresenter<T extends VoIdName> extends Abstr
 
 	protected abstract void doDeleteItem(int itemId, IDeleteCallback callback);
 
-	protected abstract TabViewEnum getType();
+	protected abstract TabAdminViewEnum getType();
 
 	protected abstract String[] getItemDescription(T item);
 

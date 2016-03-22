@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
+import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
@@ -18,20 +19,27 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
-public class DefectPresenter extends AbstractMainPresenter {
-	private final static Logger log = Logger.getLogger("DefectPresenter");
+public class AnalysisPresenter extends AbstractProfilMainPresenter {
+	private final static Logger log = Logger.getLogger("AnalysisPresenter");
 
-	private final IDefectView view;
+	public enum TestActionButtonEnum {
+		createComment, deleteComment, editComment;
+
+	}
+
+	private final IAnalysisView view;
 
 	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>();
 	private boolean searchRunning = false;
 
 	// ------------------------------- constructor
-	public DefectPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IDefectView view) {
+	public AnalysisPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IAnalysisView view) {
 		super(service, eventBus);
 		this.view = view;
 		this.bind();
@@ -79,6 +87,37 @@ public class DefectPresenter extends AbstractMainPresenter {
 	private VoSearchDefectDatas currentSearch = null;
 
 	private void bind() {
+
+		// handler pour les action sur les test comments
+		this.view.setTestActionClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				Object src = event == null ? null : event.getSource();
+				if (src != null && src instanceof TestActionButton) {
+					TestActionButton testActionButton = (TestActionButton) src;
+					TestActionButtonEnum action = testActionButton.getAction();
+					int testId = testActionButton.getTestId();
+
+					switch (action) {
+					case createComment:
+						showDialogCreateComment(testId);
+						break;
+
+					case editComment:
+						showDialogEditComment(testId);
+						break;
+
+					case deleteComment:
+						beforeDeleteComment(testId);
+						break;
+
+					}
+				}
+
+			}
+		});
 
 		// handler pour la selection d'une tclass de test
 		this.view.setSelectTClassHandler(new ChangeHandler() {
@@ -172,6 +211,39 @@ public class DefectPresenter extends AbstractMainPresenter {
 		});
 	}
 
+	private void showDialogCreateComment(int testId) {
+
+	}
+
+	/*
+	 * Creation d'un nouveau commentaire pour le test testId 
+	 */
+	private void doCreateComment(int testId) {
+
+	}
+
+	private void showDialogEditComment(int testId) {
+
+	}
+
+	/*
+	 * Edition du commentaire pour le test testId 
+	 */
+	private void doEditComment(int testId) {
+
+	}
+
+	private void beforeDeleteComment(int testId) {
+
+	}
+
+	/*
+	 * Suppression commentaire pour le test testId 
+	 */
+	private void doDeleteComment(int testId) {
+
+	}
+
 	/*
 	 * Récupère la liste des tclass pour le nom de test choisi et le groupid courant
 	 */
@@ -260,7 +332,7 @@ public class DefectPresenter extends AbstractMainPresenter {
 	}
 
 	// ------------------------------- View
-	public interface IDefectView extends IMainView {
+	public interface IAnalysisView extends IMainView {
 
 		public void setInitDatas(VoInitDefectDatas datas);
 
@@ -279,6 +351,8 @@ public class DefectPresenter extends AbstractMainPresenter {
 		public void setTestDatas(VoListTestsSameNameDatas testDatas);
 
 		public void setTestTClasses(String testName, List<VoIdName> listTClasses);
+
+		public void setTestActionClickHandler(ClickHandler actionClickHandler);
 	}
 
 }

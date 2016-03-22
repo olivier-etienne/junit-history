@@ -3,7 +3,7 @@ package com.francetelecom.orangetv.junithistory.client.presenter.admin;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.view.admin.IAdminSubView;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
@@ -28,8 +28,8 @@ public class GroupSubPresenter extends AbstractGridSubPresenter<VoGroupForGrid> 
 
 	// ---------------------------------- implementing AbstractGridSubPresenter
 	@Override
-	protected TabViewEnum getType() {
-		return TabViewEnum.tabGroup;
+	protected TabAdminViewEnum getType() {
+		return TabAdminViewEnum.tabGroup;
 	}
 
 	@Override

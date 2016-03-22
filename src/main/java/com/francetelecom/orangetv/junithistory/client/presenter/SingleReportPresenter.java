@@ -11,6 +11,7 @@ import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistorySe
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.view.AbstractView.ButtonViewAction;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.client.widget.MyUploader.UploadHandler;
 import com.francetelecom.orangetv.junithistory.client.widget.MyUploader.UploadInfo;
@@ -39,7 +40,7 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author ndmz2720
  * 
  */
-public class SingleReportPresenter extends AbstractMainPresenter {
+public class SingleReportPresenter extends AbstractProfilMainPresenter {
 
 	private final static Logger log = Logger.getLogger("SingleReportPresenter");
 
@@ -439,7 +440,7 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 	}
 
 	// -------------------------------- VIEW
-	public interface ISingleReportView extends IMainView {
+	public interface ISingleReportView extends IProfilMainView {
 
 		public void setDatas(int groupId, String version);
 

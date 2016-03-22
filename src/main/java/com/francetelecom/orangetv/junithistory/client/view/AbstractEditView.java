@@ -1,42 +1,19 @@
-package com.francetelecom.orangetv.junithistory.client.view.admin;
+package com.francetelecom.orangetv.junithistory.client.view;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.IEditItemPresenter.ViewActionEnum;
-import com.francetelecom.orangetv.junithistory.client.view.AbstractView;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 
-public abstract class AbstractEditView extends AbstractView implements IEditItemView {
+public abstract class AbstractEditView extends AbstractView {
 
-	private final ButtonViewAction btUpdate;
+	protected final ButtonViewAction btUpdate;
 
-	private final ButtonViewAction btCancel;
+	protected final ButtonViewAction btCancel;
 
-	private boolean locked;
-
-	private ClickHandler actionClickHandler;
+	protected boolean locked;
 
 	// --------------------------- constructor
 	protected AbstractEditView(String itemName) {
 		this.btUpdate = new ButtonViewAction("Update", ViewActionEnum.update.name(), "Update " + itemName);
 		this.btCancel = new ButtonViewAction("Cancel", ViewActionEnum.cancel.name(), "Cancel update");
-	}
-
-	// ---------------------------- implementing IEditItemView
-
-	@Override
-	public void setGridActionClickHandler(final ClickHandler actionClickHandler) {
-		this.actionClickHandler = new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-
-				if (!locked) {
-					actionClickHandler.onClick(event);
-				}
-			}
-		};
-		this.btUpdate.addClickHandler(this.actionClickHandler);
-		this.btCancel.addClickHandler(this.actionClickHandler);
 	}
 
 	// --------------------------- overriding AbstractView
@@ -78,8 +55,7 @@ public abstract class AbstractEditView extends AbstractView implements IEditItem
 		this.labelTitle.setText(newTitle);
 	}
 
-	// ------------------------------------ private methods
-	private void enableButtonAndField(boolean enabled) {
+	protected void enableButtonAndField(boolean enabled) {
 		this.btUpdate.setEnabled(enabled);
 		this.btCancel.setEnabled(enabled);
 	}

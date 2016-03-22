@@ -2,13 +2,13 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 
 import java.util.logging.Logger;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditUserView;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserProtection;
 
-public class EditTesterView extends AbstractEditView implements IEditUserView {
+public class EditTesterView extends AbstractEditAdminView implements IEditUserView {
 
 	private final static Logger log = Logger.getLogger("EditTesterView");
 
@@ -27,8 +27,8 @@ public class EditTesterView extends AbstractEditView implements IEditUserView {
 
 	// ---------------------------- implementing IEditItemView
 	@Override
-	public TabViewEnum getType() {
-		return TabViewEnum.tabTester;
+	public TabAdminViewEnum getType() {
+		return TabAdminViewEnum.tabTester;
 	}
 
 	// --------------------------- overriding IEditUserView

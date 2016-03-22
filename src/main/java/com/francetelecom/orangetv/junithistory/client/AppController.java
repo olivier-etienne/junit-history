@@ -9,15 +9,16 @@ import com.francetelecom.orangetv.junithistory.client.event.ViewReportEvent.View
 import com.francetelecom.orangetv.junithistory.client.panel.PanelConnection;
 import com.francetelecom.orangetv.junithistory.client.panel.PanelConnection.Credential;
 import com.francetelecom.orangetv.junithistory.client.panel.PanelMenu;
-import com.francetelecom.orangetv.junithistory.client.presenter.AbstractMainPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.AbstractProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter;
-import com.francetelecom.orangetv.junithistory.client.presenter.IMainPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.IProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils.MyDialogBox;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils.MyDialogView;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.shared.UserProfile;
@@ -34,7 +35,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class AppController extends AbstractMainPresenter implements ValueChangeHandler<String> {
+public class AppController extends AbstractProfilMainPresenter implements ValueChangeHandler<String> {
 
 	private final static Logger log = Logger.getLogger("AppController");
 
@@ -49,13 +50,13 @@ public class AppController extends AbstractMainPresenter implements ValueChangeH
 
 	public enum MainPanelViewEnum {
 
-		singleReport, historicReport, editReport, admin, defect
+		singleReport, historicReport, editReport, admin, analysis
 	}
 
 	private ClickHandler connectUseClickHandler;
 
 	private UserProfile currentUserProfile;
-	private IMainPresenter currentPresenter;
+	private IProfilMainPresenter currentPresenter;
 
 	// ----------------------------------- constructor
 	public AppController(ClientFactory clientFactory) {
@@ -174,8 +175,8 @@ public class AppController extends AbstractMainPresenter implements ValueChangeH
 						diplayView(MainPanelViewEnum.admin, params, true, panelView);
 						break;
 
-					case defect:
-						diplayView(MainPanelViewEnum.defect, params, false, panelView);
+					case analysis:
+						diplayView(MainPanelViewEnum.analysis, params, false, panelView);
 						break;
 					}
 					if (manageUserProfile) {
@@ -224,9 +225,11 @@ public class AppController extends AbstractMainPresenter implements ValueChangeH
 		History.newItem(viewEnum.name(), false);
 
 		IMainView view = this.clientFactory.getMainView(viewEnum);
-		view.getConnectUserButton().addClickHandler(this.getConnectUserClickHandler());
+		if (view != null && view instanceof IProfilMainView) {
+			((IProfilMainView) view).getConnectUserButton().addClickHandler(this.getConnectUserClickHandler());
+		}
 
-		IMainPresenter presenter = this.clientFactory.getMainPresenter(viewEnum);
+		IProfilMainPresenter presenter = this.clientFactory.getMainPresenter(viewEnum);
 		if (presenter == null) {
 
 			presenter = this.clientFactory.buildMainPresenter(view);
@@ -321,7 +324,7 @@ public class AppController extends AbstractMainPresenter implements ValueChangeH
 
 	public void setActionResult(String text, LogStatus logStatus) {
 
-		IMainView view = this.getMainView();
+		IMainView view = this.getProfilMainView();
 		if (view != null) {
 			view.setActionResult(text, logStatus);
 		}

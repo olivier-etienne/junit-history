@@ -3,7 +3,7 @@ package com.francetelecom.orangetv.junithistory.client.presenter.admin;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.view.admin.IAdminSubView;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
@@ -29,8 +29,8 @@ public class TesterSubPresenter extends AbstractGridSubPresenter<VoUserForGrid> 
 
 	// ---------------------------------- implementing AbstractGridSubPresenter
 	@Override
-	protected TabViewEnum getType() {
-		return TabViewEnum.tabTester;
+	protected TabAdminViewEnum getType() {
+		return TabAdminViewEnum.tabTester;
 	}
 
 	//

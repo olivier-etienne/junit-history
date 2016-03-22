@@ -3,11 +3,11 @@ package com.francetelecom.orangetv.junithistory.client.presenter;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
-import com.francetelecom.orangetv.junithistory.client.presenter.DefectPresenter.IDefectView;
+import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.IAnalysisView;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter.IEditReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.HistoricReportPresenter.IHistoricReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.IPageAdminView;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.SingleReportPresenter.ISingleReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.CategorySubPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.CategorySubPresenter.ICategorySubView;
@@ -24,7 +24,7 @@ import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubP
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter.IUserSubView;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryService;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
-import com.francetelecom.orangetv.junithistory.client.view.DefectView;
+import com.francetelecom.orangetv.junithistory.client.view.AnalysisView;
 import com.francetelecom.orangetv.junithistory.client.view.EditReportView;
 import com.francetelecom.orangetv.junithistory.client.view.HistoricReportView;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
@@ -79,8 +79,8 @@ public class ClientFactoryImpl implements ClientFactory {
 	private EditGroupView editGroupView;
 	private EditGroupPresenter editGroupPresenter;
 
-	private DefectView defectView;
-	private DefectPresenter defectPresenter;
+	private AnalysisView analysisView;
+	private AnalysisPresenter analysisPresenter;
 
 	// ----------------------------- implementing ClientFactory
 	@Override
@@ -102,8 +102,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (viewType) {
 		case admin:
 			return this.getPageAdminView();
-		case defect:
-			return this.getDefectView();
+		case analysis:
+			return this.getAnalysisView();
 		case editReport:
 			return this.getEditReportView();
 		case historicReport:
@@ -116,7 +116,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IAdminSubView<?> getAdminSubView(TabViewEnum viewType) {
+	public IAdminSubView<?> getAdminSubView(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -136,7 +136,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IEditItemView getEditView(TabViewEnum viewType) {
+	public IEditItemView getEditView(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -157,7 +157,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IMainPresenter getMainPresenter(MainPanelViewEnum view) {
+	public IProfilMainPresenter getMainPresenter(MainPanelViewEnum view) {
 
 		if (view == null) {
 			return null;
@@ -165,8 +165,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (view) {
 		case admin:
 			return this.pageAdminPresenter;
-		case defect:
-			return this.defectPresenter;
+		case analysis:
+			return this.analysisPresenter;
 		case editReport:
 			return this.editReportPresenter;
 		case historicReport:
@@ -179,7 +179,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IMainPresenter buildMainPresenter(IMainView view) {
+	public IProfilMainPresenter buildMainPresenter(IMainView view) {
 
 		if (view == null) {
 			return null;
@@ -189,8 +189,8 @@ public class ClientFactoryImpl implements ClientFactory {
 		case admin:
 
 			return this.buildPageAdminPresenter((IPageAdminView) view);
-		case defect:
-			return this.buildDefectPresenter((IDefectView) view);
+		case analysis:
+			return this.buildAnalysisPresenter((IAnalysisView) view);
 		case editReport:
 			return this.buildEditReportPresenter((IEditReportView) view);
 		case historicReport:
@@ -208,7 +208,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		if (view == null) {
 			return null;
 		}
-		TabViewEnum viewType = view.getType();
+		TabAdminViewEnum viewType = view.getType();
 
 		switch (viewType) {
 		case tabTester:
@@ -231,7 +231,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		if (view == null) {
 			return null;
 		}
-		TabViewEnum viewType = view.getType();
+		TabAdminViewEnum viewType = view.getType();
 
 		switch (viewType) {
 		case tabTester:
@@ -250,7 +250,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IPresenter getAdminSubPresenter(TabViewEnum viewType) {
+	public IPresenter getAdminSubPresenter(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -273,7 +273,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IEditItemPresenter getEditPresenter(TabViewEnum viewType) {
+	public IEditItemPresenter getEditPresenter(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -325,11 +325,11 @@ public class ClientFactoryImpl implements ClientFactory {
 		return this.pageAdminView;
 	}
 
-	private IDefectView getDefectView() {
-		if (this.defectView == null) {
-			this.defectView = new DefectView();
+	private IAnalysisView getAnalysisView() {
+		if (this.analysisView == null) {
+			this.analysisView = new AnalysisView();
 		}
-		return this.defectView;
+		return this.analysisView;
 	}
 
 	private IUserSubView getUserSubView() {
@@ -427,9 +427,9 @@ public class ClientFactoryImpl implements ClientFactory {
 		return this.editGroupPresenter;
 	}
 
-	private DefectPresenter buildDefectPresenter(IDefectView view) {
-		this.defectPresenter = new DefectPresenter(service, eventBus, view);
-		return this.defectPresenter;
+	private AnalysisPresenter buildAnalysisPresenter(IAnalysisView view) {
+		this.analysisPresenter = new AnalysisPresenter(service, eventBus, view);
+		return this.analysisPresenter;
 	}
 
 }

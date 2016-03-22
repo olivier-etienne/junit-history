@@ -1,6 +1,5 @@
 package com.francetelecom.orangetv.junithistory.shared.vo;
 
-
 /**
  * Encapule un TestInstance pour la visualisation et l'edition
  * 
@@ -19,10 +18,14 @@ public class VoTestInstanceForEdit extends VoIdName {
 	private String suiteName;
 	private String suiteDate;
 
+	// message
 	private String type;
 	private String message;
 	private String stackTrace;
 	private String outputLog;
+
+	// comment
+	private String comment;
 
 	// ---------------------------- constructor
 	public VoTestInstanceForEdit() {
@@ -105,6 +108,10 @@ public class VoTestInstanceForEdit extends VoIdName {
 
 	public void setOutputLog(String outputLog) {
 		this.outputLog = outputLog;
+	}
+
+	public boolean hasComment() {
+		return this.comment != null;
 	}
 
 }

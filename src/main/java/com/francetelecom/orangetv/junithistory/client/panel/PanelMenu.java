@@ -28,7 +28,7 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 	private final MenuButton btHistoricReports = new MenuButton("History reports", MainPanelViewEnum.historicReport);
 
 	private final MenuButton btPageAdmin = new MenuButton("Page admin", MainPanelViewEnum.admin, UserProfile.admin);
-	private final MenuButton btDefect = new MenuButton("Defects", MainPanelViewEnum.defect);
+	private final MenuButton btAnalysis = new MenuButton("Analysis", MainPanelViewEnum.analysis);
 
 	private final List<MenuButton> listMenuButtons = new ArrayList<>();
 
@@ -102,7 +102,7 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 
 		this.listMenuButtons.add(this.btSingleReport);
 		this.listMenuButtons.add(this.btHistoricReports);
-		this.listMenuButtons.add(this.btDefect);
+		this.listMenuButtons.add(this.btAnalysis);
 		this.listMenuButtons.add(this.btPageAdmin);
 
 		this.main.addStyleName(PANEL_MENU);
