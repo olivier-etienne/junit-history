@@ -1,7 +1,6 @@
 package com.francetelecom.orangetv.junithistory.server.dao;
 
 import java.sql.ResultSet;
-import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -15,6 +14,7 @@ import com.francetelecom.orangetv.junithistory.server.model.LazyTestUser;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 
 /**
  * Commentaire associé à un test
@@ -100,6 +100,11 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 		return super.listEntry(SQL_SELECT_TCOMMENT, params);
 	}
 
+	public List<DbTestComment> listCommentForSuite(int suiteId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	/**
 	 * Récupère une entrée par son id
 	 * 
@@ -124,11 +129,7 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 
 		super.verifyIdForCreateEntry(testMessage, SQL_SELECT_MAX_ID);
 
-		// testId required
-		if (testId == IDbEntry.ID_UNDEFINED) {
-			throw new JUnitHistoryException("testId must be defined in test comment!");
-		}
-		return this.createOrUpdateTComment(testMessage, testId, MF_CREATE_COMMENT);
+		return this._createTComment(testMessage, testId);
 	}
 
 	/**
@@ -141,6 +142,19 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 	public boolean deleteTComment(int commentId) throws JUnitHistoryException {
 
 		return super.deleteEntry(commentId, MF_DELETE_ONE_ENTRY);
+
+	}
+
+	/**
+	 * Mise à jour d'un commentaire de test
+	 * 
+	 * @param voComment
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public boolean updateTComment(VoTestCommentForEdit voComment) throws JUnitHistoryException {
+		this.verifyCommentToUpdate(voComment);
+		return this._updateTComment(voComment);
 
 	}
 
@@ -175,24 +189,40 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 
 	}
 
-	private boolean createOrUpdateTComment(DbTestComment entry, int testId, MessageFormat sqlToFormat)
-			throws JUnitHistoryException {
+	private boolean _updateTComment(VoTestCommentForEdit voComment) throws JUnitHistoryException {
 
-		this.verifyComment(entry, testId);
+		String title = this.formatSqlString(voComment.getTitle());
+		String description = this.formatSqlString(voComment.getDescription());
 
-		// String type = this.formatSqlString(entry.getType());
-		// String message = this.formatSqlString(entry.getMessage());
-		// String stacktrace = this.formatSqlString(entry.getStackTrace());
-		// String outputLog = this.formatSqlString(entry.getOutputLog());
+		long dateModifTs = new Date().getTime();
 
-		String sql = ""; // sqlToFormat.format(new Object[] { entry.getId(),
-							// type, message, stacktrace, outputLog, testId });
+		String sql = MF_UPDATE_COMMENT.format(new Object[] { title, description, voComment.getUserId(), dateModifTs,
+				voComment.getId() });
 
 		return this.updateOneItem(sql);
 
 	}
 
-	private void verifyComment(DbTestComment entry, int testId) throws JUnitHistoryException {
+	private boolean _createTComment(DbTestComment entry, int testId) throws JUnitHistoryException {
+
+		this.verifyCommentToCreate(entry, testId);
+
+		String title = this.formatSqlString(entry.getTitle());
+		String description = this.formatSqlString(entry.getDescription());
+
+		Date now = new Date();
+
+		long dateCreationTs = now.getTime();
+		long dateModifTs = dateCreationTs;
+
+		String sql = MF_CREATE_COMMENT.format(new Object[] { entry.getId(), title, description, testId,
+				entry.getUser().getId(), dateCreationTs, dateModifTs });
+
+		return this.updateOneItem(sql);
+
+	}
+
+	private void verifyCommentToCreate(DbTestComment entry, int testId) throws JUnitHistoryException {
 
 		String prefix = "DbTestComment";
 		super.verifyEntryBeforeSave(prefix, entry);
@@ -200,15 +230,36 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 		// testId defined
 		super.verifyIdDefined(prefix + " testId", testId);
 
-		// userId defined
+		// user not null && userId defined
 		super.verifyNotNull(prefix + " user", entry.getUser());
-		super.verifyIdDefined(prefix + " userId", entry.getUser().getId());
+		super.verifyIdDefined(prefix + " user.id", entry.getUser().getId());
 
 		// title required
 		super.verifyNotNull(prefix + " title", entry.getTitle());
 
 		// description required
 		super.verifyNotNull(prefix + " description", entry.getDescription());
+
+	}
+
+	private boolean verifyCommentToUpdate(VoTestCommentForEdit voComment) throws JUnitHistoryException {
+
+		final String prefix = "DbTestComment.";
+		this.verifyVoIdBeforeSave(prefix, voComment);
+
+		// testId defined
+		super.verifyIdDefined(prefix + " testId", voComment.getTestId());
+
+		// userId defined
+		super.verifyIdDefined(prefix + " userId", voComment.getUserId());
+
+		// title required
+		super.verifyNotNull(prefix + " title", voComment.getTitle());
+
+		// description required
+		super.verifyNotNull(prefix + " description", voComment.getDescription());
+
+		return true;
 
 	}
 

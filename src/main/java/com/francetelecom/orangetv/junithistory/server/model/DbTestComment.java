@@ -14,15 +14,18 @@ public class DbTestComment extends AbstractDbEntry {
 
 	private static final long serialVersionUID = 1L;
 
-	private final Date dateCreation;
-	private Date dateModification;
+	private Date dateCreation; // required
+	private Date dateModification; // required
 
-	private final DbTestUser user; // lazy
+	private DbTestUser user; // required lazy
 
-	private String title;
-	private String description;
+	private String title; // required
+	private String description; // required
 
 	// ------------------------------------------- constructor
+	protected DbTestComment() {
+	}
+
 	public DbTestComment(Date dateCreation, DbTestUser user) {
 		this.dateCreation = dateCreation;
 		this.user = user;

@@ -18,6 +18,7 @@ import com.francetelecom.orangetv.junithistory.server.manager.SessionManager.IJU
 import com.francetelecom.orangetv.junithistory.server.manager.SessionManager.SessionSubscription;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
+import com.francetelecom.orangetv.junithistory.shared.vo.IVoId;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 
@@ -472,6 +473,14 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 	protected void verifyIdForUpdateEntry(AbstractDbEntry entry) throws JUnitHistoryException {
 		if (entry.getId() == IDbEntry.ID_UNDEFINED) {
 			throw new JUnitHistoryException("Id must be defined for update!");
+		}
+	}
+
+	protected void verifyVoIdBeforeSave(String comment, IVoId voId) throws JUnitHistoryException {
+
+		this.verifyNotNull(comment, voId);
+		if (voId.isIdUndefined()) {
+			throw new JUnitHistoryException(comment + ": id must be defined!");
 		}
 	}
 

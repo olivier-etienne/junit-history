@@ -1,19 +1,14 @@
 package com.francetelecom.orangetv.junithistory.shared.vo;
 
-public class VoIdName implements IVoId, Comparable<VoIdName> {
+public class VoIdName extends AbstractVoId implements IVoId, Comparable<VoIdName> {
 
 	private static final long serialVersionUID = 1L;
 
-	private int id;
 	private String name;
 
 	private VoItemProtection protection;
 
 	// --------------------------------- accessor
-	@Override
-	public int getId() {
-		return id;
-	}
 
 	public String getName() {
 		return name;
@@ -33,13 +28,8 @@ public class VoIdName implements IVoId, Comparable<VoIdName> {
 	}
 
 	public VoIdName(int id, String name) {
-		this.id = id;
+		super(id);
 		this.name = name;
-	}
-
-	// ---------------------------------- public methods
-	public boolean isIdUndefined() {
-		return this.id == IVoId.ID_UNDEFINED;
 	}
 
 	// ------------------------------- protected methods
@@ -60,7 +50,7 @@ public class VoIdName implements IVoId, Comparable<VoIdName> {
 	@Override
 	public String toString() {
 
-		return this.id + " - " + this.name;
+		return this.getId() + " - " + this.name;
 	}
 
 }

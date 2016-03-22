@@ -41,23 +41,36 @@ public interface IDaoTestInstance extends IDao {
 			+ TP + DB_TCLASS_ID + " ";// ...
 
 	// =============================================
-	// TEST INSTANCE WITH MESSAGEID
+	// TEST INSTANCE WITH MESSAGEID & COMMENTID
 	// =============================================
 	public final static String MESS_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_ID;
 	public final static String MESS_TEST_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_TEST_ID;
-	public final static String TEST_ATTRIBUTS_JOIN_MESS = // ...
+
+	public final static String TCOMMENT_ID = IDaoTestComment.OP + IDaoTestComment.DB_ID;
+	public final static String TCOMMENT_TEST_ID = IDaoTestComment.OP + IDaoTestComment.DB_TEST_ID;
+
+	public final static String TEST_ATTRIBUTS_JOIN_MESS_AND_COMMENT = // ...
 	TEST_ATTRIBUTS_JOIN + ", "// ...
-			+ MESS_ID + " "; // ...
+			+ MESS_ID + ", " // ...
+			+ TCOMMENT_ID + " ";
 
 	// left join message as m on t.id = m.testId
 	public final static String LEFT_JOIN_MESS = LEFT_JOIN + IDaoTestMessage.TABLE_ALIAS + ON + TP + DB_ID + " = "
 			+ MESS_TEST_ID + " ";
 
-	public final static String SQL_SELECT_TEST_JOIN_MESS = SELECT + TEST_ATTRIBUTS_JOIN_MESS + FROM + TABLE_ALIAS
-			+ LEFT_JOIN_MESS;
+	// left join tcomment as o on t.id = o.testId
+	public final static String LEFT_JOIN_TCOMMENT = LEFT_JOIN + IDaoTestComment.TABLE_ALIAS + ON + TP + DB_ID + " = "
+			+ TCOMMENT_TEST_ID + " ";
 
-	public final static MessageFormat MF_SELECT_ONE_ENTRY_JOIN_MESS = new MessageFormat(SQL_SELECT_TEST_JOIN_MESS
-			+ WHERE + TP + DB_ID + EGAL_NUMBER);
+	public final static String SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT = // ...
+	SELECT // ...
+			+ TEST_ATTRIBUTS_JOIN_MESS_AND_COMMENT // ...
+			+ FROM + TABLE_ALIAS // ...
+			+ LEFT_JOIN_MESS // ...
+			+ LEFT_JOIN_TCOMMENT;
+
+	public final static MessageFormat MF_SELECT_ONE_ENTRY_JOIN_MESS_JOIN_COMMENT = new MessageFormat(
+			SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT + WHERE + TP + DB_ID + EGAL_NUMBER);
 
 	// ===================================
 	// DIVERS
@@ -123,10 +136,11 @@ public interface IDaoTestInstance extends IDao {
 			+ TP + DB_TCLASS_ID + " = {2, number, ####}";
 
 	public final static String SQL_SELECT_JOIN_SUITE = SELECT // ...
-			+ TEST_ATTRIBUTS_JOIN_MESS // ...
+			+ TEST_ATTRIBUTS_JOIN_MESS_AND_COMMENT // ...
 			+ FROM + TABLE_ALIAS // ...
 			+ LEFT_JOIN_SUITE // ...
-			+ LEFT_JOIN_MESS;
+			+ LEFT_JOIN_MESS // ...
+			+ LEFT_JOIN_TCOMMENT;
 
 	public final static MessageFormat MF_SELECT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS = new MessageFormat(
 			SQL_SELECT_JOIN_SUITE // ...
@@ -168,13 +182,13 @@ public interface IDaoTestInstance extends IDao {
 			+ ");"); // ...
 
 	// ===================================
-	// FOR SUITE WITH MESS ID
+	// FOR SUITE WITH MESS ID & COMMENT_ID
 	// ===================================
 
 	public final static String WHERE_SUITE = WHERE + DB_SUITE_ID + EGAL_NUMBER;
 
-	public final static MessageFormat MF_SELECT_TEST_JOIN_MESS_FOR_SUITE = new MessageFormat(SQL_SELECT_TEST_JOIN_MESS
-			+ WHERE_SUITE);
+	public final static MessageFormat MF_SELECT_TEST_JOIN_MESS_FOR_SUITE = new MessageFormat(
+			SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT + WHERE_SUITE);
 
 	public final static MessageFormat MF_COUNT_TEST_FOR_SUITE = new MessageFormat(SQL_COUNT_TEST + WHERE_SUITE);
 
