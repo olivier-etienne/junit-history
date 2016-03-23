@@ -354,7 +354,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 			// for each Tests
 			for (DbTestInstance test : dtoTestSuite.getListDbTestInstances()) {
 
-				DbTestClass tclass = test.gettClass();
+				DbTestClass tclass = test.getTClass();
 				if (tclass.getShortName() == null) {
 					tclass.setShortName(tclass.getName().substring(PACKAGE_TO_CUT_LENGTH));
 				}
@@ -454,7 +454,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		// for each test
 		for (DbTestInstance testInstance : listTestInstances) {
 
-			DbTestClass testClass = testInstance.gettClass();
+			DbTestClass testClass = testInstance.getTClass();
 			if (testClass == null) {
 				continue; // next test
 			}
@@ -877,7 +877,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		}
 
 		if (cell) {
-			sb.addLine(this.format(MF_LINK_HREF, suiteUrl + "#" + test.gettClass().getName() + "." + test.getName()),
+			sb.addLine(this.format(MF_LINK_HREF, suiteUrl + "#" + test.getTClass().getName() + "." + test.getName()),
 					subStatus.getLabel(), LINK_END);
 		} else {
 			sb.addLine(subStatus.getLabel());
@@ -905,7 +905,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		// for each test
 		for (DbTestInstance test : listTestInstances) {
 
-			if (test.gettClass() == null) {
+			if (test.getTClass() == null) {
 				continue; // next test
 			}
 			TestSubStatusEnum subStatus = test.getStatus();
@@ -916,9 +916,9 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 			}
 
 			if (message != null) {
-				tableError.addLine(this.format(MF_LINK_NAME, test.gettClass().getName() + "." + test.getName()));
+				tableError.addLine(this.format(MF_LINK_NAME, test.getTClass().getName() + "." + test.getName()));
 				tableError.addLines(buildHtmlTestStatus(test, null, false));
-				tableError.addLine(H3_BEGIN, format(MF_BALISE_CLASS_BEGIN, SPAN, "classname"), test.gettClass()
+				tableError.addLine(H3_BEGIN, format(MF_BALISE_CLASS_BEGIN, SPAN, "classname"), test.getTClass()
 						.getName(), SPAN_END, ".", format(MF_BALISE_CLASS_BEGIN, SPAN, "testname"), test.getName()
 						+ SPAN_END, H3_END);
 

@@ -23,7 +23,7 @@ import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
-public class EditReportPresenter extends AbstractProfilMainPresenter {
+public class EditReportPresenter extends AbstractMainPresenter {
 
 	private final static Logger log = Logger.getLogger("EditReportPresenter");
 
@@ -52,11 +52,6 @@ public class EditReportPresenter extends AbstractProfilMainPresenter {
 	@Override
 	protected Widget getViewAsWidget() {
 		return this.view == null ? null : this.view.asWidget();
-	}
-
-	@Override
-	public boolean hasUserProfilToManage() {
-		return false;
 	}
 
 	// ------------------------------- constructor
@@ -116,7 +111,7 @@ public class EditReportPresenter extends AbstractProfilMainPresenter {
 				: IVo.ID_UNDEFINED;
 		suiteId = currentSuiteId.intValue();
 
-		final String message = " when editing report!";
+		final String message = " when loading report!";
 		this.rpcService.getEditTestSuiteDatas(suiteId, new MyAsyncCallback<VoEditReportDatas>("Error " + message) {
 
 			@Override

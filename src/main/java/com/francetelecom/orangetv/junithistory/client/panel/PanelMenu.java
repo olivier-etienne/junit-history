@@ -142,6 +142,7 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 
 	private void onSelectAction(MainPanelViewEnum viewEnum) {
 
+		log.config("onSelectAction(): " + viewEnum.name());
 		if (this.eventBus != null) {
 			this.eventBus.fireEvent(new ViewReportEvent(viewEnum));
 		}

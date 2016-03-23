@@ -5,11 +5,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
+import com.francetelecom.orangetv.junithistory.client.event.ViewReportEvent;
+import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
+import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
+import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
@@ -17,11 +22,13 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestInstanceForEdit;
 import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
@@ -36,7 +43,12 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	private final IAnalysisView view;
 
 	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>();
+	private Map<Integer, VoIdName> mapId2TClass = new HashMap<>();
+	private Map<Integer, VoTestInstanceForEdit> mapId2Test;
 	private boolean searchRunning = false;
+
+	private VoSearchDefectDatas currentSearch = null;
+	private VoSearchDefectDatas currentDatas;
 
 	// ------------------------------- constructor
 	public AnalysisPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IAnalysisView view) {
@@ -65,7 +77,13 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 
 	@Override
 	protected void loadDatas(boolean forceRefresh) {
-		// TODO Auto-generated method stub
+
+		log.config("loadDatas(" + forceRefresh + ")");
+		if (forceRefresh) {
+
+			VoSearchDefectDatas vo = this.view.getTestDatas();
+			this.doGetListTests(vo);
+		}
 
 	}
 
@@ -84,8 +102,6 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		});
 	}
 
-	private VoSearchDefectDatas currentSearch = null;
-
 	private void bind() {
 
 		// handler pour les action sur les test comments
@@ -99,18 +115,16 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 					TestActionButton testActionButton = (TestActionButton) src;
 					TestActionButtonEnum action = testActionButton.getAction();
 					int testId = testActionButton.getTestId();
+					int tcommentId = testActionButton.getTCommentId();
 
 					switch (action) {
 					case createComment:
-						showDialogCreateComment(testId);
-						break;
-
 					case editComment:
-						showDialogEditComment(testId);
+						doEditOrCreateComment(testId, tcommentId);
 						break;
 
 					case deleteComment:
-						beforeDeleteComment(testId);
+						beforeDeleteComment(testId, tcommentId);
 						break;
 
 					}
@@ -126,7 +140,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 			public void onChange(ChangeEvent event) {
 
 				VoSearchDefectDatas selectTestDatas = view.getTestDatas();
-				// TODO ajouter la tclass
+				currentDatas = selectTestDatas;
 				doGetListTests(selectTestDatas);
 
 			}
@@ -141,6 +155,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 			public void onChange(ChangeEvent event) {
 
 				VoSearchDefectDatas selectTestDatas = view.getTestDatas();
+				currentDatas = selectTestDatas;
 				doGetListTClasses(selectTestDatas);
 			}
 		});
@@ -153,6 +168,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 			public void onChange(ChangeEvent event) {
 
 				VoSearchDefectDatas searchDatas = view.getSearchDatas();
+				currentDatas = searchDatas;
 				if (searchDatas.getSearch().length() < 3 || searchDatas.getGroupId() == IVo.ID_UNDEFINED) {
 					currentSearch = null;
 					view.setActionResult("", LogStatus.success);
@@ -193,7 +209,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		this.searchRunning = true;
 		this.view.waiting(true);
 
-		log.config("doSearch(" + searchDatas.toString() + ")");
+		log.fine("doSearch(" + searchDatas.toString() + ")");
 		this.rpcService.searchDefectTestList(searchDatas, new MyAsyncCallback<VoResultSearchTestDatas>(
 				"Error getting list of test names!") {
 
@@ -211,36 +227,74 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		});
 	}
 
-	private void showDialogCreateComment(int testId) {
-
-	}
-
 	/*
-	 * Creation d'un nouveau commentaire pour le test testId 
+	 * Edition ou creation du commentaire pour le test testId 
 	 */
-	private void doCreateComment(int testId) {
+	private void doEditOrCreateComment(int testId, int tcommentId) {
 
+		log.config("doEditComment(" + testId + ")");
+		ViewReportEvent event = new ViewReportEvent(MainPanelViewEnum.editComment);
+		Map<String, Object> params = ObjectUtils.buildMapWithOneItem(PARAMS_TEST_ID, new Integer(testId));
+		params.put(PARAMS_TCOMMENT_ID, tcommentId);
+
+		event.setParams(params);
+		this.eventBus.fireEvent(event);
 	}
 
-	private void showDialogEditComment(int testId) {
+	private void beforeDeleteComment(final int testId, final int tcommentId) {
 
-	}
+		log.config("beforeDeleteComment(): " + tcommentId);
 
-	/*
-	 * Edition du commentaire pour le test testId 
-	 */
-	private void doEditComment(int testId) {
+		VoTestInstanceForEdit voTest = this.mapId2Test.get(testId);
+		VoIdName tclass = this.mapId2TClass.get(this.currentDatas.getTClassId());
 
-	}
+		String[] message = new String[] { "Confirmer la suppression du commentaire du", // ...
+				"Test: " + tclass.getName() + " - " + voTest.getName(), // ...
+				"Suite " + voTest.getSuiteName() + " du " + voTest.getSuiteDate() // ...
+		};
 
-	private void beforeDeleteComment(int testId) {
+		final String comment = "";
+		DialogBox dialogBox = WidgetUtils.buildDialogBoxWithOkFocused(comment, message, null, true,
+				new IActionCallback() {
+
+					@Override
+					public void onCancel() {
+						view.setActionResult(comment + " canceled!", LogStatus.warning);
+					}
+
+					@Override
+					public void onOk() {
+						view.setActionResult(comment + " in progres...", LogStatus.warning);
+						doDeleteComment(testId, tcommentId);
+					}
+
+				});
+		WidgetUtils.centerDialogAndShow(dialogBox);
 
 	}
 
 	/*
 	 * Suppression commentaire pour le test testId 
 	 */
-	private void doDeleteComment(int testId) {
+	private void doDeleteComment(int testId, int tcommentId) {
+
+		this.view.waiting(true);
+
+		final String message = " when deleting test comment!";
+		this.rpcService.deleteTComment(tcommentId, new MyAsyncCallback<Boolean>("Error " + message) {
+
+			@Override
+			public void onSuccess(Boolean result) {
+
+				if (result) {
+					view.setActionResult("Success " + message, LogStatus.success);
+					loadDatas(true);
+				} else {
+					view.setActionResult("Failure " + message, LogStatus.warning);
+				}
+				view.waiting(false);
+			}
+		});
 
 	}
 
@@ -257,11 +311,13 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		this.view.waiting(true);
 		log.config("doGetListTClasses(" + testDatas.toString() + ")");
 
-		this.rpcService.listTClassesForGroupIdAndTestName(testDatas, new MyAsyncCallback<List<VoIdName>>("") {
+		this.rpcService.listTClassesForGroupIdAndTestName(testDatas, new MyAsyncCallback<List<VoIdName>>(
+				"Error loading list of Test class!") {
 
 			@Override
 			public void onSuccess(List<VoIdName> listTClasses) {
 
+				mapId2TClass = VoIdUtils.getMapId2Item(listTClasses);
 				view.setActionResult("Success gettting list of tclass for " + testDatas.toString(), LogStatus.success);
 				view.setTestTClasses(testDatas.getSearch(), listTClasses);
 
@@ -280,7 +336,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	}
 
 	/*
-	 * Récupère la liste des tests du nom choisi par l'utilisateur pour le groupId courant 
+	 * Récupère la liste des tests du nom choisi par l'utilisateur pour le groupId et le tclassId courant 
 	 */
 	private void doGetListTests(final VoSearchDefectDatas testDatas) {
 
@@ -288,9 +344,10 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 			return;
 		}
 
+		log.config("doGetListTests(): groupId " + testDatas.getGroupId() + " - tclassId: " + testDatas.getTClassId()
+				+ " - search: " + testDatas.getSearch());
 		this.searchRunning = true;
 		this.view.waiting(true);
-		log.config("doGetListTests(" + testDatas.toString() + ")");
 		this.rpcService.getListTestsForGroupIdTClassIdAndTestName(testDatas,
 				new MyAsyncCallback<VoListTestsSameNameDatas>("Error getting list of tests!") {
 
@@ -299,6 +356,10 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 
 						view.setActionResult("Success gettting list of tests for " + testDatas.toString(),
 								LogStatus.success);
+
+						if (datas != null) {
+							mapId2Test = VoIdUtils.getMapId2Item(datas.getListTestsSameName());
+						}
 						view.setTestDatas(datas);
 
 						searchRunning = false;

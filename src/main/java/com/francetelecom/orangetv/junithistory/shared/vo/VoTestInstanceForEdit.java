@@ -25,7 +25,8 @@ public class VoTestInstanceForEdit extends VoIdName {
 	private String outputLog;
 
 	// comment
-	private String comment;
+	private int tcommentId;
+	private String tcomment;
 
 	// ---------------------------- constructor
 	public VoTestInstanceForEdit() {
@@ -40,6 +41,22 @@ public class VoTestInstanceForEdit extends VoIdName {
 
 	public String getType() {
 		return type;
+	}
+
+	public int getTcommentId() {
+		return tcommentId;
+	}
+
+	public void setTcommentId(int tcommentId) {
+		this.tcommentId = tcommentId;
+	}
+
+	public String getTcomment() {
+		return tcomment;
+	}
+
+	public void setTcomment(String tcomment) {
+		this.tcomment = tcomment;
 	}
 
 	public String getSuiteName() {
@@ -111,7 +128,7 @@ public class VoTestInstanceForEdit extends VoIdName {
 	}
 
 	public boolean hasComment() {
-		return this.comment != null;
+		return this.tcomment != null;
 	}
 
 }

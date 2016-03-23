@@ -343,7 +343,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		String status = test.getStatus().name();
 
 		int suiteId = test.getTestSuiteInstance().getId();
-		int tclassId = test.gettClass().getId();
+		int tclassId = test.getTClass().getId();
 
 		String sql = sqlToFormat.format(new Object[] { test.getId(), name, status, suiteId, test.getTime(), tclassId });
 
@@ -363,7 +363,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		// TestSuite required
 		this.verifyNotNull(prefix + "testSuite", entry.getTestSuiteInstance());
 		// TestClass required
-		this.verifyNotNull(prefix + "testClass", entry.gettClass());
+		this.verifyNotNull(prefix + "testClass", entry.getTClass());
 
 		return true;
 	}

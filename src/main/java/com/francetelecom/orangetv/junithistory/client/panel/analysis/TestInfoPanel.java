@@ -52,6 +52,9 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 	private LabelAndBoxWidget wMessageBox = new LabelAndBoxWidget("Message", 50, 500);
 
 	private DisclosurePanel disPanComment = null;
+	private DisclosurePanel disPanOutput = null;
+	private DisclosurePanel disPanStack = null;
+
 	private TextArea taComment = new TextArea();
 	private TextArea taOutputLogs = new TextArea();
 	private TextArea taStackTrace = new TextArea();
@@ -75,31 +78,54 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 		this.labelSuiteDate.setText(voTest.getSuiteDate());
 		StatusUtils.buildTestStatus(this.labelTestStatus, TestSubStatusEnum.valueOf(voTest.getStatus()));
 
-		if (voTest.getType() != null) {
-			this.wTypeBox.setValue(voTest.getType());
-			this.wMessageBox.setValue(voTest.getMessage());
-			this.taOutputLogs.setValue(voTest.getOutputLog());
-			this.taStackTrace.setValue(voTest.getStackTrace());
-			this.vpBody.setVisible(true);
-		} else {
+		boolean messageVisible = voTest.getType() != null;
+		boolean commentVisible = voTest.hasComment();
+		if (!messageVisible && !commentVisible) {
 			this.vpBody.setVisible(false);
 		}
 
-		this.disPanComment.setVisible(voTest.hasComment());
+		else {
+
+			if (voTest.getType() != null) {
+				this.wTypeBox.setValue(voTest.getType());
+				this.wMessageBox.setValue(voTest.getMessage());
+				this.taOutputLogs.setValue(voTest.getOutputLog());
+				this.taStackTrace.setValue(voTest.getStackTrace());
+			}
+			this.setMessageVisible(messageVisible);
+
+			// comment
+			if (voTest.hasComment()) {
+				this.taComment.setValue(voTest.getTcomment());
+			}
+			this.setCommentVisible(commentVisible);
+
+		}
 
 		// buttons
 		VoItemProtection protection = voTest.getProtection();
 		int testId = voTest.getId();
-
+		int tcommentId = voTest.getTcommentId();
 		// create button
 		this.manageCreateCommentButton(!voTest.hasComment(), true, protection, testId);
 		// edit button
-		this.manageEditCommentButton(voTest.hasComment(), true, protection, testId);
+		this.manageEditCommentButton(voTest.hasComment(), true, protection, testId, tcommentId);
 		// delete button
-		this.manageDeleteCommentButton(voTest.hasComment(), true, protection, testId);
+		this.manageDeleteCommentButton(voTest.hasComment(), true, protection, testId, tcommentId);
 	}
 
 	// ---------------------------- private methods
+	private void setCommentVisible(boolean visible) {
+		this.disPanComment.setVisible(visible);
+	}
+
+	private void setMessageVisible(boolean visible) {
+		this.wTypeBox.setVisible(visible);
+		this.wMessageBox.setVisible(visible);
+		this.disPanOutput.setVisible(visible);
+		this.disPanStack.setVisible(visible);
+	}
+
 	private void manageCreateCommentButton(boolean visible, boolean forceCreate, VoItemProtection protection, int testId) {
 
 		if (protection == null || protection.canEdit()) {
@@ -117,10 +143,11 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 		}
 	}
 
-	private void manageEditCommentButton(boolean visible, boolean forceCreate, VoItemProtection protection, int testId) {
+	private void manageEditCommentButton(boolean visible, boolean forceCreate, VoItemProtection protection, int testId,
+			int commentId) {
 		if (protection == null || protection.canEdit()) {
 			if (this.btEditComment == null) {
-				this.btEditComment = new EditCommentButton(testId);
+				this.btEditComment = new EditCommentButton(testId, commentId);
 				if (this.actionClickHandler != null) {
 					this.btEditComment.addClickHandler(actionClickHandler);
 				}
@@ -133,10 +160,11 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 
 	}
 
-	private void manageDeleteCommentButton(boolean visible, boolean forceCreate, VoItemProtection protection, int testId) {
+	private void manageDeleteCommentButton(boolean visible, boolean forceCreate, VoItemProtection protection,
+			int testId, int commentId) {
 		if (protection == null || protection.canDelete()) {
 			if (this.btDeleteComment == null) {
-				this.btDeleteComment = new DeleteCommentButton(testId);
+				this.btDeleteComment = new DeleteCommentButton(testId, commentId);
 				if (this.actionClickHandler != null) {
 					this.btDeleteComment.addClickHandler(actionClickHandler);
 				}
@@ -189,8 +217,12 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 
 		this.disPanComment = this.buildDisclosurePanel("comments:", this.taComment, true);
 		this.vpBody.add(this.disPanComment);
-		this.vpBody.add(this.buildDisclosurePanel("output logs:", this.taOutputLogs, false));
-		this.vpBody.add(this.buildDisclosurePanel("stack trace:", this.taStackTrace, false));
+
+		this.disPanOutput = this.buildDisclosurePanel("output logs:", this.taOutputLogs, false);
+		this.vpBody.add(this.disPanOutput);
+
+		this.disPanStack = this.buildDisclosurePanel("stack trace:", this.taStackTrace, false);
+		this.vpBody.add(this.disPanStack);
 
 		vpPanel.add(this.vpBody);
 		return vpPanel;

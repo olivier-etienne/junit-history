@@ -3,12 +3,12 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditUserView;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditTesterView;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserProtection;
 
-public class EditTesterView extends AbstractEditAdminView implements IEditUserView {
+public class EditTesterView extends AbstractEditAdminView implements IEditTesterView {
 
 	private final static Logger log = Logger.getLogger("EditTesterView");
 

@@ -43,8 +43,8 @@ public class DaoTestCommentTest extends AbstractTest {
 
 		for (DbTestComment dbTestComment : result) {
 			log.info("id: " + dbTestComment.getId() + " - " + dbTestComment.getTitle());
-			assertNotNull("user cannot be null!!", dbTestComment.getUser());
-			assertTrue("user must be lazy!", dbTestComment.getUser().isLazy());
+			assertNotNull("user cannot be null!!", dbTestComment.getTester());
+			assertTrue("user must be lazy!", dbTestComment.getTester().isLazy());
 		}
 
 		result = dao.listTComments(false);
@@ -53,7 +53,7 @@ public class DaoTestCommentTest extends AbstractTest {
 		for (DbTestComment dbTestComment : result) {
 			log.info("id: " + dbTestComment.getId() + " - " + dbTestComment.getTitle());
 
-			DbTestUser user = dbTestComment.getUser();
+			DbTestUser user = dbTestComment.getTester();
 			assertNotNull("user cannot be null!!", user);
 			assertFalse("user cannot be be lazy!", user.isLazy());
 
@@ -117,7 +117,7 @@ public class DaoTestCommentTest extends AbstractTest {
 
 			// update
 			VoTestCommentForEdit voComment = new VoTestCommentForEdit(tcomment.getId());
-			voComment.setUserId(tcomment.getUser().getId());
+			voComment.setTesterId(tcomment.getTester().getId());
 			voComment.setTitle("modified title for test comment");
 			voComment.setDescription("modified description for test comment");
 			voComment.setTestId(test.getId());
@@ -153,7 +153,7 @@ public class DaoTestCommentTest extends AbstractTest {
 		assertEquals("Wrong id!", comment.getId(), dbResult.getId());
 		assertEquals("Wrong title!", comment.getTitle(), dbResult.getTitle());
 		assertEquals("Wrong description!", comment.getDescription(), dbResult.getDescription());
-		assertEquals("Wrong user.id!", comment.getUser().getId(), dbResult.getUser().getId());
+		assertEquals("Wrong user.id!", comment.getTester().getId(), dbResult.getTester().getId());
 
 		dbResult = dao.getByTest(testId);
 		assertNotNull("DbTestComment by testId cannot not be null!", dbResult);
@@ -161,7 +161,7 @@ public class DaoTestCommentTest extends AbstractTest {
 		assertEquals("Wrong id!", comment.getId(), dbResult.getId());
 		assertEquals("Wrong title!", comment.getTitle(), dbResult.getTitle());
 		assertEquals("Wrong description!", comment.getDescription(), dbResult.getDescription());
-		assertEquals("Wrong user.id!", comment.getUser().getId(), dbResult.getUser().getId());
+		assertEquals("Wrong user.id!", comment.getTester().getId(), dbResult.getTester().getId());
 
 	}
 

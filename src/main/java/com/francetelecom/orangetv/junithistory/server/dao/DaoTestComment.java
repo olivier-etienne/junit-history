@@ -196,7 +196,7 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 
 		long dateModifTs = new Date().getTime();
 
-		String sql = MF_UPDATE_COMMENT.format(new Object[] { title, description, voComment.getUserId(), dateModifTs,
+		String sql = MF_UPDATE_COMMENT.format(new Object[] { title, description, voComment.getTesterId(), dateModifTs,
 				voComment.getId() });
 
 		return this.updateOneItem(sql);
@@ -216,7 +216,7 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 		long dateModifTs = dateCreationTs;
 
 		String sql = MF_CREATE_COMMENT.format(new Object[] { entry.getId(), title, description, testId,
-				entry.getUser().getId(), dateCreationTs, dateModifTs });
+				entry.getTester().getId(), dateCreationTs, dateModifTs });
 
 		return this.updateOneItem(sql);
 
@@ -231,8 +231,8 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 		super.verifyIdDefined(prefix + " testId", testId);
 
 		// user not null && userId defined
-		super.verifyNotNull(prefix + " user", entry.getUser());
-		super.verifyIdDefined(prefix + " user.id", entry.getUser().getId());
+		super.verifyNotNull(prefix + " user", entry.getTester());
+		super.verifyIdDefined(prefix + " user.id", entry.getTester().getId());
 
 		// title required
 		super.verifyNotNull(prefix + " title", entry.getTitle());
@@ -251,7 +251,7 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 		super.verifyIdDefined(prefix + " testId", voComment.getTestId());
 
 		// userId defined
-		super.verifyIdDefined(prefix + " userId", voComment.getUserId());
+		super.verifyIdDefined(prefix + " userId", voComment.getTesterId());
 
 		// title required
 		super.verifyNotNull(prefix + " title", voComment.getTitle());

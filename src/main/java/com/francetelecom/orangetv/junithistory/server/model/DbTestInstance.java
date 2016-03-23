@@ -54,7 +54,7 @@ public class DbTestInstance extends AbstractDbEntry {
 		this.status = status;
 	}
 
-	public DbTestClass gettClass() {
+	public DbTestClass getTClass() {
 		return tClass;
 	}
 

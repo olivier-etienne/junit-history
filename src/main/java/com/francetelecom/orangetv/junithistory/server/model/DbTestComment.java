@@ -3,6 +3,7 @@ package com.francetelecom.orangetv.junithistory.server.model;
 import java.util.Date;
 
 import com.francetelecom.orangetv.junithistory.server.dao.AbstractDbEntry;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 
 /**
  * Commentaire ajouté par l'utilisateur suite à l'analyse du problème
@@ -17,7 +18,7 @@ public class DbTestComment extends AbstractDbEntry {
 	private Date dateCreation; // required
 	private Date dateModification; // required
 
-	private DbTestUser user; // required lazy
+	private DbTestUser tester; // required lazy
 
 	private String title; // required
 	private String description; // required
@@ -28,12 +29,17 @@ public class DbTestComment extends AbstractDbEntry {
 
 	public DbTestComment(Date dateCreation, DbTestUser user) {
 		this.dateCreation = dateCreation;
-		this.user = user;
+		this.tester = user;
 	}
 
 	// --------------------------------------- accessor
+
 	public Date getDateModification() {
 		return dateModification;
+	}
+
+	public void setTester(DbTestUser tester) {
+		this.tester = tester;
 	}
 
 	public void setDateModification(Date dateModification) {
@@ -60,8 +66,16 @@ public class DbTestComment extends AbstractDbEntry {
 		return dateCreation;
 	}
 
-	public DbTestUser getUser() {
-		return user;
+	public DbTestUser getTester() {
+		return tester;
 	}
 
+	// ------------------------------- public methods
+	public void update(VoTestCommentForEdit vo) {
+
+		this.title = vo.getTitle();
+		this.description = vo.getDescription();
+
+		this.tester = new LazyTestUser(vo.getTesterId());
+	}
 }

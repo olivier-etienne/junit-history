@@ -20,8 +20,8 @@ import com.francetelecom.orangetv.junithistory.server.dao.DaoTestUser;
 import com.francetelecom.orangetv.junithistory.server.dao.IDbEntry;
 import com.francetelecom.orangetv.junithistory.server.dto.DtoTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.manager.AdminManager;
+import com.francetelecom.orangetv.junithistory.server.manager.AnalysisManager;
 import com.francetelecom.orangetv.junithistory.server.manager.DaoManager;
-import com.francetelecom.orangetv.junithistory.server.manager.DefectManager;
 import com.francetelecom.orangetv.junithistory.server.manager.PathManager;
 import com.francetelecom.orangetv.junithistory.server.manager.ProfileManager;
 import com.francetelecom.orangetv.junithistory.server.manager.ShowHtmlManager;
@@ -42,6 +42,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoEditTCommentDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
@@ -57,6 +58,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestSuiteForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestSuiteForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUser;
@@ -371,7 +373,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		VoInitSingleReportDatas vo = new VoInitSingleReportDatas();
 		this.populateListGroupsFromBdd(vo.getListGroups());
 
-		vo.getListUsers().addAll(this.buildListVoUsers(false));
+		vo.getListUsers().addAll(this.buildListVoTesters(false));
 		vo.setProtection(this.getSingleReportProtection());
 
 		return vo;
@@ -469,7 +471,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 
 		VoEditReportDatas voEditReportDatas = new VoEditReportDatas();
 		// en premier lieu liste des users
-		voEditReportDatas.setListUsers(this.buildListVoUsers(true));
+		voEditReportDatas.setListUsers(this.buildListVoTesters(true));
 
 		// ensuite on recupere les informations sur la suite
 		DbTestSuiteInstance suite = DaoTestSuiteInstance.get().getById(suiteId);
@@ -682,18 +684,45 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	@Override
 	public VoResultSearchTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
 
-		return DefectManager.get().searchDefectTestList(vo);
+		return AnalysisManager.get().searchDefectTestList(vo);
 	}
 
 	@Override
-	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException {
+	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo)
+			throws JUnitHistoryException {
 
-		return DefectManager.get().getListTestsForGroupIdTClassIdAndTestName(vo);
+		return AnalysisManager.get().getListTestsForGroupIdTClassIdAndTestName(vo);
 	}
 
 	@Override
 	public List<VoIdName> listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException {
-		return DefectManager.get().listTClassesForGroupIdAndTestName(vo);
+		return AnalysisManager.get().listTClassesForGroupIdAndTestName(vo);
+	}
+
+	@Override
+	public VoEditTCommentDatas getTCommentDatas(int testId, int tcommentId) throws JUnitHistoryException {
+
+		VoEditTCommentDatas voDatas = AnalysisManager.get().getTCommentDatas(testId, tcommentId);
+		// on complete avec la liste des testers
+		voDatas.setListTesters(this.buildListVoTesters(this.isSessionAtLeastAdmin()));
+
+		return voDatas;
+	}
+
+	@Override
+	public VoDatasValidation validTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException {
+
+		return AnalysisManager.get().validTComment(voTComment);
+	}
+
+	@Override
+	public VoDatasValidation createOrUpdateTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException {
+		return AnalysisManager.get().createOrUpdateTComment(voTComment);
+	}
+
+	@Override
+	public boolean deleteTComment(int tcommentId) throws JUnitHistoryException {
+		return AnalysisManager.get().deleteTComment(tcommentId);
 	}
 
 	// ================================================
@@ -724,7 +753,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 
 	}
 
-	private List<VoUser> buildListVoUsers(boolean withAdmin) throws JUnitHistoryException {
+	private List<VoUser> buildListVoTesters(boolean withAdmin) throws JUnitHistoryException {
 
 		List<VoUser> listVoUsers = null;
 		List<DbTestUser> listUsers = DaoTestUser.get().listUsers(withAdmin);

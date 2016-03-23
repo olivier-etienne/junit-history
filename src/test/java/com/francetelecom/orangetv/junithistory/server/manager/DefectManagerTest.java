@@ -12,7 +12,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 public class DefectManagerTest {
 
 	private static final Logger log = Logger.getLogger(DefectManagerTest.class.getName());
-	private static final DefectManager manager = DefectManager.get();
+	private static final AnalysisManager manager = AnalysisManager.get();
 
 	@Test
 	public void testGetListTestsForGroupSameName() throws Exception {

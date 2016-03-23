@@ -118,7 +118,7 @@ public class ReportManagerTest extends AbstractTest {
 				this.logListLines(testMessage.getOutputLog(), " >> log: ");
 			}
 
-			assertNotNull("TestClass cannot be null for test: " + dbTestInstance.getName(), dbTestInstance.gettClass());
+			assertNotNull("TestClass cannot be null for test: " + dbTestInstance.getName(), dbTestInstance.getTClass());
 		}
 
 	}

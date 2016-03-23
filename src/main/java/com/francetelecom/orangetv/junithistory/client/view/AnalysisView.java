@@ -11,6 +11,7 @@ import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndListWidget;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
+import com.francetelecom.orangetv.junithistory.shared.vo.IVoId;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
@@ -138,7 +139,6 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 		log.config("tests count: " + testDatas.getListTestsSameName().size());
 		for (VoTestInstanceForEdit voTest : testDatas.getListTestsSameName()) {
 
-			log.config("add test: " + voTest.getId());
 			TestInfoPanel testPanel = new TestInfoPanel();
 			testPanel.setTestActionClickHandler(this.actionClickHandler);
 			vpTests.add(testPanel);
@@ -295,23 +295,23 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	public static class CreateCommentButton extends TestActionButton {
 
 		public CreateCommentButton(int testId) {
-			super(testId, TestActionButtonEnum.createComment, "Create a comment");
+			super(testId, IVoId.ID_UNDEFINED, TestActionButtonEnum.createComment, "Create a comment");
 			this.addButtonStyleName(STYLE_IMG_CREATE_COMMENT);
 		}
 	}
 
 	public static class DeleteCommentButton extends TestActionButton {
 
-		public DeleteCommentButton(int testId) {
-			super(testId, TestActionButtonEnum.deleteComment, "Delete the comment");
+		public DeleteCommentButton(int testId, int tcommentId) {
+			super(testId, tcommentId, TestActionButtonEnum.deleteComment, "Delete the comment");
 			this.addButtonStyleName(STYLE_IMG_DELETE);
 		}
 	}
 
 	public static class EditCommentButton extends TestActionButton {
 
-		public EditCommentButton(int testId) {
-			super(testId, TestActionButtonEnum.editComment, "Edit the comment");
+		public EditCommentButton(int testId, int tcommentId) {
+			super(testId, tcommentId, TestActionButtonEnum.editComment, "Edit the comment");
 			this.addButtonStyleName(STYLE_IMG_EDIT);
 		}
 	}
@@ -319,6 +319,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	public static abstract class TestActionButton extends Button {
 
 		private final int testId;
+		private final int tcommentId;
 		private final TestActionButtonEnum action;
 
 		public TestActionButtonEnum getAction() {
@@ -329,8 +330,13 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 			return this.testId;
 		}
 
-		private TestActionButton(int testId, TestActionButtonEnum action, String title) {
+		public int getTCommentId() {
+			return this.tcommentId;
+		}
+
+		private TestActionButton(int testId, int tcommentId, TestActionButtonEnum action, String title) {
 			this.testId = testId;
+			this.tcommentId = tcommentId;
 			this.action = action;
 			if (title != null) {
 				super.setTitle(title);

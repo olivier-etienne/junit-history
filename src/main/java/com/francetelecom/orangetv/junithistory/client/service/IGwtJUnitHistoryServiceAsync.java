@@ -6,6 +6,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoEditTCommentDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
@@ -20,6 +21,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestSuiteForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForGrid;
@@ -93,8 +95,17 @@ public interface IGwtJUnitHistoryServiceAsync {
 
 	void searchDefectTestList(VoSearchDefectDatas vo, AsyncCallback<VoResultSearchTestDatas> callback);
 
-	void getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo, AsyncCallback<VoListTestsSameNameDatas> callback);
+	void getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo,
+			AsyncCallback<VoListTestsSameNameDatas> callback);
 
 	void listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo, AsyncCallback<List<VoIdName>> callback);
+
+	void getTCommentDatas(int testId, int tcommentId, AsyncCallback<VoEditTCommentDatas> callback);
+
+	void validTComment(VoTestCommentForEdit voTComment, AsyncCallback<VoDatasValidation> callback);
+
+	void createOrUpdateTComment(VoTestCommentForEdit voTComment, AsyncCallback<VoDatasValidation> callback);
+
+	void deleteTComment(int tcommentId, AsyncCallback<Boolean> callback);
 
 }

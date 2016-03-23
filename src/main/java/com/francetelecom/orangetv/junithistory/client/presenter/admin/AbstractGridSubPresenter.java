@@ -112,7 +112,7 @@ public abstract class AbstractGridSubPresenter<T extends VoIdName> extends Abstr
 
 		IEditItemView view = this.clientFactory.getEditView(this.getType());
 
-		IEditItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
+		IEditAdminItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
 		if (presenter == null) {
 			presenter = this.clientFactory.buildEditPresenter(view);
 			presenter.setGridSubPresenter(this);
@@ -128,7 +128,7 @@ public abstract class AbstractGridSubPresenter<T extends VoIdName> extends Abstr
 
 		IEditItemView view = this.clientFactory.getEditView(this.getType());
 
-		IEditItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
+		IEditAdminItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
 		if (presenter == null) {
 			presenter = this.clientFactory.buildEditPresenter(view);
 			presenter.setGridSubPresenter(this);

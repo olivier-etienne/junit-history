@@ -10,10 +10,15 @@ public class VoTestCommentForEdit extends AbstractVoId implements IVoId {
 	private static final long serialVersionUID = 1L;
 
 	private int testId;
-	private int userId;
+	private int testerId;
+
+	private String suiteTitle;
+	private String testTitle;
 
 	private String title;
 	private String description;
+
+	private boolean readOnly;
 
 	// ---------------------------- constructor
 	public VoTestCommentForEdit() {
@@ -25,20 +30,45 @@ public class VoTestCommentForEdit extends AbstractVoId implements IVoId {
 	}
 
 	// ---------------------------- accessors
+
 	public int getTestId() {
 		return testId;
+	}
+
+	public boolean isReadOnly() {
+		return readOnly;
+	}
+
+	public void setReadOnly(boolean readOnly) {
+		this.readOnly = readOnly;
+	}
+
+	public String getSuiteTitle() {
+		return suiteTitle;
+	}
+
+	public void setSuiteTitle(String suiteTitle) {
+		this.suiteTitle = suiteTitle;
+	}
+
+	public String getTestTitle() {
+		return testTitle;
+	}
+
+	public void setTestTitle(String testTitle) {
+		this.testTitle = testTitle;
 	}
 
 	public void setTestId(int testId) {
 		this.testId = testId;
 	}
 
-	public int getUserId() {
-		return userId;
+	public int getTesterId() {
+		return testerId;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setTesterId(int testerId) {
+		this.testerId = testerId;
 	}
 
 	public String getTitle() {

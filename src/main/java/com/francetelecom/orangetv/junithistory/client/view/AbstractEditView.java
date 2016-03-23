@@ -1,6 +1,6 @@
 package com.francetelecom.orangetv.junithistory.client.view;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.IEditItemPresenter.ViewActionEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.IEditItemPresenter.ViewActionEnum;
 
 public abstract class AbstractEditView extends AbstractView {
 

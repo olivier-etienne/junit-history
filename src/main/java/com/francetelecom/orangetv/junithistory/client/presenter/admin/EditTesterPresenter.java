@@ -18,14 +18,14 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author sylvie
  * 
  */
-public class EditTesterPresenter extends AbstractEditItemPresenter implements IEditItemPresenter {
+public class EditTesterPresenter extends AbstractEditAdminItemPresenter implements IEditAdminItemPresenter {
 
 	private final static Logger log = Logger.getLogger("EditTesterPresenter");
 
-	private final IEditUserView view;
+	private final IEditTesterView view;
 
 	// -------------------------------- constructor
-	public EditTesterPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IEditUserView view) {
+	public EditTesterPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IEditTesterView view) {
 		super(service, eventBus, "tester");
 		this.view = view;
 		this.bind();
@@ -126,7 +126,7 @@ public class EditTesterPresenter extends AbstractEditItemPresenter implements IE
 	// ------------------------------------ private methods
 
 	// ====================== VIEW ============
-	public static interface IEditUserView extends IEditItemView {
+	public static interface IEditTesterView extends IEditItemView {
 
 		public void setDatas(VoUserForEdit voUser);
 

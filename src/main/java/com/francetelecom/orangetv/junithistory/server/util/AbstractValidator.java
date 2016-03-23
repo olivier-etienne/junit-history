@@ -1,6 +1,7 @@
 package com.francetelecom.orangetv.junithistory.server.util;
 
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
+import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 
 public abstract class AbstractValidator {
@@ -123,6 +124,13 @@ public abstract class AbstractValidator {
 		if (toValidate <= minValue) {
 			String message = (minValue == 0) ? " cannot be null or negative!" : " must been > " + minValue;
 			throw new JUnitHistoryException(comment + message);
+		}
+	}
+
+	protected void validateIdDefined(int idToValidate, String comment, VoDatasValidation voValidation) {
+
+		if (idToValidate == IVo.ID_UNDEFINED) {
+			voValidation.getErrorMessages().add("The " + comment + " must be defined!");
 		}
 	}
 

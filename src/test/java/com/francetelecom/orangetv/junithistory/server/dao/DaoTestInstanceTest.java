@@ -318,8 +318,8 @@ public class DaoTestInstanceTest extends AbstractTest {
 		assertNotNull("testSuiteInstance cannot be null!", dbResult.getTestSuiteInstance());
 		assertEquals("Wrong suite.id!", test.getTestSuiteInstance().getId(), dbResult.getTestSuiteInstance().getId());
 
-		assertNotNull("testClass cannot be null", dbResult.gettClass());
-		assertEquals("Wrong suite.id!", test.gettClass(), dbResult.gettClass());
+		assertNotNull("testClass cannot be null", dbResult.getTClass());
+		assertEquals("Wrong suite.id!", test.getTClass(), dbResult.getTClass());
 
 	}
 }

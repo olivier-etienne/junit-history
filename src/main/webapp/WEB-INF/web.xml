@@ -108,7 +108,7 @@
 <!-- ===================================== -->	
  <context-param>
    <param-name>login_admin</param-name>
-   <param-value>xxxx</param-value>
+   <param-value>admin</param-value>
 </context-param> 
 <context-param>
    <param-name>pwd_admin</param-name>
@@ -120,7 +120,7 @@
 <!-- ===================================== -->
  <context-param>
    <param-name>login_manager</param-name>
-   <param-value>xxxx</param-value>
+   <param-value>manager</param-value>
 </context-param> 
 <context-param>
    <param-name>pwd_manager</param-name>

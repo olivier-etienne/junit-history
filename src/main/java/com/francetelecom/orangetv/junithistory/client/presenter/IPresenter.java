@@ -9,6 +9,9 @@ public interface IPresenter {
 
 	public static final String PARAMS_GROUP_ID = "paramGroupId";
 	public static final String PARAMS_SUITE_ID = "paramSuiteId";
+	public static final String PARAMS_TEST_ID = "paramTestId";
+	public static final String PARAMS_TCOMMENT_ID = "paramTCommentId";
+
 	public static final String PARAMS_FORCE_REFRESH = "paramForceRefresh";
 
 	public static final String PARAMS_ITEM_ID = "paramItemId";

@@ -9,12 +9,15 @@ import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistorySe
 import com.francetelecom.orangetv.junithistory.client.util.CssConstants;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
 public abstract class AbstractPresenter implements CssConstants, IPresenter {
+
+	public static final DateTimeFormat DF = DateTimeFormat.getFormat("dd MMM yyyy");
 
 	protected IGwtJUnitHistoryServiceAsync rpcService;
 	protected EventBus eventBus;
@@ -32,8 +35,7 @@ public abstract class AbstractPresenter implements CssConstants, IPresenter {
 	protected abstract void loadDatas(boolean forceRefresh);
 
 	// ------------------------------- constructor
-	protected AbstractPresenter(IGwtJUnitHistoryServiceAsync service,
-			EventBus eventBus) {
+	protected AbstractPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus) {
 		this.rpcService = service;
 		this.eventBus = eventBus;
 	}
@@ -47,7 +49,7 @@ public abstract class AbstractPresenter implements CssConstants, IPresenter {
 
 	@Override
 	public void go(HasWidgets container, Map<String, Object> params) {
-		getLog().config("go()...");
+		getLog().config("go()..." + (params != null ? "with params!" : ""));
 		container.clear();
 		Widget widget = this.getViewAsWidget();
 		if (widget != null) {
@@ -60,16 +62,15 @@ public abstract class AbstractPresenter implements CssConstants, IPresenter {
 	// ----------------------------- protected methods
 
 	protected void showInformation(String message) {
-		DialogBox dialogBox = WidgetUtils.buildDialogBoxWithOkFocused("Info",
-				new String[] { message }, null, false, null);
+		DialogBox dialogBox = WidgetUtils.buildDialogBoxWithOkFocused("Info", new String[] { message }, null, false,
+				null);
 		WidgetUtils.centerDialogAndShow(dialogBox);
 	}
 
-	protected void showError(String errorMessage,
-			IActionCallback actionCallback, Widget ankor) {
+	protected void showError(String errorMessage, IActionCallback actionCallback, Widget ankor) {
 
-		DialogBox dialogBox = WidgetUtils.buildDialogBoxWithOkFocused("Error",
-				new String[] { errorMessage }, null, false, actionCallback);
+		DialogBox dialogBox = WidgetUtils.buildDialogBoxWithOkFocused("Error", new String[] { errorMessage }, null,
+				false, actionCallback);
 		if (ankor == null) {
 			WidgetUtils.centerDialogAndShow(dialogBox);
 		} else {
@@ -84,8 +85,7 @@ public abstract class AbstractPresenter implements CssConstants, IPresenter {
 			eitException = (JUnitHistoryException) caught;
 		}
 
-		String errorMessage = (eitException != null) ? eitException
-				.getErrorMessage() : caught.getMessage();
+		String errorMessage = (eitException != null) ? eitException.getErrorMessage() : caught.getMessage();
 
 		if (eitException == null && caught.getCause() != null) {
 			errorMessage += " (" + caught.getCause().getMessage() + ")";

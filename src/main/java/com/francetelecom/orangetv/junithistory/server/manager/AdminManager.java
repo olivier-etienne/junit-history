@@ -237,7 +237,7 @@ public class AdminManager implements IManager {
 
 	public VoDatasValidation validTestUser(VoUserForEdit userToUpdate) throws JUnitHistoryException {
 
-		boolean createUser = userToUpdate != null && userToUpdate.getId() == IVo.ID_UNDEFINED;
+		boolean createUser = userToUpdate != null && userToUpdate.isIdUndefined();
 		final DbTestUser dbuser = !createUser && userToUpdate != null ? DaoTestUser.get().getById(userToUpdate.getId())
 				: null;
 
@@ -259,7 +259,7 @@ public class AdminManager implements IManager {
 
 	public VoDatasValidation createOrUpdateTestUser(VoUserForEdit userToUpdate) throws JUnitHistoryException {
 
-		boolean createUser = userToUpdate != null && userToUpdate.getId() == IVo.ID_UNDEFINED;
+		boolean createUser = userToUpdate != null && userToUpdate.isIdUndefined();
 		DbTestUser dbuser = !createUser && userToUpdate != null ? DaoTestUser.get().getById(userToUpdate.getId())
 				: null;
 		VoDatasValidation validation = this.getUserValidator().validUser(dbuser, userToUpdate, createUser);
