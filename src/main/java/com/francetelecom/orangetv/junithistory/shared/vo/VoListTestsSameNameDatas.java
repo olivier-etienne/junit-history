@@ -19,6 +19,8 @@ public class VoListTestsSameNameDatas implements IVo {
 
 	private List<VoTestInstanceForEdit> listTestSameName;
 
+	private VoItemProtection voItemProtection;
+
 	// ---------------------------- constructor
 	public VoListTestsSameNameDatas() {
 	}
@@ -28,8 +30,17 @@ public class VoListTestsSameNameDatas implements IVo {
 	}
 
 	// ----------------------- accessors
+
 	public String getDistinctName() {
 		return this.distinctName;
+	}
+
+	public VoItemProtection getVoItemProtection() {
+		return voItemProtection;
+	}
+
+	public void setVoItemProtection(VoItemProtection voItemProtection) {
+		this.voItemProtection = voItemProtection;
 	}
 
 	public List<VoTestInstanceForEdit> getListTestsSameName() {

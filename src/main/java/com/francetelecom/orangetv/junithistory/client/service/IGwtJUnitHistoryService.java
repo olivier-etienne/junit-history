@@ -324,6 +324,14 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException;
 
 	/**
+	 * Validation avant la mise à jour de certaines informations de la suite
+	 * 
+	 * @param suiteToUpdate
+	 * @throws JUnitHistoryException
+	 */
+	public VoDatasValidation validTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException;
+
+	/**
 	 * Get the list of distinct testname for a group and a search input
 	 * 
 	 * @param vo
@@ -388,5 +396,4 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 * @throws JUnitHistoryException
 	 */
 	public boolean deleteTComment(int tcommentId) throws JUnitHistoryException;
-
 }

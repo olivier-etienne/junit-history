@@ -14,6 +14,7 @@ import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.TestActi
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
+import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
@@ -58,6 +59,17 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		this.doInitView();
 	}
 
+	// --------------------------- overriding AbstractProfilMainPresenter
+	@Override
+	public void manageUserProfil(UserProfile userProfile, boolean forceRefresh) {
+		super.manageUserProfil(userProfile, forceRefresh);
+
+		// rafraichir list test
+		if (forceRefresh) {
+			this.refreshListTests();
+		}
+	}
+
 	// ------------------------------ implementing IPresenter
 	@Override
 	public IView getView() {
@@ -81,8 +93,9 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		log.config("loadDatas(" + forceRefresh + ")");
 		if (forceRefresh) {
 
-			VoSearchDefectDatas vo = this.view.getTestDatas();
-			this.doGetListTests(vo);
+			this.refreshListTests();
+		} else {
+			this.view.resetUpdatingMode();
 		}
 
 	}
@@ -139,9 +152,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 			@Override
 			public void onChange(ChangeEvent event) {
 
-				VoSearchDefectDatas selectTestDatas = view.getTestDatas();
-				currentDatas = selectTestDatas;
-				doGetListTests(selectTestDatas);
+				refreshListTests();
 
 			}
 		});
@@ -195,6 +206,17 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 				}
 			}
 		});
+
+	}
+
+	private void refreshListTests() {
+
+		VoSearchDefectDatas selectTestDatas = view.getTestDatas();
+
+		if (selectTestDatas.getTClassId() != IVo.ID_UNDEFINED) {
+			currentDatas = selectTestDatas;
+			doGetListTests(selectTestDatas);
+		}
 
 	}
 
@@ -327,7 +349,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 				// récupérer la liste des tests pour la première tclass de la
 				// box
 				if (listTClasses != null && listTClasses.size() > 0) {
-					doGetListTests(view.getTestDatas());
+					refreshListTests();
 				}
 			}
 
@@ -348,6 +370,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 				+ " - search: " + testDatas.getSearch());
 		this.searchRunning = true;
 		this.view.waiting(true);
+		this.view.clearListTestPanel();
 		this.rpcService.getListTestsForGroupIdTClassIdAndTestName(testDatas,
 				new MyAsyncCallback<VoListTestsSameNameDatas>("Error getting list of tests!") {
 
@@ -414,6 +437,10 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		public void setTestTClasses(String testName, List<VoIdName> listTClasses);
 
 		public void setTestActionClickHandler(ClickHandler actionClickHandler);
+
+		public void clearListTestPanel();
+
+		void resetUpdatingMode();
 	}
 
 }

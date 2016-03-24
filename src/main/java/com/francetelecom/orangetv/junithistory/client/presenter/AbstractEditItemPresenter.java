@@ -25,9 +25,9 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 
 	protected abstract void doValidItem(IValidationCallback callback);
 
-	protected abstract void closeDialog();
+	protected abstract void closeDialog(boolean updateDone);
 
-	protected abstract void refreshList();
+	// protected abstract void refreshList();
 
 	// ------------------------------------- constructor
 	protected AbstractEditItemPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, String itemName) {
@@ -78,7 +78,7 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 						break;
 
 					case cancel:
-						closeDialog();
+						closeDialog(false);
 						break;
 					}
 
@@ -90,12 +90,11 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 
 	}
 
-	// ------------------------------------ private methods
 	/*
 	 * Affichage d'une boite de dialogue avec la liste des erreurs de validation
 	 * @param errorMessages
 	 */
-	private void displayValidationErrors(List<String> errorMessages) {
+	protected void displayValidationErrors(List<String> errorMessages) {
 
 		if (errorMessages == null) {
 			errorMessages = ObjectUtils.createList("Unexpected error!");
@@ -104,6 +103,25 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 				ObjectUtils.listToTab(errorMessages), null, false, null);
 		WidgetUtils.centerDialogAndShow(dialogBox);
 	}
+
+	protected IValidationCallback buildCallbackForUpdateItem(final String name) {
+
+		return new IValidationCallback() {
+
+			@Override
+			public void onSuccess() {
+				getView().setActionResult("Update " + name + " in success...", LogStatus.success);
+				closeDialog(true);
+			}
+
+			@Override
+			public void onError(List<String> errorMessages) {
+				displayValidationErrors(errorMessages);
+			}
+		};
+	}
+
+	// ------------------------------------ private methods
 
 	private void beforeUpdateItem() {
 
@@ -131,20 +149,7 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 						getView().setActionResult("Update " + itemName + " in progres...", LogStatus.warning);
 
 						// on lance l'update des donnees puis on ferme la box
-						doUpdateItem(new IValidationCallback() {
-
-							@Override
-							public void onSuccess() {
-								getView().setActionResult("Update " + itemName + " in success...", LogStatus.success);
-								closeDialog();
-								refreshList(); // FIXME a enlever
-							}
-
-							@Override
-							public void onError(List<String> errorMessages) {
-								displayValidationErrors(errorMessages);
-							}
-						});
+						doUpdateItem(buildCallbackForUpdateItem(itemName));
 					}
 
 				});

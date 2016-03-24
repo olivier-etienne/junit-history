@@ -108,4 +108,6 @@ public interface IGwtJUnitHistoryServiceAsync {
 
 	void deleteTComment(int tcommentId, AsyncCallback<Boolean> callback);
 
+	void validTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate, AsyncCallback<VoDatasValidation> callback);
+
 }

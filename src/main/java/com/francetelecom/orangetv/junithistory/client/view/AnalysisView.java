@@ -1,5 +1,6 @@
 package com.francetelecom.orangetv.junithistory.client.view;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -50,8 +51,18 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	private final LabelAndListWidget wlistTClasses = new LabelAndListWidget("TClass", 100, 250, this.lbTClasses, 1);
 
 	private ClickHandler actionClickHandler;
+	private final List<TestInfoPanel> listTestInfoPanels = new ArrayList<>();
 
 	// ------------------------------- implementing IAnalysisView
+	@Override
+	public void resetUpdatingMode() {
+
+		// for each test panel
+		for (TestInfoPanel testInfoPanel : this.listTestInfoPanels) {
+			testInfoPanel.resetUpdatingMode();
+		}
+	}
+
 	@Override
 	public void setTestActionClickHandler(ClickHandler actionClickHandler) {
 		this.actionClickHandler = actionClickHandler;
@@ -125,8 +136,6 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	@Override
 	public void setTestDatas(VoListTestsSameNameDatas testDatas) {
 
-		this.clearTestPanels();
-
 		if (testDatas == null || testDatas.getListTestsSameName() == null) {
 			return;
 		}
@@ -144,16 +153,24 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 			vpTests.add(testPanel);
 
 			testPanel.setDatas(voTest);
+			this.listTestInfoPanels.add(testPanel);
 		}
 
 		this.defectPanel.add(vpTests);
+
+	}
+
+	@Override
+	public void clearListTestPanel() {
+		this.defectPanel.clear();
+		this.listTestInfoPanels.clear();
 	}
 
 	@Override
 	public void setTestTClasses(String testName, List<VoIdName> listTClasses) {
 
 		this.clearListClasses();
-		this.clearTestPanels();
+		this.clearListTestPanel();
 		if (listTClasses == null) {
 			return;
 		}
@@ -197,7 +214,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	@Override
 	public void reinit() {
 		this.lbSearchResult.clear();
-		this.clearTestPanels();
+		this.clearListTestPanel();
 	}
 
 	@Override
@@ -274,10 +291,6 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	}
 
 	// ----------------------------------- private methods
-	private void clearTestPanels() {
-		this.defectPanel.clear();
-
-	}
 
 	private void clearListClasses() {
 		this.wTestNameBox.setValue("");
@@ -295,7 +308,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	public static class CreateCommentButton extends TestActionButton {
 
 		public CreateCommentButton(int testId) {
-			super(testId, IVoId.ID_UNDEFINED, TestActionButtonEnum.createComment, "Create a comment");
+			super(testId, IVoId.ID_UNDEFINED, TestActionButtonEnum.createComment, "Create a comment", true);
 			this.addButtonStyleName(STYLE_IMG_CREATE_COMMENT);
 		}
 	}
@@ -303,7 +316,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	public static class DeleteCommentButton extends TestActionButton {
 
 		public DeleteCommentButton(int testId, int tcommentId) {
-			super(testId, tcommentId, TestActionButtonEnum.deleteComment, "Delete the comment");
+			super(testId, tcommentId, TestActionButtonEnum.deleteComment, "Delete the comment", false);
 			this.addButtonStyleName(STYLE_IMG_DELETE);
 		}
 	}
@@ -311,7 +324,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 	public static class EditCommentButton extends TestActionButton {
 
 		public EditCommentButton(int testId, int tcommentId) {
-			super(testId, tcommentId, TestActionButtonEnum.editComment, "Edit the comment");
+			super(testId, tcommentId, TestActionButtonEnum.editComment, "Edit the comment", true);
 			this.addButtonStyleName(STYLE_IMG_EDIT);
 		}
 	}
@@ -320,6 +333,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 
 		private final int testId;
 		private final int tcommentId;
+		private final boolean updatingMode;
 		private final TestActionButtonEnum action;
 
 		public TestActionButtonEnum getAction() {
@@ -334,13 +348,19 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 			return this.tcommentId;
 		}
 
-		private TestActionButton(int testId, int tcommentId, TestActionButtonEnum action, String title) {
+		public boolean isUpdatingMode() {
+			return this.updatingMode;
+		}
+
+		private TestActionButton(int testId, int tcommentId, TestActionButtonEnum action, String title,
+				boolean updatingMode) {
 			this.testId = testId;
 			this.tcommentId = tcommentId;
 			this.action = action;
 			if (title != null) {
 				super.setTitle(title);
 			}
+			this.updatingMode = updatingMode;
 		}
 
 		protected void addButtonStyleName(String stylename) {

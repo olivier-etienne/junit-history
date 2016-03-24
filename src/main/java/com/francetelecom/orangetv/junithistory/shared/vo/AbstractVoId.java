@@ -5,11 +5,20 @@ public abstract class AbstractVoId implements IVoId {
 	private static final long serialVersionUID = 1L;
 
 	private int id;
+	private VoItemProtection protection;
 
 	// --------------------------------- accessor
 	@Override
 	public int getId() {
 		return id;
+	}
+
+	public VoItemProtection getProtection() {
+		return protection;
+	}
+
+	public void setProtection(VoItemProtection protection) {
+		this.protection = protection;
 	}
 
 	// ---------------------------- constructor

@@ -27,6 +27,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditTCommentDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
@@ -107,10 +108,12 @@ public class AnalysisManager implements IManager {
 
 	}
 
-	public VoEditTCommentDatas getTCommentDatas(int testId, int tcommentId) throws JUnitHistoryException {
+	public VoEditTCommentDatas getTCommentDatas(int testId, int tcommentId, boolean profilAtLeastManager)
+			throws JUnitHistoryException {
 
 		VoEditTCommentDatas voDatas = new VoEditTCommentDatas();
 		VoTestCommentForEdit voTComment = new VoTestCommentForEdit(tcommentId);
+		voTComment.setProtection(this.buildTCommentProtection(profilAtLeastManager));
 		voDatas.setTCommentForEdit(voTComment);
 
 		// dans tous les cas info test et suite
@@ -135,7 +138,8 @@ public class AnalysisManager implements IManager {
 		if (dbSuite == null) {
 			throw new JUnitHistoryException("Test suite  for test " + testId + " doen't exists!");
 		}
-		voTComment.setSuiteTitle(dbSuite.getName() + " " + DATE_FORMAT.format(dbSuite.getDate()));
+		voTComment.setSuiteTitle(dbSuite.getName() + " "
+				+ (dbSuite.getDate() != null ? DATE_FORMAT.format(dbSuite.getDate()) : ""));
 
 		// comment existant
 		if (tcommentId != IVo.ID_UNDEFINED) {
@@ -205,19 +209,21 @@ public class AnalysisManager implements IManager {
 		return listTestNames;
 	}
 
-	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo)
-			throws JUnitHistoryException {
+	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo,
+			boolean profilAtLeastManager) throws JUnitHistoryException {
 
-		final VoListTestsSameNameDatas listTests = new VoListTestsSameNameDatas();
+		final VoListTestsSameNameDatas listTestDatas = new VoListTestsSameNameDatas();
 		if (vo == null || vo.getGroupId() == IVo.ID_UNDEFINED || vo.getSearch() == null) {
-			return listTests;
+			return listTestDatas;
 		}
 
 		final List<DbTestInstance> listDbTestInstances = DaoTestInstance.get().listTestsForGroupIdTClassIdAndTestName(
 				vo.getGroupId(), vo.getTClassId(), vo.getSearch());
 		if (listDbTestInstances == null) {
-			return listTests;
+			return listTestDatas;
 		}
+		// protection
+		final VoItemProtection voProtection = this.buildTCommentProtection(profilAtLeastManager);
 
 		// for each test
 
@@ -234,11 +240,13 @@ public class AnalysisManager implements IManager {
 			voTest.setStatus(status.name());
 			voTest.setSuccess(success);
 			voTest.setSkipped(skipped);
+			voTest.setProtection(voProtection);
 
 			// suite
 			DbTestSuiteInstance testSuite = test.getTestSuiteInstance();
 			voTest.setSuiteName(testSuite.getName());
-			voTest.setSuiteDate(DATE_FORMAT.format(testSuite.getDate()));
+
+			voTest.setSuiteDate(testSuite.getDate() != null ? DATE_FORMAT.format(testSuite.getDate()) : "date unknown");
 
 			// message
 			DbTestMessage message = (skipped) ? null : test.getMessage();
@@ -271,8 +279,8 @@ public class AnalysisManager implements IManager {
 
 				// 1ere ligne
 				sb.append("Tester: " + tcomment.getTester().getName());
-				sb.append(" - date: " + DATE_FORMAT.format(tcomment.getDateModification()));
-				sb.append(" (creation: " + DATE_FORMAT.format(tcomment.getDateCreation() + ") \n\n"));
+				sb.append(" - modification: " + DATE_FORMAT.format(tcomment.getDateModification()));
+				sb.append(" (creation: " + DATE_FORMAT.format(tcomment.getDateCreation()) + ") \n\n");
 
 				// titre
 				sb.append("Title: " + tcomment.getTitle() + "\n\n");
@@ -284,10 +292,10 @@ public class AnalysisManager implements IManager {
 
 			}
 
-			listTests.addTestInstance(voTest);
+			listTestDatas.addTestInstance(voTest);
 		}
 
-		return listTests;
+		return listTestDatas;
 
 	}
 
@@ -297,6 +305,19 @@ public class AnalysisManager implements IManager {
 			this.tcommentValidator = new TCommentValidator();
 		}
 		return this.tcommentValidator;
+	}
+
+	private VoItemProtection buildTCommentProtection(boolean profilAtLeastManager) {
+
+		// protection
+		VoItemProtection voProtection = new VoItemProtection();
+		voProtection.setCanCreate(profilAtLeastManager);
+		voProtection.setCanDelete(profilAtLeastManager);
+		voProtection.setCanEdit(true);
+		voProtection.setCanUpdate(profilAtLeastManager);
+
+		return voProtection;
+
 	}
 
 	// ====================================== INNER CLASS

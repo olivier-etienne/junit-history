@@ -18,8 +18,6 @@ public class VoTestCommentForEdit extends AbstractVoId implements IVoId {
 	private String title;
 	private String description;
 
-	private boolean readOnly;
-
 	// ---------------------------- constructor
 	public VoTestCommentForEdit() {
 		super();
@@ -33,14 +31,6 @@ public class VoTestCommentForEdit extends AbstractVoId implements IVoId {
 
 	public int getTestId() {
 		return testId;
-	}
-
-	public boolean isReadOnly() {
-		return readOnly;
-	}
-
-	public void setReadOnly(boolean readOnly) {
-		this.readOnly = readOnly;
 	}
 
 	public String getSuiteTitle() {

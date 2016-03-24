@@ -13,7 +13,7 @@ public interface IGridSubPresenter extends IPresenter {
 
 	}
 
-	public void closeDialogBox();
+	public void closeDialogBox(boolean updateDone);
 
 	public void refresh();
 

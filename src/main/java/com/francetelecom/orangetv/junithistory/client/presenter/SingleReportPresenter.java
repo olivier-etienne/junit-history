@@ -91,9 +91,9 @@ public class SingleReportPresenter extends AbstractProfilMainPresenter {
 	// ------------------------------------- overriding AbstractPresenter
 
 	@Override
-	public void manageUserProfil(UserProfile userProfile) {
+	public void manageUserProfil(UserProfile userProfile, boolean changed) {
 
-		super.manageUserProfil(userProfile);
+		super.manageUserProfil(userProfile, changed);
 
 		// on rafraichit la protection en cours >> et l'affichage des bouton
 		// d'action

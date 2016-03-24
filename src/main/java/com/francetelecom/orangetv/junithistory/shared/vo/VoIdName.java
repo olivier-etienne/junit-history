@@ -6,20 +6,10 @@ public class VoIdName extends AbstractVoId implements IVoId, Comparable<VoIdName
 
 	private String name;
 
-	private VoItemProtection protection;
-
 	// --------------------------------- accessor
 
 	public String getName() {
 		return name;
-	}
-
-	public VoItemProtection getProtection() {
-		return protection;
-	}
-
-	public void setProtection(VoItemProtection protection) {
-		this.protection = protection;
 	}
 
 	// ---------------------------- constructor

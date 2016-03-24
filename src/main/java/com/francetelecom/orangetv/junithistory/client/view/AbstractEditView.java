@@ -56,7 +56,7 @@ public abstract class AbstractEditView extends AbstractView {
 	}
 
 	protected void enableButtonAndField(boolean enabled) {
-		this.btUpdate.setEnabled(enabled);
-		this.btCancel.setEnabled(enabled);
+		this.btUpdate.enableButtonIfActif(enabled);
+		this.btCancel.enableButtonIfActif(enabled);
 	}
 }

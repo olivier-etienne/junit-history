@@ -278,12 +278,9 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		List<DbTestSuiteInstance> listSuites = DaoTestSuiteInstance.get().listSuitesByGroup(groupId);
 		if (listSuites != null) {
 
-			final boolean atLeastManager = ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager,
-					this.getThreadLocalRequest());
+			final boolean atLeastManager = this.isSessionAtLeastManager();
 
-			final boolean atLeastAdmin = atLeastManager
-					&& ProfileManager.get()
-							.isSessionAtLeastUserProfile(UserProfile.admin, this.getThreadLocalRequest());
+			final boolean atLeastAdmin = this.isSessionAtLeastAdmin();
 
 			List<VoTestSuiteForGrid> listVos = new ArrayList<>(listSuites.size());
 
@@ -330,10 +327,13 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		return ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.admin, this.getThreadLocalRequest());
 	}
 
+	private boolean isSessionAtLeastManager() {
+		return ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager, this.getThreadLocalRequest());
+	}
+
 	private VoTestSuiteForEdit buildVoTestSuiteForEdit(DbTestSuiteInstance suite) {
 
-		boolean atLeastManager = ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager,
-				this.getThreadLocalRequest());
+		boolean atLeastManager = this.isSessionAtLeastManager();
 		boolean profileAdmin = atLeastManager && this.isSessionAtLeastAdmin();
 
 		VoTestSuiteForEdit vo = new VoTestSuiteForEdit(suite.getId(), suite.getName());
@@ -359,8 +359,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	// ================================================
 	@Override
 	public VoSingleReportProtection getSingleReportProtection() throws JUnitHistoryException {
-		final boolean atLeastManager = ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager,
-				this.getThreadLocalRequest());
+		final boolean atLeastManager = this.isSessionAtLeastManager();
 
 		VoSingleReportProtection protection = new VoSingleReportProtection();
 		protection.setCanAddToHistory(atLeastManager);
@@ -440,15 +439,23 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	}
 
 	@Override
-	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException {
+	public VoDatasValidation validTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException {
 
-		if (!ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager, this.getThreadLocalRequest())) {
+		if (!this.isSessionAtLeastManager()) {
 			throw new JUnitHistoryException("User must be at least manager!");
 		}
 
 		DbTestSuiteInstance dbSuite = DaoTestSuiteInstance.get().getById(suiteToUpdate.getId());
 		// validation
-		VoDatasValidation validation = this.validSingleReportToUpdate(dbSuite, suiteToUpdate);
+		return this.getTestSuiteValidation(dbSuite, suiteToUpdate);
+
+	}
+
+	@Override
+	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException {
+
+		// validation
+		VoDatasValidation validation = this.validTestSuiteInfo(suiteToUpdate);
 		if (!validation.isValid()) {
 			return validation;
 		}
@@ -552,7 +559,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	/*
 	 * Le niveau d'info ne doit pas etre inférieur au niveau exitant en base!
 	 */
-	private VoDatasValidation validSingleReportToUpdate(DbTestSuiteInstance dbSuite, VoTestSuiteForEdit voSuite) {
+	private VoDatasValidation getTestSuiteValidation(DbTestSuiteInstance dbSuite, VoTestSuiteForEdit voSuite) {
 
 		VoDatasValidation voValidation = new VoDatasValidation();
 
@@ -691,7 +698,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo)
 			throws JUnitHistoryException {
 
-		return AnalysisManager.get().getListTestsForGroupIdTClassIdAndTestName(vo);
+		return AnalysisManager.get().getListTestsForGroupIdTClassIdAndTestName(vo, this.isSessionAtLeastManager());
 	}
 
 	@Override
@@ -702,7 +709,8 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	@Override
 	public VoEditTCommentDatas getTCommentDatas(int testId, int tcommentId) throws JUnitHistoryException {
 
-		VoEditTCommentDatas voDatas = AnalysisManager.get().getTCommentDatas(testId, tcommentId);
+		VoEditTCommentDatas voDatas = AnalysisManager.get().getTCommentDatas(testId, tcommentId,
+				this.isSessionAtLeastManager());
 		// on complete avec la liste des testers
 		voDatas.setListTesters(this.buildListVoTesters(this.isSessionAtLeastAdmin()));
 
@@ -717,11 +725,18 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 
 	@Override
 	public VoDatasValidation createOrUpdateTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException {
+		if (!this.isSessionAtLeastManager()) {
+			throw new JUnitHistoryException("User must be manager in order to access this page!");
+		}
+
 		return AnalysisManager.get().createOrUpdateTComment(voTComment);
 	}
 
 	@Override
 	public boolean deleteTComment(int tcommentId) throws JUnitHistoryException {
+		if (!this.isSessionAtLeastManager()) {
+			throw new JUnitHistoryException("User must be manager in order to access this page!");
+		}
 		return AnalysisManager.get().deleteTComment(tcommentId);
 	}
 

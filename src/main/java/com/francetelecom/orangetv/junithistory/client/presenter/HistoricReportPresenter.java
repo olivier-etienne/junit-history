@@ -83,10 +83,13 @@ public class HistoricReportPresenter extends AbstractProfilMainPresenter {
 	}
 
 	@Override
-	public void manageUserProfil(UserProfile userProfile) {
-		super.manageUserProfil(userProfile);
+	public void manageUserProfil(UserProfile userProfile, boolean forceRefresh) {
+		super.manageUserProfil(userProfile, forceRefresh);
 
-		this.doGetListTestSuites(this.view.getCurrentGroupId());
+		if (forceRefresh) {
+			this.doGetListTestSuites(this.view.getCurrentGroupId());
+		}
+
 	}
 
 	@Override

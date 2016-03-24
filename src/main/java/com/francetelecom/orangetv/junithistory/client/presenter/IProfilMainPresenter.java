@@ -5,7 +5,7 @@ import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 
 public interface IProfilMainPresenter extends IMainPresenter {
 
-	public void manageUserProfil(UserProfile userProfile);
+	public void manageUserProfil(UserProfile userProfile, boolean forceRefresh);
 
 	public IProfilMainView getProfilMainView();
 }

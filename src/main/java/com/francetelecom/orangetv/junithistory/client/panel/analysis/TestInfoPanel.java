@@ -6,10 +6,12 @@ import com.francetelecom.orangetv.junithistory.client.view.AnalysisView;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.CreateCommentButton;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.DeleteCommentButton;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.EditCommentButton;
+import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestInstanceForEdit;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -37,7 +39,8 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public final class TestInfoPanel extends SimplePanel implements CssConstants {
 
-	private VerticalPanel vpBody = new VerticalPanel();
+	private final HorizontalPanel hpTitle = new HorizontalPanel();
+	private final VerticalPanel vpBody = new VerticalPanel();
 
 	private CreateCommentButton btCreateComment;
 	private DeleteCommentButton btDeleteComment;
@@ -68,8 +71,25 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 	}
 
 	// ---------------------------------------- public methods
-	public void setTestActionClickHandler(ClickHandler actionClickHandler) {
-		this.actionClickHandler = actionClickHandler;
+	public void resetUpdatingMode() {
+		this.setUpdatingMode(false);
+	}
+
+	public void setTestActionClickHandler(final ClickHandler clickHandler) {
+		this.actionClickHandler = new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+
+				if (event != null && event.getSource() != null && event.getSource() instanceof TestActionButton) {
+
+					boolean updatingMode = ((TestActionButton) event.getSource()).isUpdatingMode();
+					setUpdatingMode(updatingMode);
+				}
+
+				clickHandler.onClick(event);
+			}
+		};
 	}
 
 	public void setDatas(VoTestInstanceForEdit voTest) {
@@ -128,7 +148,7 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 
 	private void manageCreateCommentButton(boolean visible, boolean forceCreate, VoItemProtection protection, int testId) {
 
-		if (protection == null || protection.canEdit()) {
+		if (protection == null || protection.canCreate()) {
 			if (this.btCreateComment == null && forceCreate) {
 				this.btCreateComment = new CreateCommentButton(testId);
 				if (this.actionClickHandler != null) {
@@ -228,19 +248,27 @@ public final class TestInfoPanel extends SimplePanel implements CssConstants {
 		return vpPanel;
 	}
 
+	private void setUpdatingMode(boolean updatingMode) {
+
+		if (updatingMode) {
+			this.hpTitle.addStyleName(PANEL_TEST_UPDATING);
+		} else {
+			this.hpTitle.removeStyleName(PANEL_TEST_UPDATING);
+		}
+	}
+
 	/*
 	 * Test suite name / buttons / test suite date / test status
 	 */
 	private Panel buildTitlePanel() {
 
-		final HorizontalPanel hpTitle = new HorizontalPanel();
-		hpTitle.setSpacing(PANEL_SPACING);
-		hpTitle.setWidth(MAX_WIDTH);
-		hpTitle.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+		this.hpTitle.addStyleName(PANEL_TEST_HEADER);
+		this.hpTitle.setSpacing(PANEL_SPACING);
+		this.hpTitle.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
 
-		hpTitle.add(this.suiteNamePanel);
-		hpTitle.add(this.labelSuiteDate);
-		hpTitle.setCellHorizontalAlignment(this.labelSuiteDate, HasHorizontalAlignment.ALIGN_CENTER);
+		this.hpTitle.add(this.suiteNamePanel);
+		this.hpTitle.add(this.labelSuiteDate);
+		this.hpTitle.setCellHorizontalAlignment(this.labelSuiteDate, HasHorizontalAlignment.ALIGN_CENTER);
 
 		this.panelButton.setSpacing(PANEL_SPACING);
 		hpTitle.add(this.panelButton);

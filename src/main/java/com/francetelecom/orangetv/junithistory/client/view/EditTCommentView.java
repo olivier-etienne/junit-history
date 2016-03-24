@@ -66,6 +66,8 @@ public class EditTCommentView extends AbstractEditView implements IEditTCommentV
 		this.wSuiteTitle.setValue(this.tcomment.getSuiteTitle());
 		this.wTestTitle.setValue(this.tcomment.getTestTitle());
 
+		this.setReadOnly(!this.tcomment.getProtection().canUpdate());
+
 		if (!createMode) {
 			this.changeTitle(TITLE, false);
 
@@ -127,6 +129,13 @@ public class EditTCommentView extends AbstractEditView implements IEditTCommentV
 
 		this.main.add(this.taCommentDesc);
 
+	}
+
+	private void setReadOnly(boolean readOnly) {
+
+		this.wlistTesters.setEnabled(!readOnly);
+		this.wCommentTitle.setEnabled(!readOnly);
+		this.taCommentDesc.setEnabled(!readOnly);
 	}
 
 }

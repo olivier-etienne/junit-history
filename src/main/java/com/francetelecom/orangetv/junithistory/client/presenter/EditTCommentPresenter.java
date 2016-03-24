@@ -14,9 +14,9 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditTCommentDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUser;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
@@ -44,15 +44,14 @@ public class EditTCommentPresenter extends AbstractEditItemPresenter implements 
 	}
 
 	// -------------------------- implementing AbstractEditItemPresenter
-	@Override
-	protected void refreshList() {
+	// @Override
+	// protected void refreshList() {
+	//
+	// }
 
-	}
-
 	@Override
-	protected void closeDialog() {
-		this.closeDialogClickHandler.onClick(new ClickEvent() {
-		});
+	protected void closeDialog(boolean updateDone) {
+		this.closeDialogClickHandler.onClick(new UpdateClickEvent(updateDone));
 	}
 
 	@Override
@@ -65,7 +64,7 @@ public class EditTCommentPresenter extends AbstractEditItemPresenter implements 
 				+ ((ValueHelper.isStringEmptyOrNull(datas.getTitle())) ? "undefined" : datas.getTitle());
 		description[1] = "DESCRIPTION    : "
 				+ ((ValueHelper.isStringEmptyOrNull(datas.getDescription())) ? "undefined" : datas.getDescription()
-						.substring(10));
+						.substring(0, 10) + "...");
 		VoIdName tester = this.mapId2Users.get(datas.getTesterId());
 		description[2] = "TESTER :" + ((tester == null) ? "undefined" : tester.getName());
 		return description;
@@ -76,7 +75,8 @@ public class EditTCommentPresenter extends AbstractEditItemPresenter implements 
 	protected void doUpdateItem(final IValidationCallback validationCallback) {
 
 		final String message = " when updating test comment!";
-		this.rpcService.createOrUpdateTComment(view.getVoDatas(), new MyAsyncCallback<VoDatasValidation>(message) {
+		this.rpcService.createOrUpdateTComment(view.getVoDatas(), new MyAsyncCallback<VoDatasValidation>("Error "
+				+ message) {
 
 			@Override
 			public void onSuccess(VoDatasValidation result) {
@@ -94,7 +94,7 @@ public class EditTCommentPresenter extends AbstractEditItemPresenter implements 
 	protected void doValidItem(final IValidationCallback validationCallback) {
 
 		final String message = " when validating test comment!";
-		this.rpcService.validTComment(view.getVoDatas(), new MyAsyncCallback<VoDatasValidation>(message) {
+		this.rpcService.validTComment(view.getVoDatas(), new MyAsyncCallback<VoDatasValidation>("Error " + message) {
 
 			@Override
 			public void onSuccess(VoDatasValidation result) {
@@ -112,8 +112,7 @@ public class EditTCommentPresenter extends AbstractEditItemPresenter implements 
 	// ----------------------------- implementing IMainPresenter
 	@Override
 	public IMainView getMainView() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.view;
 	}
 
 	// ------------------------------- Implementing IPresenter
@@ -175,10 +174,11 @@ public class EditTCommentPresenter extends AbstractEditItemPresenter implements 
 				view.setActionResult("Success " + message, LogStatus.success);
 				view.setDatas(datas);
 
-				if (datas.getTCommentForEdit().isReadOnly()) {
-					view.activeButtons(ViewActionEnum.cancel.name());
-				} else {
+				VoItemProtection voProtection = datas.getTCommentForEdit().getProtection();
+				if (voProtection.canUpdate()) {
 					view.activeButtons(ViewActionEnum.cancel.name(), ViewActionEnum.update.name());
+				} else {
+					view.activeButtons(ViewActionEnum.cancel.name());
 				}
 
 				view.waiting(false);

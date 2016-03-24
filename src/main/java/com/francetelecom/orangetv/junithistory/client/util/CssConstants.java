@@ -67,8 +67,10 @@ public interface CssConstants {
 	public final static String STYLE_IMG_ENABLED = "imgEnabled";
 	public final static String STYLE_IMG_CREATE_COMMENT = "imgCreateComment";
 
-	// defectview
+	// analysis view
 	public final static String PANEL_TEST_INFO = "testInfoPanel";
+	public final static String PANEL_TEST_UPDATING = "testUpdating";
+	public final static String PANEL_TEST_HEADER = "testInfoPanelHeader";
 	public final static String TEXT_AREA_TEST_INFO = "testTextAreaInfo";
 	public final static String TEXT_AREA_TEST_COMMENT = "testTextAreaComment";
 	public final static String LIST_TEST_NAMES = "listTestNames";

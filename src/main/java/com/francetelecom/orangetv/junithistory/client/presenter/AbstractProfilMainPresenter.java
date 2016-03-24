@@ -29,8 +29,8 @@ public abstract class AbstractProfilMainPresenter extends AbstractMainPresenter 
 	// ----------------------------- implementing IPresenter
 
 	@Override
-	public void manageUserProfil(UserProfile userProfile) {
-		getLog().config("manageUserProfil(): " + userProfile);
+	public void manageUserProfil(UserProfile userProfile, boolean forceRefresh) {
+		getLog().config("manageUserProfil(): " + userProfile + " - forceRefresh: " + forceRefresh);
 		this.getProfilMainView().setUserProfil(userProfile);
 	}
 

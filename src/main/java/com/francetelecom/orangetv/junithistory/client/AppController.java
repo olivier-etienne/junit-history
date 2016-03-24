@@ -13,6 +13,7 @@ import com.francetelecom.orangetv.junithistory.client.presenter.AbstractProfilMa
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditTCommentPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.IEditItemPresenter.UpdateClickEvent;
 import com.francetelecom.orangetv.junithistory.client.presenter.IMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.IProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
@@ -183,6 +184,7 @@ public class AppController extends AbstractProfilMainPresenter implements ValueC
 						} else {
 							History.back();
 						}
+						break;
 
 					case admin:
 						diplayView(MainPanelViewEnum.admin, event.getParams(), true, panelView);
@@ -193,7 +195,12 @@ public class AppController extends AbstractProfilMainPresenter implements ValueC
 						break;
 					}
 					if (manageUserProfile) {
-						manageUserProfil();
+						boolean forceRefresh = true;
+						if (event.getParams() != null && event.getParams().containsKey(PARAMS_FORCE_REFRESH)) {
+							forceRefresh = (Boolean) event.getParams().get(PARAMS_FORCE_REFRESH);
+							log.config("onChangeView() - forceRefresh: " + forceRefresh);
+						}
+						manageUserProfil(forceRefresh);
 					}
 				}
 
@@ -264,9 +271,15 @@ public class AppController extends AbstractProfilMainPresenter implements ValueC
 			public void onClick(ClickEvent event) {
 				container.hide();
 
-				// on revient à l'historique et on force le
-				// rafraichissement
-				fireEventToView(MainPanelViewEnum.historicReport, params, true);
+				if (event != null && event instanceof UpdateClickEvent) {
+					UpdateClickEvent updateEvent = (UpdateClickEvent) event;
+
+					// on revient à l'historique et on force le
+					// rafraichissement si updateDone
+					log.config("Dialog.onClose() >> display history and force refresh " + updateEvent.isUpdateDone());
+					fireEventToView(MainPanelViewEnum.historicReport, params, updateEvent.isUpdateDone());
+
+				}
 			}
 		});
 
@@ -284,10 +297,15 @@ public class AppController extends AbstractProfilMainPresenter implements ValueC
 			public void onClick(ClickEvent event) {
 				container.hide();
 
-				// on revient à la page analyse et on force le
-				// rafraichissement
-				log.config("Dialog.onClose() >> display analysis and force refresh!");
-				fireEventToView(MainPanelViewEnum.analysis, params, true);
+				if (event != null && event instanceof UpdateClickEvent) {
+					UpdateClickEvent updateEvent = (UpdateClickEvent) event;
+
+					// on revient à la page analyse et on force le
+					// rafraichissement si updateDone
+					log.config("Dialog.onClose() >> display analysis and force refresh " + updateEvent.isUpdateDone());
+					fireEventToView(MainPanelViewEnum.analysis, params, updateEvent.isUpdateDone());
+				}
+
 			}
 		});
 
@@ -296,16 +314,14 @@ public class AppController extends AbstractProfilMainPresenter implements ValueC
 
 	private void fireEventToView(MainPanelViewEnum viewEnum, Map<String, Object> params, boolean forceRefresh) {
 
-		log.config("fireEventToView(): " + viewEnum.name() + " - " + forceRefresh
+		log.config("fireEventToView(): " + viewEnum.name() + " - forceRefresh: " + forceRefresh
 				+ (params != null ? " with param" : ""));
 		ViewReportEvent viewEvent = new ViewReportEvent(viewEnum);
 
-		if (forceRefresh) {
-			if (params == null) {
-				params = new HashMap<String, Object>(0);
-			}
-			params.put(PARAMS_FORCE_REFRESH, true);
+		if (params == null) {
+			params = new HashMap<String, Object>(0);
 		}
+		params.put(PARAMS_FORCE_REFRESH, forceRefresh);
 		viewEvent.setParams(params);
 		this.eventBus.fireEvent(viewEvent);
 
@@ -391,20 +407,21 @@ public class AppController extends AbstractProfilMainPresenter implements ValueC
 		if (profile != null && profile != currentUserProfile) {
 			log.info("change profile from " + currentUserProfile + " to " + profile);
 			currentUserProfile = profile;
-			manageUserProfil();
+			manageUserProfil(true);
 		}
 	}
 
 	/*
 	 * Si le profile a change on repercute sur le presenter et le menu
 	 */
-	private void manageUserProfil() {
+	private void manageUserProfil(boolean forceRefresh) {
+
 		if (this.currentPresenter != null && this.currentUserProfile != null) {
 
 			if (this.currentPresenter instanceof IProfilMainPresenter) {
 
 				IProfilMainPresenter profilMainPresenter = (IProfilMainPresenter) this.currentPresenter;
-				profilMainPresenter.manageUserProfil(this.currentUserProfile);
+				profilMainPresenter.manageUserProfil(this.currentUserProfile, forceRefresh);
 			}
 			this.panelMenu.manageUserProfil(this.currentUserProfile);
 		}

@@ -60,7 +60,7 @@ public abstract class AbstractGridSubPresenter<T extends VoIdName> extends Abstr
 
 	// -------------------------- implementing IGridSubPresenter
 	@Override
-	public void closeDialogBox() {
+	public void closeDialogBox(boolean updateDone) {
 		if (this.dialogBox != null) {
 			this.dialogBox.hide();
 		}
