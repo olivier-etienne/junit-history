@@ -100,9 +100,8 @@ public class DaoTestComment extends AbstractDao<DbTestComment> implements IDaoTe
 		return super.listEntry(SQL_SELECT_TCOMMENT, params);
 	}
 
-	public List<DbTestComment> listCommentForSuite(int suiteId) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DbTestComment> listCommentForSuite(int suiteId) throws JUnitHistoryException {
+		return super.listEntry(MF_SELECT_JOIN_TEST_FOR_SUITE.format(new Integer[] { suiteId }));
 	}
 
 	/**

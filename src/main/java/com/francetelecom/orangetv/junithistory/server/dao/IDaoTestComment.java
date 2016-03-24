@@ -38,6 +38,26 @@ public interface IDaoTestComment extends IDao {
 			+ EGAL_NUMBER);
 
 	// =============================================
+	// TEST COMMENT WITH JOIN
+	// =============================================
+	public final static String TCOMMENT_ATTRIBUTS_FOR_JOIN = OP + DB_ID + ", " // ...
+			+ OP + DB_TITLE + ", " // ...
+			+ OP + DB_DESC + ", " // ...
+			+ OP + DB_TEST_ID + ", " // ...
+			+ OP + DB_USER_ID + ", " // ...
+			+ OP + DB_DATE_CREATION + ", " // ...
+			+ OP + DB_DATE_MODIF + " "; // ...
+
+	public final static String FROM_JOIN_TEST = FROM + TABLE_ALIAS + ", " + IDaoTestInstance.TABLE_ALIAS + WHERE + OP
+			+ DB_TEST_ID + " = " + IDaoTestInstance.TP + IDaoTestInstance.DB_ID + " ";
+
+	public final static String SQL_SELECT_TCOMMENT_JOINT_TEST = SELECT + TCOMMENT_ATTRIBUTS_FOR_JOIN + FROM_JOIN_TEST;
+
+	// tous les comments des tests d'une suite
+	public final static MessageFormat MF_SELECT_JOIN_TEST_FOR_SUITE = new MessageFormat(SQL_SELECT_TCOMMENT_JOINT_TEST
+			+ AND + IDaoTestInstance.TP + IDaoTestInstance.DB_SUITE_ID + EGAL_NUMBER);
+
+	// =============================================
 	// DIVERS
 	// =============================================
 	public final static MessageFormat MF_DELETE_ONE_ENTRY = new MessageFormat(DELETE + FROM + TABLE_NAME + " "

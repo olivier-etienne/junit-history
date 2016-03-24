@@ -416,7 +416,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	}
 
 	// ------------------------------- View
-	public interface IAnalysisView extends IMainView {
+	public static interface IAnalysisView extends IMainView {
 
 		public void setInitDatas(VoInitDefectDatas datas);
 

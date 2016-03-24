@@ -152,12 +152,16 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		Map<String, Object> map = this.buildMapTClassesParams();
 		if (!lazyMessageAndComment) {
 			final List<DbTestMessage> listMessageForSuite = DaoTestMessage.get().listMessagesForSuite(suiteId);
-			final Map<Integer, DbTestMessage> mapId2Message = VoIdUtils.getMapId2Item(listMessageForSuite);
-			map.put(PARAM_MESS_LIST, mapId2Message);
+			if (listMessageForSuite != null && !listMessageForSuite.isEmpty()) {
+				final Map<Integer, DbTestMessage> mapId2Message = VoIdUtils.getMapId2Item(listMessageForSuite);
+				map.put(PARAM_MESS_LIST, mapId2Message);
+			}
 
 			final List<DbTestComment> listTCommentForSuite = DaoTestComment.get().listCommentForSuite(suiteId);
-			final Map<Integer, DbTestComment> mapId2TComment = VoIdUtils.getMapId2Item(listTCommentForSuite);
-			map.put(PARAM_TCOMMENT_LIST, mapId2TComment);
+			if (listTCommentForSuite != null && !listTCommentForSuite.isEmpty()) {
+				final Map<Integer, DbTestComment> mapId2TComment = VoIdUtils.getMapId2Item(listTCommentForSuite);
+				map.put(PARAM_TCOMMENT_LIST, mapId2TComment);
+			}
 		}
 
 		return super.listEntry(MF_SELECT_TEST_JOIN_MESS_FOR_SUITE.format(new Integer[] { suiteId }), map);

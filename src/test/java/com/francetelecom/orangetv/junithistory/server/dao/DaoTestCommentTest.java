@@ -63,6 +63,16 @@ public class DaoTestCommentTest extends AbstractTest {
 	}
 
 	@Test
+	public void testListCommensForSuite() throws Exception {
+		List<DbTestComment> result = dao.listCommentForSuite(1);
+		assertNotNull("list of DbTestComment cannot be null!", result);
+
+		for (DbTestComment dbTComment : result) {
+			log.info("comment: " + dbTComment.getTitle());
+		}
+	}
+
+	@Test
 	public void testGetById_notExist() throws Exception {
 
 		DbTestComment result = dao.getById(9999);

@@ -107,8 +107,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (viewType) {
 		case admin:
 			return this.getPageAdminView();
-		case analysis:
-			return this.getAnalysisView();
+
 		case editReport:
 			return this.getEditReportView();
 		case editComment:
@@ -117,6 +116,8 @@ public class ClientFactoryImpl implements ClientFactory {
 			return this.getHistoricReportView();
 		case singleReport:
 			return this.getSingleReportView();
+		case analysis:
+			return this.getAnalysisView();
 
 		}
 		return null;

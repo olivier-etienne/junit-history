@@ -176,7 +176,7 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 		}
 
 		this.wTestNameBox.setValue(testName);
-		// for each TClass
+		// for each TClass...
 		for (VoIdName voTClass : listTClasses) {
 			this.lbTClasses.addItem(voTClass.getName(), voTClass.getId() + "");
 		}
