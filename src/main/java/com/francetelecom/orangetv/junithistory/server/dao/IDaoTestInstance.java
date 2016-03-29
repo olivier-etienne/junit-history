@@ -30,29 +30,141 @@ public interface IDaoTestInstance extends IDao {
 	public final static String SQL_SELECT_TEST = SELECT + TEST_ATTRIBUTS + FROM_TABLE_NAME;
 
 	// =============================================
-	// TEST INSTANCE WITH MESSAGEID
-	// =============================================
-	public final static String MESS_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_ID;
-	public final static String MESS_TEST_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_TEST_ID;
-	public final static String TEST_ATTRIBUTS_JOIN_MESS = // ...
+	// TEST MESSAGE ATTRIBUT JOIN...
+	// ============================================
+	public final static String TEST_ATTRIBUTS_JOIN = // ...
 	TP + DB_ID + ", " // ...
 			+ TP + DB_NAME + ", " // ...
 			+ TP + DB_STATUS + ", " // ...
 			+ TP + DB_SUITE_ID + ", " // ...
 			+ TP + DB_TIME + ", " // ...
-			+ TP + DB_TCLASS_ID + ", " // ...
-			+ MESS_ID + " "; // ...
+			+ TP + DB_TCLASS_ID + " ";// ...
+
+	// =============================================
+	// TEST INSTANCE WITH MESSAGEID & COMMENTID
+	// =============================================
+	public final static String MESS_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_ID;
+	public final static String MESS_TEST_ID = IDaoTestMessage.MP + IDaoTestMessage.DB_TEST_ID;
+
+	public final static String TCOMMENT_ID = IDaoTestComment.OP + IDaoTestComment.DB_ID;
+	public final static String TCOMMENT_TEST_ID = IDaoTestComment.OP + IDaoTestComment.DB_TEST_ID;
+
+	public final static String TEST_ATTRIBUTS_JOIN_MESS_AND_COMMENT = // ...
+	TEST_ATTRIBUTS_JOIN + ", "// ...
+			+ MESS_ID + ", " // ...
+			+ TCOMMENT_ID + " ";
 
 	// left join message as m on t.id = m.testId
 	public final static String LEFT_JOIN_MESS = LEFT_JOIN + IDaoTestMessage.TABLE_ALIAS + ON + TP + DB_ID + " = "
 			+ MESS_TEST_ID + " ";
 
-	public final static String SQL_SELECT_TEST_JOIN_MESS = SELECT + TEST_ATTRIBUTS_JOIN_MESS + FROM + TABLE_ALIAS
-			+ LEFT_JOIN_MESS;
+	// left join tcomment as o on t.id = o.testId
+	public final static String LEFT_JOIN_TCOMMENT = LEFT_JOIN + IDaoTestComment.TABLE_ALIAS + ON + TP + DB_ID + " = "
+			+ TCOMMENT_TEST_ID + " ";
 
-	public final static MessageFormat MF_SELECT_ONE_ENTRY_JOIN_MESS = new MessageFormat(SQL_SELECT_TEST_JOIN_MESS
-			+ WHERE + TP + DB_ID + EGAL_NUMBER);
+	public final static String SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT = // ...
+	SELECT // ...
+			+ TEST_ATTRIBUTS_JOIN_MESS_AND_COMMENT // ...
+			+ FROM + TABLE_ALIAS // ...
+			+ LEFT_JOIN_MESS // ...
+			+ LEFT_JOIN_TCOMMENT;
 
+	public final static MessageFormat MF_SELECT_ONE_ENTRY_JOIN_MESS_JOIN_COMMENT = new MessageFormat(
+			SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT + WHERE + TP + DB_ID + EGAL_NUMBER);
+
+	// ===================================
+	// DIVERS
+	// ===================================
+
+	public final static String SQL_SELECT_MAX_ID = SELECT + MAX + "(" + DB_ID + ") " + FROM_TABLE_NAME;
+
+	public final static String SQL_COUNT_TEST = SELECT + COUNT_ALL + FROM_TABLE_NAME;
+
+	// ===============================================
+	// TEST FOR GROUP_ID AND NAME
+	// =============================================
+	public final static String TCLASS_ID = IDaoTestClass.EP + IDaoTestClass.DB_ID;
+	public final static String TCLASS_NAME = IDaoTestClass.EP + IDaoTestClass.DB_NAME;
+	public final static String SUITE_ID = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_ID;
+	public final static String SUITE_NAME = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_NAME;
+	public final static String SUITE_DATE = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_DATE;
+	public final static String SUITE_GROUPID = IDaoTestSuiteInstance.SP + IDaoTestSuiteInstance.DB_GROUP_ID;
+
+	// left join suite on test.suiteId = suite.id
+	public final static String LEFT_JOIN_SUITE = LEFT_JOIN + IDaoTestSuiteInstance.TABLE_ALIAS + ON + TP + DB_SUITE_ID
+			+ " = " + SUITE_ID + " ";
+
+	// left join tclass as c on c.id = t.tclassid
+	public final static String LEFT_JOIN_TCLASS = LEFT_JOIN + IDaoTestClass.TABLE_ALIAS + ON + TP + DB_TCLASS_ID
+			+ " = " + TCLASS_ID + " ";
+
+	// ----------------------------
+	// CONTAINS NAME
+	// ---------------------------
+
+	public final static String SQL_DISTINCT_NAME_JOIN_SUITE = SELECT + DISTINCT + TP + DB_NAME + " " + FROM
+			+ TABLE_ALIAS + LEFT_JOIN_SUITE;
+
+	// WHERE suite.groupId = 11 and test.name like '%Schedule%'
+	public final static String WHERE_WITH_GROUP_AND_CONTAINS_NAME = WHERE // ...
+			+ SUITE_GROUPID + EGAL_NUMBER // ...
+			+ AND // ...
+			+ TP + DB_NAME + " " + LIKE + " ''%{1}%''";
+
+	public final static MessageFormat MF_DISTINCT_NAME_WITH_GROUP_AND_CONTAINS_NAME = new MessageFormat(
+			SQL_DISTINCT_NAME_JOIN_SUITE + WHERE_WITH_GROUP_AND_CONTAINS_NAME + " " + ORDER_BY + TP + DB_NAME);
+
+	public final static MessageFormat MF_COUNT_WITH_GROUP_AND_CONTAINS_NAME = new MessageFormat( // ...
+			SELECT + COUNT_ALL // ...
+					+ FROM + TABLE_ALIAS // ...
+					+ LEFT_JOIN_SUITE // ...
+					+ WHERE_WITH_GROUP_AND_CONTAINS_NAME // ...
+
+	);
+
+	// ----------------------------
+	// EQUALS NAME
+	// ---------------------------
+	// WHERE suite.groupId = 11 and test.name like '%Schedule%'
+	public final static String WHERE_WITH_GROUP_AND_NAME = WHERE // ...
+			+ SUITE_GROUPID + EGAL_NUMBER // ...
+			+ AND // ...
+			+ TP + DB_NAME + " = ''{1}''";
+
+	public final static String WHERE_WIHT_GROUP_AND_NAME_AND_TCLASS = WHERE_WITH_GROUP_AND_NAME + " " // ...
+			+ AND // ...
+			+ TP + DB_TCLASS_ID + " = {2, number, ####}";
+
+	public final static String SQL_SELECT_JOIN_SUITE = SELECT // ...
+			+ TEST_ATTRIBUTS_JOIN_MESS_AND_COMMENT // ...
+			+ FROM + TABLE_ALIAS // ...
+			+ LEFT_JOIN_SUITE // ...
+			+ LEFT_JOIN_MESS // ...
+			+ LEFT_JOIN_TCOMMENT;
+
+	public final static MessageFormat MF_SELECT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS = new MessageFormat(
+			SQL_SELECT_JOIN_SUITE // ...
+					+ WHERE_WIHT_GROUP_AND_NAME_AND_TCLASS + " " // ...
+					+ ORDER_BY + SUITE_DATE + " " + DESC // ...
+					+ ", " + SUITE_NAME + " " + DESC);
+
+	public final static MessageFormat MF_COUNT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS = new MessageFormat( // ...
+			SELECT + COUNT_ALL // ...
+					+ FROM + TABLE_ALIAS // ...
+					+ LEFT_JOIN_SUITE // ...
+					+ WHERE_WIHT_GROUP_AND_NAME_AND_TCLASS);
+
+	/*
+	 * select c.id, c.name from test as t left join suite as s on t.suiteId = s.id 
+	 * left join tclass as c on c.id = t.tclassid where s.groupId = 11 and t.name = 'testSchedule' group by c.id
+	 */
+	public final static MessageFormat MF_LIST_TCLASS_NAME_WITH_GROUP_AND_NAME = new MessageFormat( // ...
+			SELECT + TCLASS_ID + ", " + TCLASS_NAME + " " // ...
+					+ FROM + TABLE_ALIAS // ...
+					+ LEFT_JOIN_SUITE // ...
+					+ LEFT_JOIN_TCLASS // ...
+					+ WHERE_WITH_GROUP_AND_NAME + " "// ...
+					+ GROUP_BY + TCLASS_ID);
 	// =============================================
 	// CREATE, DELETE
 	// =============================================
@@ -70,21 +182,13 @@ public interface IDaoTestInstance extends IDao {
 			+ ");"); // ...
 
 	// ===================================
-	// DIVERS
-	// ===================================
-
-	public final static String SQL_SELECT_MAX_ID = SELECT + MAX + "(" + DB_ID + ") " + FROM_TABLE_NAME;
-
-	public final static String SQL_COUNT_TEST = SELECT + COUNT_ALL + FROM_TABLE_NAME;
-
-	// ===================================
-	// FOR SUITE WITH MESS ID
+	// FOR SUITE WITH MESS ID & COMMENT_ID
 	// ===================================
 
 	public final static String WHERE_SUITE = WHERE + DB_SUITE_ID + EGAL_NUMBER;
 
-	public final static MessageFormat MF_SELECT_TEST_JOIN_MESS_FOR_SUITE = new MessageFormat(SQL_SELECT_TEST_JOIN_MESS
-			+ WHERE_SUITE);
+	public final static MessageFormat MF_SELECT_TEST_JOIN_MESS_FOR_SUITE = new MessageFormat(
+			SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT + WHERE_SUITE);
 
 	public final static MessageFormat MF_COUNT_TEST_FOR_SUITE = new MessageFormat(SQL_COUNT_TEST + WHERE_SUITE);
 

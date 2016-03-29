@@ -6,8 +6,26 @@ public class VoItemProtection implements IVo {
 
 	private boolean delete = false;
 	private boolean edit = false;
+	private boolean create = false;
+	private boolean update = false;
 
 	// --------------------- accessors
+
+	public void setCanUpdate(boolean canUpdate) {
+		this.update = canUpdate;
+	}
+
+	public boolean canUpdate() {
+		return this.update;
+	}
+
+	public void setCanCreate(boolean canCreate) {
+		this.create = canCreate;
+	}
+
+	public boolean canCreate() {
+		return this.create;
+	}
 
 	public boolean canEdit() {
 		return this.edit;

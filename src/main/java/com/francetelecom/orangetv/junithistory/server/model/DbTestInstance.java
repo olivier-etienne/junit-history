@@ -1,8 +1,7 @@
 package com.francetelecom.orangetv.junithistory.server.model;
 
-import java.util.List;
-
 import com.francetelecom.orangetv.junithistory.server.dao.AbstractDbEntry;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 
 /**
  * Instance concrete d'un test
@@ -24,8 +23,8 @@ public class DbTestInstance extends AbstractDbEntry {
 
 	// 0..1 message
 	private DbTestMessage message; // lazy
-	// 0..n comment
-	private List<DbTestComment> listComments; // lazy
+	// 0..1 comment
+	private DbTestComment comment; // lazy
 
 	// ------------------------------------ constructor
 
@@ -55,7 +54,7 @@ public class DbTestInstance extends AbstractDbEntry {
 		this.status = status;
 	}
 
-	public DbTestClass gettClass() {
+	public DbTestClass getTClass() {
 		return tClass;
 	}
 
@@ -71,12 +70,12 @@ public class DbTestInstance extends AbstractDbEntry {
 		this.message = message;
 	}
 
-	public List<DbTestComment> getListComments() {
-		return listComments;
+	public DbTestComment getComment() {
+		return comment;
 	}
 
-	public void setListComments(List<DbTestComment> listComments) {
-		this.listComments = listComments;
+	public void setComment(DbTestComment comment) {
+		this.comment = comment;
 	}
 
 	public DbTestSuiteInstance getTestSuiteInstance() {
@@ -94,7 +93,7 @@ public class DbTestInstance extends AbstractDbEntry {
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.name);
 		sb.append(" - suite: ");
-		sb.append(this.testSuiteInstance.getName());
+		sb.append(this.testSuiteInstance.isLazy() ? this.testSuiteInstance.getId() : this.testSuiteInstance.getName());
 		sb.append(" - time: ");
 		sb.append(this.time);
 		sb.append(" - status: ");

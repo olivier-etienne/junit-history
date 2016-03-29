@@ -5,7 +5,6 @@ import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter.IEditReportView;
-import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter.ViewActionEnum;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndDateWidget;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndListWidget;
@@ -22,7 +21,7 @@ import com.google.gwt.user.client.ui.TextArea;
  * @author ndmz2720
  * 
  */
-public class EditReportView extends AbstractMainView implements IEditReportView {
+public class EditReportView extends AbstractEditView implements IEditReportView {
 
 	private final static Logger log = Logger.getLogger("EditReportView");
 
@@ -38,27 +37,22 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 
 	private final TextArea taComment = new TextArea();
 
-	private final ButtonViewAction btActionUpdateReport = new ButtonViewAction("Update report",
-			ViewActionEnum.update.name(), "Update the current report");
-
-	private final ButtonViewAction btActionCancel = new ButtonViewAction("Cancel", ViewActionEnum.cancel.name(),
-			"cancel and close");
-
 	private VoTestSuiteForEdit currentTestSuite;
 
 	// ------------------------- constructor
 	public EditReportView() {
-		super(false);
+		super("report");
 		super.init("Edit report");
 	}
 
-	// --------------------------------- overriding AbstractView
+	// ---------------------------------- implementing IMainView
 
 	@Override
 	public MainPanelViewEnum getViewType() {
 		return MainPanelViewEnum.editReport;
 	}
 
+	// --------------------------------- overriding AbstractView
 	@Override
 	public void reinit() {
 		this.wboxDate.setValue(new Date());
@@ -70,16 +64,6 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 		this.lbTesters.clear();
 		this.wlistTesters.setValue(null);
 
-	}
-
-	@Override
-	public void lock() {
-		this.enableButtonAndField(false);
-	}
-
-	@Override
-	public void unlock() {
-		this.enableButtonAndField(true);
 	}
 
 	// --------------------------------------- implementing IEditReportView
@@ -131,12 +115,6 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 	}
 
 	@Override
-	protected void buildButtonPanel() {
-		super.addButton(this.btActionUpdateReport);
-		super.addButton(this.btActionCancel);
-	}
-
-	@Override
 	protected void initHandlers() {
 		// TODO Auto-generated method stub
 
@@ -157,14 +135,13 @@ public class EditReportView extends AbstractMainView implements IEditReportView 
 
 	// ------------------------------ private methods
 
-	private void enableButtonAndField(boolean enabled) {
+	protected void enableButtonAndField(boolean enabled) {
 		this.wboxDate.setEnabled(enabled);
 		this.wboxIptvkit.setEnabled(enabled);
 		this.wlistTesters.setEnabled(enabled);
 		this.taComment.setEnabled(enabled);
 
-		this.btActionUpdateReport.enableButtonIfActif(enabled);
-		this.btActionCancel.enableButtonIfActif(enabled);
+		super.enableButtonAndField(enabled);
 	}
 
 }

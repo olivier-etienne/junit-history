@@ -257,3 +257,66 @@ background: url("../images/delete.png") no-repeat scroll center center rgba(0, 0
 .imgEdit{
 	background: url("../images/edit.png") no-repeat scroll center center rgba(0, 0, 0, 0);
 }
+.imgCreateComment{
+	background: url("../images/createComment.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+
+
+/* Defect view */
+
+.testInfoPanel {
+width: 100%;
+background-color: white;
+}
+.testInfoPanelHeader.testUpdating {
+background-color: darkslateblue;
+}
+
+.testInfoPanelHeader {
+	width: 100%;
+background-color: cornsilk;
+}
+.testTextAreaInfo {
+height: 50px;
+width: 96%;	
+background-color: darkblue;
+color: beige;
+}
+.testTextAreaComment {
+height: 50px;
+width: 96%;	
+background-color: gold;
+color:blue;
+}
+
+.labelTestStatus {
+	text-align: center;
+	font-family: verdana;
+	 width: 100px;
+}
+.TestStatusSuccess {
+	background: #7F7;
+}
+.TestStatusError {
+	background: #F55;
+}
+.TestStatusFailure {
+	background: #FA5;
+}
+.TestStatusSkipped {
+	background: #AAA;
+}
+.listTestNames {
+font-size: 1em;
+color: brown;
+background-color: cornsilk;
+}
+.suiteName {
+	width: 100px;
+	color: chocolate;
+}
+.suiteDate {
+	background-color: yellowgreen;
+}
+
+

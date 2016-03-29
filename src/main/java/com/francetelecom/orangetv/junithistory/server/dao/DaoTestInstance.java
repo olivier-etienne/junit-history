@@ -10,14 +10,17 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.server.model.DbTestClass;
+import com.francetelecom.orangetv.junithistory.server.model.DbTestComment;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
+import com.francetelecom.orangetv.junithistory.server.model.LazyTestComment;
 import com.francetelecom.orangetv.junithistory.server.model.LazyTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.LazyTestSuiteInstance;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 
 public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDaoTestInstance {
@@ -26,7 +29,10 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 
 	private static final String PARAM_TCLASS_LIST = "paramTClassList";
 	private static final String PARAM_MESS_LIST = "paramMessList";
+	private static final String PARAM_TCOMMENT_LIST = "paramTCommentList";
 	private static final String PARAM_MESS = "paramMess";
+	private static final String PARAM_TCOMMENT = "paramTComment";
+	private static final String PARAM_SUITE_LIST = "paramSuiteList";
 	// ---------------------------------- Singleton
 	private static DaoTestInstance instance;
 	private static final Map<String, DaoTestInstance> mapToken2Dao = Collections
@@ -70,20 +76,39 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	@SuppressWarnings("unchecked")
 	protected DbTestInstance buildDbEntry(ResultSet rs, Map<String, Object> params) throws JUnitHistoryException {
 
+		// TClasses
 		final Map<Integer, DbTestClass> mapId2TClass = (params != null && params.containsKey(PARAM_TCLASS_LIST)) ? (Map<Integer, DbTestClass>) params
 				.get(PARAM_TCLASS_LIST) : null;
 
+		// suites
+		final Map<Integer, DbTestSuiteInstance> mapId2Suite = (params != null && params.containsKey(PARAM_SUITE_LIST)) ? (Map<Integer, DbTestSuiteInstance>) params
+				.get(PARAM_SUITE_LIST) : null;
+
+		// messages
 		Map<Integer, DbTestMessage> mapId2Message = (params != null && params.containsKey(PARAM_MESS_LIST)) ? (Map<Integer, DbTestMessage>) params
 				.get(PARAM_MESS_LIST) : null;
 
-		final DbTestMessage message = (params != null && params.containsKey(PARAM_MESS)) ? (DbTestMessage) params
-				.get(PARAM_MESS) : null;
-
-		if (mapId2Message == null && message != null) {
-			mapId2Message = ObjectUtils.buildMapIdWithOneItem(message.getId(), message);
+		if (mapId2Message == null) {
+			final DbTestMessage message = (params != null && params.containsKey(PARAM_MESS)) ? (DbTestMessage) params
+					.get(PARAM_MESS) : null;
+			if (message != null) {
+				mapId2Message = ObjectUtils.buildMapIdWithOneItem(message.getId(), message);
+			}
 		}
 
-		return this.buildTest(rs, mapId2TClass, mapId2Message);
+		// comment
+		Map<Integer, DbTestComment> mapId2TComment = (params != null && params.containsKey(PARAM_TCOMMENT_LIST)) ? (Map<Integer, DbTestComment>) params
+				.get(PARAM_TCOMMENT_LIST) : null;
+
+		if (mapId2TComment == null) {
+			final DbTestComment tcomment = (params != null && params.containsKey(PARAM_TCOMMENT)) ? (DbTestComment) params
+					.get(PARAM_TCOMMENT) : null;
+			if (tcomment != null) {
+				mapId2TComment = ObjectUtils.buildMapIdWithOneItem(tcomment.getId(), tcomment);
+			}
+		}
+
+		return this.buildTest(rs, mapId2TClass, mapId2Message, mapId2Suite, mapId2TComment);
 	}
 
 	@Override
@@ -106,7 +131,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 			return new ArrayList<>(0);
 		}
 
-		return super.listEntry(SQL_SELECT_TEST_JOIN_MESS, this.buildMapParams());
+		return super.listEntry(SQL_SELECT_TEST_JOIN_MESS_JOIN_COMMENT, this.buildMapTClassesParams());
 	}
 
 	/**
@@ -117,34 +142,114 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	 * @return
 	 * @throws JUnitHistoryException
 	 */
-	public List<DbTestInstance> listTestsForSuite(int suiteId, boolean lazyMessage) throws JUnitHistoryException {
+	public List<DbTestInstance> listTestsForSuite(int suiteId, boolean lazyMessageAndComment)
+			throws JUnitHistoryException {
 
 		if (this.countForSuite(suiteId) == 0) {
 			return new ArrayList<>(0);
 		}
 
-		Map<String, Object> map = this.buildMapParams();
-		if (!lazyMessage) {
+		Map<String, Object> map = this.buildMapTClassesParams();
+		if (!lazyMessageAndComment) {
 			final List<DbTestMessage> listMessageForSuite = DaoTestMessage.get().listMessagesForSuite(suiteId);
-			final Map<Integer, DbTestMessage> mapId2Message = VoIdUtils.getMapId2Item(listMessageForSuite);
-			map.put(PARAM_MESS_LIST, mapId2Message);
+			if (listMessageForSuite != null && !listMessageForSuite.isEmpty()) {
+				final Map<Integer, DbTestMessage> mapId2Message = VoIdUtils.getMapId2Item(listMessageForSuite);
+				map.put(PARAM_MESS_LIST, mapId2Message);
+			}
+
+			final List<DbTestComment> listTCommentForSuite = DaoTestComment.get().listCommentForSuite(suiteId);
+			if (listTCommentForSuite != null && !listTCommentForSuite.isEmpty()) {
+				final Map<Integer, DbTestComment> mapId2TComment = VoIdUtils.getMapId2Item(listTCommentForSuite);
+				map.put(PARAM_TCOMMENT_LIST, mapId2TComment);
+			}
 		}
 
 		return super.listEntry(MF_SELECT_TEST_JOIN_MESS_FOR_SUITE.format(new Integer[] { suiteId }), map);
 	}
 
 	/**
+	 * Return a list of tests for a groupId and whose name equals testName
+	 * 
+	 * @param groupId
+	 * @param testName
+	 * @return
+	 */
+
+	public List<DbTestInstance> listTestsForGroupIdTClassIdAndTestName(int groupId, int tclassId, String testName)
+			throws JUnitHistoryException {
+
+		if (this.countTestsForGroupIdTClassIdAndTestName(groupId, tclassId, testName) == 0) {
+			return new ArrayList<>();
+		}
+
+		Map<String, Object> map = this.buildMapTClassesParams();
+
+		// recuperer la liste des TestSuite du group
+		final List<DbTestSuiteInstance> listSuiteForGroup = DaoTestSuiteInstance.get().listSuitesByGroup(groupId);
+		final Map<Integer, DbTestSuiteInstance> mapId2Suite = VoIdUtils.getMapId2Item(listSuiteForGroup);
+		map.put(PARAM_SUITE_LIST, mapId2Suite);
+
+		return super
+				.listEntry(MF_SELECT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS.format(new Object[] { groupId, testName,
+						tclassId }), map);
+
+	}
+
+	public int countTestsForGroupIdTClassIdAndTestName(int groupId, int tclassId, String testName) {
+		return super.count(MF_COUNT_WITH_GROUP_AND_TEST_NAME_AND_TCLASS.format(new Object[] { groupId, testName,
+				tclassId }));
+	}
+
+	/**
+	 * Retourne une liste de nom de tests ordonnes alpha
+	 * pour un group donne et dont le nom (du test) contient une valeur donnee.
+	 * 
+	 * @param groupId
+	 * @param likeTestName
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public List<VoIdName> searchDistinctNamesForGroupAndContainsName(int groupId, String likeTestName)
+			throws JUnitHistoryException {
+
+		if (this.countTestsForGroupAndContainsName(groupId, likeTestName) == 0) {
+			return new ArrayList<>(0);
+		}
+		return super.listVoIdName(
+				MF_DISTINCT_NAME_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }), null,
+				DB_NAME);
+	}
+
+	public int countTestsForGroupAndContainsName(int groupId, String likeTestName) {
+		return super.count(MF_COUNT_WITH_GROUP_AND_CONTAINS_NAME.format(new Object[] { groupId, likeTestName }));
+	}
+
+	/**
+	 * Retourne une liste de VoTClassName (id and name) pour tous les tests d'un
+	 * groupId d'un nom
+	 * donné.
+	 */
+	public List<VoIdName> listTClassForGroupAndName(int groupId, String testName) throws JUnitHistoryException {
+
+		return super.listVoIdName(MF_LIST_TCLASS_NAME_WITH_GROUP_AND_NAME.format(new Object[] { groupId, testName }),
+				TCLASS_ID, TCLASS_NAME);
+	}
+
+	/**
 	 * Récupère une entrée par son id
 	 * 
 	 * @param testId
-	 * @return Test avec son message complet si existe
+	 * @return Test avec son message et son comment complet si existe
 	 */
 	public DbTestInstance getById(int testId) throws JUnitHistoryException {
 
 		DbTestMessage message = DaoTestMessage.get().getByTest(testId);
+		final Map<String, Object> map = ObjectUtils.buildMapWithOneItem(PARAM_MESS, message);
 
-		return super.getById(testId, MF_SELECT_ONE_ENTRY_JOIN_MESS,
-				ObjectUtils.buildMapWithOneItem(PARAM_MESS, message));
+		DbTestComment tcomment = DaoTestComment.get().getByTest(testId);
+		map.put(PARAM_TCOMMENT, tcomment);
+
+		return super.getById(testId, MF_SELECT_ONE_ENTRY_JOIN_MESS_JOIN_COMMENT, map);
 
 	}
 
@@ -179,13 +284,21 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 	// -------------------------------------- private method
 
 	/*
-	 * Attention le message peut etre lazy!
+	 * Attention le message et le comment peut etre lazy!
 	 */
 	private DbTestInstance buildTest(ResultSet rs, Map<Integer, DbTestClass> mapId2TClass,
-			Map<Integer, DbTestMessage> mapId2Message) throws JUnitHistoryException {
+			Map<Integer, DbTestMessage> mapId2Message, Map<Integer, DbTestSuiteInstance> mapId2Suite,
+			Map<Integer, DbTestComment> mapId2TComment) throws JUnitHistoryException {
 		try {
 			// test suite
-			DbTestSuiteInstance testSuiteInstance = new LazyTestSuiteInstance(rs.getInt(DB_SUITE_ID));
+			int suiteId = rs.getInt(DB_SUITE_ID);
+			DbTestSuiteInstance testSuiteInstance = null;
+			if (mapId2Suite != null && mapId2Suite.containsKey(suiteId)) {
+				testSuiteInstance = mapId2Suite.get(suiteId);
+			} else {
+				// lazy
+				testSuiteInstance = new LazyTestSuiteInstance(suiteId);
+			}
 
 			// test class
 			int tclassId = rs.getInt(DB_TCLASS_ID);
@@ -212,6 +325,13 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 				entry.setMessage(message);
 			}
 
+			int commentId = rs.getInt(TCOMMENT_ID);
+			if (commentId > 0) {
+				DbTestComment tcomment = mapId2TComment == null ? new LazyTestComment(commentId) : mapId2TComment
+						.get(commentId);
+				entry.setComment(tcomment);
+			}
+
 			return entry;
 		} catch (Exception e) {
 			throw new JUnitHistoryException("Error in buildDbTestSuiteInstance(): " + e.getMessage());
@@ -227,7 +347,7 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		String status = test.getStatus().name();
 
 		int suiteId = test.getTestSuiteInstance().getId();
-		int tclassId = test.gettClass().getId();
+		int tclassId = test.getTClass().getId();
 
 		String sql = sqlToFormat.format(new Object[] { test.getId(), name, status, suiteId, test.getTime(), tclassId });
 
@@ -247,12 +367,12 @@ public class DaoTestInstance extends AbstractDao<DbTestInstance> implements IDao
 		// TestSuite required
 		this.verifyNotNull(prefix + "testSuite", entry.getTestSuiteInstance());
 		// TestClass required
-		this.verifyNotNull(prefix + "testClass", entry.gettClass());
+		this.verifyNotNull(prefix + "testClass", entry.getTClass());
 
 		return true;
 	}
 
-	private Map<String, Object> buildMapParams() throws JUnitHistoryException {
+	private Map<String, Object> buildMapTClassesParams() throws JUnitHistoryException {
 		// Aggregation with DbTestClass
 		Map<Integer, DbTestClass> mapId2TClass = DaoTestClass.getWithTransaction(this.getToken()).getMapId2TClass();
 		return ObjectUtils.buildMapWithOneItem(PARAM_TCLASS_LIST, mapId2TClass);

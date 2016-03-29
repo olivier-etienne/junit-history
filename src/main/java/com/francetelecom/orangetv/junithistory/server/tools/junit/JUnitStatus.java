@@ -3,11 +3,11 @@ package com.francetelecom.orangetv.junithistory.server.tools.junit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.francetelecom.orangetv.junithistory.server.model.TestStatusEnum;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.server.tools.junit.xml.JUnitFailureOrError;
 import com.francetelecom.orangetv.junithistory.server.tools.junit.xml.JUnitTestCase;
 import com.francetelecom.orangetv.junithistory.server.util.HtmlUtils;
+import com.francetelecom.orangetv.junithistory.shared.TestStatusEnum;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 
 public class JUnitStatus {
 

@@ -169,7 +169,7 @@ public class ReportManager implements IManager {
 						VoSingleReportData voSingleReportData = new VoSingleReportData();
 						// ajouter user et iptvkit version
 						voSingleReportData.setIptvkit("unknown");
-						DbTestUser userAdmin = DaoTestUser.get().getDefaultUser();
+						DbTestUser userAdmin = DaoTestUser.get().getUserAdmin();
 						voSingleReportData.setUserId((userAdmin == null) ? IDbEntry.ID_UNDEFINED : userAdmin.getId());
 						final DtoTestSuiteInstance dtoSuite = this.buildDtoSuiteInstanceFromListXmlReport(
 								voSingleReportData, xmlFiles);

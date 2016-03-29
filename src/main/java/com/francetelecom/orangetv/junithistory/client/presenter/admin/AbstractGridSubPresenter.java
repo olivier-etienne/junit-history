@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.francetelecom.orangetv.junithistory.client.presenter.AbstractPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
@@ -18,7 +18,7 @@ import com.francetelecom.orangetv.junithistory.client.view.admin.AbstractGridSub
 import com.francetelecom.orangetv.junithistory.client.view.admin.IAdminSubView;
 import com.francetelecom.orangetv.junithistory.client.view.admin.IEditItemView;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
-import com.francetelecom.orangetv.junithistory.shared.vo.AbstractVoIdName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -33,7 +33,7 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author sylvie
  * 
  */
-public abstract class AbstractGridSubPresenter<T extends AbstractVoIdName> extends AbstractPresenter implements
+public abstract class AbstractGridSubPresenter<T extends VoIdName> extends AbstractPresenter implements
 		IGridSubPresenter {
 
 	private final IAdminSubView<T> view;
@@ -54,13 +54,13 @@ public abstract class AbstractGridSubPresenter<T extends AbstractVoIdName> exten
 
 	protected abstract void doDeleteItem(int itemId, IDeleteCallback callback);
 
-	protected abstract TabViewEnum getType();
+	protected abstract TabAdminViewEnum getType();
 
 	protected abstract String[] getItemDescription(T item);
 
 	// -------------------------- implementing IGridSubPresenter
 	@Override
-	public void closeDialogBox() {
+	public void closeDialogBox(boolean updateDone) {
 		if (this.dialogBox != null) {
 			this.dialogBox.hide();
 		}
@@ -112,7 +112,7 @@ public abstract class AbstractGridSubPresenter<T extends AbstractVoIdName> exten
 
 		IEditItemView view = this.clientFactory.getEditView(this.getType());
 
-		IEditItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
+		IEditAdminItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
 		if (presenter == null) {
 			presenter = this.clientFactory.buildEditPresenter(view);
 			presenter.setGridSubPresenter(this);
@@ -128,7 +128,7 @@ public abstract class AbstractGridSubPresenter<T extends AbstractVoIdName> exten
 
 		IEditItemView view = this.clientFactory.getEditView(this.getType());
 
-		IEditItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
+		IEditAdminItemPresenter presenter = this.clientFactory.getEditPresenter(this.getType());
 		if (presenter == null) {
 			presenter = this.clientFactory.buildEditPresenter(view);
 			presenter.setGridSubPresenter(this);

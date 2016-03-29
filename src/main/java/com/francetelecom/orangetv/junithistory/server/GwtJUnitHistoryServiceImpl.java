@@ -20,6 +20,7 @@ import com.francetelecom.orangetv.junithistory.server.dao.DaoTestUser;
 import com.francetelecom.orangetv.junithistory.server.dao.IDbEntry;
 import com.francetelecom.orangetv.junithistory.server.dto.DtoTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.manager.AdminManager;
+import com.francetelecom.orangetv.junithistory.server.manager.AnalysisManager;
 import com.francetelecom.orangetv.junithistory.server.manager.DaoManager;
 import com.francetelecom.orangetv.junithistory.server.manager.PathManager;
 import com.francetelecom.orangetv.junithistory.server.manager.ProfileManager;
@@ -41,17 +42,23 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoEditTCommentDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestSuiteForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestSuiteForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUser;
@@ -271,12 +278,9 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		List<DbTestSuiteInstance> listSuites = DaoTestSuiteInstance.get().listSuitesByGroup(groupId);
 		if (listSuites != null) {
 
-			final boolean atLeastManager = ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager,
-					this.getThreadLocalRequest());
+			final boolean atLeastManager = this.isSessionAtLeastManager();
 
-			final boolean atLeastAdmin = atLeastManager
-					&& ProfileManager.get()
-							.isSessionAtLeastUserProfile(UserProfile.admin, this.getThreadLocalRequest());
+			final boolean atLeastAdmin = this.isSessionAtLeastAdmin();
 
 			List<VoTestSuiteForGrid> listVos = new ArrayList<>(listSuites.size());
 
@@ -323,10 +327,13 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		return ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.admin, this.getThreadLocalRequest());
 	}
 
+	private boolean isSessionAtLeastManager() {
+		return ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager, this.getThreadLocalRequest());
+	}
+
 	private VoTestSuiteForEdit buildVoTestSuiteForEdit(DbTestSuiteInstance suite) {
 
-		boolean atLeastManager = ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager,
-				this.getThreadLocalRequest());
+		boolean atLeastManager = this.isSessionAtLeastManager();
 		boolean profileAdmin = atLeastManager && this.isSessionAtLeastAdmin();
 
 		VoTestSuiteForEdit vo = new VoTestSuiteForEdit(suite.getId(), suite.getName());
@@ -352,8 +359,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	// ================================================
 	@Override
 	public VoSingleReportProtection getSingleReportProtection() throws JUnitHistoryException {
-		final boolean atLeastManager = ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager,
-				this.getThreadLocalRequest());
+		final boolean atLeastManager = this.isSessionAtLeastManager();
 
 		VoSingleReportProtection protection = new VoSingleReportProtection();
 		protection.setCanAddToHistory(atLeastManager);
@@ -364,17 +370,9 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	public VoInitSingleReportDatas getVoInitSingleReportDatas() throws JUnitHistoryException {
 
 		VoInitSingleReportDatas vo = new VoInitSingleReportDatas();
-		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
-		if (listGroups != null) {
+		this.populateListGroupsFromBdd(vo.getListGroups());
 
-			List<VoGroupName> listVoGroupNames = vo.getListGroups();
-			for (DbTestSuiteGroup group : listGroups) {
-				listVoGroupNames.add(group.toVo());
-			}
-			Collections.sort(listVoGroupNames);
-		}
-
-		vo.getListUsers().addAll(this.buildListVoUsers(false));
+		vo.getListUsers().addAll(this.buildListVoTesters(false));
 		vo.setProtection(this.getSingleReportProtection());
 
 		return vo;
@@ -385,15 +383,15 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	public VoInitHistoricReportDatas getVoInitHistoricReportDatas() throws JUnitHistoryException {
 
 		VoInitHistoricReportDatas vo = new VoInitHistoricReportDatas();
-		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
-		if (listGroups != null) {
+		this.populateListGroupsFromBdd(vo.getListGroups());
+		return vo;
+	}
 
-			List<VoGroupName> listVoGroupNames = vo.getListGroups();
-			for (DbTestSuiteGroup group : listGroups) {
-				listVoGroupNames.add(group.toVo());
-			}
-			Collections.sort(listVoGroupNames);
-		}
+	@Override
+	public VoInitDefectDatas getVoInitDefectDatas() throws JUnitHistoryException {
+
+		VoInitDefectDatas vo = new VoInitDefectDatas();
+		this.populateListGroupsFromBdd(vo.getListGroups());
 
 		return vo;
 	}
@@ -441,15 +439,23 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	}
 
 	@Override
-	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException {
+	public VoDatasValidation validTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException {
 
-		if (!ProfileManager.get().isSessionAtLeastUserProfile(UserProfile.manager, this.getThreadLocalRequest())) {
+		if (!this.isSessionAtLeastManager()) {
 			throw new JUnitHistoryException("User must be at least manager!");
 		}
 
 		DbTestSuiteInstance dbSuite = DaoTestSuiteInstance.get().getById(suiteToUpdate.getId());
 		// validation
-		VoDatasValidation validation = this.validSingleReportToUpdate(dbSuite, suiteToUpdate);
+		return this.getTestSuiteValidation(dbSuite, suiteToUpdate);
+
+	}
+
+	@Override
+	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException {
+
+		// validation
+		VoDatasValidation validation = this.validTestSuiteInfo(suiteToUpdate);
 		if (!validation.isValid()) {
 			return validation;
 		}
@@ -472,7 +478,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 
 		VoEditReportDatas voEditReportDatas = new VoEditReportDatas();
 		// en premier lieu liste des users
-		voEditReportDatas.setListUsers(this.buildListVoUsers(true));
+		voEditReportDatas.setListUsers(this.buildListVoTesters(true));
 
 		// ensuite on recupere les informations sur la suite
 		DbTestSuiteInstance suite = DaoTestSuiteInstance.get().getById(suiteId);
@@ -553,7 +559,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	/*
 	 * Le niveau d'info ne doit pas etre inférieur au niveau exitant en base!
 	 */
-	private VoDatasValidation validSingleReportToUpdate(DbTestSuiteInstance dbSuite, VoTestSuiteForEdit voSuite) {
+	private VoDatasValidation getTestSuiteValidation(DbTestSuiteInstance dbSuite, VoTestSuiteForEdit voSuite) {
 
 		VoDatasValidation voValidation = new VoDatasValidation();
 
@@ -679,6 +685,61 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 		return this.getThreadLocalRequest().getSession(true);
 	}
 
+	// ===============================================
+	// DEFECTS
+	// ===============================================
+	@Override
+	public VoResultSearchTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException {
+
+		return AnalysisManager.get().searchDefectTestList(vo);
+	}
+
+	@Override
+	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo)
+			throws JUnitHistoryException {
+
+		return AnalysisManager.get().getListTestsForGroupIdTClassIdAndTestName(vo, this.isSessionAtLeastManager());
+	}
+
+	@Override
+	public List<VoIdName> listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException {
+		return AnalysisManager.get().listTClassesForGroupIdAndTestName(vo);
+	}
+
+	@Override
+	public VoEditTCommentDatas getTCommentDatas(int testId, int tcommentId) throws JUnitHistoryException {
+
+		VoEditTCommentDatas voDatas = AnalysisManager.get().getTCommentDatas(testId, tcommentId,
+				this.isSessionAtLeastManager());
+		// on complete avec la liste des testers
+		voDatas.setListTesters(this.buildListVoTesters(this.isSessionAtLeastAdmin()));
+
+		return voDatas;
+	}
+
+	@Override
+	public VoDatasValidation validTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException {
+
+		return AnalysisManager.get().validTComment(voTComment);
+	}
+
+	@Override
+	public VoDatasValidation createOrUpdateTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException {
+		if (!this.isSessionAtLeastManager()) {
+			throw new JUnitHistoryException("User must be manager in order to access this page!");
+		}
+
+		return AnalysisManager.get().createOrUpdateTComment(voTComment);
+	}
+
+	@Override
+	public boolean deleteTComment(int tcommentId) throws JUnitHistoryException {
+		if (!this.isSessionAtLeastManager()) {
+			throw new JUnitHistoryException("User must be manager in order to access this page!");
+		}
+		return AnalysisManager.get().deleteTComment(tcommentId);
+	}
+
 	// ================================================
 	// HTML REPORT
 	// ================================================
@@ -707,7 +768,7 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 
 	}
 
-	private List<VoUser> buildListVoUsers(boolean withAdmin) throws JUnitHistoryException {
+	private List<VoUser> buildListVoTesters(boolean withAdmin) throws JUnitHistoryException {
 
 		List<VoUser> listVoUsers = null;
 		List<DbTestUser> listUsers = DaoTestUser.get().listUsers(withAdmin);
@@ -728,6 +789,19 @@ public class GwtJUnitHistoryServiceImpl extends RemoteServiceServlet implements 
 	private void verifProfileAdminForPageAccess() throws JUnitHistoryException {
 		if (!this.isSessionAtLeastAdmin()) {
 			throw new JUnitHistoryException("User must be admin in order to access this page!");
+		}
+
+	}
+
+	private void populateListGroupsFromBdd(List<VoIdName> listVoGroupNames) throws JUnitHistoryException {
+
+		List<DbTestSuiteGroup> listGroups = DaoTestSuiteGroup.get().listGroups(true);
+		if (listGroups != null) {
+
+			for (DbTestSuiteGroup group : listGroups) {
+				listVoGroupNames.add(group.toVo());
+			}
+			Collections.sort(listVoGroupNames);
 		}
 
 	}

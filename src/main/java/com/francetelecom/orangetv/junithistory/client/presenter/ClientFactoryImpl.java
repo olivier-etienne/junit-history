@@ -3,10 +3,12 @@ package com.francetelecom.orangetv.junithistory.client.presenter;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.IAnalysisView;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter.IEditReportView;
+import com.francetelecom.orangetv.junithistory.client.presenter.EditTCommentPresenter.IEditTCommentView;
 import com.francetelecom.orangetv.junithistory.client.presenter.HistoricReportPresenter.IHistoricReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.IPageAdminView;
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.SingleReportPresenter.ISingleReportView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.CategorySubPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.CategorySubPresenter.ICategorySubView;
@@ -15,15 +17,17 @@ import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditCatego
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditGroupPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditGroupPresenter.IEditGroupView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditUserView;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditTesterPresenter.IEditTesterView;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.GroupSubPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.GroupSubPresenter.IGroupSubView;
-import com.francetelecom.orangetv.junithistory.client.presenter.admin.IEditItemPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.admin.IEditAdminItemPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.TesterSubPresenter.IUserSubView;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryService;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
+import com.francetelecom.orangetv.junithistory.client.view.AnalysisView;
 import com.francetelecom.orangetv.junithistory.client.view.EditReportView;
+import com.francetelecom.orangetv.junithistory.client.view.EditTCommentView;
 import com.francetelecom.orangetv.junithistory.client.view.HistoricReportView;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
 import com.francetelecom.orangetv.junithistory.client.view.PageAdminView;
@@ -68,14 +72,20 @@ public class ClientFactoryImpl implements ClientFactory {
 	private GroupSubPresenter groupSubPresenter;
 	private IGroupSubView groupSubView;
 
-	private EditTesterView editUserView;
+	private IEditTesterView editTesterView;
 	private EditTesterPresenter editUserPresenter;
 
-	private EditCategoryView editCategoryView;
+	private IEditCategoryView editCategoryView;
 	private EditCategoryPresenter editCategoryPresenter;
 
-	private EditGroupView editGroupView;
+	private IEditGroupView editGroupView;
 	private EditGroupPresenter editGroupPresenter;
+
+	private IAnalysisView analysisView;
+	private AnalysisPresenter analysisPresenter;
+
+	private EditTCommentPresenter editTCommentPresenter;
+	private IEditTCommentView editTCommentView;
 
 	// ----------------------------- implementing ClientFactory
 	@Override
@@ -97,21 +107,24 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (viewType) {
 		case admin:
 			return this.getPageAdminView();
-		case analyse:
-			return null;
+
 		case editReport:
 			return this.getEditReportView();
+		case editComment:
+			return this.getEditCommentView();
 		case historicReport:
 			return this.getHistoricReportView();
 		case singleReport:
 			return this.getSingleReportView();
+		case analysis:
+			return this.getAnalysisView();
 
 		}
 		return null;
 	}
 
 	@Override
-	public IAdminSubView<?> getAdminSubView(TabViewEnum viewType) {
+	public IAdminSubView<?> getAdminSubView(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -131,7 +144,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IEditItemView getEditView(TabViewEnum viewType) {
+	public IEditItemView getEditView(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -160,10 +173,12 @@ public class ClientFactoryImpl implements ClientFactory {
 		switch (view) {
 		case admin:
 			return this.pageAdminPresenter;
-		case analyse:
-			return null;
+		case analysis:
+			return this.analysisPresenter;
 		case editReport:
 			return this.editReportPresenter;
+		case editComment:
+			return this.editTCommentPresenter;
 		case historicReport:
 			return this.historicReportPresenter;
 		case singleReport:
@@ -182,12 +197,13 @@ public class ClientFactoryImpl implements ClientFactory {
 		MainPanelViewEnum viewType = view.getViewType();
 		switch (viewType) {
 		case admin:
-
 			return this.buildPageAdminPresenter((IPageAdminView) view);
-		case analyse:
-			return null;
+		case analysis:
+			return this.buildAnalysisPresenter((IAnalysisView) view);
 		case editReport:
 			return this.buildEditReportPresenter((IEditReportView) view);
+		case editComment:
+			return this.buildEditTCommentPresenter((IEditTCommentView) view);
 		case historicReport:
 			return this.buildHistoricReportPresenter((IHistoricReportView) view);
 		case singleReport:
@@ -203,7 +219,7 @@ public class ClientFactoryImpl implements ClientFactory {
 		if (view == null) {
 			return null;
 		}
-		TabViewEnum viewType = view.getType();
+		TabAdminViewEnum viewType = view.getType();
 
 		switch (viewType) {
 		case tabTester:
@@ -221,16 +237,16 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IEditItemPresenter buildEditPresenter(IEditItemView view) {
+	public IEditAdminItemPresenter buildEditPresenter(IEditItemView view) {
 
 		if (view == null) {
 			return null;
 		}
-		TabViewEnum viewType = view.getType();
+		TabAdminViewEnum viewType = view.getType();
 
 		switch (viewType) {
 		case tabTester:
-			return this.buildEditUserPresenter((IEditUserView) view);
+			return this.buildEditUserPresenter((IEditTesterView) view);
 
 		case tabCategory:
 			return this.buildEditCategoryPresenter((IEditCategoryView) view);
@@ -245,7 +261,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IPresenter getAdminSubPresenter(TabViewEnum viewType) {
+	public IPresenter getAdminSubPresenter(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -268,7 +284,7 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	@Override
-	public IEditItemPresenter getEditPresenter(TabViewEnum viewType) {
+	public IEditAdminItemPresenter getEditPresenter(TabAdminViewEnum viewType) {
 
 		if (viewType == null) {
 			return null;
@@ -313,11 +329,26 @@ public class ClientFactoryImpl implements ClientFactory {
 		return this.editReportView;
 	}
 
+	private IEditTCommentView getEditCommentView() {
+
+		if (this.editTCommentView == null) {
+			this.editTCommentView = new EditTCommentView();
+		}
+		return this.editTCommentView;
+	}
+
 	private IPageAdminView getPageAdminView() {
 		if (this.pageAdminView == null) {
 			this.pageAdminView = new PageAdminView();
 		}
 		return this.pageAdminView;
+	}
+
+	private IAnalysisView getAnalysisView() {
+		if (this.analysisView == null) {
+			this.analysisView = new AnalysisView();
+		}
+		return this.analysisView;
 	}
 
 	private IUserSubView getUserSubView() {
@@ -342,10 +373,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 
 	private IEditItemView getEditUserView() {
-		if (this.editUserView == null) {
-			this.editUserView = new EditTesterView();
+		if (this.editTesterView == null) {
+			this.editTesterView = new EditTesterView();
 		}
-		return this.editUserView;
+		return this.editTesterView;
 	}
 
 	private IEditItemView getEditCategoryView() {
@@ -394,13 +425,18 @@ public class ClientFactoryImpl implements ClientFactory {
 		return this.editReportPresenter;
 	}
 
+	private EditTCommentPresenter buildEditTCommentPresenter(IEditTCommentView view) {
+		this.editTCommentPresenter = new EditTCommentPresenter(service, eventBus, view);
+		return this.editTCommentPresenter;
+	}
+
 	private PageAdminPresenter buildPageAdminPresenter(IPageAdminView view) {
 
 		this.pageAdminPresenter = new PageAdminPresenter(this, service, eventBus, view);
 		return this.pageAdminPresenter;
 	}
 
-	private EditTesterPresenter buildEditUserPresenter(IEditUserView view) {
+	private EditTesterPresenter buildEditUserPresenter(IEditTesterView view) {
 		this.editUserPresenter = new EditTesterPresenter(service, eventBus, view);
 		return this.editUserPresenter;
 	}
@@ -413,6 +449,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	private EditGroupPresenter buildEditGroupPresenter(IEditGroupView view) {
 		this.editGroupPresenter = new EditGroupPresenter(service, eventBus, view);
 		return this.editGroupPresenter;
+	}
+
+	private AnalysisPresenter buildAnalysisPresenter(IAnalysisView view) {
+		this.analysisPresenter = new AnalysisPresenter(service, eventBus, view);
+		return this.analysisPresenter;
 	}
 
 }

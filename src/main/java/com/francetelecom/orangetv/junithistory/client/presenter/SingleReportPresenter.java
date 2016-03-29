@@ -11,6 +11,7 @@ import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistorySe
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.view.AbstractView.ButtonViewAction;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.client.widget.MyUploader.UploadHandler;
 import com.francetelecom.orangetv.junithistory.client.widget.MyUploader.UploadInfo;
@@ -18,7 +19,7 @@ import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
@@ -39,7 +40,7 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author ndmz2720
  * 
  */
-public class SingleReportPresenter extends AbstractMainPresenter {
+public class SingleReportPresenter extends AbstractProfilMainPresenter {
 
 	private final static Logger log = Logger.getLogger("SingleReportPresenter");
 
@@ -76,7 +77,7 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 	private UploadState uploadState = UploadState.none;
 	private String filename;
 
-	private Map<Integer, VoGroupName> mapId2Groups = new HashMap<>();
+	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>();
 	private Map<Integer, VoUser> mapId2Users = new HashMap<>();
 	private VoSingleReportProtection protection;
 
@@ -90,9 +91,9 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 	// ------------------------------------- overriding AbstractPresenter
 
 	@Override
-	public void manageUserProfil(UserProfile userProfile) {
+	public void manageUserProfil(UserProfile userProfile, boolean changed) {
 
-		super.manageUserProfil(userProfile);
+		super.manageUserProfil(userProfile, changed);
 
 		// on rafraichit la protection en cours >> et l'affichage des bouton
 		// d'action
@@ -308,7 +309,7 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 
 		VoSingleReportData datas = view.getSingleReportData();
 
-		final VoGroupName group = this.mapId2Groups.get(datas.getGroupId());
+		final VoIdName group = this.mapId2Groups.get(datas.getGroupId());
 		final VoUser user = this.mapId2Users.get(datas.getUserId());
 
 		String[] description = new String[5];
@@ -439,7 +440,7 @@ public class SingleReportPresenter extends AbstractMainPresenter {
 	}
 
 	// -------------------------------- VIEW
-	public interface ISingleReportView extends IMainView {
+	public interface ISingleReportView extends IProfilMainView {
 
 		public void setDatas(int groupId, String version);
 

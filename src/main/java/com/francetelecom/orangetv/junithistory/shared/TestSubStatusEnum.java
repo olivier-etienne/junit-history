@@ -1,4 +1,4 @@
-package com.francetelecom.orangetv.junithistory.server.model;
+package com.francetelecom.orangetv.junithistory.shared;
 
 public enum TestSubStatusEnum {
 	success(TestStatusEnum.Success, "Success"), dependency(TestStatusEnum.Skipped, "Failure (dep)"), notImplemented(

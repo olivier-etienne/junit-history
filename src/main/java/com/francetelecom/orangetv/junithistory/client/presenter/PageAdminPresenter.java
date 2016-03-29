@@ -4,6 +4,7 @@ import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.ui.Panel;
@@ -16,11 +17,11 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author ndmz2720
  * 
  */
-public class PageAdminPresenter extends AbstractMainPresenter {
+public class PageAdminPresenter extends AbstractProfilMainPresenter {
 
 	private final static Logger log = Logger.getLogger("PageAdminPresenter");
 
-	public enum TabViewEnum {
+	public enum TabAdminViewEnum {
 		tabTester("tester"), tabCategory("category"), tabGroup("STB group");
 
 		private final String itemName;
@@ -29,7 +30,7 @@ public class PageAdminPresenter extends AbstractMainPresenter {
 			return this.itemName;
 		}
 
-		private TabViewEnum(String itemName) {
+		private TabAdminViewEnum(String itemName) {
 			this.itemName = itemName;
 		}
 	}
@@ -86,13 +87,13 @@ public class PageAdminPresenter extends AbstractMainPresenter {
 				int item = event.getSelectedItem();
 				switch (item) {
 				case INDEX_TAB_USER:
-					displaySubView(TabViewEnum.tabTester);
+					displaySubView(TabAdminViewEnum.tabTester);
 					break;
 				case INDEX_TAB_CAT:
-					displaySubView(TabViewEnum.tabCategory);
+					displaySubView(TabAdminViewEnum.tabCategory);
 					break;
 				case INDEX_TAB_GROUP:
-					displaySubView(TabViewEnum.tabGroup);
+					displaySubView(TabAdminViewEnum.tabGroup);
 					break;
 
 				}
@@ -104,7 +105,7 @@ public class PageAdminPresenter extends AbstractMainPresenter {
 	}
 
 	// ------------------------------ private methods
-	private void displaySubView(TabViewEnum viewType) {
+	private void displaySubView(TabAdminViewEnum viewType) {
 
 		log.config("displaySubView(): " + viewType);
 		IPresenter presenter = clientFactory.getAdminSubPresenter(viewType);
@@ -116,9 +117,9 @@ public class PageAdminPresenter extends AbstractMainPresenter {
 	}
 
 	// --------------------------------------- View
-	public static interface IPageAdminView extends IMainView {
+	public static interface IPageAdminView extends IProfilMainView {
 
-		public Panel getContainer(TabViewEnum viewType);
+		public Panel getContainer(TabAdminViewEnum viewType);
 
 		public void addSelectionHandler(SelectionHandler<Integer> handler, int indexToSelect);
 	}

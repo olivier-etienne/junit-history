@@ -28,7 +28,7 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 	private final MenuButton btHistoricReports = new MenuButton("History reports", MainPanelViewEnum.historicReport);
 
 	private final MenuButton btPageAdmin = new MenuButton("Page admin", MainPanelViewEnum.admin, UserProfile.admin);
-	private final MenuButton btAnalyse = new MenuButton("Analyses", MainPanelViewEnum.analyse);
+	private final MenuButton btAnalysis = new MenuButton("Analysis", MainPanelViewEnum.analysis);
 
 	private final List<MenuButton> listMenuButtons = new ArrayList<>();
 
@@ -87,9 +87,6 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 
 	// ------------------------------ private methods
 	private void initComposants() {
-		// TODO tempo
-
-		this.btAnalyse.setEnabled(false);
 	}
 
 	private void setEnabled(boolean enabled) {
@@ -105,8 +102,8 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 
 		this.listMenuButtons.add(this.btSingleReport);
 		this.listMenuButtons.add(this.btHistoricReports);
+		this.listMenuButtons.add(this.btAnalysis);
 		this.listMenuButtons.add(this.btPageAdmin);
-		// this.listMenuButtons.add(this.btAnalyse);
 
 		this.main.addStyleName(PANEL_MENU);
 
@@ -145,6 +142,7 @@ public class PanelMenu extends Composite implements CssConstants, IPanel {
 
 	private void onSelectAction(MainPanelViewEnum viewEnum) {
 
+		log.config("onSelectAction(): " + viewEnum.name());
 		if (this.eventBus != null) {
 			this.eventBus.fireEvent(new ViewReportEvent(viewEnum));
 		}

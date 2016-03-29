@@ -57,7 +57,7 @@ public class DaoTestUser extends AbstractDao<DbTestUser> implements IDaoTestUser
 		}
 		// on s'assure que l'utilisateur admin exist sinon on le cree
 		try {
-			if (this.getDefaultUser() == null) {
+			if (this.getUserAdmin() == null) {
 
 				DbTestUser admin = new DbTestUser("admin");
 				admin.setAdmin(true);
@@ -115,7 +115,7 @@ public class DaoTestUser extends AbstractDao<DbTestUser> implements IDaoTestUser
 
 	}
 
-	public DbTestUser getDefaultUser() throws JUnitHistoryException {
+	public DbTestUser getUserAdmin() throws JUnitHistoryException {
 		return super.getUniqueEntry(SQL_SELECT_USER_ADMIN);
 	}
 

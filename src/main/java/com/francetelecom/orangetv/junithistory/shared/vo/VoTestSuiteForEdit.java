@@ -2,7 +2,7 @@ package com.francetelecom.orangetv.junithistory.shared.vo;
 
 import java.util.Date;
 
-public class VoTestSuiteForEdit extends AbstractVoIdName {
+public class VoTestSuiteForEdit extends VoIdName {
 
 	private static final long serialVersionUID = 1L;
 

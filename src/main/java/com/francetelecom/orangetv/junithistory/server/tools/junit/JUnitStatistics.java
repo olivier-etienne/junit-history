@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.server.dao.DaoTestClassCategory;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestClassCategory;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.server.tools.junit.JUnitStatus.JUnitTestCaseStatus;
 import com.francetelecom.orangetv.junithistory.server.util.TestStatistics;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 
 public class JUnitStatistics {

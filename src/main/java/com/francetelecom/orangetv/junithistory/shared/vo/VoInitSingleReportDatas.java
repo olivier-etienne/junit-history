@@ -13,13 +13,13 @@ public class VoInitSingleReportDatas implements IVo {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<VoGroupName> listGroups = new ArrayList<>();
+	private List<VoIdName> listGroups = new ArrayList<>();
 	private List<VoUser> listUsers = new ArrayList<>();
 
 	private VoSingleReportProtection protection;
 
 	// --------------------------------- accessors
-	public List<VoGroupName> getListGroups() {
+	public List<VoIdName> getListGroups() {
 		return listGroups;
 	}
 

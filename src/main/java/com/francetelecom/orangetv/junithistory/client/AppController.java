@@ -9,15 +9,19 @@ import com.francetelecom.orangetv.junithistory.client.event.ViewReportEvent.View
 import com.francetelecom.orangetv.junithistory.client.panel.PanelConnection;
 import com.francetelecom.orangetv.junithistory.client.panel.PanelConnection.Credential;
 import com.francetelecom.orangetv.junithistory.client.panel.PanelMenu;
-import com.francetelecom.orangetv.junithistory.client.presenter.AbstractMainPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.AbstractProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.presenter.ClientFactory;
 import com.francetelecom.orangetv.junithistory.client.presenter.EditReportPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.EditTCommentPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.IEditItemPresenter.UpdateClickEvent;
 import com.francetelecom.orangetv.junithistory.client.presenter.IMainPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.IProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils.MyDialogBox;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils.MyDialogView;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.shared.UserProfile;
@@ -34,8 +38,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-public class AppController extends AbstractMainPresenter implements
-		ValueChangeHandler<String> {
+public class AppController extends AbstractProfilMainPresenter implements ValueChangeHandler<String> {
 
 	private final static Logger log = Logger.getLogger("AppController");
 
@@ -50,7 +53,7 @@ public class AppController extends AbstractMainPresenter implements
 
 	public enum MainPanelViewEnum {
 
-		singleReport, historicReport, editReport, admin, analyse
+		singleReport, historicReport, editReport, admin, analysis, editComment
 	}
 
 	private ClickHandler connectUseClickHandler;
@@ -84,8 +87,7 @@ public class AppController extends AbstractMainPresenter implements
 	// ------------------------------ overriding IPresenter
 	@Override
 	public IView getView() {
-		return (this.currentPresenter == null) ? null : this.currentPresenter
-				.getView();
+		return (this.currentPresenter == null) ? null : this.currentPresenter.getView();
 	}
 
 	// ---------------------------- overriding AbstractPresenter
@@ -149,21 +151,21 @@ public class AppController extends AbstractMainPresenter implements
 
 			public void onChangeView(ViewReportEvent event) {
 
-				MainPanelViewEnum viewEnum = (event != null) ? event
-						.getMainPanelViewEnum() : null;
+				MainPanelViewEnum viewEnum = (event != null) ? event.getMainPanelViewEnum() : null;
+
 				if (viewEnum != null) {
+
+					log.info("onChangeView(): " + viewEnum.name());
 					panelMenu.selectButton(viewEnum);
 
 					boolean manageUserProfile = true;
 					switch (viewEnum) {
 					case singleReport:
-						diplayView(MainPanelViewEnum.singleReport, params,
-								false, panelView);
+						diplayView(MainPanelViewEnum.singleReport, event.getParams(), false, panelView);
 						break;
 
 					case historicReport:
-						diplayView(MainPanelViewEnum.historicReport, params,
-								false, panelView);
+						diplayView(MainPanelViewEnum.historicReport, event.getParams(), false, panelView);
 						break;
 
 					case editReport:
@@ -175,16 +177,30 @@ public class AppController extends AbstractMainPresenter implements
 						}
 						break;
 
-					case admin:
-						diplayView(MainPanelViewEnum.admin, params, true,
-								panelView);
+					case editComment:
+						if (currentPresenter != null) {
+							displayEditTComment(event.getParams());
+							manageUserProfile = false;
+						} else {
+							History.back();
+						}
 						break;
 
-					case analyse:
+					case admin:
+						diplayView(MainPanelViewEnum.admin, event.getParams(), true, panelView);
+						break;
+
+					case analysis:
+						diplayView(MainPanelViewEnum.analysis, event.getParams(), false, panelView);
 						break;
 					}
 					if (manageUserProfile) {
-						manageUserProfil();
+						boolean forceRefresh = true;
+						if (event.getParams() != null && event.getParams().containsKey(PARAMS_FORCE_REFRESH)) {
+							forceRefresh = (Boolean) event.getParams().get(PARAMS_FORCE_REFRESH);
+							log.config("onChangeView() - forceRefresh: " + forceRefresh);
+						}
+						manageUserProfil(forceRefresh);
 					}
 				}
 
@@ -213,16 +229,14 @@ public class AppController extends AbstractMainPresenter implements
 	/*
 	 * Creation generique vue et presenter
 	 */
-	private void diplayView(MainPanelViewEnum viewEnum,
-			Map<String, Object> params, boolean adminOnly, HasWidgets container) {
+	private void diplayView(MainPanelViewEnum viewEnum, Map<String, Object> params, boolean adminOnly,
+			HasWidgets container) {
 
 		if (adminOnly) {
 			// on verifie que le user est bien admin
-			if (this.currentUserProfile == null
-					|| this.currentUserProfile != UserProfile.admin) {
+			if (this.currentUserProfile == null || this.currentUserProfile != UserProfile.admin) {
 				History.back();
-				this.getView().setActionResult("User is not admin!",
-						LogStatus.warning);
+				this.getView().setActionResult("User is not admin!", LogStatus.warning);
 				return;
 			}
 		}
@@ -231,11 +245,11 @@ public class AppController extends AbstractMainPresenter implements
 		History.newItem(viewEnum.name(), false);
 
 		IMainView view = this.clientFactory.getMainView(viewEnum);
-		view.getConnectUserButton().addClickHandler(
-				this.getConnectUserClickHandler());
+		if (view != null && view instanceof IProfilMainView) {
+			((IProfilMainView) view).getConnectUserButton().addClickHandler(this.getConnectUserClickHandler());
+		}
 
-		IMainPresenter presenter = this.clientFactory
-				.getMainPresenter(viewEnum);
+		IMainPresenter presenter = this.clientFactory.getMainPresenter(viewEnum);
 		if (presenter == null) {
 
 			presenter = this.clientFactory.buildMainPresenter(view);
@@ -251,35 +265,64 @@ public class AppController extends AbstractMainPresenter implements
 		final MyDialogView container = WidgetUtils.buildDialogView("");
 		this.diplayView(MainPanelViewEnum.editReport, params, false, container);
 
-		((EditReportPresenter) this.currentPresenter)
-				.setCloseDialogClickHandler(new ClickHandler() {
+		((EditReportPresenter) this.currentPresenter).setCloseDialogClickHandler(new ClickHandler() {
 
-					@Override
-					public void onClick(ClickEvent event) {
-						container.hide();
+			@Override
+			public void onClick(ClickEvent event) {
+				container.hide();
 
-						// on revient à l'historique et on force le
-						// rafraichissement
-						fireEventToView(MainPanelViewEnum.historicReport,
-								params, true);
-					}
-				});
+				if (event != null && event instanceof UpdateClickEvent) {
+					UpdateClickEvent updateEvent = (UpdateClickEvent) event;
+
+					// on revient à l'historique et on force le
+					// rafraichissement si updateDone
+					log.config("Dialog.onClose() >> display history and force refresh " + updateEvent.isUpdateDone());
+					fireEventToView(MainPanelViewEnum.historicReport, params, updateEvent.isUpdateDone());
+
+				}
+			}
+		});
 
 		WidgetUtils.centerDialogAndShow(container);
 	}
 
-	private void fireEventToView(MainPanelViewEnum viewEnum,
-			Map<String, Object> params, boolean forceRefresh) {
+	private void displayEditTComment(final Map<String, Object> params) {
 
-		ViewReportEvent viewEvent = new ViewReportEvent(viewEnum);
-		viewEvent.setParams(params);
+		final MyDialogView container = WidgetUtils.buildDialogView("");
+		this.diplayView(MainPanelViewEnum.editComment, params, false, container);
 
-		if (forceRefresh) {
-			if (params == null) {
-				params = new HashMap<String, Object>(0);
+		((EditTCommentPresenter) this.currentPresenter).setCloseDialogClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				container.hide();
+
+				if (event != null && event instanceof UpdateClickEvent) {
+					UpdateClickEvent updateEvent = (UpdateClickEvent) event;
+
+					// on revient à la page analyse et on force le
+					// rafraichissement si updateDone
+					log.config("Dialog.onClose() >> display analysis and force refresh " + updateEvent.isUpdateDone());
+					fireEventToView(MainPanelViewEnum.analysis, params, updateEvent.isUpdateDone());
+				}
+
 			}
-			params.put(PARAMS_FORCE_REFRESH, true);
+		});
+
+		WidgetUtils.centerDialogAndShow(container);
+	}
+
+	private void fireEventToView(MainPanelViewEnum viewEnum, Map<String, Object> params, boolean forceRefresh) {
+
+		log.config("fireEventToView(): " + viewEnum.name() + " - forceRefresh: " + forceRefresh
+				+ (params != null ? " with param" : ""));
+		ViewReportEvent viewEvent = new ViewReportEvent(viewEnum);
+
+		if (params == null) {
+			params = new HashMap<String, Object>(0);
 		}
+		params.put(PARAMS_FORCE_REFRESH, forceRefresh);
+		viewEvent.setParams(params);
 		this.eventBus.fireEvent(viewEvent);
 
 	}
@@ -290,20 +333,17 @@ public class AppController extends AbstractMainPresenter implements
 			this.doAuthenticateUser(null);
 		} else { // connection
 			final PanelConnection connectionPanel = new PanelConnection();
-			final MyDialogBox dialogBox = WidgetUtils.buildDialogBox(
-					"Identification", null, connectionPanel, true, true, false,
-					new IActionCallback() {
+			final MyDialogBox dialogBox = WidgetUtils.buildDialogBox("Identification", null, connectionPanel, true,
+					true, false, new IActionCallback() {
 
 						@Override
 						public void onOk() {
-							doAuthenticateUser(connectionPanel
-									.getDataFromWidget());
+							doAuthenticateUser(connectionPanel.getDataFromWidget());
 						}
 
 						@Override
 						public void onCancel() {
-							setActionResult("Identification canceled!",
-									LogStatus.warning);
+							setActionResult("Identification canceled!", LogStatus.warning);
 						}
 					});
 
@@ -318,27 +358,25 @@ public class AppController extends AbstractMainPresenter implements
 		String login = (credential == null) ? "" : credential.getLogin();
 		String pwd = (credential == null) ? "" : credential.getPwd();
 
-		this.rpcService.authenticateUserProfile(login, pwd,
-				new AsyncCallback<String>() {
+		this.rpcService.authenticateUserProfile(login, pwd, new AsyncCallback<String>() {
 
-					@Override
-					public void onFailure(Throwable caught) {
-						setActionResult("Authentication failed!",
-								LogStatus.warning);
-					}
+			@Override
+			public void onFailure(Throwable caught) {
+				setActionResult("Authentication failed!", LogStatus.warning);
+			}
 
-					@Override
-					public void onSuccess(String newProfile) {
+			@Override
+			public void onSuccess(String newProfile) {
 
-						// manage profile
-						manageUserProfil(newProfile);
-					}
-				});
+				// manage profile
+				manageUserProfil(newProfile);
+			}
+		});
 	}
 
 	public void setActionResult(String text, LogStatus logStatus) {
 
-		IMainView view = this.getMainView();
+		IMainView view = this.getProfilMainView();
 		if (view != null) {
 			view.setActionResult(text, logStatus);
 		}
@@ -364,24 +402,26 @@ public class AppController extends AbstractMainPresenter implements
 	 */
 	private void manageUserProfil(String newProfile) {
 
-		log.config("UserProfile: " + newProfile);
+		log.fine("UserProfile: " + newProfile);
 		UserProfile profile = UserProfile.valueOf(newProfile);
 		if (profile != null && profile != currentUserProfile) {
-			log.info("change profile from " + currentUserProfile + " to "
-					+ profile);
+			log.info("change profile from " + currentUserProfile + " to " + profile);
 			currentUserProfile = profile;
-			manageUserProfil();
+			manageUserProfil(true);
 		}
 	}
 
 	/*
 	 * Si le profile a change on repercute sur le presenter et le menu
 	 */
-	private void manageUserProfil() {
+	private void manageUserProfil(boolean forceRefresh) {
+
 		if (this.currentPresenter != null && this.currentUserProfile != null) {
 
-			if (this.currentPresenter.hasUserProfilToManage()) {
-				this.currentPresenter.manageUserProfil(this.currentUserProfile);
+			if (this.currentPresenter instanceof IProfilMainPresenter) {
+
+				IProfilMainPresenter profilMainPresenter = (IProfilMainPresenter) this.currentPresenter;
+				profilMainPresenter.manageUserProfil(this.currentUserProfile, forceRefresh);
 			}
 			this.panelMenu.manageUserProfil(this.currentUserProfile);
 		}

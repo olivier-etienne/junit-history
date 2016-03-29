@@ -11,6 +11,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import com.francetelecom.orangetv.junithistory.server.dao.DaoTestClassCategory;
+import com.francetelecom.orangetv.junithistory.server.dao.DaoTestComment;
 import com.francetelecom.orangetv.junithistory.server.dao.DaoTestMessage;
 import com.francetelecom.orangetv.junithistory.server.dto.DtoHtmlPage;
 import com.francetelecom.orangetv.junithistory.server.dto.DtoListHtmlPages;
@@ -18,15 +19,16 @@ import com.francetelecom.orangetv.junithistory.server.dto.DtoTestSuiteInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbStatsCategoryInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestClass;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestClassCategory;
+import com.francetelecom.orangetv.junithistory.server.model.DbTestComment;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestInstance;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestMessage;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteGroup;
 import com.francetelecom.orangetv.junithistory.server.model.DbTestSuiteInstance;
-import com.francetelecom.orangetv.junithistory.server.model.TestStatusEnum;
-import com.francetelecom.orangetv.junithistory.server.model.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.server.util.HtmlUtils;
 import com.francetelecom.orangetv.junithistory.server.util.ListLines;
 import com.francetelecom.orangetv.junithistory.server.util.TestStatistics;
+import com.francetelecom.orangetv.junithistory.shared.TestStatusEnum;
+import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
 
@@ -198,7 +200,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		// liste des tests
 		lines.addLines(this.buildHtmlTableTestsDetailedReport(testSuiteInstance, listTestInstances));
 
-		// list des errors
+		// list des errors & comment
 		lines.addLines(buildHtmlListErrors(testSuiteInstance, listTestInstances));
 
 		// fin
@@ -354,7 +356,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 			// for each Tests
 			for (DbTestInstance test : dtoTestSuite.getListDbTestInstances()) {
 
-				DbTestClass tclass = test.gettClass();
+				DbTestClass tclass = test.getTClass();
 				if (tclass.getShortName() == null) {
 					tclass.setShortName(tclass.getName().substring(PACKAGE_TO_CUT_LENGTH));
 				}
@@ -454,7 +456,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		// for each test
 		for (DbTestInstance testInstance : listTestInstances) {
 
-			DbTestClass testClass = testInstance.gettClass();
+			DbTestClass testClass = testInstance.getTClass();
 			if (testClass == null) {
 				continue; // next test
 			}
@@ -877,7 +879,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		}
 
 		if (cell) {
-			sb.addLine(this.format(MF_LINK_HREF, suiteUrl + "#" + test.gettClass().getName() + "." + test.getName()),
+			sb.addLine(this.format(MF_LINK_HREF, suiteUrl + "#" + test.getTClass().getName() + "." + test.getName()),
 					subStatus.getLabel(), LINK_END);
 		} else {
 			sb.addLine(subStatus.getLabel());
@@ -902,33 +904,40 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 		tableError.addLine(H2_BEGIN, "Tests In Error", H2_END);
 		tableError.addLine(BR);
 
+		final String baliseSpanClassName = format(MF_BALISE_CLASS_BEGIN, SPAN, "classname");
+		final String baliseSpanTestName = format(MF_BALISE_CLASS_BEGIN, SPAN, "testname");
+		final String balisePreAnalysis = format(MF_BALISE_CLASS_BEGIN, PRE, CLASS_ANALYSIS);
 		// for each test
 		for (DbTestInstance test : listTestInstances) {
 
-			if (test.gettClass() == null) {
+			if (test.getTClass() == null) {
 				continue; // next test
 			}
 			TestSubStatusEnum subStatus = test.getStatus();
-			DbTestMessage message = test.getMessage();
 
-			if (message != null && message.isLazy()) {
-				message = DaoTestMessage.get().getById(message.getId());
+			// ======================================
+			// Message
+			// ======================================
+			DbTestMessage tmessage = test.getMessage();
+
+			if (tmessage != null && tmessage.isLazy()) {
+				tmessage = DaoTestMessage.get().getById(tmessage.getId());
 			}
 
-			if (message != null) {
-				tableError.addLine(this.format(MF_LINK_NAME, test.gettClass().getName() + "." + test.getName()));
+			if (tmessage != null) {
+				tableError.addLine(this.format(MF_LINK_NAME, test.getTClass().getName() + "." + test.getName()));
 				tableError.addLines(buildHtmlTestStatus(test, null, false));
-				tableError.addLine(H3_BEGIN, format(MF_BALISE_CLASS_BEGIN, SPAN, "classname"), test.gettClass()
-						.getName(), SPAN_END, ".", format(MF_BALISE_CLASS_BEGIN, SPAN, "testname"), test.getName()
-						+ SPAN_END, H3_END);
+				tableError.addLine(H3_BEGIN, baliseSpanClassName, test.getTClass().getName(), SPAN_END, ".",
+						baliseSpanTestName, test.getName() + SPAN_END, H3_END);
 
 				tableError.addLine(LABEL_BEGIN, "Type:", LABEL_END);
-				tableError.addLine(SPAN_BEGIN, TT_BEGIN + message.getType(), TT_END, SPAN_END, BR);
+				tableError.addLine(SPAN_BEGIN, TT_BEGIN + tmessage.getType(), TT_END, SPAN_END, BR);
 
 				// String message = JUnitReport.getMessage(foe);
-				if (message.getMessage() != null) {
+				if (tmessage.getMessage() != null) {
+
 					tableError.addLine(BR, LABEL_BEGIN, "Message:", LABEL_END);
-					tableError.addLine(PRE_BEGIN, HtmlUtils.encode2HTML(message.getMessage()), PRE_END);
+					tableError.addLine(balisePreAnalysis, HtmlUtils.encode2HTML(tmessage.getMessage()), PRE_END);
 				}
 
 				if (subStatus.getStatus() == TestStatusEnum.Skipped) {
@@ -937,17 +946,37 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 					continue; // next test
 				}
 
-				if (message.getStackTrace() != null && !message.getStackTrace().isEmpty()) {
-					tableError.addLine(BR, LABEL_BEGIN, "Stack Trace:", LABEL_END);
-					tableError.addLine(PRE_BEGIN, HtmlUtils.encode2HTML(message.getStackTrace()), PRE_END);
+				// ======================================
+				// Comment (A TESTER)
+				// ======================================
+				DbTestComment tcomment = test.getComment();
+
+				if (tcomment != null && tcomment.isLazy()) {
+					tcomment = DaoTestComment.get().getById(tcomment.getId());
 				}
 
-				if (message.getOutputLog() != null && !message.getOutputLog().isEmpty()) {
+				if (tcomment != null) {
+
+					tableError.addLine(BR, LABEL_BEGIN, "Analyse:", LABEL_END);
+					tableError.addLine(balisePreAnalysis, HtmlUtils.encodeOutput2HTML(tcomment.getTitle()), PRE_END);
+					tableError.addLine(balisePreAnalysis, HtmlUtils.encodeOutput2HTML(tcomment.getDescription()),
+							PRE_END);
+
+				}
+				// =======================================
+
+				if (tmessage.getStackTrace() != null && !tmessage.getStackTrace().isEmpty()) {
+					tableError.addLine(BR, LABEL_BEGIN, "Stack Trace:", LABEL_END);
+					tableError.addLine(PRE_BEGIN, HtmlUtils.encode2HTML(tmessage.getStackTrace()), PRE_END);
+				}
+
+				if (tmessage.getOutputLog() != null && !tmessage.getOutputLog().isEmpty()) {
 					tableError.addLine(BR, LABEL_BEGIN, "Output Logs:", LABEL_END);
-					tableError.addLine(PRE_BEGIN, HtmlUtils.encodeOutput2HTML(message.getOutputLog()), PRE_END);
+					tableError.addLine(PRE_BEGIN, HtmlUtils.encodeOutput2HTML(tmessage.getOutputLog()), PRE_END);
 				}
 
 				tableError.addLine(BR);
+
 			}
 		}
 		tableError.addLine(DIV_END);

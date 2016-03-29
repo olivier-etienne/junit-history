@@ -6,7 +6,7 @@ package com.francetelecom.orangetv.junithistory.shared.vo;
  * @author sylvie
  * 
  */
-public class VoUserForEdit extends AbstractVoIdName {
+public class VoUserForEdit extends VoIdName {
 
 	private static final long serialVersionUID = 1L;
 

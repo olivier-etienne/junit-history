@@ -18,6 +18,8 @@ import com.francetelecom.orangetv.junithistory.server.manager.SessionManager.IJU
 import com.francetelecom.orangetv.junithistory.server.manager.SessionManager.SessionSubscription;
 import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException;
 import com.francetelecom.orangetv.junithistory.shared.util.ValueHelper;
+import com.francetelecom.orangetv.junithistory.shared.vo.IVoId;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 
 public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySessionListener {
@@ -294,6 +296,38 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 		return list;
 	}
 
+	protected List<VoIdName> listVoIdName(String sql, String idKey, String nameKey) throws JUnitHistoryException {
+
+		List<VoIdName> list = new ArrayList<VoIdName>();
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+
+			con = DatabaseManager.get().getConnection(this.token);
+			stmt = con.createStatement();
+
+			getLog().fine("sql: " + sql);
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+
+				int id = (idKey == null) ? IDbEntry.ID_UNDEFINED : rs.getInt(idKey);
+				String name = (nameKey == null) ? "" : rs.getString(nameKey);
+				list.add(new VoIdName(id, name));
+			}
+
+		} catch (SQLException ex) {
+			throw new JUnitHistoryException("SQLException: " + ex.getMessage());
+		} finally {
+			this.close(rs, stmt, con);
+		}
+
+		return list;
+
+	}
+
 	/**
 	 * permet de traiter une requete de type select id, count(id) from table
 	 * group by id pour n'importe quelle type de table et d'id
@@ -430,9 +464,23 @@ public abstract class AbstractDao<T extends IDbEntry> implements IJUnitHistorySe
 		}
 	}
 
+	protected void verifyIdDefined(String comment, int itemId) throws JUnitHistoryException {
+		if (itemId == IDbEntry.ID_UNDEFINED) {
+			throw new JUnitHistoryException(comment + " must be defined!");
+		}
+	}
+
 	protected void verifyIdForUpdateEntry(AbstractDbEntry entry) throws JUnitHistoryException {
 		if (entry.getId() == IDbEntry.ID_UNDEFINED) {
 			throw new JUnitHistoryException("Id must be defined for update!");
+		}
+	}
+
+	protected void verifyVoIdBeforeSave(String comment, IVoId voId) throws JUnitHistoryException {
+
+		this.verifyNotNull(comment, voId);
+		if (voId.isIdUndefined()) {
+			throw new JUnitHistoryException(comment + ": id must be defined!");
 		}
 	}
 

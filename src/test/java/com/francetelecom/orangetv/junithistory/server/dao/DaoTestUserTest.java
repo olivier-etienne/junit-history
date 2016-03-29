@@ -42,7 +42,7 @@ public class DaoTestUserTest extends AbstractTest {
 	@Test
 	public void testGetUserAdmin() throws Exception {
 
-		DbTestUser admin = dao.getDefaultUser();
+		DbTestUser admin = dao.getUserAdmin();
 		assertNotNull("DbTestUser cannot not be null!", admin);
 		assertFalse("user.id must be defined!", admin.getId() == IDbEntry.ID_UNDEFINED);
 		assertTrue("user.admin must be true!", admin.isAdmin());

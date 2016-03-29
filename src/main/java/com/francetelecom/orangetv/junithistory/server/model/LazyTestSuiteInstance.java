@@ -2,12 +2,14 @@ package com.francetelecom.orangetv.junithistory.server.model;
 
 public class LazyTestSuiteInstance extends DbTestSuiteInstance implements ILazy {
 
+	private static final long serialVersionUID = 1L;
 	private boolean lazy = true;
-	private final int suiteId;
+
+	// private final int suiteId;
 
 	// --------------------- constructor
 	public LazyTestSuiteInstance(int suiteId) {
-		this.suiteId = suiteId;
+		super.setId(suiteId);
 	}
 
 	// ---------------------- implementing IDbEntry
@@ -23,9 +25,9 @@ public class LazyTestSuiteInstance extends DbTestSuiteInstance implements ILazy 
 		this.lazy = lazy;
 	}
 
-	@Override
-	public int getInternalId() {
-		return this.suiteId;
-	}
+	// @Override
+	// public int getInternalId() {
+	// return this.suiteId;
+	// }
 
 }

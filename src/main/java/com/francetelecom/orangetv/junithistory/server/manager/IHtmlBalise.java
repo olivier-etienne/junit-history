@@ -75,6 +75,7 @@ public interface IHtmlBalise {
 
 	public final static String END = ">";
 
+	public final static String CLASS_ANALYSIS = "analysis";
 	public final static String CLASS_SUITE = "suite";
 	public final static String CLASS_LOGS = "logs";
 	public final static String CLASS_STATS = "stats";
@@ -95,6 +96,8 @@ public interface IHtmlBalise {
 	public final static String DIV = "div";
 	public final static String SPAN = "span";
 	public final static String TABLE = "table";
+	public final static String PRE = "pre";
+
 	public final static MessageFormat MF_BALISE_WIDTH_TITLE_VALUE = new MessageFormat(
 			"<{0} width=\"{1}\" title=\"{2}\">{3}</{0}>");
 

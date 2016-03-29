@@ -127,7 +127,7 @@ public class DaoManager implements IManager {
 
 					// on verifie que la tclass est bien en base
 					DbTestClass tclassInDb = this
-							.verifyTestClass(dbTestInstance.gettClass(), mapName2TClass, daotclass);
+							.verifyTestClass(dbTestInstance.getTClass(), mapName2TClass, daotclass);
 					dbTestInstance.settClass(tclassInDb);
 
 					// sauvegarde du test

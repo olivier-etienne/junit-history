@@ -12,11 +12,12 @@ import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
 import com.francetelecom.orangetv.junithistory.client.view.AbstractView.ButtonViewAction;
 import com.francetelecom.orangetv.junithistory.client.view.HistoricReportView.GridActionButton;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
+import com.francetelecom.orangetv.junithistory.client.view.IProfilMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
 import com.francetelecom.orangetv.junithistory.shared.UserProfile;
 import com.francetelecom.orangetv.junithistory.shared.util.ObjectUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
-import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoIdUtils;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
@@ -33,7 +34,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
-public class HistoricReportPresenter extends AbstractMainPresenter {
+public class HistoricReportPresenter extends AbstractProfilMainPresenter {
 
 	private final static Logger log = Logger.getLogger("HistoricReportPresenter");
 
@@ -48,7 +49,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 
 	private final IHistoricReportView view;
 
-	private Map<Integer, VoGroupName> mapId2Groups = new HashMap<>(0);
+	private Map<Integer, VoIdName> mapId2Groups = new HashMap<>(0);
 	private Map<Integer, VoTestSuiteForGrid> mapId2TestSuites = new HashMap<>(0);
 
 	private String urlToShare;
@@ -82,10 +83,13 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 	}
 
 	@Override
-	public void manageUserProfil(UserProfile userProfile) {
-		super.manageUserProfil(userProfile);
+	public void manageUserProfil(UserProfile userProfile, boolean forceRefresh) {
+		super.manageUserProfil(userProfile, forceRefresh);
 
-		this.doGetListTestSuites(this.view.getCurrentGroupId());
+		if (forceRefresh) {
+			this.doGetListTestSuites(this.view.getCurrentGroupId());
+		}
+
 	}
 
 	@Override
@@ -202,7 +206,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 		if (this.urlToShare != null) {
 
 			int groupId = this.view.getCurrentGroupId();
-			VoGroupName group = mapId2Groups.get(groupId);
+			VoIdName group = mapId2Groups.get(groupId);
 
 			if (group != null) {
 				this.doBuildUrl("Public url for STB " + group.getName(), this.urlToShare);
@@ -398,7 +402,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 			return;
 		}
 
-		final VoGroupName group = this.mapId2Groups.get(groupId);
+		final VoIdName group = this.mapId2Groups.get(groupId);
 		final String message = " when getting list of suite for group: " + group.getName();
 		this.rpcService.getListTestSuiteByGroup(groupId, new MyAsyncCallback<VoListSuiteForGrid>("Error" + message) {
 
@@ -416,7 +420,7 @@ public class HistoricReportPresenter extends AbstractMainPresenter {
 	}
 
 	// -------------------------------- VIEW
-	public interface IHistoricReportView extends IMainView {
+	public interface IHistoricReportView extends IProfilMainView {
 
 		public void setInitDatas(VoInitHistoricReportDatas datas);
 

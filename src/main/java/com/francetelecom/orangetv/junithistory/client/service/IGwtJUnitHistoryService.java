@@ -7,15 +7,22 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoCategoryForGrid;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoDatasValidation;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoEditReportDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoEditTCommentDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoInitDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitHistoricReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoInitSingleReportDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListReportResponse;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoListSuiteForGrid;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoListTestsSameNameDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoResultSearchTestDatas;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoSearchDefectDatas;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportData;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportProtection;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoSingleReportResponse;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoTestCommentForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoTestSuiteForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForEdit;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoUserForGrid;
@@ -107,7 +114,8 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 * @return
 	 * @throws JUnitHistoryException
 	 */
-	public VoDatasValidation createOrUpdateTestCategory(VoCategoryForEdit categoryToUpdate) throws JUnitHistoryException;
+	public VoDatasValidation createOrUpdateTestCategory(VoCategoryForEdit categoryToUpdate)
+			throws JUnitHistoryException;
 
 	/**
 	 * Get user info for edition
@@ -232,6 +240,15 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 
 	/**
 	 * Retourne la listes nécessaires à l'initialisation de la vue
+	 * DefectView
+	 * 
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoInitDefectDatas getVoInitDefectDatas() throws JUnitHistoryException;
+
+	/**
+	 * Retourne la listes nécessaires à l'initialisation de la vue
 	 * SingleReportView
 	 * 
 	 * @return
@@ -306,4 +323,77 @@ public interface IGwtJUnitHistoryService extends RemoteService {
 	 */
 	public VoDatasValidation updateTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException;
 
+	/**
+	 * Validation avant la mise à jour de certaines informations de la suite
+	 * 
+	 * @param suiteToUpdate
+	 * @throws JUnitHistoryException
+	 */
+	public VoDatasValidation validTestSuiteInfo(VoTestSuiteForEdit suiteToUpdate) throws JUnitHistoryException;
+
+	/**
+	 * Get the list of distinct testname for a group and a search input
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoResultSearchTestDatas searchDefectTestList(VoSearchDefectDatas vo) throws JUnitHistoryException;
+
+	/**
+	 * Retourne la liste des tests de meme nom pour un groupId donne
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoListTestsSameNameDatas getListTestsForGroupIdTClassIdAndTestName(VoSearchDefectDatas vo)
+			throws JUnitHistoryException;
+
+	/**
+	 * Retourne la liste des Tclass (id & name) pour un test de nom donne et un
+	 * groupId
+	 * 
+	 * @param vo
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public List<VoIdName> listTClassesForGroupIdAndTestName(VoSearchDefectDatas vo) throws JUnitHistoryException;
+
+	/**
+	 * Retourne le commentaire de test a editer avec infos complementaire
+	 * 
+	 * @param testId
+	 * @param tcommentId
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoEditTCommentDatas getTCommentDatas(int testId, int tcommentId) throws JUnitHistoryException;
+
+	/**
+	 * Validation avant enregistrement d'un TComment de test
+	 * 
+	 * @param voTComment
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoDatasValidation validTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException;
+
+	/**
+	 * Creation or update d'un TComment de test
+	 * 
+	 * @param voTComment
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public VoDatasValidation createOrUpdateTComment(VoTestCommentForEdit voTComment) throws JUnitHistoryException;
+
+	/**
+	 * Delete comment from test
+	 * 
+	 * @param tcommentId
+	 * @return
+	 * @throws JUnitHistoryException
+	 */
+	public boolean deleteTComment(int tcommentId) throws JUnitHistoryException;
 }

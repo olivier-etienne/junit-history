@@ -2,7 +2,7 @@ package com.francetelecom.orangetv.junithistory.client.view.admin;
 
 import java.util.logging.Logger;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabViewEnum;
+import com.francetelecom.orangetv.junithistory.client.presenter.PageAdminPresenter.TabAdminViewEnum;
 import com.francetelecom.orangetv.junithistory.client.presenter.admin.EditGroupPresenter.IEditGroupView;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupForEdit;
@@ -11,7 +11,7 @@ import com.francetelecom.orangetv.junithistory.shared.vo.VoGroupProtection;
 /**
  * View pour l'edition d'un group
  */
-public class EditGroupView extends AbstractEditView implements IEditGroupView {
+public class EditGroupView extends AbstractEditAdminView implements IEditGroupView {
 
 	private final static Logger log = Logger.getLogger("EditUserView");
 
@@ -31,8 +31,8 @@ public class EditGroupView extends AbstractEditView implements IEditGroupView {
 
 	// ---------------------------- implementing IEditItemView
 	@Override
-	public TabViewEnum getType() {
-		return TabViewEnum.tabGroup;
+	public TabAdminViewEnum getType() {
+		return TabAdminViewEnum.tabGroup;
 	}
 
 	// --------------------------- overriding IEditUserView

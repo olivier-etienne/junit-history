@@ -18,7 +18,7 @@ import com.google.web.bindery.event.shared.EventBus;
  * @author ndmz2720
  *
  */
-public class EditCategoryPresenter extends AbstractEditItemPresenter implements IEditItemPresenter {
+public class EditCategoryPresenter extends AbstractEditAdminItemPresenter implements IEditAdminItemPresenter {
 
 	private final static Logger log = Logger.getLogger("EditCategoryPresenter");
 

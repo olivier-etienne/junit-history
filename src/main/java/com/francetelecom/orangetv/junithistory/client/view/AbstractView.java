@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.AbstractMainPresenter;
+import com.francetelecom.orangetv.junithistory.client.presenter.AbstractProfilMainPresenter;
 import com.francetelecom.orangetv.junithistory.client.util.CssConstants;
 import com.francetelecom.orangetv.junithistory.client.util.StatusUtils;
-import com.francetelecom.orangetv.junithistory.shared.vo.AbstractVoIdName;
 import com.francetelecom.orangetv.junithistory.shared.vo.IVo;
+import com.francetelecom.orangetv.junithistory.shared.vo.VoIdName;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.Button;
@@ -30,7 +30,7 @@ public abstract class AbstractView extends Composite implements IView, CssConsta
 	protected final Label labelResult = new Label();
 	protected final Label labelTitle = new Label("");
 
-	protected final DateTimeFormat DF = AbstractMainPresenter.DF;
+	protected final DateTimeFormat DF = AbstractProfilMainPresenter.DF;
 
 	private final Map<String, ButtonViewAction> mapAction2ButtonViewActions = new HashMap<>();
 
@@ -192,11 +192,11 @@ public abstract class AbstractView extends Composite implements IView, CssConsta
 		if (datas != null && !datas.isEmpty()) {
 
 			Object data = datas.get(0);
-			if (data instanceof AbstractVoIdName) {
+			if (data instanceof VoIdName) {
 
 				for (Object obj : datas) {
 
-					AbstractVoIdName voIdName = (AbstractVoIdName) obj;
+					VoIdName voIdName = (VoIdName) obj;
 					listBox.addItem(voIdName.getName(), voIdName.getId() + "");
 				}
 			}

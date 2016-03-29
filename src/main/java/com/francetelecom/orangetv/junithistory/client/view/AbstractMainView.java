@@ -13,8 +13,7 @@ import com.google.gwt.user.client.ui.Panel;
  * @author ndmz2720
  * 
  */
-public abstract class AbstractMainView extends AbstractView implements
-		IMainView {
+public abstract class AbstractMainView extends AbstractView implements IProfilMainView {
 
 	private final Button btConnection = new Button("Connection");
 	private final Label labelProfil = new Label(UserProfile.anybody.name());
@@ -36,9 +35,7 @@ public abstract class AbstractMainView extends AbstractView implements
 
 		if (userProfile != null) {
 			this.labelProfil.setText(userProfile.name());
-			this.btConnection
-					.setText((userProfile != UserProfile.anybody) ? "Deconnection"
-							: "Connection");
+			this.btConnection.setText((userProfile != UserProfile.anybody) ? "Deconnection" : "Connection");
 		}
 	}
 

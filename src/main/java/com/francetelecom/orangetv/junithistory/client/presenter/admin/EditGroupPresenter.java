@@ -15,7 +15,7 @@ import com.google.web.bindery.event.shared.EventBus;
 /**
  * Presenternpour l'edition d'un group
  */
-public class EditGroupPresenter extends AbstractEditItemPresenter implements IEditItemPresenter {
+public class EditGroupPresenter extends AbstractEditAdminItemPresenter implements IEditAdminItemPresenter {
 
 	private final static Logger log = Logger.getLogger("EditGroupPresenter");
 

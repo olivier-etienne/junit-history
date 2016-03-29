@@ -1,8 +1,7 @@
-package com.francetelecom.orangetv.junithistory.client.presenter.admin;
+package com.francetelecom.orangetv.junithistory.client.presenter;
 
 import java.util.List;
 
-import com.francetelecom.orangetv.junithistory.client.presenter.AbstractPresenter;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
@@ -17,7 +16,6 @@ import com.google.web.bindery.event.shared.EventBus;
 
 public abstract class AbstractEditItemPresenter extends AbstractPresenter implements IEditItemPresenter {
 
-	protected IGridSubPresenter gridSubPresenter;
 	private final String itemName;
 
 	// ------------------------------ abstract methods
@@ -27,16 +25,14 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 
 	protected abstract void doValidItem(IValidationCallback callback);
 
+	protected abstract void closeDialog(boolean updateDone);
+
+	// protected abstract void refreshList();
+
 	// ------------------------------------- constructor
 	protected AbstractEditItemPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, String itemName) {
 		super(service, eventBus);
 		this.itemName = itemName;
-	}
-
-	// ---------------------------------- implementing IEditItemPresenter
-	@Override
-	public void setGridSubPresenter(IGridSubPresenter presenter) {
-		this.gridSubPresenter = presenter;
 	}
 
 	// ------------------------- protected methods
@@ -44,18 +40,6 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 	protected boolean containsItemIdInParams() {
 
 		return this.params != null && this.params.containsKey(PARAMS_ITEM_ID);
-	}
-
-	protected void closeDialog() {
-		if (this.gridSubPresenter != null) {
-			this.gridSubPresenter.closeDialogBox();
-		}
-	}
-
-	protected void refreshList() {
-		if (this.gridSubPresenter != null) {
-			this.gridSubPresenter.refresh();
-		}
 	}
 
 	protected void bind() {
@@ -94,7 +78,7 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 						break;
 
 					case cancel:
-						closeDialog();
+						closeDialog(false);
 						break;
 					}
 
@@ -106,12 +90,11 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 
 	}
 
-	// ------------------------------------ private methods
 	/*
 	 * Affichage d'une boite de dialogue avec la liste des erreurs de validation
 	 * @param errorMessages
 	 */
-	private void displayValidationErrors(List<String> errorMessages) {
+	protected void displayValidationErrors(List<String> errorMessages) {
 
 		if (errorMessages == null) {
 			errorMessages = ObjectUtils.createList("Unexpected error!");
@@ -120,6 +103,25 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 				ObjectUtils.listToTab(errorMessages), null, false, null);
 		WidgetUtils.centerDialogAndShow(dialogBox);
 	}
+
+	protected IValidationCallback buildCallbackForUpdateItem(final String name) {
+
+		return new IValidationCallback() {
+
+			@Override
+			public void onSuccess() {
+				getView().setActionResult("Update " + name + " in success...", LogStatus.success);
+				closeDialog(true);
+			}
+
+			@Override
+			public void onError(List<String> errorMessages) {
+				displayValidationErrors(errorMessages);
+			}
+		};
+	}
+
+	// ------------------------------------ private methods
 
 	private void beforeUpdateItem() {
 
@@ -147,20 +149,7 @@ public abstract class AbstractEditItemPresenter extends AbstractPresenter implem
 						getView().setActionResult("Update " + itemName + " in progres...", LogStatus.warning);
 
 						// on lance l'update des donnees puis on ferme la box
-						doUpdateItem(new IValidationCallback() {
-
-							@Override
-							public void onSuccess() {
-								getView().setActionResult("Update " + itemName + " in success...", LogStatus.success);
-								closeDialog();
-								refreshList();
-							}
-
-							@Override
-							public void onError(List<String> errorMessages) {
-								displayValidationErrors(errorMessages);
-							}
-						});
+						doUpdateItem(buildCallbackForUpdateItem(itemName));
 					}
 
 				});
