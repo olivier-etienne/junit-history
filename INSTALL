@@ -74,3 +74,9 @@ CONSEILS d'INSTALLATION
 - arreter tomcat avant de faire la copie des fichiers *war et *xml
 
 - si mise à jour, désinstaller l'application avec le Tomcat manager puis procéder comme pour une première installation.
+
+PROBLEME CONNU
+===============
+
+La session expire trop vite: 2 mn au lieu de 30mn.
+Modifier cette valeur dans le /manager/html en attendant correctif.
