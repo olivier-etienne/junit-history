@@ -108,7 +108,7 @@
 
    <!--  =========================================================== -->
   <!--  Common Build configuration                                  -->
-  <!--  Generate junithistoy-1.0-SNAPSHOT.war                     -->
+  <!--  Generate junithistoy-1.x.war                     -->
   <!--  mvn clean package                                         -->
   <!--  =========================================================== -->
   

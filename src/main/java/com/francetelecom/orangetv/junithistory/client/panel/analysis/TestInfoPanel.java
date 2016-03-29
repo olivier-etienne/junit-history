@@ -1,12 +1,12 @@
 package com.francetelecom.orangetv.junithistory.client.panel.analysis;
 
+import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.util.CssConstants;
 import com.francetelecom.orangetv.junithistory.client.util.StatusUtils;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.CreateCommentButton;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.DeleteCommentButton;
 import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.EditCommentButton;
-import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.shared.TestSubStatusEnum;
 import com.francetelecom.orangetv.junithistory.shared.vo.VoItemProtection;

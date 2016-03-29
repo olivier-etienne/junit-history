@@ -10,7 +10,6 @@ import com.francetelecom.orangetv.junithistory.client.event.ViewReportEvent;
 import com.francetelecom.orangetv.junithistory.client.service.IActionCallback;
 import com.francetelecom.orangetv.junithistory.client.service.IGwtJUnitHistoryServiceAsync;
 import com.francetelecom.orangetv.junithistory.client.util.WidgetUtils;
-import com.francetelecom.orangetv.junithistory.client.view.AnalysisView.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.view.IMainView;
 import com.francetelecom.orangetv.junithistory.client.view.IView;
 import com.francetelecom.orangetv.junithistory.client.view.IView.LogStatus;
@@ -29,11 +28,13 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.web.bindery.event.shared.EventBus;
 
 public class AnalysisPresenter extends AbstractProfilMainPresenter {
+
 	private final static Logger log = Logger.getLogger("AnalysisPresenter");
 
 	public enum TestActionButtonEnum {
@@ -51,7 +52,8 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	private VoSearchDefectDatas currentSearch = null;
 	private VoSearchDefectDatas currentDatas;
 
-	// ------------------------------- constructor
+	//
+	// // ------------------------------- constructor
 	public AnalysisPresenter(IGwtJUnitHistoryServiceAsync service, EventBus eventBus, IAnalysisView view) {
 		super(service, eventBus);
 		this.view = view;
@@ -100,7 +102,8 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 
 	}
 
-	// ------------------------------ private methods
+	//
+	// // ------------------------------ private methods
 	private void doInitView() {
 
 		log.config("doInitView()");
@@ -118,7 +121,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	private void bind() {
 
 		// handler pour les action sur les test comments
-		this.view.setTestActionClickHandler(new ClickHandler() {
+		final ClickHandler testActionClickHandler = new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
@@ -139,12 +142,12 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 					case deleteComment:
 						beforeDeleteComment(testId, tcommentId);
 						break;
-
 					}
 				}
-
 			}
-		});
+
+		};
+		this.view.setTestActionClickHandler(testActionClickHandler);
 
 		// handler pour la selection d'une tclass de test
 		this.view.setSelectTClassHandler(new ChangeHandler() {
@@ -214,15 +217,16 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		VoSearchDefectDatas selectTestDatas = view.getTestDatas();
 
 		if (selectTestDatas.getTClassId() != IVo.ID_UNDEFINED) {
-			currentDatas = selectTestDatas;
-			doGetListTests(selectTestDatas);
+			this.currentDatas = selectTestDatas;
+			this.doGetListTests(selectTestDatas);
 		}
 
 	}
 
 	/*
-	 * Récupère la liste des nom de tests contenant le mot saisi par l'utilisateur dans la boite de recherche
-	 */
+	* Récupère la liste des nom de tests contenant le mot saisi par
+	l'utilisateur dans la boite de recherche
+	*/
 	private void doSearch(final VoSearchDefectDatas searchDatas) {
 
 		if (searchRunning) {
@@ -250,8 +254,8 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	}
 
 	/*
-	 * Edition ou creation du commentaire pour le test testId 
-	 */
+	* Edition ou creation du commentaire pour le test testId
+	*/
 	private void doEditOrCreateComment(int testId, int tcommentId) {
 
 		log.config("doEditComment(" + testId + ")");
@@ -296,8 +300,8 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	}
 
 	/*
-	 * Suppression commentaire pour le test testId 
-	 */
+	* Suppression commentaire pour le test testId
+	*/
 	private void doDeleteComment(int testId, int tcommentId) {
 
 		this.view.waiting(true);
@@ -321,8 +325,9 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	}
 
 	/*
-	 * Récupère la liste des tclass pour le nom de test choisi et le groupid courant
-	 */
+	* Récupère la liste des tclass pour le nom de test choisi et le groupid
+	courant
+	*/
 	private void doGetListTClasses(final VoSearchDefectDatas testDatas) {
 
 		if (searchRunning) {
@@ -358,8 +363,9 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 	}
 
 	/*
-	 * Récupère la liste des tests du nom choisi par l'utilisateur pour le groupId et le tclassId courant 
-	 */
+	* Récupère la liste des tests du nom choisi par l'utilisateur pour le
+	groupId et le tclassId courant
+	*/
 	private void doGetListTests(final VoSearchDefectDatas testDatas) {
 
 		if (searchRunning) {
@@ -415,6 +421,50 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 
 	}
 
+	public static abstract class TestActionButton extends Button {
+
+		private final int testId;
+		private final int tcommentId;
+		private final boolean updatingMode;
+		private final TestActionButtonEnum action;
+
+		public TestActionButtonEnum getAction() {
+			return this.action;
+		}
+
+		public int getTestId() {
+			return this.testId;
+		}
+
+		public int getTCommentId() {
+			return this.tcommentId;
+		}
+
+		public boolean isUpdatingMode() {
+			return this.updatingMode;
+		}
+
+		protected TestActionButton(int testId, int tcommentId, TestActionButtonEnum action, String title,
+				boolean updatingMode) {
+			this.testId = testId;
+			this.tcommentId = tcommentId;
+			this.action = action;
+			if (title != null) {
+				super.setTitle(title);
+			}
+			this.updatingMode = updatingMode;
+		}
+
+		protected void addButtonStyleName(String stylename) {
+			this.addStyleName(STYLE_IMG_ACTION + " " + stylename);
+		}
+
+		protected void removeButtonStyleName(String stylename) {
+			this.removeStyleName(STYLE_IMG_ACTION + " " + stylename);
+		}
+
+	}
+
 	// ------------------------------- View
 	public static interface IAnalysisView extends IMainView {
 
@@ -441,6 +491,7 @@ public class AnalysisPresenter extends AbstractProfilMainPresenter {
 		public void clearListTestPanel();
 
 		void resetUpdatingMode();
+
 	}
 
 }

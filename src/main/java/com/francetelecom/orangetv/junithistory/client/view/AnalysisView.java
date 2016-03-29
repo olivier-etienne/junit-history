@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import com.francetelecom.orangetv.junithistory.client.AppController.MainPanelViewEnum;
 import com.francetelecom.orangetv.junithistory.client.panel.analysis.TestInfoPanel;
 import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.IAnalysisView;
+import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.TestActionButton;
 import com.francetelecom.orangetv.junithistory.client.presenter.AnalysisPresenter.TestActionButtonEnum;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndBoxWidget;
 import com.francetelecom.orangetv.junithistory.client.widget.LabelAndListWidget;
@@ -25,7 +26,6 @@ import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyUpEvent;
 import com.google.gwt.event.dom.client.KeyUpHandler;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Panel;
@@ -325,52 +325,53 @@ public class AnalysisView extends AbstractMainView implements IAnalysisView {
 
 		public EditCommentButton(int testId, int tcommentId) {
 			super(testId, tcommentId, TestActionButtonEnum.editComment, "Edit the comment", true);
-			this.addButtonStyleName(STYLE_IMG_EDIT);
+			super.addButtonStyleName(STYLE_IMG_EDIT);
 		}
 	}
 
-	public static abstract class TestActionButton extends Button {
-
-		private final int testId;
-		private final int tcommentId;
-		private final boolean updatingMode;
-		private final TestActionButtonEnum action;
-
-		public TestActionButtonEnum getAction() {
-			return this.action;
-		}
-
-		public int getTestId() {
-			return this.testId;
-		}
-
-		public int getTCommentId() {
-			return this.tcommentId;
-		}
-
-		public boolean isUpdatingMode() {
-			return this.updatingMode;
-		}
-
-		private TestActionButton(int testId, int tcommentId, TestActionButtonEnum action, String title,
-				boolean updatingMode) {
-			this.testId = testId;
-			this.tcommentId = tcommentId;
-			this.action = action;
-			if (title != null) {
-				super.setTitle(title);
-			}
-			this.updatingMode = updatingMode;
-		}
-
-		protected void addButtonStyleName(String stylename) {
-			this.addStyleName(STYLE_IMG_ACTION + " " + stylename);
-		}
-
-		protected void removeButtonStyleName(String stylename) {
-			this.removeStyleName(STYLE_IMG_ACTION + " " + stylename);
-		}
-
-	}
+	// public static abstract class TestActionButton extends Button {
+	//
+	// private final int testId;
+	// private final int tcommentId;
+	// private final boolean updatingMode;
+	// private final TestActionButtonEnum action;
+	//
+	// public TestActionButtonEnum getAction() {
+	// return this.action;
+	// }
+	//
+	// public int getTestId() {
+	// return this.testId;
+	// }
+	//
+	// public int getTCommentId() {
+	// return this.tcommentId;
+	// }
+	//
+	// public boolean isUpdatingMode() {
+	// return this.updatingMode;
+	// }
+	//
+	// private TestActionButton(int testId, int tcommentId, TestActionButtonEnum
+	// action, String title,
+	// boolean updatingMode) {
+	// this.testId = testId;
+	// this.tcommentId = tcommentId;
+	// this.action = action;
+	// if (title != null) {
+	// super.setTitle(title);
+	// }
+	// this.updatingMode = updatingMode;
+	// }
+	//
+	// protected void addButtonStyleName(String stylename) {
+	// this.addStyleName(STYLE_IMG_ACTION + " " + stylename);
+	// }
+	//
+	// protected void removeButtonStyleName(String stylename) {
+	// this.removeStyleName(STYLE_IMG_ACTION + " " + stylename);
+	// }
+	//
+	// }
 
 }
