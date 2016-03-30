@@ -8,9 +8,10 @@ import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -24,6 +25,8 @@ import com.francetelecom.orangetv.junithistory.shared.util.JUnitHistoryException
 public class FileUtils implements IManager {
 
 	private static final Logger log = Logger.getLogger(FileUtils.class.getName());
+
+	private static final String UTF8_ENCODING = "UTF-8";
 
 	public static final FileFilter DIR_FILTER = new FileFilter() {
 
@@ -411,6 +414,11 @@ public class FileUtils implements IManager {
 	}
 
 	public static boolean writeFile(File file, ListLines lines, boolean append) throws JUnitHistoryException {
+		return writeFile(file, lines, append, UTF8_ENCODING);
+	}
+
+	public static boolean writeFile(File file, ListLines lines, boolean append, String encoding)
+			throws JUnitHistoryException {
 
 		if (file == null || lines == null) {
 			return false;
@@ -421,7 +429,8 @@ public class FileUtils implements IManager {
 
 		try {
 
-			writer = new BufferedWriter(new FileWriter(file, append));
+			Charset charset = Charset.forName(encoding);
+			writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, append), charset));
 
 			for (String line : lines.getLines()) {
 				writer.append(line);

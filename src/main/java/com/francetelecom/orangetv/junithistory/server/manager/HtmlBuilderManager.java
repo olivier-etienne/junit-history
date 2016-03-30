@@ -183,6 +183,7 @@ public class HtmlBuilderManager implements IHtmlBalise, IManager {
 
 		// enntete
 		lines.addLine(HEAD_BEGIN);
+		lines.addLine(META_CHARSET);
 		lines.addLine(TITLE_BEGIN, testSuiteInstance.getName(), TITLE_END);
 		lines.addLine(LINK_CSS);
 		lines.addLine(HEAD_END);

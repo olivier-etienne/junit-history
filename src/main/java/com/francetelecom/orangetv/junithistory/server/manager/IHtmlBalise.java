@@ -7,6 +7,7 @@ public interface IHtmlBalise {
 	public static final String SUFFIXE_STATS = " _stats";
 
 	public final static String LINK_CSS = "<link rel='stylesheet' type='text/css' href='style.css'>";
+	public final static String META_CHARSET = "<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />";
 
 	public final static String HTML_BEGIN = "<html>";
 	public final static String HTML_END = "</html>";

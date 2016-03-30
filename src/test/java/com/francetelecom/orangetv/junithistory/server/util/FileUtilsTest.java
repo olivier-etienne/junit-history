@@ -9,12 +9,15 @@ import java.io.File;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.junit.Test;
 
 import com.francetelecom.orangetv.junithistory.server.service.AbstractTest;
 
 public class FileUtilsTest extends AbstractTest {
+
+	private static final Logger log = Logger.getLogger(FileUtilsTest.class.getName());
 
 	private static final String DECIMAL_PATTERN = "#0.000";
 	private static final DecimalFormat DEC_FORMAT = new DecimalFormat(DECIMAL_PATTERN);
@@ -36,6 +39,28 @@ public class FileUtilsTest extends AbstractTest {
 		File dir = new File(
 				"C:\\Users\\ndmz2720\\Documents\\RA\\divers\\GwtJUnitHistory\\war\\upload\\7o33pyzbuls81a58nl53x7y9t");
 		assertTrue("deleteDirectoryAndAllContent must return true!", FileUtils.deleteDirectoryAndAllContent(dir));
+	}
+
+	@Test
+	public void testWriteFile() throws Exception {
+
+		ListLines lines = new ListLines();
+		lines.addLine("ceci est un text", "et le suivant");
+		File file = new File(".", "testFileUTF8.txt");
+
+		boolean result = FileUtils.writeFile(file, lines);
+		assertTrue("writeFile cannot be false!", result);
+		log.info("file: " + file.getAbsolutePath());
+		assertTrue(file.getAbsolutePath() + " must exists!", file.exists());
+
+		assertTrue("file.delete cannot be false!", file.delete());
+
+		result = FileUtils.writeFile(file, lines, false, "ISO-8859-1");
+		assertTrue("writeFile cannot be false!", result);
+		log.info("file: " + file.getAbsolutePath());
+		assertTrue(file.getAbsolutePath() + " must exists!", file.exists());
+
+		assertTrue("file.delete cannot be false!", file.delete());
 	}
 
 	@Test
